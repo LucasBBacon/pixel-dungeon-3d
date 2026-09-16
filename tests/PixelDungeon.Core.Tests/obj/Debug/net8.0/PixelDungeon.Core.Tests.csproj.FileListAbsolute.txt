@@ -97,3 +97,4 @@ C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\tests\PixelDungeon.Core
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\tests\PixelDungeon.Core.Tests\obj\Debug\net8.0\PixelDungeon.Core.Tests.pdb
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\tests\PixelDungeon.Core.Tests\obj\Debug\net8.0\PixelDungeon.Core.Tests.genruntimeconfig.cache
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\tests\PixelDungeon.Core.Tests\obj\Debug\net8.0\ref\PixelDungeon.Core.Tests.dll
+C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\tests\PixelDungeon.Core.Tests\obj\Debug\net8.0\PixelDungeon.Core.Tests.sourcelink.json
