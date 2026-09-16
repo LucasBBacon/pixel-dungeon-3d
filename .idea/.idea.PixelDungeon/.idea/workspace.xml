@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/.gdignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Rect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/.gdignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/PixelDungeon.Core.Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/PointTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/RectTests.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/Lucas/Documents/Godot/projects/pixel-dungeon-3d" value="3JNwUj21PTk17dsyFx4e5kcsgUJ" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Point.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Rect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/RectTests.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JNpPKXeVEjejpNBOhjDXLJuFMZ" />
+  <component name="ProjectSessionTemplates">
+    <option name="inlineTemplate">
+      <template>
+        <option name="modeId" value="InlineAgent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;
+  }
+}</component>
+  <component name="RunManager" selected="GDScript Start and Debug.Player GDScript">
+    <configuration name="Debug GDScript (Running session)" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
+      <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Attach&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
+      <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Launch&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Player" type="RunExe" factoryName=".NET Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="RUNTIME_TYPE" value="coreclr" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="" />
+      <created>1789511358941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789511358941</updated>
+      <workItem from="1789511368623" duration="346000" />
+      <workItem from="1789514859661" duration="1940000" />
+      <workItem from="1789516885270" duration="120000" />
+      <workItem from="1789567262240" duration="3195000" />
+      <workItem from="1789570622096" duration="438000" />
+      <workItem from="1789571083901" duration="3117000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

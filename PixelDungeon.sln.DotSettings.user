@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\JetBrains\JetBrains Rider 2026.2.1\tools\MSBuild\Current\Bin\MSBuild.exe</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/DotNetCliExePath/@EntryValue">C:\Program Files\dotnet\dotnet.exe</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b08e1c56_002D276e_002D45af_002Db274_002D94142cc54a13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PointTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.RectTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

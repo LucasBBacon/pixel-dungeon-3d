@@ -1,0 +1,154 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
+        "projectName": "PixelDungeon.Core",
+        "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.319/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
+        "projectName": "PixelDungeon.Core.Tests",
+        "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
+                "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[18.10.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.319/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
