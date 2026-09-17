@@ -11,5 +11,16 @@
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointFTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GameMathTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.RandomTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Primitives_RoundTrip&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.MissingKeys_ReturnJavaDefaults&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.MistypedKeys_ReturnJavaDefaults&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.IntStoredAsFloat_ReadsBackAsFloat&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Arrays_RoundTrip&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.NestedBundle_RoundTrip&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.ContainsAndFields_ReflectStoredKeys&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.SameBundle_CanBePutTwice&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.WriteThenRead_RoundTripsThroughStream&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Read_Bytes_ParseJson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
