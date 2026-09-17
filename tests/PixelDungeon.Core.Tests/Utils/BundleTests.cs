@@ -152,4 +152,123 @@ public class BundleTests
         b.Put("a", 1);
         Assert.Equal("{\"a\":1}", b.ToString());
     }
+
+    [Fact]
+    public void Bundlable_RoundTripsAsConcreteType()
+    {
+        var b = new Bundle();
+        b.Put("thing", new SampleThing { Depth = 4, Name = "crab" });
+
+        var back = b.Get("thing");
+        var thing = Assert.IsType<SampleThing>(back);
+        Assert.Equal(4, thing.Depth);
+        Assert.Equal("crab", thing.Name);
+        Assert.Equal(
+            typeof(SampleThing).FullName,
+            b.GetBundle("thing").GetString("__className")
+        );
+    }
+
+    [Fact]
+    public void Bundlable_Null_IsNotStored()
+    {
+        var b = new Bundle();
+        b.Put("thing", (IBundlable)null);
+        Assert.False(b.Contains("thing"));
+        Assert.Null(b.Get("thing"));
+    }
+
+    [Fact]
+    public void Get_UnknownClassName_ReturnsNull()
+    {
+        var inner = new Bundle();
+        inner.Put("__className", "No.Such.Type");
+        var b = new Bundle();
+        b.Put("thing", inner);
+        Assert.Null(b.Get("thing"));
+        Assert.Null(b.Get("missing"));
+    }
+
+    [Fact]
+    public void Collection_RoundTripMixedTypesInOrder()
+    {
+        var b = new Bundle();
+        b.Put("things", new List<IBundlable>
+        {
+            new SampleThing { Depth = 1, Name = "a" },
+            new OtherThing { Flag = true },
+            new SampleThing { Depth = 2, Name = "b" }
+        });
+
+        var back = b.GetCollection("things");
+        Assert.Equal(3, back.Count);
+        Assert.Equal("a", Assert.IsType<SampleThing>(back[0]).Name);
+        Assert.True(Assert.IsType<OtherThing>(back[1]).Flag);
+        Assert.Equal(2, Assert.IsType<SampleThing>(back[2]).Depth);
+    }
+
+    [Fact]
+    public void Collection_Missing_ReturnsEmptyList()
+    {
+        Assert.Empty(new Bundle().GetCollection("missing"));
+    }
+
+    [Fact]
+    public void Collection_AcceptsTypedCollections()
+    {
+        var b = new Bundle();
+        b.Put("set", new HashSet<SampleThing>
+        {
+            new()
+            {
+                Depth = 9,
+                Name = "s"
+            }
+        });
+        Assert.Equal(9, Assert.IsType<SampleThing>(b.GetCollection("set")[0]).Depth);
+    }
+
+    [Fact]
+    public void Enum_RoundTripsByName()
+    {
+        var b = new Bundle();
+        b.Put("feeling", Feeling.Water);
+        Assert.Equal("Water", b.GetString("feeling"));
+        Assert.Equal(Feeling.Water, b.GetEnum<Feeling>("feeling"));
+    }
+
+    [Fact]
+    public void Enum_BadOrMissingValue_ReturnsFirstConstant()
+    {
+        var b = new Bundle();
+        b.Put("feeling", "Lava");
+        b.Put("numeric", "99");
+        Assert.Equal(Feeling.None, b.GetEnum<Feeling>("feeling"));
+        Assert.Equal(Feeling.None, b.GetEnum<Feeling>("numeric"));
+        Assert.Equal(Feeling.None, b.GetEnum<Feeling>("absent"));
+    }
+
+    [Fact]
+    public void AddAlias_ResolvesOldClassName()
+    {
+        Bundle.AddAlias(typeof(SampleThing), "com.watabou.pixeldungeon.OldSample");
+        var inner = new Bundle();
+        inner.Put("__className", "com.watabou.pixeldungeon.OldSample");
+        inner.Put("depth", 6);
+        var b = new Bundle();
+        b.Put("thing", inner);
+
+        Assert.Equal(6, Assert.IsType<SampleThing>(b.Get("thing")).Depth);
+    }
+
+    [Fact]
+    public void Bundlable_SurvivesStreamRoundTrip()
+    {
+        var b = new Bundle();
+        b.Put("thing", new OtherThing { Flag = true });
+        using var stream = new MemoryStream();
+        Bundle.Write(b, stream);
+        stream.Position = 0;
+        Assert.True(Assert.IsType<OtherThing>(Bundle.Read(stream).Get("thing")).Flag);
+    }
 }

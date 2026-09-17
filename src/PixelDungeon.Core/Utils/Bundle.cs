@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -5,6 +6,10 @@ namespace PixelDungeon.Core.Utils;
 
 public class Bundle
 {
+    private const string ClassName = "__className";
+
+    private static readonly Dictionary<string, string> Aliases = new();
+
     private readonly JsonObject _data;
 
     public Bundle() : this(new JsonObject())
@@ -74,6 +79,63 @@ public class Bundle
         return Value<string[]>(key, null);
     }
 
+    private IBundlable Get()
+    {
+        // The Java catches every exception here and returns null
+        try
+        {
+            var className = GetString(ClassName);
+            if (Aliases.TryGetValue(className, out var aliased))
+            {
+                className = aliased;
+            }
+
+            var type = ResolveType(className);
+            if (type == null)
+            {
+                return null;
+            }
+
+            var instance = (IBundlable)Activator.CreateInstance(type);
+            instance?.RestoreFromBundle(this);
+            return instance;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public IBundlable Get(string key)
+    {
+        return GetBundle(key).Get();
+    }
+
+    public TEnum GetEnum<TEnum>(string key) where TEnum : struct, Enum
+    {
+        if (Enum.TryParse(GetString(key), out TEnum result) && Enum.IsDefined(typeof(TEnum), result))
+        {
+            return result;
+        }
+
+        return Enum.GetValues<TEnum>()[0];
+    }
+
+    public List<IBundlable> GetCollection(string key)
+    {
+        var list = new List<IBundlable>();
+        if (Node(key) is JsonArray array)
+        {
+            list.AddRange(
+                array
+                    .Select(element => new Bundle(element as JsonObject)
+                        .Get())
+            );
+        }
+
+        return list;
+    }
+
     public void Put(string key, bool value)
     {
         _data[key] = JsonValue.Create(value);
@@ -113,6 +175,66 @@ public class Bundle
     public void Put(string key, string[] array)
     {
         _data[key] = JsonSerializer.SerializeToNode(array);
+    }
+
+    public void Put(string key, IBundlable value)
+    {
+        if (value == null)
+        {
+            return;
+        }
+
+        var bundle = new Bundle();
+        bundle.Put(ClassName, value.GetType().FullName);
+        value.StoreInBundle(bundle);
+        _data[key] = bundle._data;
+    }
+
+    public void Put(string key, Enum value)
+    {
+        if (value != null)
+        {
+            _data[key] = JsonValue.Create(value.ToString());
+        }
+    }
+
+    public void Put(string key, IEnumerable<IBundlable> collection)
+    {
+        var array = new JsonArray();
+        foreach (var value in collection)
+        {
+            var bundle = new Bundle();
+            bundle.Put(ClassName, value.GetType().FullName);
+            value.StoreInBundle(bundle);
+            array.Add(bundle._data);
+        }
+
+        _data[key] = array;
+    }
+
+    public static void AddAlias(Type type, string alias)
+    {
+        Aliases[alias] = type.FullName;
+    }
+
+    private static Type ResolveType(string name)
+    {
+        var type = typeof(Bundle).Assembly.GetType(name);
+        if (type != null)
+        {
+            return type;
+        }
+
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            type = assembly.GetType(name);
+            if (type != null)
+            {
+                return type;
+            }
+        }
+
+        return null;
     }
 
     public static Bundle Read(Stream stream)
