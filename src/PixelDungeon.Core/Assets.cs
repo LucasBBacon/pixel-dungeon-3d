@@ -1,0 +1,51 @@
+namespace PixelDungeon.Core;
+
+public static class Assets
+{
+    public const string SndClick = "snd_click.mp3";
+    public const string SndBadge = "snd_badge.mp3";
+    public const string SndGold = "snd_gold.mp3";
+    public const string SndOpen = "snd_door_open.mp3";
+    public const string SndUnlock = "snd_unlock.mp3";
+    public const string SndItem = "snd_item.mp3";
+    public const string SndDewdrop = "snd_dewdrop.mp3";
+    public const string SndHit = "snd_hit.mp3";
+    public const string SndMiss = "snd_miss.mp3";
+    public const string SndStep = "snd_step.mp3";
+    public const string SndWater = "snd_water.mp3";
+    public const string SndDescend = "snd_descend.mp3";
+    public const string SndEat = "snd_eat.mp3";
+    public const string SndRead = "snd_read.mp3";
+    public const string SndLullaby = "snd_lullaby.mp3";
+    public const string SndDrink = "snd_drink.mp3";
+    public const string SndShatter = "snd_shatter.mp3";
+    public const string SndZap = "snd_zap.mp3";
+    public const string SndLightning = "snd_lightning.mp3";
+    public const string SndLevelUp = "snd_levelup.mp3";
+    public const string SndDeath = "snd_death.mp3";
+    public const string SndChallenge = "snd_challenge.mp3";
+    public const string SndCursed = "snd_cursed.mp3";
+    public const string SndTrap = "snd_trap.mp3";
+    public const string SndEvoke = "snd_evoke.mp3";
+    public const string SndTomb = "snd_tomb.mp3";
+    public const string SndAlert = "snd_alert.mp3";
+    public const string SndMeld = "snd_meld.mp3";
+    public const string SndBoss = "snd_boss.mp3";
+    public const string SndBlast = "snd_blast.mp3";
+    public const string SndPlant = "snd_plant.mp3";
+    public const string SndRay = "snd_ray.mp3";
+    public const string SndBeacon = "snd_beacon.mp3";
+    public const string SndTeleport = "snd_teleport.mp3";
+    public const string SndCharms = "snd_charms.mp3";
+    public const string SndMastery = "snd_mastery.mp3";
+    public const string SndPuff = "snd_puff.mp3";
+    public const string SndRocks = "snd_rocks.mp3";
+    public const string SndBurning = "snd_burning.mp3";
+    public const string SndFalling = "snd_falling.mp3";
+    public const string SndGhost = "snd_ghost.mp3";
+    public const string SndSecret = "snd_secret.mp3";
+    public const string SndBones = "snd_bones.mp3";
+    public const string SndBee = "snd_bee.mp3";
+    public const string SndDegrade = "snd_degrade.mp3";
+    public const string SndMimic = "snd_mimic.mp3";
+}
