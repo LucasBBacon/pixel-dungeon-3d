@@ -21,6 +21,22 @@ public class BundleTests
     }
 
     [Fact]
+    public void Put_NonFiniteFloat_IsDropped()
+    {
+        var b = new Bundle();
+        b.Put("nan", float.NaN);
+        b.Put("inf", float.PositiveInfinity);
+        b.Put("ok", 1.5f);
+
+        Assert.False(b.Contains("nan"));
+        Assert.False(b.Contains("inf"));
+        Assert.Equal(1.5f, b.GetFloat("ok"));
+
+        using var stream = new MemoryStream();
+        Assert.True(Bundle.Write(b, stream));
+    }
+
+    [Fact]
     public void MissingKeys_ReturnJavaDefaults()
     {
         var b = new Bundle();
@@ -36,7 +52,7 @@ public class BundleTests
     }
 
     [Fact]
-    public void MistypedKeys_ReturnJavaDefaults()
+    public void MistypedKeys_ReturnFallbacks()
     {
         var b = new Bundle();
         b.Put("text", "abc");
@@ -143,6 +159,15 @@ public class BundleTests
         var stream = new MemoryStream();
         stream.Dispose();
         Assert.False(Bundle.Write(new Bundle(), stream));
+    }
+
+    [Fact]
+    public void Read_ClosedOrNullStream_ReturnsNull()
+    {
+        var stream = new MemoryStream();
+        stream.Dispose();
+        Assert.Null(Bundle.Read(stream));
+        Assert.Null(Bundle.Read((Stream)null));
     }
 
     [Fact]

@@ -113,6 +113,8 @@ public class Bundle
 
     public TEnum GetEnum<TEnum>(string key) where TEnum : struct, Enum
     {
+        // lenient on purpose, the java falls back to the first constant only for a missing key
+        // and throws for an unknown name, port falls back for both
         if (Enum.TryParse(GetString(key), out TEnum result) && Enum.IsDefined(typeof(TEnum), result))
         {
             return result;
@@ -148,6 +150,13 @@ public class Bundle
 
     public void Put(string key, float value)
     {
+        // java's JSONObject.put rejects NaN and infinity and Bundle.put swallows the exception,
+        // so key is silently dropped. storing them here would make Write fail later instead.
+        if (!float.IsFinite(value))
+        {
+            return;
+        }
+
         _data[key] = JsonValue.Create(value);
     }
 
@@ -239,11 +248,13 @@ public class Bundle
 
     public static Bundle Read(Stream stream)
     {
+        // java wraps the whole stream in catch exception and returns null
+        // a closed or null stream is failed read, not crash
         try
         {
             return JsonNode.Parse(stream) is JsonObject json ? new Bundle(json) : null;
         }
-        catch (JsonException)
+        catch (Exception)
         {
             return null;
         }
@@ -270,6 +281,7 @@ public class Bundle
             writer.Flush();
             return true;
         }
+        // ArgumentException included because stream surfaces as "Stream is not writable" from Utf8JsonWriter constructor
         catch (Exception e) when (e is IOException or ObjectDisposedException or NotSupportedException
                                       or ArgumentException)
         {
@@ -284,6 +296,9 @@ public class Bundle
 
     private T Value<T>(string key, T fallback)
     {
+        // stricter than java's opt* coercions, a value in the wrong JSON type yields the
+        // fallback rather than a converted value (GetInt of "12" is 0, not 12)
+        // no game code reads a key as a different type than it wrote.
         var node = Node(key);
         if (node == null)
         {
