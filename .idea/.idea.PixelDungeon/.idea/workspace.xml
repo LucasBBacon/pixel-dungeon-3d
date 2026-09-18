@@ -14,31 +14,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Graph.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/GraphTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/GlobalUsings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/Main.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PixelDungeon.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +65,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/scripts/GlobalUsings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/scripts/Main.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/GameMath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Graph.cs" root0="FORCE_HIGHLIGHTING" />
@@ -156,7 +157,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -172,7 +173,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -200,7 +201,7 @@
       <workItem from="1789516885270" duration="120000" />
       <workItem from="1789567262240" duration="3195000" />
       <workItem from="1789570622096" duration="438000" />
-      <workItem from="1789571083901" duration="29439000" />
+      <workItem from="1789571083901" duration="32072000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -250,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789688247961</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="eat(core): port Graph distance map and path builder">
+      <option name="closed" value="true" />
+      <created>1789693884650</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1789693884650</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +286,8 @@
     <MESSAGE value="feat(core): port Bundle primitives, arrays, nesting, and stream I/O" />
     <MESSAGE value="feat(core): port Bundle objects, collections, enums, and aliases" />
     <MESSAGE value="feat(core): port PathFinder grid BFS" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): port PathFinder grid BFS" />
+    <MESSAGE value="eat(core): port Graph distance map and path builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="eat(core): port Graph distance map and path builder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
