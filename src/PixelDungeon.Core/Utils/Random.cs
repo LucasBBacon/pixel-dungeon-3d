@@ -68,8 +68,9 @@ public static class Random
                 return i;
             }
 
-            // java reads chances[i + 1] unguarded, only overruns when weight = 0,
-            // where it throws. guard makes case fall through to 0 default
+            // java reads chances[i + 1] unguarded, overruns when weight = 0 and,
+            // about once in 10^7 rolls, when Float(sum) rounds up to exactly sum,
+            // java throws in both cases. guard makes them fall through to 0 default
             if (i + 1 < length)
             {
                 sum += chances[i + 1];
@@ -101,7 +102,7 @@ public static class Random
             {
                 return values[i];
             }
-
+            // same guard as chances(float[]) above, for same two overrun cases
             if (i + 1 < size)
             {
                 sum += probabilities[i + 1];

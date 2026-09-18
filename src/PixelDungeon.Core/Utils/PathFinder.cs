@@ -14,6 +14,9 @@ public static class PathFinder
     public static void SetMapSize(int width, int height)
     {
         var size = width * height;
+        
+        // just like java, everything including _dir is rebuilt only when the cell count changes,
+        // two shapes of equal area would share neighbor offsets. Game is always 32x32.
         if (_size == size) return;
 
         _size = size;
