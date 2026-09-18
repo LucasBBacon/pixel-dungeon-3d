@@ -6,40 +6,5 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=7F5C98AE_002D6E03_002D47AE_002DB983_002D45DFB4927679/@EntryIndexedValue">7F5C98AE-6E03-47AE-B983-45DFB4927679</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=xUnit/@EntryIndexedValue">33ff99d8-b1ad-4ed5-a4fd-376b97c2c841</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b08e1c56_002D276e_002D45af_002Db274_002D94142cc54a13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PointTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.RectTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointFTests.Polar_ZeroAngle_PointsAlongX&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointFTests.Polar_RightAngle_PointsAlongY&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointFTests.Normalize_GivesUnitLength&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PointFTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GameMathTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.RandomTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Primitives_RoundTrip&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.MissingKeys_ReturnJavaDefaults&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.MistypedKeys_ReturnJavaDefaults&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.IntStoredAsFloat_ReadsBackAsFloat&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Arrays_RoundTrip&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.NestedBundle_RoundTrip&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.ContainsAndFields_ReflectStoredKeys&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.SameBundle_CanBePutTwice&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.WriteThenRead_RoundTripsThroughStream&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests.Read_Bytes_ParseJson&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BundleTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests.Find_StraightCorridor_ReturnsEachStepUpToTarget&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests.Find_Detour_RoutesThroughTheGap&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests.BuildDistanceMap_LineGraph_CountsHopsFromFocus&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests.BuildDistanceMap_NodePrice_IsTheCostOfLeavingIt&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Levels.TerrainTests.Flags_MatchTheJavaTable&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Levels.TerrainTests.Flags_WaterTiles_AllEqualWater&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Levels.TerrainTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BArrayTest.And_Or_Not_ComputeElementwise&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BArrayTest.ResultBuffer_IsFilledAndReturned&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.BArrayTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.StatisticsTest.Reset_ClearsEveryCounter&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.StatisticsTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.TextUtilsTest.Indefinite_PicksArticleByFirstLetter&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" Presentation="&amp;lt;tests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
