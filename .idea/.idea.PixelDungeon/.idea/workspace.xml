@@ -14,8 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/PathFinder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/PathFinderTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Graph.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/GraphTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -68,6 +68,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/GameMath.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Graph.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/IBundlable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/PathFinder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Point.cs" root0="FORCE_HIGHLIGHTING" />
@@ -78,6 +79,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/BundleFixtures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/BundleTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/GameMathTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/GraphTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/PathFinderTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/PointFTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/RandomTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -198,7 +200,7 @@
       <workItem from="1789516885270" duration="120000" />
       <workItem from="1789567262240" duration="3195000" />
       <workItem from="1789570622096" duration="438000" />
-      <workItem from="1789571083901" duration="27265000" />
+      <workItem from="1789571083901" duration="29439000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -240,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789679402582</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(core): port PathFinder grid BFS">
+      <option name="closed" value="true" />
+      <created>1789688247961</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1789688247961</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +276,8 @@
     <MESSAGE value="feat(core): port Random with a seed hook." />
     <MESSAGE value="feat(core): port Bundle primitives, arrays, nesting, and stream I/O" />
     <MESSAGE value="feat(core): port Bundle objects, collections, enums, and aliases" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): port Bundle objects, collections, enums, and aliases" />
+    <MESSAGE value="feat(core): port PathFinder grid BFS" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): port PathFinder grid BFS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

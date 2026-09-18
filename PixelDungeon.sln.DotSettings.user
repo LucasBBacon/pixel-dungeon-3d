@@ -25,5 +25,8 @@
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests.Find_StraightCorridor_ReturnsEachStepUpToTarget&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests.Find_Detour_RoutesThroughTheGap&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.PathFinderTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests.BuildDistanceMap_LineGraph_CountsHopsFromFocus&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests.BuildDistanceMap_NodePrice_IsTheCostOfLeavingIt&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Utils.GraphTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
