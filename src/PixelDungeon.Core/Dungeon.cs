@@ -100,4 +100,74 @@ public static class Dungeon
 
         GameScene.AfterObserve();
     }
+
+    private static readonly bool[] _passable = new bool[Level.Length];
+
+
+    public static int FindPath(Char ch, int from, int to, bool[] pass, bool[] visible)
+    {
+        if (Level.Adjacent(from, to))
+        {
+            return Actor.FindChar(to) == null && (pass[to] || Level.Avoid[to]) ? to : -1;
+        }
+
+        if (ch.Flying)
+        {
+            BArray.Or(pass, Level.Avoid, _passable);
+        }
+        else
+        {
+            Array.Copy(pass,
+                0,
+                _passable,
+                0,
+                Level.Length);
+        }
+
+        foreach (var actor in Actor.All())
+        {
+            if (actor is Char other)
+            {
+                var pos = other.Pos;
+                if (visible[pos])
+                {
+                    _passable[pos] = false;
+                }
+            }
+        }
+
+        return PathFinder.GetStep(from, to, _passable);
+    }
+
+    public static int Flee(Char ch, int cur, int from, bool[] pass, bool[] visible)
+    {
+        if (ch.Flying)
+        {
+            BArray.Or(pass, Level.Avoid, _passable);
+        }
+        else
+        {
+            Array.Copy(pass,
+                0,
+                _passable,
+                0,
+                Level.Length);
+        }
+
+        foreach (var actor in Actor.All())
+        {
+            if (actor is Char other)
+            {
+                var pos = other.Pos;
+                if (visible[pos])
+                {
+                    _passable[pos] = false;
+                }
+            }
+        }
+
+        _passable[cur] = true;
+
+        return PathFinder.GetStepBack(cur, from, _passable);
+    }
 }
