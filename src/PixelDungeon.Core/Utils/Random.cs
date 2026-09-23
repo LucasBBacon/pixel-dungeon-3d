@@ -24,7 +24,7 @@ public static class Random
         return (float)(Next() * max);
     }
 
-    public static float Float(float max, float min)
+    public static float Float(float min, float max)
     {
         return (float)(min + Next() * (max - min));
     }

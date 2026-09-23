@@ -1,4 +1,11 @@
+using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Blobs;
+using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels.Painters;
+using PixelDungeon.Core.Mechanics;
+using PixelDungeon.Core.Plants;
 
 namespace PixelDungeon.Core.Levels;
 
@@ -25,7 +32,7 @@ public abstract class Level
     ];
 
     public static readonly int[] Neighbours8 =
-    {
+    [
         +1,
         -1,
         +Width,
@@ -34,7 +41,7 @@ public abstract class Level
         +1 - Width,
         -1 + Width,
         -1 - Width
-    };
+    ];
 
     public static readonly int[] Neighbours9 =
     [
@@ -80,6 +87,13 @@ public abstract class Level
     public int Entrance;
     public int Exit;
 
+    public HashSet<Mob> Mobs = [];
+    public Dictionary<int, Heap> Heaps = new();
+    public Dictionary<Type, Blob> Blobs = new();
+    public Dictionary<int, Plant> Plants = new();
+
+    protected List<Item> ItemsToSpawn = [];
+
     public int Color1 = 0x004400;
     public int Color2 = 0x88CC44;
 
@@ -88,11 +102,121 @@ public abstract class Level
 
     public int TunnelTile() => Feeling == LevelFeeling.Chasm ? Terrain.EmptySp : Terrain.Empty;
 
+    public static void ResetStatics()
+    {
+        Array.Fill(FieldOfView, false);
+        Array.Fill(Passable, false);
+        Array.Fill(LosBlocking, false);
+        Array.Fill(Flammable, false);
+        Array.Fill(Secret, false);
+        Array.Fill(Solid, false);
+        Array.Fill(Avoid, false);
+        Array.Fill(Water, false);
+        Array.Fill(Pit, false);
+        Array.Fill(Discoverable, false);
+        PitRoomNeeded = false;
+        WeakFloorCreated = false;
+        ResizingNeeded = false;
+        LoadedMapSize = 0;
+    }
+
+    public virtual int RandomRespawnCell()
+    {
+        int cell;
+        do
+        {
+            cell = Random.Int(Length);
+        } while (!Passable[cell] || Dungeon.Visible[cell] || Actor.FindChar(cell) != null);
+
+        return cell;
+    }
+
+    public virtual int RandomDestination()
+    {
+        int cell;
+        do
+        {
+            cell = Random.Int(Length);
+        } while (!Passable[cell]);
+
+        return cell;
+    }
+
+    public virtual int PitCell() => RandomRespawnCell();
+
+    public virtual int NMobs() => 0;
+
+    public bool[] UpdateFieldOfView(Char c)
+    {
+        var cx = c.Pos % Width;
+        var cy = c.Pos / Width;
+
+        var sighted = c.IsAlive();
+        if (sighted)
+        {
+            ShadowCaster.CastShadow(cx, cy, FieldOfView, c.ViewDistance);
+        }
+        else
+        {
+            Array.Fill(FieldOfView, false);
+        }
+
+        var sense = 1;
+
+        if ((sighted && sense > 1) || !sighted)
+        {
+            var ax = Math.Max(0, cx - sense);
+            var bx = Math.Min(cx + sense, Width - 1);
+            var ay = Math.Max(0, cy - sense);
+            var by = Math.Min(cy + sense, Height - 1);
+
+            var len = bx - ax + 1;
+            var pos = ax + ay * Width;
+            for (var y = ay; y <= by; y++, pos += Width)
+            {
+                Array.Fill(FieldOfView, true, pos, len);
+            }
+
+            for (var i = 0; i < Length; i++)
+            {
+                FieldOfView[i] &= Discoverable[i];
+            }
+        }
+
+        if (c.IsAlive())
+        {
+            // DEFERRED(sp2): MindVision reveals the 3x3 block around every mob and takes precedence over the Huntress branch
+            if (c == Dungeon.Hero && ((Hero)c).HeroClass == HeroClass.Huntress)
+            {
+                foreach (var mob in Mobs)
+                {
+                    var p = mob.Pos;
+                    if (Distance(c.Pos, p) == 2)
+                    {
+                        FieldOfView[p] = true;
+                        FieldOfView[p + 1] = true;
+                        FieldOfView[p - 1] = true;
+                        FieldOfView[p + Width + 1] = true;
+                        FieldOfView[p + Width - 1] = true;
+                        FieldOfView[p - Width + 1] = true;
+                        FieldOfView[p - Width - 1] = true;
+                        FieldOfView[p + Width] = true;
+                        FieldOfView[p - Width] = true;
+                    }
+                }
+            }
+            // DEFERRED(sp4): Awareness (from the well of awareness) reveals the 3x3 block around every heap
+        }
+
+        return FieldOfView;
+    }
+
     protected abstract bool Build();
     protected abstract void Decorate();
     protected abstract void CreateMobs();
     protected abstract void CreateItems();
 
+    // Private in the Java; protected so Create() and test levels can call it.
     protected void BuildFlagMaps()
     {
         for (var i = 0; i < Length; i++)
@@ -129,9 +253,7 @@ public abstract class Level
             }
 
             if (!Pit[i]) continue;
-
             if (Pit[i - Width]) continue;
-
             var c = Map[i - Width];
             if (c is Terrain.EmptySp or Terrain.StatueSp)
             {
@@ -229,7 +351,6 @@ public abstract class Level
         return diff is 1 or Width or Width + 1 or Width - 1;
     }
 
-
     public virtual string TileName(int tile)
     {
         if (tile >= Terrain.WaterTiles && tile != Terrain.Water)
@@ -242,45 +363,85 @@ public abstract class Level
             return TileName(Terrain.Chasm);
         }
 
-        return tile switch
+        switch (tile)
         {
-            Terrain.Chasm => "Chasm",
-            Terrain.Empty or Terrain.EmptySp or Terrain.EmptyDeco or Terrain.SecretToxicTrap or Terrain.SecretFireTrap
-                or Terrain.SecretParalyticTrap or Terrain.SecretPoisonTrap or Terrain.SecretAlarmTrap
-                or Terrain.SecretLightningTrap => "Floor",
-            Terrain.Grass => "Grass",
-            Terrain.Water => "Water",
-            Terrain.Wall or Terrain.WallDeco or Terrain.SecretDoor => "Wall",
-            Terrain.Door => "Closed door",
-            Terrain.OpenDoor => "Open door",
-            Terrain.Entrance => "Depth entrance",
-            Terrain.Exit => "Depth exit",
-            Terrain.Embers => "Embers",
-            Terrain.LockedDoor => "Locked door",
-            Terrain.Pedestal => "Pedestal",
-            Terrain.Barricade => "Barricade",
-            Terrain.HighGrass => "High grass",
-            Terrain.LockedExit => "Locked depth exit",
-            Terrain.UnlockedExit => "Unlocked depth exit",
-            Terrain.Sign => "Sign",
-            Terrain.Well => "Well",
-            Terrain.EmptyWell => "Empty well",
-            Terrain.Statue or Terrain.StatueSp => "Statue",
-            Terrain.ToxicTrap => "Toxic gas trap",
-            Terrain.FireTrap => "Fire trap",
-            Terrain.ParalyticTrap => "Paralytic gas trap",
-            Terrain.PoisonTrap => "Poison dart trap",
-            Terrain.AlarmTrap => "Alarm trap",
-            Terrain.LightningTrap => "Lightning trap",
-            Terrain.GrippingTrap => "Gripping trap",
-            Terrain.SummoningTrap => "Summoning trap",
-            Terrain.InactiveTrap => "Triggered trap",
-            Terrain.Bookshelf => "Bookshelf",
-            Terrain.Alchemy => "Alchemy pot",
-            _ => "???"
-        };
+            case Terrain.Chasm:
+                return "Chasm";
+            case Terrain.Empty:
+            case Terrain.EmptySp:
+            case Terrain.EmptyDeco:
+            case Terrain.SecretToxicTrap:
+            case Terrain.SecretFireTrap:
+            case Terrain.SecretParalyticTrap:
+            case Terrain.SecretPoisonTrap:
+            case Terrain.SecretAlarmTrap:
+            case Terrain.SecretLightningTrap:
+                return "Floor";
+            case Terrain.Grass:
+                return "Grass";
+            case Terrain.Water:
+                return "Water";
+            case Terrain.Wall:
+            case Terrain.WallDeco:
+            case Terrain.SecretDoor:
+                return "Wall";
+            case Terrain.Door:
+                return "Closed door";
+            case Terrain.OpenDoor:
+                return "Open door";
+            case Terrain.Entrance:
+                return "Depth entrance";
+            case Terrain.Exit:
+                return "Depth exit";
+            case Terrain.Embers:
+                return "Embers";
+            case Terrain.LockedDoor:
+                return "Locked door";
+            case Terrain.Pedestal:
+                return "Pedestal";
+            case Terrain.Barricade:
+                return "Barricade";
+            case Terrain.HighGrass:
+                return "High grass";
+            case Terrain.LockedExit:
+                return "Locked depth exit";
+            case Terrain.UnlockedExit:
+                return "Unlocked depth exit";
+            case Terrain.Sign:
+                return "Sign";
+            case Terrain.Well:
+                return "Well";
+            case Terrain.EmptyWell:
+                return "Empty well";
+            case Terrain.Statue:
+            case Terrain.StatueSp:
+                return "Statue";
+            case Terrain.ToxicTrap:
+                return "Toxic gas trap";
+            case Terrain.FireTrap:
+                return "Fire trap";
+            case Terrain.ParalyticTrap:
+                return "Paralytic gas trap";
+            case Terrain.PoisonTrap:
+                return "Poison dart trap";
+            case Terrain.AlarmTrap:
+                return "Alarm trap";
+            case Terrain.LightningTrap:
+                return "Lightning trap";
+            case Terrain.GrippingTrap:
+                return "Gripping trap";
+            case Terrain.SummoningTrap:
+                return "Summoning trap";
+            case Terrain.InactiveTrap:
+                return "Triggered trap";
+            case Terrain.Bookshelf:
+                return "Bookshelf";
+            case Terrain.Alchemy:
+                return "Alchemy pot";
+            default:
+                return "???";
+        }
     }
-
 
     public virtual string TileDesc(int tile)
     {
