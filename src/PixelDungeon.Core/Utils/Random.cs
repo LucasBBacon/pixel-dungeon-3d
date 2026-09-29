@@ -2,51 +2,64 @@ namespace PixelDungeon.Core.Utils;
 
 public static class Random
 {
-    private static System.Random _rng = new System.Random();
+    private const long Multiplier = 0x5DEECE66DL;
+    private const long Increment = 0xBL;
+    private const long Mask = (1L << 48) - 1;
+
+    private static long _seed = 0;
 
     public static void Seed(int seed)
     {
-        _rng = new System.Random(seed);
+        _seed = (seed ^ Multiplier) & Mask;
     }
 
-    private static double Next()
+    private static int Next(int bits)
     {
-        return _rng.NextDouble();
+        _seed = (_seed * Multiplier + Increment) & Mask;
+        return (int)(_seed >> (48 - bits));
+    }
+
+    private static double NextDouble()
+    {
+        return (((long)Next(26) << 27) + Next(27)) / (double)(1L << 53);
     }
 
     public static float Float()
     {
-        return (float)Next();
+        return (float)NextDouble();
     }
 
     public static float Float(float max)
     {
-        return (float)(Next() * max);
+        return (float)(NextDouble() * max);
     }
 
     public static float Float(float min, float max)
     {
-        return (float)(min + Next() * (max - min));
+        return min + (float)(NextDouble() * (max - min));
     }
 
     public static int Int(int max)
     {
-        return max > 0 ? (int)(Next() * max) : 0;
+        return max > 0 ? (int)(NextDouble() * max) : 0;
     }
 
     public static int Int(int min, int max)
     {
-        return min + (int)(Next() * (max - min));
+        var range = max - min;
+        return range <= 0 ? min : min + (int)(NextDouble() * range);
     }
 
     public static int IntRange(int min, int max)
     {
-        return min + (int)(Next() * (max - min + 1));
+        var range = max - min + 1;
+        return range <= 0 ? min : min + (int)(NextDouble() * range);
     }
 
     public static int NormalIntRange(int min, int max)
     {
-        return min + (int)((Next() + Next()) * (max - min + 1) / 2f);
+        var range = max - min + 1;
+        return range <= 0 ? min : min + (int)((NextDouble() + NextDouble()) * range / 2f);
     }
 
     public static int Chances(float[] chances)
@@ -68,9 +81,6 @@ public static class Random
                 return i;
             }
 
-            // java reads chances[i + 1] unguarded, overruns when weight = 0 and,
-            // about once in 10^7 rolls, when Float(sum) rounds up to exactly sum,
-            // java throws in both cases. guard makes them fall through to 0 default
             if (i + 1 < length)
             {
                 sum += chances[i + 1];
@@ -102,7 +112,6 @@ public static class Random
             {
                 return values[i];
             }
-            // same guard as chances(float[]) above, for same two overrun cases
             if (i + 1 < size)
             {
                 sum += probabilities[i + 1];
@@ -119,7 +128,7 @@ public static class Random
 
     public static T Element<T>(T[] array, int max)
     {
-        return array[(int)(Next() * max)];
+        return array[(int)(NextDouble() * max)];
     }
 
     public static T Element<T>(ICollection<T> collection)
@@ -130,12 +139,12 @@ public static class Random
 
     public static T OneOf<T>(params T[] array)
     {
-        return array[(int)(Next() * array.Length)];
+        return array[(int)(NextDouble() * array.Length)];
     }
 
     public static int Index<T>(ICollection<T> collection)
     {
-        return (int)(Next() * collection.Count);
+        return (int)(NextDouble() * collection.Count);
     }
 
     public static void Shuffle<T>(T[] array)

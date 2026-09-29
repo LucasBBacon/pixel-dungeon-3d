@@ -63,8 +63,8 @@ public static class Statistics
         DeepestFloor = bundle.GetInt(Deepest);
         EnemiesSlain = bundle.GetInt(Slain);
         FoodEaten = bundle.GetInt(Food);
-        PotionsCooked = bundle.GetInt(Piranhas);
-        PiranhasKilled = bundle.GetInt(Night);
+        PotionsCooked = bundle.GetInt(Alchemy);
+        PiranhasKilled = bundle.GetInt(Piranhas);
         NightHunt = bundle.GetInt(Night);
         AnkhsUsed = bundle.GetInt(Ankhs);
         Duration = bundle.GetFloat(DurationConst);

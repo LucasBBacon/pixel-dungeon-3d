@@ -39,10 +39,11 @@ public static class Graph
 
             foreach (var edge in node.Edges())
             {
-                if (edge.Distance <= distance + price) continue;
+                var nextDistance = distance + price;
+                if (edge.Distance <= nextDistance) continue;
 
                 queue.Enqueue(edge);
-                edge.Distance = distance + price;
+                edge.Distance = nextDistance;
             }
         }
     }

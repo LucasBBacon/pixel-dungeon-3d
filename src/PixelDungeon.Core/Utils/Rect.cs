@@ -38,7 +38,7 @@ public class Rect
         return (Right - Left) * (Bottom - Top);
     }
 
-    private Rect Set(int left, int top, int right, int bottom)
+    public Rect Set(int left, int top, int right, int bottom)
     {
         Left = left;
         Top = top;
@@ -46,6 +46,8 @@ public class Rect
         Bottom = bottom;
         return this;
     }
+
+    public Rect Set(Rect rect) => Set(rect.Left, rect.Top, rect.Right, rect.Bottom);
 
     public bool IsEmpty()
     {

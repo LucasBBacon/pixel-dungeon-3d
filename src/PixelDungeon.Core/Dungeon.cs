@@ -37,6 +37,7 @@ public static class Dungeon
         Actor.Clear();
         Level.ResetStatics();
         Statistics.Reset();
+        Room.ResetSpecials();
 
         Hero = null;
         Level = null;

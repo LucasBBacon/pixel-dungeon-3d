@@ -14,12 +14,12 @@ public class Painter
         Set(level, x + y * Level.Width, value);
     }
 
-    private static void Set(Level level, Point p, int value)
+    public static void Set(Level level, Point p, int value)
     {
         Set(level, p.X, p.Y, value);
     }
 
-    private static void Fill(Level level, int x, int y, int w, int h, int value)
+    public static void Fill(Level level, int x, int y, int w, int h, int value)
     {
         const int width = Level.Width;
         var pos = y * width + x;
