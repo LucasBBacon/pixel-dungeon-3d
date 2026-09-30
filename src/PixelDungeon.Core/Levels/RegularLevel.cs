@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels.Painters;
 using PixelDungeon.Core.Utils;
 
@@ -532,7 +533,7 @@ public abstract class RegularLevel : Level
             var mob = Bestiary.Mob(Dungeon.Depth);
             if (mob == null)
             {
-                continue; // sp1 guard: the skeleton Bestiary returns null until sub-project 2; the Java never gets null here
+                continue;
             }
 
             do
@@ -590,6 +591,37 @@ public abstract class RegularLevel : Level
 
     protected override void CreateItems()
     {
+        var nItems = 3;
+        while (Random.Float() < 0.4f)
+        {
+            nItems++;
+        }
+
+        for (var i = 0; i < nItems; i++)
+        {
+            HeapType type = Random.Int(20) switch
+            {
+                0 => HeapType.Skeleton,
+                1 or 2 or 3 or 4 => HeapType.Chest,
+                5 => Dungeon.Depth > 1 ? HeapType.Mimic : HeapType.Chest,
+                _ => HeapType.Heap
+            };
+
+            var item = Generator.Random();
+            if (item != null)
+            {
+                Drop(item, RandomDropCell()).Type = type;
+            }
+        }
+
+        foreach (var item in ItemsToSpawn)
+        {
+            var cell = RandomDropCell();
+            // TODO: ScrollOfUpgrade re-rolls the cell while its FireTrap or SecretFireTrap
+            Drop(item, cell).Type = HeapType.Heap;
+        }
+        
+        // TODO: Bones.get() drops previous hero item as Skeleton heap
     }
 
     protected Room RandomRoom(RoomType type, int tries)
@@ -633,5 +665,22 @@ public abstract class RegularLevel : Level
         }
 
         return base.PitCell();
+    }
+
+    public override void RestoreFromBundle(Bundle bundle)
+    {
+        base.RestoreFromBundle(bundle);
+        Rooms = [.. bundle.GetCollection("rooms").Cast<Room>()];
+        foreach (var room in Rooms.Where(room => room.Type == RoomType.WeakFloor))
+        {
+            WeakFloorCreated = true;
+            break;
+        }
+    }
+
+    public override void StoreInBundle(Bundle bundle)
+    {
+        base.StoreInBundle(bundle);
+        bundle.Put("rooms", Rooms);
     }
 }

@@ -4,12 +4,21 @@ namespace PixelDungeon.Core.Tests.Levels;
 
 public sealed class TestLevel : Level
 {
+    private string[] _rows;
+
     public static int At(int x, int y) => x + y * Width;
 
     public static TestLevel FromRows(params string[] rows)
     {
         var level = new TestLevel();
         level.Load(rows);
+        return level;
+    }
+
+    public static TestLevel Create(params string[] rows)
+    {
+        var level = new TestLevel { _rows = rows };
+        ((Level)level).Create();
         return level;
     }
 
@@ -24,13 +33,25 @@ public sealed class TestLevel : Level
         CleanWalls();
     }
 
+    public int SpawnCount => ItemsToSpawn.Count;
+
     private void WriteRows(string[] rows)
     {
         for (var y = 0; y < rows.Length; y++)
         {
             for (var x = 0; x < rows[y].Length; x++)
             {
-                Map[At(x, y)] = CodeFor(rows[y][x]);
+                var code = CodeFor(rows[y][x]);
+                Map[At(x, y)] = code;
+                switch (code)
+                {
+                    case Terrain.Entrance:
+                        Entrance = At(x, y);
+                        break;
+                    case Terrain.Exit:
+                        Exit = At(x, y);
+                        break;
+                }
             }
         }
     }
@@ -59,7 +80,15 @@ public sealed class TestLevel : Level
             _ => throw new ArgumentException($"No terrain for '{c}'")
         };
 
-    protected override bool Build() => true;
+    protected override bool Build()
+    {
+        if (_rows != null)
+        {
+            WriteRows(_rows);
+        }
+
+        return true;
+    }
 
     protected override void Decorate()
     {

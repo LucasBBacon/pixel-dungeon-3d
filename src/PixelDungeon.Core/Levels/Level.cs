@@ -3,9 +3,12 @@ using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Levels.Painters;
 using PixelDungeon.Core.Mechanics;
 using PixelDungeon.Core.Plants;
+using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Levels;
 
@@ -17,7 +20,7 @@ public enum LevelFeeling
     Grass
 }
 
-public abstract class Level
+public abstract class Level : IBundlable
 {
     public const int Width = 32;
     public const int Height = 32;
@@ -146,6 +149,515 @@ public abstract class Level
 
     public virtual int NMobs() => 0;
 
+    public void Create()
+    {
+        ResizingNeeded = false;
+
+        Map = new int[Length];
+        Visited = new bool[Length];
+        Mapped = new bool[Length];
+
+        Mobs = new HashSet<Mob>();
+        Heaps = new Dictionary<int, Heap>();
+        Blobs = new Dictionary<Type, Blob>();
+        Plants = new Dictionary<int, Plant>();
+
+        if (!Dungeon.BossLevel())
+        {
+            AddItemToSpawn(Generator.Random(Generator.Category.Food));
+            if (Dungeon.PosNeeded())
+            {
+                // TODO: addItemToSpawn(new PotionOfStrength())
+                Dungeon.PotionOfStrength++;
+            }
+
+            if (Dungeon.SouNeeded())
+            {
+                // TODO: addItemToSpawn(new ScrollOfUpgrade())
+                Dungeon.ScrollsOfUpgrade++;
+            }
+
+            if (Dungeon.SoeNeeded())
+            {
+                // TODO: addItemToSpawn(new ScrollOfEnchantment())
+                Dungeon.ScrollsOfEnchantment++;
+            }
+
+            if (Dungeon.Depth > 1)
+            {
+                switch (Random.Int(10))
+                {
+                    case 0:
+                        if (!Dungeon.BossLevel(Dungeon.Depth + 1))
+                        {
+                            Feeling = LevelFeeling.Chasm;
+                        }
+
+                        break;
+                    case 1:
+                        Feeling = LevelFeeling.Water;
+                        break;
+                    case 2:
+                        Feeling = LevelFeeling.Grass;
+                        break;
+                }
+            }
+        }
+
+        var pitNeeded = Dungeon.Depth > 1 && WeakFloorCreated;
+
+        do
+        {
+            Array.Fill(Map, Feeling == LevelFeeling.Chasm ? Terrain.Chasm : Terrain.Wall);
+
+            PitRoomNeeded = pitNeeded;
+            WeakFloorCreated = false;
+        } while (!Build());
+
+        Decorate();
+
+        BuildFlagMaps();
+        CleanWalls();
+
+        CreateMobs();
+        CreateItems();
+    }
+
+    public void Reset()
+    {
+        foreach (var mob in Mobs.ToArray())
+        {
+            if (!mob.Reset())
+            {
+                Mobs.Remove(mob);
+            }
+        }
+
+        CreateMobs();
+    }
+
+    private const string TagMap = "map";
+    private const string TagVisited = "visited";
+    private const string TagMapped = "mapped";
+    private const string TagEntrance = "entrance";
+    private const string TagExit = "exit";
+    private const string TagHeaps = "heaps";
+    private const string TagPlants = "plants";
+    private const string TagMobs = "mobs";
+    private const string TagBlobs = "blobs";
+
+    public virtual void RestoreFromBundle(Bundle bundle)
+    {
+        Mobs = new HashSet<Mob>();
+        Heaps = new Dictionary<int, Heap>();
+        Blobs = new Dictionary<Type, Blob>();
+        Plants = new Dictionary<int, Plant>();
+
+        Map = bundle.GetIntArray(TagMap);
+        Visited = bundle.GetBooleanArray(TagVisited);
+        Mapped = bundle.GetBooleanArray(TagMapped);
+
+        Entrance = bundle.GetInt(TagEntrance);
+        Exit = bundle.GetInt(TagExit);
+
+        WeakFloorCreated = false;
+
+        AdjustMapSize();
+
+        foreach (var heap in bundle.GetCollection(TagHeaps).Cast<Heap>())
+        {
+            if (ResizingNeeded)
+            {
+                heap.Pos = AdjustPos(heap.Pos);
+            }
+
+            Heaps[heap.Pos] = heap;
+        }
+
+        foreach (var plant in bundle.GetCollection(TagPlants).Cast<Plant>())
+        {
+            if (ResizingNeeded)
+            {
+                plant.Pos = AdjustPos(plant.Pos);
+            }
+
+            Plants[plant.Pos] = plant;
+        }
+
+        foreach (var mob in bundle.GetCollection(TagMobs).Cast<Mob>().Where(mob => mob != null))
+        {
+            if (ResizingNeeded)
+            {
+                mob.Pos = AdjustPos(mob.Pos);
+            }
+
+            Mobs.Add(mob);
+        }
+
+        foreach (var blob in bundle.GetCollection(TagBlobs).Cast<Blob>())
+        {
+            Blobs[blob.GetType()] = blob;
+        }
+
+        BuildFlagMaps();
+        CleanWalls();
+    }
+
+    public virtual void StoreInBundle(Bundle bundle)
+    {
+        bundle.Put(TagMap, Map);
+        bundle.Put(TagVisited, Visited);
+        bundle.Put(TagMapped, Mapped);
+        bundle.Put(TagEntrance, Entrance);
+        bundle.Put(TagExit, Exit);
+        bundle.Put(TagHeaps, Heaps.Values);
+        bundle.Put(TagPlants, Plants.Values);
+        bundle.Put(TagMobs, Mobs);
+        bundle.Put(TagBlobs, Blobs.Values);
+    }
+
+    private void AdjustMapSize()
+    {
+        if (Map.Length < Length)
+        {
+            ResizingNeeded = true;
+            LoadedMapSize = (int)Math.Sqrt(Map.Length);
+
+            var map = new int[Length];
+            Array.Fill(map, Terrain.Wall);
+
+            var visited = new bool[Length];
+            var mapped = new bool[Length];
+
+            for (var i = 0; i < LoadedMapSize; i++)
+            {
+                Array.Copy(Map,
+                    i * LoadedMapSize,
+                    map,
+                    i * Width,
+                    LoadedMapSize);
+                Array.Copy(Visited,
+                    i * LoadedMapSize,
+                    visited,
+                    i * Width,
+                    LoadedMapSize);
+                Array.Copy(Mapped,
+                    i * LoadedMapSize,
+                    mapped,
+                    i * Width,
+                    LoadedMapSize);
+            }
+
+            Map = map;
+            Visited = visited;
+            Mapped = mapped;
+
+            Entrance = AdjustPos(Entrance);
+            Exit = AdjustPos(Exit);
+        }
+        else
+        {
+            ResizingNeeded = false;
+        }
+    }
+
+    public int AdjustPos(int pos) => pos / LoadedMapSize * Width + pos % LoadedMapSize;
+
+    public virtual Actor Respawner()
+    {
+        return new RespawnerActor(this);
+    }
+
+    // an anonymous subclass
+    private sealed class RespawnerActor : Actor
+    {
+        private readonly Level _level;
+
+        public RespawnerActor(Level level)
+        {
+            _level = level;
+        }
+
+        protected override bool Act()
+        {
+            if (_level.Mobs.Count < _level.NMobs())
+            {
+                var mob = Bestiary.Mutable(Dungeon.Depth);
+                if (mob != null)
+                {
+                    // TODO: mob.state = mob.Wandering
+                    mob.Pos = _level.RandomRespawnCell();
+                    if (Dungeon.Hero.IsAlive() && mob.Pos != -1)
+                    {
+                        // TODO: GameScene.Add(mob); mob.Beckon(Dungeon.Hero.Pos) when amulet obtained
+                    }
+                }
+            }
+
+            Spend(Dungeon.NightMode || Statistics.AmuletObtained ? TimeToRespawn / 2 : TimeToRespawn);
+            return true;
+        }
+    }
+
+    public void AddItemToSpawn(Item item)
+    {
+        if (item != null)
+        {
+            ItemsToSpawn.Add(item);
+        }
+    }
+
+    public Item ItemToSpawnAsPrize()
+    {
+        if (Random.Int(ItemsToSpawn.Count + 1) <= 0) return null;
+
+        var item = Random.Element(ItemsToSpawn);
+        ItemsToSpawn.Remove(item);
+        return item;
+    }
+
+    public Heap Drop(Item item, int cell)
+    {
+        // TODO: NoFood, NoArmor, NoHealing, NoHerbalism, NoScrolls challenges replace item with gold
+        if (Map[cell] == Terrain.Alchemy && item is not Plant.Seed)
+        {
+            int n;
+            do
+            {
+                n = cell + Neighbours8[Random.Int(8)];
+            } while (Map[n] != Terrain.EmptySp);
+
+            cell = n;
+        }
+
+        var heap = Heaps.GetValueOrDefault(cell);
+        if (heap == null)
+        {
+            heap = new Heap
+            {
+                Pos = cell
+            };
+            if (Map[cell] == Terrain.Chasm || (Dungeon.Level != null && Pit[cell]))
+            {
+                Dungeon.DropToChasm(item);
+                GameScene.Discard(heap);
+            }
+            else
+            {
+                Heaps[cell] = heap;
+                GameScene.Add(heap);
+            }
+        }
+        else if (heap.Type is HeapType.LockedChest or HeapType.CrystalChest)
+        {
+            int n;
+            do
+            {
+                n = cell + Neighbours8[Random.Int(8)];
+            } while (!Passable[n] && !Avoid[n]);
+
+            return Drop(item, n);
+        }
+
+        heap.Drop(item);
+
+        if (Dungeon.Level != null)
+        {
+            Press(cell, null);
+        }
+
+        return heap;
+    }
+
+    public Plant PlantSeed(Plant.Seed seed, int pos)
+    {
+        var plant = Plants.GetValueOrDefault(pos);
+        plant?.Wither();
+
+        plant = seed.Couch(pos);
+        Plants[pos] = plant;
+
+        // TODO: GameScene.Add(plant)
+
+        return plant;
+    }
+
+    public void Uproot(int pos) => Plants.Remove(pos);
+
+    public void Press(int cell, Char ch)
+    {
+        if (Pit[cell] && ch == Dungeon.Hero)
+        {
+            Chasm.HeroFall(cell);
+            return;
+        }
+
+        var trap = false;
+
+        switch (Map[cell])
+        {
+            case Terrain.SecretToxicTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.ToxicTrap;
+            case Terrain.ToxicTrap:
+                trap = true;
+                // TODO: ToxicTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretFireTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.FireTrap;
+            case Terrain.FireTrap:
+                trap = true;
+                // TODO: FireTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretParalyticTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.ParalyticTrap;
+            case Terrain.ParalyticTrap:
+                trap = true;
+                // TODO: ParalyticTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretPoisonTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.PoisonTrap;
+            case Terrain.PoisonTrap:
+                trap = true;
+                // TODO: PoisonTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretAlarmTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.AlarmTrap;
+            case Terrain.AlarmTrap:
+                trap = true;
+                // TODO: AlarmTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretLightningTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.LightningTrap;
+            case Terrain.LightningTrap:
+                trap = true;
+                // TODO: LightningTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretGrippingTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.GrippingTrap;
+            case Terrain.GrippingTrap:
+                trap = true;
+                // TODO: GrippingTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.SecretSummoningTrap:
+                GLog.I(TxtHiddenPlateClicks);
+                goto case Terrain.SummoningTrap;
+            case Terrain.SummoningTrap:
+                trap = true;
+                // TODO: SummoningTrap.Trigger(cell, ch)
+                break;
+
+            case Terrain.HighGrass:
+                HighGrass.Trample(this, cell, ch);
+                break;
+
+            case Terrain.Well:
+                // TODO: WellWater.AffectCell(cell);
+                break;
+
+            case Terrain.Alchemy:
+                if (ch == null)
+                {
+                    // TODO: Alchemy.Transmute(cell)
+                }
+
+                break;
+
+            case Terrain.Door:
+                Door.Enter(cell);
+                break;
+        }
+
+        if (trap)
+        {
+            Sample.Play(Assets.SndTrap);
+            if (ch == Dungeon.Hero)
+            {
+                Dungeon.Hero.Interrupt();
+            }
+
+            Set(cell, Terrain.InactiveTrap);
+            GameScene.UpdateMap(cell);
+        }
+
+        var plant = Plants.GetValueOrDefault(cell);
+        plant?.Activate(ch);
+    }
+
+    public void MobPress(Mob mob)
+    {
+        var cell = mob.Pos;
+
+        if (Pit[cell] && !mob.Flying)
+        {
+            Chasm.MobFall(mob);
+            return;
+        }
+
+        var trap = true;
+        switch (Map[cell])
+        {
+            case Terrain.ToxicTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.FireTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.ParalyticTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.PoisonTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.AlarmTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.LightningTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.GrippingTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.SummoningTrap:
+                // TODO: trigger trap
+                break;
+            case Terrain.Door:
+                Door.Enter(cell);
+                trap = false; // java falls through into default here
+                break;
+            default:
+                trap = false;
+                break;
+        }
+
+        if (trap)
+        {
+            if (Dungeon.Visible[cell])
+            {
+                Sample.Play(Assets.SndTrap);
+            }
+
+            Set(cell, Terrain.InactiveTrap);
+            GameScene.UpdateMap(cell);
+        }
+
+        var plant = Plants.GetValueOrDefault(cell);
+        plant?.Activate(mob);
+    }
+
     public bool[] UpdateFieldOfView(Char c)
     {
         var cx = c.Pos % Width;
@@ -161,7 +673,7 @@ public abstract class Level
             Array.Fill(FieldOfView, false);
         }
 
-        var sense = 1;
+        const int sense = 1;
 
         if ((sighted && sense > 1) || !sighted)
         {
@@ -183,29 +695,24 @@ public abstract class Level
             }
         }
 
-        if (c.IsAlive())
+        if (!c.IsAlive() ||
+            c != Dungeon.Hero ||
+            ((Hero)c).HeroClass != HeroClass.Huntress)
+            return FieldOfView;
+
+        foreach (var p in Mobs
+                     .Select(mob => mob.Pos)
+                     .Where(p => Distance(c.Pos, p) == 2))
         {
-            // DEFERRED(sp2): MindVision reveals the 3x3 block around every mob and takes precedence over the Huntress branch
-            if (c == Dungeon.Hero && ((Hero)c).HeroClass == HeroClass.Huntress)
-            {
-                foreach (var mob in Mobs)
-                {
-                    var p = mob.Pos;
-                    if (Distance(c.Pos, p) == 2)
-                    {
-                        FieldOfView[p] = true;
-                        FieldOfView[p + 1] = true;
-                        FieldOfView[p - 1] = true;
-                        FieldOfView[p + Width + 1] = true;
-                        FieldOfView[p + Width - 1] = true;
-                        FieldOfView[p - Width + 1] = true;
-                        FieldOfView[p - Width - 1] = true;
-                        FieldOfView[p + Width] = true;
-                        FieldOfView[p - Width] = true;
-                    }
-                }
-            }
-            // DEFERRED(sp4): Awareness (from the well of awareness) reveals the 3x3 block around every heap
+            FieldOfView[p] = true;
+            FieldOfView[p + 1] = true;
+            FieldOfView[p - 1] = true;
+            FieldOfView[p + Width + 1] = true;
+            FieldOfView[p + Width - 1] = true;
+            FieldOfView[p - Width + 1] = true;
+            FieldOfView[p - Width - 1] = true;
+            FieldOfView[p + Width] = true;
+            FieldOfView[p - Width] = true;
         }
 
         return FieldOfView;
@@ -363,84 +870,43 @@ public abstract class Level
             return TileName(Terrain.Chasm);
         }
 
-        switch (tile)
+        return tile switch
         {
-            case Terrain.Chasm:
-                return "Chasm";
-            case Terrain.Empty:
-            case Terrain.EmptySp:
-            case Terrain.EmptyDeco:
-            case Terrain.SecretToxicTrap:
-            case Terrain.SecretFireTrap:
-            case Terrain.SecretParalyticTrap:
-            case Terrain.SecretPoisonTrap:
-            case Terrain.SecretAlarmTrap:
-            case Terrain.SecretLightningTrap:
-                return "Floor";
-            case Terrain.Grass:
-                return "Grass";
-            case Terrain.Water:
-                return "Water";
-            case Terrain.Wall:
-            case Terrain.WallDeco:
-            case Terrain.SecretDoor:
-                return "Wall";
-            case Terrain.Door:
-                return "Closed door";
-            case Terrain.OpenDoor:
-                return "Open door";
-            case Terrain.Entrance:
-                return "Depth entrance";
-            case Terrain.Exit:
-                return "Depth exit";
-            case Terrain.Embers:
-                return "Embers";
-            case Terrain.LockedDoor:
-                return "Locked door";
-            case Terrain.Pedestal:
-                return "Pedestal";
-            case Terrain.Barricade:
-                return "Barricade";
-            case Terrain.HighGrass:
-                return "High grass";
-            case Terrain.LockedExit:
-                return "Locked depth exit";
-            case Terrain.UnlockedExit:
-                return "Unlocked depth exit";
-            case Terrain.Sign:
-                return "Sign";
-            case Terrain.Well:
-                return "Well";
-            case Terrain.EmptyWell:
-                return "Empty well";
-            case Terrain.Statue:
-            case Terrain.StatueSp:
-                return "Statue";
-            case Terrain.ToxicTrap:
-                return "Toxic gas trap";
-            case Terrain.FireTrap:
-                return "Fire trap";
-            case Terrain.ParalyticTrap:
-                return "Paralytic gas trap";
-            case Terrain.PoisonTrap:
-                return "Poison dart trap";
-            case Terrain.AlarmTrap:
-                return "Alarm trap";
-            case Terrain.LightningTrap:
-                return "Lightning trap";
-            case Terrain.GrippingTrap:
-                return "Gripping trap";
-            case Terrain.SummoningTrap:
-                return "Summoning trap";
-            case Terrain.InactiveTrap:
-                return "Triggered trap";
-            case Terrain.Bookshelf:
-                return "Bookshelf";
-            case Terrain.Alchemy:
-                return "Alchemy pot";
-            default:
-                return "???";
-        }
+            Terrain.Chasm => "Chasm",
+            Terrain.Empty or Terrain.EmptySp or Terrain.EmptyDeco or Terrain.SecretToxicTrap or Terrain.SecretFireTrap
+                or Terrain.SecretParalyticTrap or Terrain.SecretPoisonTrap or Terrain.SecretAlarmTrap
+                or Terrain.SecretLightningTrap => "Floor",
+            Terrain.Grass => "Grass",
+            Terrain.Water => "Water",
+            Terrain.Wall or Terrain.WallDeco or Terrain.SecretDoor => "Wall",
+            Terrain.Door => "Closed door",
+            Terrain.OpenDoor => "Open door",
+            Terrain.Entrance => "Depth entrance",
+            Terrain.Exit => "Depth exit",
+            Terrain.Embers => "Embers",
+            Terrain.LockedDoor => "Locked door",
+            Terrain.Pedestal => "Pedestal",
+            Terrain.Barricade => "Barricade",
+            Terrain.HighGrass => "High grass",
+            Terrain.LockedExit => "Locked depth exit",
+            Terrain.UnlockedExit => "Unlocked depth exit",
+            Terrain.Sign => "Sign",
+            Terrain.Well => "Well",
+            Terrain.EmptyWell => "Empty well",
+            Terrain.Statue or Terrain.StatueSp => "Statue",
+            Terrain.ToxicTrap => "Toxic gas trap",
+            Terrain.FireTrap => "Fire trap",
+            Terrain.ParalyticTrap => "Paralytic gas trap",
+            Terrain.PoisonTrap => "Poison dart trap",
+            Terrain.AlarmTrap => "Alarm trap",
+            Terrain.LightningTrap => "Lightning trap",
+            Terrain.GrippingTrap => "Gripping trap",
+            Terrain.SummoningTrap => "Summoning trap",
+            Terrain.InactiveTrap => "Triggered trap",
+            Terrain.Bookshelf => "Bookshelf",
+            Terrain.Alchemy => "Alchemy pot",
+            _ => "???"
+        };
     }
 
     public virtual string TileDesc(int tile)

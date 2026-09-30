@@ -77,6 +77,35 @@ public static class Dungeon
 
         dropped.Add(item);
     }
+    
+    public static bool PosNeeded()
+    {
+        int[] quota = [4, 2, 9, 4, 14, 6, 19, 8, 24, 9];
+        return Chance(quota, PotionOfStrength);
+    }
+
+    public static bool SouNeeded()
+    {
+        int[] quota = [5, 3, 10, 6, 15, 9, 20, 12, 25, 13];
+        return Chance(quota, ScrollsOfUpgrade);
+    }
+
+    public static bool SoeNeeded() => Random.Int(12 * (1 + ScrollsOfEnchantment)) < Depth;
+
+    private static bool Chance(int[] quota, int number)
+    {
+        for (var i = 0; i < quota.Length; i += 2)
+        {
+            var qDepth = quota[i];
+
+            if (Depth > qDepth) continue;
+
+            var qNumber = quota[i + 1];
+            return Random.Float() < (float)(qNumber - number) / (qDepth - Depth + 1);
+        }
+
+        return false;
+    }
 
     public static void Fail(string desc)
     {
