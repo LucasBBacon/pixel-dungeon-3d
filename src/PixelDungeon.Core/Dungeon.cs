@@ -56,6 +56,151 @@ public static class Dungeon
 
         Interlevel.Mode = InterlevelMode.None;
         Interlevel.FallIntoPit = false;
+
+        _levels.Clear();
+    }
+
+    public static void Init()
+    {
+        // TODO: challenges = PixelDungeon.Challenges()
+        Challenges = 0;
+
+        Actor.Clear();
+
+        PathFinder.SetMapSize(Level.Width, Level.Height);
+
+        // TODO: Scroll.InitLabels(), Potion.InitColors(), Wand.InitWoods(), Ring.InitGems()
+
+        Statistics.Reset();
+        // TODO: Journal.Reset()
+
+        Depth = 0;
+        Gold = 0;
+
+        DroppedItems = new Dictionary<int, List<Item>>();
+
+        PotionOfStrength = 0;
+        ScrollsOfUpgrade = 0;
+        ScrollsOfEnchantment = 0;
+        DewVial = true;
+
+        Chapters = new HashSet<int>();
+
+        // TODO: Ghost.Quest.Rest(), Wandmaker.Quest.Reset(), Blacksmith.Quest.Reset(), Imp.Quest.Rest()
+
+        Room.ShuffleTypes();
+
+        // TODO: Quickslot.PrimaryValue & SecondaryValue cleared
+
+        Hero = new Hero();
+        Hero.Live();
+
+        // TODO: Badges.Reset()
+        // TODO: StartScene.CurClass.InitHero(Hero) sets class, kit, etc
+        Hero.UpdateAwareness(); // InitHero ends with UpdateAwareness(), lvl 1 Rogue 0.1 -> 0.15
+    }
+
+    public static Level NewLevel()
+    {
+        Level = null;
+        Actor.Clear();
+
+        Depth++;
+        if (Depth > Statistics.DeepestFloor)
+        {
+            Statistics.DeepestFloor = Depth;
+
+            if (Statistics.QualifiedForNoKilling)
+            {
+                Statistics.CompletedWithNoKilling = true;
+            }
+            else
+            {
+                Statistics.CompletedWithNoKilling = false;
+            }
+        }
+
+        Array.Fill(Visible, false);
+
+        Level level;
+        switch (Depth)
+        {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                level = new SewerLevel();
+                break;
+            default:
+                // TODO: 5 SewerBossLevel, 6-9 PrisonLevel...
+                level = new SewerLevel();
+                break;
+        }
+
+        level.Create();
+
+        Statistics.QualifiedForNoKilling = !BossLevel();
+
+        return level;
+    }
+
+    public static void ResetLevel()
+    {
+        Actor.Clear();
+
+        Array.Fill(Visible, false);
+
+        Level.Reset();
+        SwitchLevel(Level, Level.Entrance);
+    }
+
+    public static void SwitchLevel(Level level, int pos)
+    {
+        NightMode = DateTime.Now.Hour < 7;
+
+        Level = level;
+        Actor.Init();
+
+        var respawner = level.Respawner();
+        if (respawner != null)
+        {
+            Actor.Add(level.Respawner()); // java builds a second respawner here and schedules that one
+        }
+
+        Hero.Pos = pos != -1 ? pos : level.Exit;
+
+        // TODO: light buff raises viewDistance to Max(Light.Distance, level.ViewDistance)
+        Hero.ViewDistance = level.ViewDistance;
+
+        Observe();
+    }
+
+    private const string TagLevel = "level";
+
+    // java writes one depth file per level
+    // keep each visited depth as bundle in memory
+    // TODO: file streams around same calls
+    private static readonly Dictionary<int, Bundle> _levels = new();
+
+    public static void SaveLevel()
+    {
+        var bundle = new Bundle();
+        bundle.Put(TagLevel, Level);
+        _levels[Depth] = bundle;
+    }
+
+    public static Level LoadLevel()
+    {
+        Level = null;
+        Actor.Clear();
+
+        if (!_levels.TryGetValue(Depth, out var bundle))
+        {
+            throw new KeyNotFoundException($"No level saved for depth {Depth}"); // FileNotFound in java
+        }
+
+        return (Level)bundle.Get(TagLevel) ??
+               throw new InvalidOperationException($"The level saved for depth {Depth} failed to restore");
     }
 
     public static bool IsChallenged(int mask) => (Challenges & mask) != 0;
@@ -77,7 +222,7 @@ public static class Dungeon
 
         dropped.Add(item);
     }
-    
+
     public static bool PosNeeded()
     {
         int[] quota = [4, 2, 9, 4, 14, 6, 19, 8, 24, 9];
