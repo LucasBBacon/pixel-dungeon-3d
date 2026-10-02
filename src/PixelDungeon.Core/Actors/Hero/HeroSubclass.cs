@@ -17,7 +17,7 @@ public enum HeroSubClass
 
 public static class HeroSubClasses
 {
-    private static string Title(this HeroSubClass subClass)
+    public static string Title(this HeroSubClass subClass)
     {
         return subClass switch
         {
