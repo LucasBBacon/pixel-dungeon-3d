@@ -26,6 +26,7 @@ public partial class GameScene : Node3D, IGameView
     private Node3D _chars;
     private CameraRig _camera;
     private CharView _heroView;
+    private CellSelector _selector;
 
     public override void _Ready()
     {
@@ -39,6 +40,11 @@ public partial class GameScene : Node3D, IGameView
 
         _camera = new CameraRig { Name = "CameraRig" };
         AddChild(_camera);
+
+        CellSelector.RegisterActions();
+        _selector = new CellSelector { Name = "CellSelector" };
+        _selector.Init(_camera);
+        AddChild(_selector);
 
         Dungeon.Reset();
         Interlevel.Mode = InterlevelMode.Descend;
@@ -165,8 +171,16 @@ public partial class GameScene : Node3D, IGameView
         _renderer.UpdateVisibility(Dungeon.Visible, Dungeon.Level.Visited, Dungeon.Level.Mapped);
     }
 
-    public new void Ready()
+    void IGameView.Ready()
     {
+        UpdateSelector();
+    }
+
+    private bool _switching;
+
+    private void UpdateSelector()
+    {
+        _selector.Enabled = !_switching;
     }
 
     public void Log(string text, LogKind kind)

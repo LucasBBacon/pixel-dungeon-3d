@@ -46,7 +46,8 @@ public static class TerrainVisuals
             Terrain.EmptySp => VisualKind.FloorSpecial,
             Terrain.EmptyDeco => VisualKind.FloorDeco,
             Terrain.Embers => VisualKind.Embers,
-            Terrain.Grass => VisualKind.HighGrass,
+            Terrain.Grass => VisualKind.Grass,
+            Terrain.HighGrass => VisualKind.HighGrass,
             Terrain.Water => VisualKind.Water,
             Terrain.Chasm or Terrain.ChasmFloor or Terrain.ChasmFloorSp or Terrain.ChasmWall or Terrain.ChasmWater =>
                 VisualKind.None,

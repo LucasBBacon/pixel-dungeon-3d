@@ -8,6 +8,7 @@ public partial class CameraRig : Node3D
     private Node3D _target;
     private float _shakeMagnitude;
     private float _shakeTime;
+    private float _shakeDuration;
 
     public Camera3D Camera => _camera;
 
@@ -44,6 +45,7 @@ public partial class CameraRig : Node3D
     {
         _shakeMagnitude = magnitude;
         _shakeTime = duration;
+        _shakeDuration = duration;
     }
 
     public override void _Process(double delta)
@@ -57,7 +59,8 @@ public partial class CameraRig : Node3D
         if (_shakeTime > 0f)
         {
             _shakeTime -= (float)delta;
-            goal += new Vector3(GD.Randf() - 0.5f, 0f, GD.Randf() - 0.5f) * (_shakeMagnitude * 0.2f);
+            var remaining = Mathf.Max(_shakeTime, 0f) / _shakeDuration;
+            goal += new Vector3(GD.Randf() - 0.5f, 0f, GD.Randf() - 0.5f) * (_shakeMagnitude * 0.2f * remaining);
         }
 
         var t = 1f - Mathf.Exp(-8f * (float)delta);
