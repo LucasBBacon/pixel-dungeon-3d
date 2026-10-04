@@ -30,6 +30,7 @@ public partial class GameScene : Node3D, IGameView
     private CharView _heroView;
     private CellSelector _selector;
     private StatusPane _pane;
+    private DebugConsole _console;
     private int _openWindows;
 
     public override void _Ready()
@@ -52,6 +53,15 @@ public partial class GameScene : Node3D, IGameView
 
         _pane = new StatusPane { Name = "Ui" };
         AddChild(_pane);
+
+        _console = new DebugConsole { Name = "DebugConsole" };
+        _console.AfterLevelChange = () =>
+        {
+            ClearChars();
+            Build();
+        };
+        _console.OpenChanged += _ => UpdateSelector();
+        AddChild(_console);
 
         Dungeon.Reset();
         Interlevel.Mode = InterlevelMode.Descend;
@@ -242,24 +252,35 @@ public partial class GameScene : Node3D, IGameView
         ClearChars();
         try
         {
-            Interlevel.Run();
+            try
+            {
+                Interlevel.Run();
+            }
+            catch (Exception e)
+            {
+                // InterlevelScene shows "Something went wrong..." here, log it and go back to the level we left
+                GD.PushError(e.ToString());
+                GLog.N("Something went wrong...");
+                Dungeon.Depth = depth;
+                var level = Dungeon.LoadLevel();
+                Dungeon.SwitchLevel(level, pos);
+                Interlevel.Mode = InterlevelMode.None;
+            }
+
+            Build();
         }
         catch (Exception e)
         {
-            // InterlevelScene shows "Something went wrong..." here, log it and go back to the level we left
+            // the recovery or the rebuild failed too, surface rather than freeze behind fade
             GD.PushError(e.ToString());
             GLog.N("Something went wrong...");
-            Dungeon.Depth = depth;
-            var level = Dungeon.LoadLevel();
-            Dungeon.SwitchLevel(level, pos);
-            Interlevel.Mode = InterlevelMode.None;
         }
-
-        Build();
-
-        await FadeTo(0f);
-        _switching = false;
-        UpdateSelector();
+        finally
+        {
+            await FadeTo(0f);
+            _switching = false;
+            UpdateSelector();
+        }
     }
 
     private async Task FadeTo(float alpha)
@@ -269,7 +290,7 @@ public partial class GameScene : Node3D, IGameView
         await ToSignal(tween, Tween.SignalName.Finished);
     }
 
-    private void UpdateSelector() => _selector.Enabled = !_switching && _openWindows == 0;
+    private void UpdateSelector() => _selector.Enabled = !_switching && _openWindows == 0 && !_console.IsOpen;
 
     public void AddHeap(Heap heap)
     {
