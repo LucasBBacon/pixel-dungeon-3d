@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
@@ -27,6 +29,8 @@ public partial class GameScene : Node3D, IGameView
     private CameraRig _camera;
     private CharView _heroView;
     private CellSelector _selector;
+    private StatusPane _pane;
+    private int _openWindows;
 
     public override void _Ready()
     {
@@ -45,6 +49,9 @@ public partial class GameScene : Node3D, IGameView
         _selector = new CellSelector { Name = "CellSelector" };
         _selector.Init(_camera);
         AddChild(_selector);
+
+        _pane = new StatusPane { Name = "Ui" };
+        AddChild(_pane);
 
         Dungeon.Reset();
         Interlevel.Mode = InterlevelMode.Descend;
@@ -90,7 +97,7 @@ public partial class GameScene : Node3D, IGameView
 
     public override void _Process(double delta)
     {
-        if (Dungeon.Hero == null)
+        if (Dungeon.Hero == null || _switching)
         {
             return;
         }
@@ -178,13 +185,9 @@ public partial class GameScene : Node3D, IGameView
 
     private bool _switching;
 
-    private void UpdateSelector()
-    {
-        _selector.Enabled = !_switching;
-    }
-
     public void Log(string text, LogKind kind)
     {
+        _pane.Log(text, kind);
         GD.Print($"[{kind}] {text}");
     }
 
@@ -208,20 +211,65 @@ public partial class GameScene : Node3D, IGameView
 
     public void ShowWindow(WindowRequest request)
     {
-        GD.Print($"[window] {request.Body}");
+        _openWindows++;
+        UpdateSelector();
+        _pane.ShowWindow(request, () =>
+        {
+            _openWindows--;
+            UpdateSelector();
+        });
     }
 
+    // Game.SwitchScene(InterlevelScene) in java, fade out run transition, rebuild, fade in
     public void SwitchLevel(InterlevelMode mode)
     {
-        // Called from inside Actor.Process; run the transition once the current frame is done.
-        Callable.From(RunSwitch).CallDeferred();
+        if (_switching)
+        {
+            return;
+        }
+
+        _switching = true;
+        UpdateSelector();
+        Callable.From(() => _ = SwitchLevelAsync()).CallDeferred();
     }
 
-    private void RunSwitch()
+    private async Task SwitchLevelAsync()
     {
-        Interlevel.Run();
+        await FadeTo(1f);
+
+        var depth = Dungeon.Depth;
+        var pos = Dungeon.Hero.Pos;
+        ClearChars();
+        try
+        {
+            Interlevel.Run();
+        }
+        catch (Exception e)
+        {
+            // InterlevelScene shows "Something went wrong..." here, log it and go back to the level we left
+            GD.PushError(e.ToString());
+            GLog.N("Something went wrong...");
+            Dungeon.Depth = depth;
+            var level = Dungeon.LoadLevel();
+            Dungeon.SwitchLevel(level, pos);
+            Interlevel.Mode = InterlevelMode.None;
+        }
+
         Build();
+
+        await FadeTo(0f);
+        _switching = false;
+        UpdateSelector();
     }
+
+    private async Task FadeTo(float alpha)
+    {
+        var tween = CreateTween();
+        tween.TweenProperty(_pane.Fade, "color:a", alpha, 0.3);
+        await ToSignal(tween, Tween.SignalName.Finished);
+    }
+
+    private void UpdateSelector() => _selector.Enabled = !_switching && _openWindows == 0;
 
     public void AddHeap(Heap heap)
     {
