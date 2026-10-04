@@ -1,18 +1,20 @@
 # Pixel Dungeon 3D
 
-A faithful recreation of Classic Pixel Dungeon (Oleg Dolya / watabou) in Godot 4.7 with C#, rendered in 3D with orthographic camera, and some placeholder assets for now.
+A faithful recreation of Classic Pixel Dungeon (Oleg Dolya / watabou) in Godot 4.7 with C#, rendered in 3D with
+orthographic camera, and some placeholder assets for now.
 The goal is that it *plays* exactly like the original, the code does not need to match line for line.
 
-The original Java source is vendored under `classic-pixel-dungeon/` for reference and is never compiled. This port is a derivative work and is licensed under the GPLv3 (see `LICENSE`).
+The original Java source is vendored under `classic-pixel-dungeon/` for reference and is never compiled. This port is a
+derivative work and is licensed under the GPLv3 (see `LICENSE`).
 
 ## Layout
 
-| Path                                      | What it is                                                           |
-|-------------------------------------------|----------------------------------------------------------------------|
+| Path                                      | What it is                                                            |
+|-------------------------------------------|-----------------------------------------------------------------------|
 | `src/PixelDungeon.Core/`                  | The game logic, ported one C# file per Java file. No Godot reference. |
-| `tests/PixelDungeon.Core.Tests/`          | xUnit Tests for the core.                                            |
-| `scripts/`, `scenes/`                     | The Godot view layer (namespace `PixelDungeon.Client`                |
-| `PixelDungeon.csproj`, `PixelDungeon.sln` | Godot project and solution.                                          |
+| `tests/PixelDungeon.Core.Tests/`          | xUnit Tests for the core.                                             |
+| `scripts/`, `scenes/`                     | The Godot view layer (namespace `PixelDungeon.Client`                 |
+| `PixelDungeon.csproj`, `PixelDungeon.sln` | Godot project and solution.                                           |
 
 ### Building and Running
 
@@ -25,17 +27,33 @@ dotnet build PixelDungeon.sln
 dotnet test PixelDungeon.sln
 ```
 
+Headless editor build and headless runs of the main scene:
+
+```bash
+Godot...console.exe --headless --path . --build-solutions --quit 
+Godot...console.exe --headless --path . --quit-after 3 
+```
+
+In the game: click a cell or use WASD / arrows / QEZC to move, Space to search, Period to rest a turn, Shift+Period to
+rest until healed, and hte backtick key for the debug console (`depth N`, `reveal`, `seed N`, `where`, `stairs down`,
+`stairs up`). A headless run can queue commands with `--console="stairs down" console="where"`.
+
 ## Porting conventions
 
 - Java package -> C# namespace (`com.watabou.utils` -> `PixelDungeon.Core.Utils`).
 - Line 1 of every ported file contains its source path. GPL header follows.
-- Method names in PascalCase with same overloads. Public fields stay public fields. Formulas, constants, and branch order are copied verbatim. Deliberate deviations get a comment.
+- Method names in PascalCase with same overloads. Public fields stay public fields. Formulas, constants, and branch
+  order are copied verbatim. Deliberate deviations get a comment.
 - `Callback` -> `System.Action`, `SparseArray<T>` -> `Dictionary<int, T>`
-- The core keeps the original's static state (`Dungeon`, `Actor`, `Level`), so tests run serially and reset through one entry point.
-- `Random` is the ported, not `System.Random`, it's a global using alias in each project makes the bare name resolve to it.
+- The core keeps the original's static state (`Dungeon`, `Actor`, `Level`), so tests run serially and reset through one
+  entry point.
+- `Random` is the ported, not `System.Random`, it's a global using alias in each project makes the bare name resolve to
+  it.
 
 ## Status
 
-Sub-proj 0 (Foundation) is complete: solution, utility ports (`Random`, `Bundle`, `PathFinder`, `Graph`, `Rect`, `Point`, `PointF`, `GameMath`), and a main scene that proves Godot can call the core.
-
-TODO: turn engine and walkable Sewers level.
+Sub-proj 0 (Foundation) and sub-project 1 (turn engine and walkable Sewers) are complete: the scheduler, `Char` and
+`Hero` movement actions, the Sewers generator, field of view, level switching with an in-memory level store, a Godot
+view with placeholder cells, fog, a follow camera, click and keyboard input, a status pane, and a debug console
+(`` ` ``, then `help`).
+Next is sub-project 2: combat and mobs. 

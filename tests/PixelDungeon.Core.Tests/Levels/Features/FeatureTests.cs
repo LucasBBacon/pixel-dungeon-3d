@@ -158,7 +158,6 @@ public class FeatureTests : DungeonFixture
         View.Windows[0].Select(0);
         Assert.True(Chasm.JumpConfirmed);
         Assert.Null(hero.LastAction); // resume consumed it
-        Chasm.JumpConfirmed = false;
     }
 
     [Fact]

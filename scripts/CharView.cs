@@ -73,6 +73,7 @@ public partial class CharView : Node3D, ICharView
     public void Move(int from, int to)
     {
         KillMotion();
+        TurnTo(from, to);
         Position = LevelRenderer.CellToWorld(from);
         _moving = true;
         _motion = CreateTween();

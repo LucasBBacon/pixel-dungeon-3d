@@ -2,6 +2,7 @@ using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Utils;
 
@@ -56,6 +57,7 @@ public static class Dungeon
 
         Interlevel.Mode = InterlevelMode.None;
         Interlevel.FallIntoPit = false;
+        Chasm.JumpConfirmed = false;
 
         _levels.Clear();
     }

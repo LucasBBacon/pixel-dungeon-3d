@@ -57,11 +57,7 @@ public partial class GameScene : Node3D, IGameView
         AddChild(_pane);
 
         _console = new DebugConsole { Name = "DebugConsole" };
-        _console.AfterLevelChange = () =>
-        {
-            ClearChars();
-            Build();
-        };
+        _console.AfterLevelChange = Build;
         _console.OpenChanged += _ => UpdateSelector();
         AddChild(_console);
 
@@ -78,6 +74,14 @@ public partial class GameScene : Node3D, IGameView
             {
                 _startupCommands.Enqueue(arg["console=".Length..]);
             }
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        if (CoreScene.Instance == this)
+        {
+            CoreScene.Instance = NullGameView.Instance;
         }
     }
 
@@ -115,6 +119,11 @@ public partial class GameScene : Node3D, IGameView
         }
 
         _heroView = null;
+        if (Dungeon.Hero != null)
+        {
+            Dungeon.Hero.Sprite =
+                NullCharView.Instance; // no core code can touch a freed node between ClearChars and Build
+        }
     }
 
     public override void _Process(double delta)

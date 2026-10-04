@@ -241,6 +241,35 @@ public class CharTests : DungeonFixture
     }
 
     [Fact]
+    public void Attack_DamageReductionRoll_LowersDamage()
+    {
+        LoadLevel(
+            "#####",
+            "#...#",
+            "#####"
+        );
+        PlaceHero(TestLevel.At(1, 1));
+        var attacker = new Fighter
+        {
+            Name = "rat",
+            Pos = TestLevel.At(2, 1),
+            AttackSkillValue = 100,
+            DamageValue = 3
+        };
+        var enemy = new Fighter
+        {
+            Name = "crab",
+            Pos = TestLevel.At(3,
+                1),
+            HT = 10,
+            HP = 10,
+            DrValue = 2
+        };
+        Assert.True(attacker.Attack(enemy));
+        Assert.InRange(enemy.HP, 7, 9); // dmg 3 - Random.IntRange(0, 2)
+    }
+
+    [Fact]
     public void Observe_MarksVisibleCellsVisited()
     {
         var level = LoadLevel(
