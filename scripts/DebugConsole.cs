@@ -61,15 +61,35 @@ public partial class DebugConsole : CanvasLayer
 
             Dungeon.Hero.Interrupt();
             var guard = 0;
-            while (Dungeon.Depth != target && guard++ < 64)
+            try
             {
-                Interlevel.Mode = Dungeon.Depth < target
-                    ? InterlevelMode.Descend
-                    : InterlevelMode.Ascend;
-                Interlevel.Run();
+                while (Dungeon.Depth != target && guard++ < 64)
+                {
+                    var depth = Dungeon.Depth;
+                    var pos = Dungeon.Hero.Pos;
+                    Interlevel.Mode = Dungeon.Depth < target
+                        ? InterlevelMode.Descend
+                        : InterlevelMode.Ascend;
+                    try
+                    {
+                        Interlevel.Run();
+                    }
+                    catch (Exception e)
+                    {
+                        // same recovery as GameScene.SwitchLevelAsync: every transition saves the level it leaves first
+                        Print("error: " + e.Message);
+                        Dungeon.Depth = depth;
+                        Dungeon.SwitchLevel(Dungeon.LoadLevel(), pos);
+                        Interlevel.Mode = InterlevelMode.None;
+                        break;
+                    }
+                }
+            }
+            finally
+            {
+                AfterLevelChange?.Invoke(); // the view re-syncs with whatever the core now holds
             }
 
-            AfterLevelChange?.Invoke();
             Print($"now at depth {Dungeon.Depth}");
         });
 
@@ -104,10 +124,57 @@ public partial class DebugConsole : CanvasLayer
             Print(
                 $"cell {pos} ({pos % Level.Width}, {pos / Level.Width}) {level.TileName(level.Map[pos])}; feeling {level.Feeling}; room {room}");
         });
+
+        // Stands the hero on the exit or entrance and takes it through Hero.Handle, so the real
+        // faded level switch runs. Exists so the switch can be exercised without finding the stairs
+        Register("stairs", "stairs down|up: stand on the exit or entrance and take it", args =>
+        {
+            if (args.Length != 1 || (args[0] != "down" && args[0] != "up"))
+            {
+                Print("usage: stairs down|up");
+                return;
+            }
+
+            var cell = args[0] == "down" ? Dungeon.Level.Exit : Dungeon.Level.Entrance;
+            Dungeon.Hero.Interrupt();
+            Dungeon.Hero.Pos = cell;
+            Dungeon.Hero.Sprite.Place(cell);
+            Dungeon.Observe();
+            Dungeon.Hero.Handle(cell);
+            Print($"taking the stairs {args[0]}");
+        });
     }
 
     public void Register(string name, string help, Action<string[]> run) => _commands[name] = (help, run);
 
+    // runs one command line exactly as if it had been typed, also used for startup commands
+    public void Execute(string text)
+    {
+        text = text.Trim();
+        if (text.Length == 0)
+        {
+            return;
+        }
+
+        Print(">, text");
+
+        var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (_commands.TryGetValue(parts[0], out var command))
+        {
+            try
+            {
+                command.Run(parts[1..]);
+            }
+            catch (Exception e)
+            {
+                Print("error: " + e.Message);
+            }
+        }
+        else
+        {
+            Print($"unknown command '{parts[0]}'; try help");
+        }
+    }
 
     public override void _Input(InputEvent @event)
     {
@@ -138,31 +205,13 @@ public partial class DebugConsole : CanvasLayer
     private void OnSubmitted(string text)
     {
         _input.Text = "";
-        text = text.Trim();
-        if (text.Length == 0)
-        {
-            return;
-        }
-
-        Print("> " + text);
-
-        var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        if (_commands.TryGetValue(parts[0], out var command))
-        {
-            try
-            {
-                command.Run(parts[1..]);
-            }
-            catch (Exception e)
-            {
-                Print("error: " + e.Message);
-            }
-        }
-        else
-        {
-            Print($"Unknown command '{parts[0]}'; try help");
-        }
+        Execute(text);
     }
 
-    private void Print(string line) => _output.AppendText(line + "\n");
+    // echoed to stdout too, so headless runs can prove what command did
+    private void Print(string line)
+    {
+        _output.AppendText(line + "\n");
+        GD.Print("[console] " + line);
+    }
 }

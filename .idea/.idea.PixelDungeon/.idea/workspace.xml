@@ -14,7 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/StatusPane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/DebugConsole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/DebugConsole.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
@@ -63,6 +64,7 @@
     <setting file="file://$PROJECT_DIR$/scripts/CameraRig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CellSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CharView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/scripts/DebugConsole.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/GameScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/GlobalUsings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/LevelRenderer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -208,29 +210,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rider.unittesting.toolwindow.stripe.button.shown&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "GDScript Start and Debug.Debug GDScript (Running session).executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rider.unittesting.toolwindow.stripe.button.shown": "true",
+    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage"
   }
-}</component>
-  <component name="RunManager" selected="GDScript Start and Debug.Player GDScript">
+}]]></component>
+  <component name="RunManager" selected="GDScript Start and Debug.Debug GDScript (Running session)">
     <configuration name="Debug GDScript (Running session)" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
       <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Attach&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
       <method v="2" />
@@ -292,7 +295,7 @@
       <workItem from="1790120379856" duration="14878000" />
       <workItem from="1790240933490" duration="27479000" />
       <workItem from="1790535350429" duration="6192000" />
-      <workItem from="1790717044565" duration="55356000" />
+      <workItem from="1790717044565" duration="60127000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -470,7 +473,23 @@
       <option name="project" value="LOCAL" />
       <updated>1791067356305</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat(view): status pane, message and choice windows, and the faded level switch">
+      <option name="closed" value="true" />
+      <created>1791129293180</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1791129293180</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails">
+      <option name="closed" value="true" />
+      <created>1791131613845</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1791131613845</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +533,9 @@
     <MESSAGE value="feat(view): render the level as placeholder cells with three fog states" />
     <MESSAGE value="feat(view): add the hero view, the follow camera, and the per-frame scheduler pump" />
     <MESSAGE value="feat(view): click and keyboard cell selection feeding Hero.Handle&#10;fix(view): camera shake decays over its duration" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): click and keyboard cell selection feeding Hero.Handle&#10;fix(view): camera shake decays over its duration" />
+    <MESSAGE value="feat(view): status pane, message and choice windows, and the faded level switch" />
+    <MESSAGE value="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

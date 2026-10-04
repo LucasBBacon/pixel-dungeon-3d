@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using PixelDungeon.Core;
@@ -32,6 +33,7 @@ public partial class GameScene : Node3D, IGameView
     private StatusPane _pane;
     private DebugConsole _console;
     private int _openWindows;
+    private readonly Queue<string> _startupCommands = new();
 
     public override void _Ready()
     {
@@ -67,6 +69,16 @@ public partial class GameScene : Node3D, IGameView
         Interlevel.Mode = InterlevelMode.Descend;
         Interlevel.Run();
         Build();
+
+        // `-- console="stairs down" console="where"` on the command line queues console commands
+        // each runs once the hero is ready again, so a headless run can exercise the level switch
+        foreach (var arg in OS.GetCmdlineUserArgs())
+        {
+            if (arg.StartsWith("console=", StringComparison.Ordinal))
+            {
+                _startupCommands.Enqueue(arg["console=".Length..]);
+            }
+        }
     }
 
     // create() half of GameScene.java that runs after every level switch.
@@ -113,6 +125,11 @@ public partial class GameScene : Node3D, IGameView
         }
 
         Actor.Process();
+
+        if (_startupCommands.Count > 0 && Dungeon.Hero.Ready && _openWindows == 0)
+        {
+            _console.Execute(_startupCommands.Dequeue());
+        }
     }
 
     private void Arrive()
@@ -240,7 +257,8 @@ public partial class GameScene : Node3D, IGameView
 
         _switching = true;
         UpdateSelector();
-        Callable.From(() => _ = SwitchLevelAsync()).CallDeferred();
+        // statement lambda: an expression would return the Task, godot try to convert it to a variant
+        Callable.From(() => { _ = SwitchLevelAsync(); }).CallDeferred();
     }
 
     private async Task SwitchLevelAsync()
