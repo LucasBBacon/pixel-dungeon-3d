@@ -14,25 +14,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Amok.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Bleeding.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Cripple.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Regeneration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Sleep.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Terror.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -40,10 +40,12 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +88,14 @@
     <setting file="file://$PROJECT_DIR$/scripts/TerrainVisuals.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Actor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Blob.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Amok.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Bleeding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Buff.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Cripple.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/FlavorBuff.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Regeneration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Sleep.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Terror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/HeroClass.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,6 +152,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/View/WindowRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/ActorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/BuffTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonFixture.cs" root0="FORCE_HIGHLIGHTING" />
@@ -192,6 +201,9 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3JNpPKXeVEjejpNBOhjDXLJuFMZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectSessionTemplates">
     <option name="inlineTemplate">
       <template>
@@ -308,7 +320,7 @@
       <workItem from="1790120379856" duration="14878000" />
       <workItem from="1790240933490" duration="27479000" />
       <workItem from="1790535350429" duration="6192000" />
-      <workItem from="1790717044565" duration="63231000" />
+      <workItem from="1790717044565" duration="66823000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -518,7 +530,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791135451283</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob.">
+      <option name="closed" value="true" />
+      <created>1791145233501</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1791145233501</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +559,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): port Random with a seed hook." />
     <MESSAGE value="feat(core): port Bundle primitives, arrays, nesting, and stream I/O" />
     <MESSAGE value="feat(core): port Bundle objects, collections, enums, and aliases" />
     <MESSAGE value="feat(core): port PathFinder grid BFS" />
@@ -564,7 +583,8 @@
     <MESSAGE value="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails" />
     <MESSAGE value="fix(view): defer the level switch with a statement lambda so Godot does not convert the Task. Depth recovers from a failed transition; stairs command and startup console" />
     <MESSAGE value="docs: sub-project 1 complete; README status and plan notes&#10;fix: final review wave: reset the chasm confirmation, turn the hero view, null the freed sprite, clear the seam on exit, cover the dr roll; docs corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: sub-project 1 complete; README status and plan notes&#10;fix: final review wave: reset the chasm confirmation, turn the hero view, null the freed sprite, clear the seam on exit, cover the dr roll; docs corrected" />
+    <MESSAGE value="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

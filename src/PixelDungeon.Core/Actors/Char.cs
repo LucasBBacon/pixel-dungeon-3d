@@ -180,7 +180,7 @@ public abstract class Char : Actor
 
     public virtual int DefenseProc(Char enemy, int damage) => damage;
 
-    public virtual float Speed() => BaseSpeed;
+    public virtual float Speed() => GetBuff<Cripple>() == null ? BaseSpeed : BaseSpeed * 0.5f;
 
     public virtual void Damage(int dmg, object src)
     {
@@ -270,6 +270,29 @@ public abstract class Char : Actor
     {
         _buffs.Add(buff);
         Actor.Add(buff);
+
+        if (buff is Amok)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "amok");
+        }
+        else if (buff is Terror)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "frightened");
+        }
+        else if (buff is Bleeding)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "bleeding");
+        }
+        else if (buff is Cripple)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "crippled");
+        }
+        else if (buff is Sleep)
+        {
+            Sprite.Idle();
+        }
+        
+        // TODO: Poison, Slow, MindVision, Paralysis, Roots, Vertigo, Burning, Levitation, Frost, Invisibility
     }
 
     public virtual void Remove(Buff buff)
