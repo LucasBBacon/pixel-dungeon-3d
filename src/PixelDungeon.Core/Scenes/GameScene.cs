@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.View;
 
@@ -18,4 +20,25 @@ public static class GameScene
     public static void SwitchLevel(InterlevelMode mode) => Instance.SwitchLevel(mode);
     public static void Add(Heap heap) => Instance.AddHeap(heap);
     public static void Discard(Heap heap) => Instance.DiscardHeap(heap);
+
+    // GameScene.java add(Mob) and add(Mob, float) bundle level bookkeeping
+    // scheduling and cell occupancy with sprite creation
+    // only the last is view work, so the other 3 stay here and NullGameView can't swallow a mob
+    public static void Add(Mob mob)
+    {
+        Dungeon.Level.Mobs.Add(mob);
+        Actor.Add(mob);
+        Actor.OccupyCell(mob);
+        Instance.AddMob(mob);
+    }
+
+    public static void Add(Mob mob, float delay)
+    {
+        Dungeon.Level.Mobs.Add(mob);
+        Actor.AddDelayed(mob, delay);
+        Actor.OccupyCell(mob);
+        Instance.AddMob(mob);
+    }
+
+    public static void GameOver() => Instance.GameOver();
 }

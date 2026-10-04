@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
@@ -327,5 +328,15 @@ public partial class GameScene : Node3D, IGameView
     public void DiscardHeap(Heap heap)
     {
         // TODO: heap sprites
+    }
+
+    public void AddMob(Mob mob)
+    {
+        // stub for IGameView
+    }
+
+    public void GameOver()
+    {
+        // stub for IGameView
     }
 }

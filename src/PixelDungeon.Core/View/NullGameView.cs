@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 
 namespace PixelDungeon.Core.View;
@@ -5,7 +6,7 @@ namespace PixelDungeon.Core.View;
 public sealed class NullGameView : IGameView
 {
     public static readonly NullGameView Instance = new();
-    
+
     public void UpdateMap()
     {
     }
@@ -55,6 +56,14 @@ public sealed class NullGameView : IGameView
     }
 
     public void DiscardHeap(Heap heap)
+    {
+    }
+
+    public void AddMob(Mob mob)
+    {
+    }
+
+    public void GameOver()
     {
     }
 }

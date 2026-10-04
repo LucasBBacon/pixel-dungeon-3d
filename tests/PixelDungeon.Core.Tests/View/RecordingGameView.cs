@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.View;
 
@@ -5,19 +6,21 @@ namespace PixelDungeon.Core.Tests.View;
 
 public class RecordingGameView : IGameView
 {
-    public readonly List<(string Text, LogKind Kind)> Logs = new();
-    public readonly List<int> UpdatedCells = new();
+    public readonly List<(string Text, LogKind Kind)> Logs = [];
+    public readonly List<int> UpdatedCells = [];
     public int FullMapUpdates;
-    public readonly List<(int Cell, int OldTerrain)> Discovered = new();
+    public readonly List<(int Cell, int OldTerrain)> Discovered = [];
     public int ObserveCount;
     public int ReadyCount;
-    public readonly List<(string Id, float Pitch)> Sounds = new();
-    public readonly List<(float Magnitude, float Duration)> Shakes = new();
-    public readonly List<(EffectKind Kind, int Cell)> Effects = new();
-    public readonly List<WindowRequest> Windows = new();
-    public readonly List<InterlevelMode> SwitchedModes = new();
-    public readonly List<Heap> AddedHeaps = new();
-    public readonly List<Heap> DiscardedHeaps = new();
+    public readonly List<(string Id, float Pitch)> Sounds = [];
+    public readonly List<(float Magnitude, float Duration)> Shakes = [];
+    public readonly List<(EffectKind Kind, int Cell)> Effects = [];
+    public readonly List<WindowRequest> Windows = [];
+    public readonly List<InterlevelMode> SwitchedModes = [];
+    public readonly List<Heap> AddedHeaps = [];
+    public readonly List<Heap> DiscardedHeaps = [];
+    public readonly List<Mob> AddedMobs = [];
+    public int GameOvers;
 
     public void UpdateMap() => FullMapUpdates++;
 
@@ -44,6 +47,8 @@ public class RecordingGameView : IGameView
     public void AddHeap(Heap heap) => AddedHeaps.Add(heap);
 
     public void DiscardHeap(Heap heap) => DiscardedHeaps.Add(heap);
+    public void AddMob(Mob mob) => AddedMobs.Add(mob);
+    public void GameOver() => GameOvers++;
 
     public bool Logged(string fragment) => Logs.Exists(l => l.Text.Contains(fragment));
 }

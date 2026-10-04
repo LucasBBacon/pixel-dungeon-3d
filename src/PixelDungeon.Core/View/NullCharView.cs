@@ -20,6 +20,18 @@ public sealed class NullCharView : ICharView
     {
     }
 
+    public void Attack(int cell)
+    {
+    }
+
+    public void ShowAlert()
+    {
+    }
+
+    public void HideAlert()
+    {
+    }
+
     public void TurnTo(int from, int to)
     {
     }

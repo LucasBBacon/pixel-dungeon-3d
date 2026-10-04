@@ -1,10 +1,13 @@
+using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Tests.View;
 
-public class SeamTest
+public class SeamTest : DungeonFixture
 {
     [Fact]
     public void GameScene_DefaultsToNullView_AndCanBeReplaced()
@@ -63,5 +66,54 @@ public class SeamTest
         Assert.False(view.IsMoving);
         view.Visible = false;
         Assert.False(view.Visible);
+    }
+
+    [Fact]
+    public void GameSceneAdd_Mob_AddsToLevelSchedulesAndOccupiesTheCell()
+    {
+        LoadLevel(
+            "#####",
+            "#...#",
+            "#####"
+        );
+        PlaceHero(TestLevel.At(1, 1));
+        var mob = new TestMob { Pos = TestLevel.At(3, 1) };
+
+        GameScene.Add(mob);
+
+        Assert.Contains(mob, Dungeon.Level.Mobs);
+        Assert.Same(mob, Actor.FindChar(TestLevel.At(3, 1)));
+        Assert.Contains(mob, View.AddedMobs);
+    }
+
+    [Fact]
+    public void GameSceneAdd_MobWithDelay_SchedulesItLater()
+    {
+        LoadLevel(
+            "#####",
+            "#...#",
+            "#####"
+        );
+        PlaceHero(TestLevel.At(1, 1));
+        var mob = new TestMob { Pos = TestLevel.At(3, 1) };
+
+        GameScene.Add(mob, 5f);
+
+        Assert.Contains(mob, Dungeon.Level.Mobs);
+        Assert.Contains(mob, Actor.All());
+        Assert.Contains(mob, View.AddedMobs);
+    }
+
+    [Fact]
+    public void GameSceneGameOver_ForwardsToTheView()
+    {
+        GameScene.GameOver();
+        Assert.Equal(1, View.GameOvers);
+    }
+
+    // minimal mob for now
+    private sealed class TestMob : Mob
+    {
+        protected override bool Act() => false;
     }
 }

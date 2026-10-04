@@ -116,6 +116,21 @@ public partial class CharView : Node3D, ICharView
         tween.Finished += () => _ch.OnOperateComplete();
     }
 
+    public void Attack(int cell)
+    {
+        // stub
+    }
+
+    public void ShowAlert()
+    {
+        // stub
+    }
+
+    public void HideAlert()
+    {
+        // stub
+    }
+
     public void TurnTo(int from, int to)
     {
         var dx = to % Level.Width - from % Level.Width;

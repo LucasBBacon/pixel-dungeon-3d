@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 
 namespace PixelDungeon.Core.View;
@@ -17,4 +18,6 @@ public interface IGameView
     void SwitchLevel(InterlevelMode mode);
     void AddHeap(Heap heap);
     void DiscardHeap(Heap heap);
+    void AddMob(Mob mob);
+    void GameOver();
 }
