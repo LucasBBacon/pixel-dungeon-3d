@@ -1,6 +1,8 @@
 using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Utils;
+using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Actors.Mobs;
 
@@ -150,6 +152,38 @@ public abstract class Mob : Char
         }
     }
 
+    public override void Add(Buff buff)
+    {
+        base.Add(buff);
+
+        if (buff is Amok)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, TxtRage);
+            State = HuntingState;
+        }
+        else if (buff is Terror)
+        {
+            State = FleeingState;
+        }
+        else if (buff is Sleep)
+        {
+            // TODO: new Flare(4, 32).color(0x44ffff, true).show(sprite, 2f)
+            State = SleepingState;
+            Postpone(Sleep.SWS);
+        }
+    }
+
+    public override void Remove(Buff buff)
+    {
+        base.Remove(buff);
+
+        if (buff is Terror)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, TxtRage);
+            State = HuntingState;
+        }
+    }
+
     protected virtual bool CanAttack(Char enemy) => Level.Adjacent(Pos, enemy.Pos) && !IsCharmedBy(enemy);
 
     protected virtual bool GetCloser(int target)
@@ -225,6 +259,114 @@ public abstract class Mob : Char
     {
         Attack(Enemy);
         base.OnAttackComplete();
+    }
+
+    public override int DefenseSkill(Char enemy)
+    {
+        return EnemySeen && !Paralysed ? DefenseSkillValue : 0;
+    }
+
+    public override int DefenseProc(Char enemy, int damage)
+    {
+        // TODO: assassin hero striking unaware mob adds Random.Int(1, damage) and shows a Wound
+        return damage;
+    }
+
+    public void Aggro(Char ch)
+    {
+        Enemy = ch;
+    }
+
+    public override void Damage(int dmg, object src)
+    {
+        Terror.Recover(this);
+
+        if (State == SleepingState)
+        {
+            State = WanderingState;
+        }
+
+        Alerted = true;
+
+        base.Damage(dmg, src);
+    }
+
+    public override void Destroy()
+    {
+        base.Destroy();
+
+        Dungeon.Level.Mobs.Remove(this);
+
+        if (Dungeon.Hero.IsAlive())
+        {
+            if (Hostile)
+            {
+                Statistics.EnemiesSlain++;
+                // TODO: Badges.ValidateMonstersSlain()
+                Statistics.QualifiedForNoKilling = false;
+
+                if (Dungeon.NightMode)
+                {
+                    Statistics.NightHunt++;
+                }
+                else
+                {
+                    Statistics.NightHunt = 0;
+                }
+                // TODO: Badges.ValidateNightHunter()
+            }
+
+            var exp = GetExp();
+            if (exp > 0)
+            {
+                Dungeon.Hero.Sprite.ShowStatus(StatusColor.Positive, TextUtils.Format(TxtExp, exp));
+                Dungeon.Hero.EarnExp(exp);
+            }
+        }
+    }
+
+    public int GetExp() => Dungeon.Hero.Lvl <= MaxLvl ? Exp : 0;
+
+    public override void Die(object src)
+    {
+        base.Die(src);
+
+        if (Dungeon.Hero.Lvl <= MaxLvl + 2)
+        {
+            DropLoot();
+        }
+
+        if (Dungeon.Hero.IsAlive() && !Dungeon.Visible[Pos])
+        {
+            GLog.I(TxtDied);
+        }
+    }
+
+    protected object Loot = null;
+    protected float LootChance = 0;
+
+    protected virtual void DropLoot()
+    {
+        if (Loot != null && Random.Float() < LootChance)
+        {
+            Item item;
+            if (Loot is Generator.Category category)
+            {
+                item = Generator.Random(category);
+            }
+            else if (Loot is Type type)
+            {
+                // TODO: Generator.Random(class<? extends Item>) picks from class table
+                item = Generator.Random();
+            }
+            else
+            {
+                item = (Item)Loot;
+            }
+
+            // TODO: .sprite.drop() animate heap
+            Dungeon.Level.Drop(item, Pos);
+        }
     }
 
     public virtual bool Reset()

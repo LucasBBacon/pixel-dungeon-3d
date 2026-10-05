@@ -214,7 +214,7 @@ public abstract class Char : Actor
         }
     }
 
-    public void Destroy()
+    public virtual void Destroy()
     {
         HP = 0;
         Actor.Remove(this);
@@ -291,7 +291,7 @@ public abstract class Char : Actor
         {
             Sprite.Idle();
         }
-        
+
         // TODO: Poison, Slow, MindVision, Paralysis, Roots, Vertigo, Burning, Levitation, Frost, Invisibility
     }
 
