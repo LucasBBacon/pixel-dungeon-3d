@@ -275,55 +275,29 @@ public class Hero : Char
 
             Ready = false;
 
-            if (CurAction is HeroAction.Move move)
+            switch (CurAction)
             {
-                return ActMove(move);
-            }
-            // TODO: all other individual actions, interact, buy, pick up, open chest, unlock, descend, ascend, attack, cook
-
-            else if (CurAction is HeroAction.Interact interact)
-            {
-                return ActInteract(interact);
-            }
-
-            else if (CurAction is HeroAction.Buy buy)
-            {
-                return ActBuy(buy);
-            }
-
-            else if (CurAction is HeroAction.PickUp pickUp)
-            {
-                return ActPickUp(pickUp);
-            }
-
-            else if (CurAction is HeroAction.OpenChest openChest)
-            {
-                return ActOpenChest(openChest);
-            }
-
-            else if (CurAction is HeroAction.Unlock unlock)
-            {
-                return ActUnlock(unlock);
-            }
-
-            else if (CurAction is HeroAction.Descend descend)
-            {
-                return ActDescend(descend);
-            }
-
-            else if (CurAction is HeroAction.Ascend ascend)
-            {
-                return ActAscend(ascend);
-            }
-
-            else if (CurAction is HeroAction.Attack attack)
-            {
-                return ActAttack(attack);
-            }
-
-            else if (CurAction is HeroAction.Cook cook)
-            {
-                return ActCook(cook);
+                case HeroAction.Move move:
+                    return ActMove(move);
+                // TODO: all other individual actions, interact, buy, pick up, open chest, unlock, descend, ascend, attack, cook
+                case HeroAction.Interact interact:
+                    return ActInteract(interact);
+                case HeroAction.Buy buy:
+                    return ActBuy(buy);
+                case HeroAction.PickUp pickUp:
+                    return ActPickUp(pickUp);
+                case HeroAction.OpenChest openChest:
+                    return ActOpenChest(openChest);
+                case HeroAction.Unlock unlock:
+                    return ActUnlock(unlock);
+                case HeroAction.Descend descend:
+                    return ActDescend(descend);
+                case HeroAction.Ascend ascend:
+                    return ActAscend(ascend);
+                case HeroAction.Attack attack:
+                    return ActAttack(attack);
+                case HeroAction.Cook cook:
+                    return ActCook(cook);
             }
         }
 
@@ -806,7 +780,7 @@ public class Hero : Char
 
         // TODO: scatter backpack over shuffled passable neighbours without heaps
 
-        // TODO: GameScene.StartOver
+        GameScene.GameOver();
 
         if (cause is IDoom doom)
         {

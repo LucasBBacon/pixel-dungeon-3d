@@ -36,7 +36,7 @@ Godot...console.exe --headless --path . --quit-after 3
 
 In the game: click a cell or use WASD / arrows / QEZC to move, Space to search, Period to rest a turn, Shift+Period to
 rest until healed, and hte backtick key for the debug console (`depth N`, `reveal`, `seed N`, `where`, `stairs down`,
-`stairs up`). A headless run can queue commands with `--console="stairs down" console="where"`.
+`stairs up`, `spawn`, `kill`). A headless run can queue commands with `--console="stairs down" console="where"`.
 
 ## Porting conventions
 
@@ -55,5 +55,7 @@ rest until healed, and hte backtick key for the debug console (`depth N`, `revea
 Sub-proj 0 (Foundation) and sub-project 1 (turn engine and walkable Sewers) are complete: the scheduler, `Char` and
 `Hero` movement actions, the Sewers generator, field of view, level switching with an in-memory level store, a Godot
 view with placeholder cells, fog, a follow camera, click and keyboard input, a status pane, and a debug console
-(`` ` ``, then `help`).
-Next is sub-project 2: combat and mobs. 
+(`` ` ``, then `help`). Sub-project 2 (combat and mobs) is complete: the five-state mob AI, the Bestiary table behind a
+type registry, Rat, Albino, Gnoll, Crab and Swarm, six buffs, hero experience and death, and a Godot view with mob
+cubes, an attack tween, alert and sleep glyphs, an XP readout and a game-over window. Next is sub-project 3: items and
+inventory. 
