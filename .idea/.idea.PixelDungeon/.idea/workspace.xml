@@ -15,24 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/DebugConsole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/DebugConsole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/StatusPane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/StatusPane.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +298,7 @@
       <workItem from="1790717044565" duration="66823000" />
       <workItem from="1791187287982" duration="12967000" />
       <workItem from="1791206921435" duration="18938000" />
-      <workItem from="1791376520954" duration="4934000" />
+      <workItem from="1791376520954" duration="5628000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -580,7 +564,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791378539131</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done.">
+      <option name="closed" value="true" />
+      <created>1791382081807</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1791382081807</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +593,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="style: correct Chances and SetMapSize comments" />
     <MESSAGE value="feat(core): port Terrain, BArray, Challenges, Statistics, Assets, ResultDescriptions, Utils" />
     <MESSAGE value="eat(core): add the view seam, GameScene/GLog/Sample facades, and item skeletons" />
     <MESSAGE value="feat(core): port the Level map shell, Painter, ShadowCaster, and Dungeon shell" />
@@ -626,7 +617,8 @@
     <MESSAGE value="feat(mobs): the whole Bestiary table behind a type registry&#10;All 25 depths port verbatim as chance/name pairs. A Dictionary&lt;Type, Func&gt; holds factories for the ported classes; entries naming an unported class are dropped before the roll, and a depth with nothing registered returns null, which the existing guards in RegularLevel.CreateMobs and Level.RespawnerActor already handle.&#10;Later sub-projects add a mob by registering a factory. The table is written once and never edited again.&#10;The depth-4 distribution loses Skeleton and Thief (0.02 of 6.04 weight) until later projects, and depths 5 and up spawn nothing until theirs. Both are asserted by tests so the deviation stays visible." />
     <MESSAGE value="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero." />
     <MESSAGE value="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java." />
+    <MESSAGE value="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

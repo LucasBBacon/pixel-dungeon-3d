@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using PixelDungeon.Core;
+using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Client;
@@ -142,6 +145,73 @@ public partial class DebugConsole : CanvasLayer
             Dungeon.Observe();
             Dungeon.Hero.Handle(cell);
             Print($"taking the stairs {args[0]}");
+        });
+
+        Register("spawn", "spawn <rat|albino|gnoll|crab|swarm> [n]: place mobs next to the hero", args =>
+        {
+            if (args.Length == 0)
+            {
+                Print("spawn <rat|albino|gnoll|crab|swarm> [n]");
+                return;
+            }
+
+            Func<Mob> factory = args[0].ToLowerInvariant() switch
+            {
+                "rat" => () => new Rat(),
+                "albino" => () => new Albino(),
+                "gnoll" => () => new Gnoll(),
+                "crab" => () => new Crab(),
+                "swarm" => () => new Swarm(),
+                _ => null,
+            };
+
+            if (factory == null)
+            {
+                Print($"unknown '{args[0]}'");
+                return;
+            }
+
+            var count = args.Length > 1 && int.TryParse(args[1], out var n) ? n : 1;
+            var placed = 0;
+
+            foreach (var offset in Level.Neighbours8)
+            {
+                if (placed >= count)
+                {
+                    break;
+                }
+
+                var cell = Dungeon.Hero.Pos + offset;
+                if (Level.Passable[cell] && Actor.FindChar(cell) == null)
+                {
+                    var mob = factory();
+                    mob.Pos = cell;
+                    Core.Scenes.GameScene.Add(mob);
+                    placed++;
+                }
+            }
+
+            Print($"spawned {placed}");
+        });
+
+        Register("kill", "destroy every mob in the hero's field of view", _ =>
+        {
+            // Level.FieldOfView is one shared buffer that every actor's Act() overwrites with its
+            // own viewshed; without recomputing it here it could hold whatever mob last moved, not
+            // the hero's view. Dungeon.Observe() re-runs Level.UpdateFieldOfView(Hero) so this reads
+            // the hero's own field of view, as the help text promises.
+            Dungeon.Observe();
+            var killed = 0;
+            foreach (var mob in Dungeon.Level.Mobs.ToArray())
+            {
+                if (Level.FieldOfView[mob.Pos])
+                {
+                    mob.Die(Dungeon.Hero);
+                    killed++;
+                }
+            }
+
+            Print($"killed {killed}");
         });
     }
 
