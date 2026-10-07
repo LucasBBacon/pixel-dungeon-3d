@@ -14,32 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroCombatTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Chasm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Chasm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +297,7 @@
       <workItem from="1790717044565" duration="66823000" />
       <workItem from="1791187287982" duration="12967000" />
       <workItem from="1791206921435" duration="18938000" />
-      <workItem from="1791376520954" duration="993000" />
+      <workItem from="1791376520954" duration="1751000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -571,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791372703751</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero.">
+      <option name="closed" value="true" />
+      <created>1791377616774</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1791377616775</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="docs: add GPLv3 license and rewrite README for the C# port" />
     <MESSAGE value="fix(core): harden Bundle against non-finite floats and failed stream reads&#10;&#10;Put(float) drops NaN and infinity as the Java's JSONObject does; Read(Stream) returns null on any failure as the Java does; the mistyped-key test is renamed to say what it asserts. GetEnum and Value document where they are stricter or looser than the Java." />
     <MESSAGE value="style: correct Chances and SetMapSize comments" />
     <MESSAGE value="feat(core): port Terrain, BArray, Challenges, Statistics, Assets, ResultDescriptions, Utils" />
@@ -617,7 +600,8 @@
     <MESSAGE value="feat(mobs): Rat, Albino, Gnoll and Crab&#10;Stat blocks copied verbatim, with tests that assert every number against the Java rather than against the implementation. Albino subclasses Rat as in the original and adds the 1-in-2 Bleeding proc; Crab keeps its speed of 2 and its &quot;parried&quot; defense verb." />
     <MESSAGE value="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes." />
     <MESSAGE value="feat(mobs): the whole Bestiary table behind a type registry&#10;All 25 depths port verbatim as chance/name pairs. A Dictionary&lt;Type, Func&gt; holds factories for the ported classes; entries naming an unported class are dropped before the roll, and a depth with nothing registered returns null, which the existing guards in RegularLevel.CreateMobs and Level.RespawnerActor already handle.&#10;Later sub-projects add a mob by registering a factory. The table is written once and never edited again.&#10;The depth-4 distribution loses Skeleton and Thief (0.02 of 6.04 weight) until later projects, and depths 5 and up spawn nothing until theirs. Both are asserted by tests so the deviation stays visible." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(mobs): the whole Bestiary table behind a type registry&#10;All 25 depths port verbatim as chance/name pairs. A Dictionary&lt;Type, Func&gt; holds factories for the ported classes; entries naming an unported class are dropped before the roll, and a depth with nothing registered returns null, which the existing guards in RegularLevel.CreateMobs and Level.RespawnerActor already handle.&#10;Later sub-projects add a mob by registering a factory. The table is written once and never edited again.&#10;The depth-4 distribution loses Skeleton and Thief (0.02 of 6.04 weight) until later projects, and depths 5 and up spawn nothing until theirs. Both are asserted by tests so the deviation stays visible." />
+    <MESSAGE value="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

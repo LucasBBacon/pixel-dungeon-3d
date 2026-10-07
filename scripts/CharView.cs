@@ -11,9 +11,10 @@ public partial class CharView : Node3D, ICharView
     private Char _ch;
     private MeshInstance3D _body;
     private Label3D _status;
+    private Label3D _emo;
     private Tween _motion;
     private Tween _statusTween;
-    private bool _moving;
+    private bool _sleeping;
 
     public static CharView For(Char ch, Color color)
     {
@@ -42,6 +43,17 @@ public partial class CharView : Node3D, ICharView
             Visible = false,
         };
         AddChild(_status);
+
+        _emo = new Label3D
+        {
+            Billboard = BaseMaterial3D.BillboardModeEnum.Enabled,
+            NoDepthTest = true,
+            PixelSize = 0.01f,
+            FontSize = 48,
+            Position = new Vector3(0f, 1.4f, 0f),
+            Visible = false,
+        };
+        AddChild(_emo);
     }
 
     public static Color FromArgb(uint argb) => new(
@@ -75,7 +87,7 @@ public partial class CharView : Node3D, ICharView
         KillMotion();
         TurnTo(from, to);
         Position = LevelRenderer.CellToWorld(from);
-        _moving = true;
+        IsMoving = true;
         _motion = CreateTween();
         _motion.TweenProperty(this,
             "position",
@@ -87,7 +99,7 @@ public partial class CharView : Node3D, ICharView
     private void OnMotionFinished()
     {
         _motion = null;
-        _moving = false; // clears the gate before the callback ends turn
+        IsMoving = false; // clears the gate before the callback ends turn
         _ch.OnMotionComplete();
     }
 
@@ -97,6 +109,12 @@ public partial class CharView : Node3D, ICharView
         Position = LevelRenderer.CellToWorld(_ch.Pos);
     }
 
+    // shared by move and attack
+    // both park their tween in _motion, so killing it here cancels whichever is in flight
+    // Tween.Kill() does not raise Finished in GD4, so an interrupted move never calls
+    // OnMotionComplete and an interrupted Attack never calls OnAttackComplete
+    // the caller is trusted to only do that when the scheduler gate is being torn down
+    // some other way
     private void KillMotion()
     {
         if (_motion != null)
@@ -105,7 +123,7 @@ public partial class CharView : Node3D, ICharView
             _motion = null;
         }
 
-        _moving = false;
+        IsMoving = false;
     }
 
     public void Operate(int cell)
@@ -118,17 +136,61 @@ public partial class CharView : Node3D, ICharView
 
     public void Attack(int cell)
     {
-        // stub
+        TurnTo(_ch.Pos, cell);
+
+        var dx = cell % Level.Width - _ch.Pos % Level.Width;
+        var dz = cell / Level.Width - _ch.Pos / Level.Width;
+        var home = Position;
+        var lunge = home + new Vector3(dx, 0f, dz) / 3f;
+
+        KillMotion();
+        _motion = CreateTween();
+        _motion.TweenProperty(this, "position", lunge, MoveInterval);
+        _motion.TweenProperty(this, "position", home, MoveInterval);
+        _motion.Finished += OnAttackFinished;
+    }
+
+    private void OnAttackFinished()
+    {
+        _motion = null;
+        _ch.OnAttackComplete();
     }
 
     public void ShowAlert()
     {
-        // stub
+        _emo.Text = "!";
+        _emo.Visible = true;
     }
 
     public void HideAlert()
     {
-        // stub
+        if (_emo.Text == "!")
+        {
+            _emo.Visible = false;
+        }
+    }
+
+    // Java derives the sleep icon from mob.state every frame
+    // GameScene._Process calls this, alert and sleep share one slot, as they share
+    // CharSprite's single `emo` field
+    public void SetSleeping(bool sleeping)
+    {
+        if (_sleeping == sleeping)
+        {
+            return;
+        }
+
+        _sleeping = sleeping;
+
+        if (sleeping)
+        {
+            _emo.Text = "z";
+            _emo.Visible = true;
+        }
+        else if (_emo.Text == "z")
+        {
+            _emo.Visible = false;
+        }
     }
 
     public void TurnTo(int from, int to)
@@ -199,5 +261,5 @@ public partial class CharView : Node3D, ICharView
         };
     }
 
-    public bool IsMoving => _moving;
+    public bool IsMoving { get; private set; }
 }
