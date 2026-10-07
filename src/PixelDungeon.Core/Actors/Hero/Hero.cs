@@ -130,7 +130,7 @@ public class Hero : Char
 
     public void Live()
     {
-        // TODO: Buff.affect(this, Regeneration.Class)
+        Buff.Affect<Regeneration>(this);
         // TODO: Buff.affect(this, Hunger.Class)
     }
 
@@ -239,7 +239,13 @@ public class Hero : Char
     {
         base.Act();
 
-        // TODO: check paralysed
+        if (Paralysed)
+        {
+            CurAction = null;
+
+            SpendAndNext(Tick);
+            return false;
+        }
 
         CheckVisibleMobs();
         // TODO: AttackIndicator.UpdateState()
@@ -275,15 +281,49 @@ public class Hero : Char
             }
             // TODO: all other individual actions, interact, buy, pick up, open chest, unlock, descend, ascend, attack, cook
 
+            else if (CurAction is HeroAction.Interact interact)
+            {
+                return ActInteract(interact);
+            }
+
+            else if (CurAction is HeroAction.Buy buy)
+            {
+                return ActBuy(buy);
+            }
+
+            else if (CurAction is HeroAction.PickUp pickUp)
+            {
+                return ActPickUp(pickUp);
+            }
+
+            else if (CurAction is HeroAction.OpenChest openChest)
+            {
+                return ActOpenChest(openChest);
+            }
+
+            else if (CurAction is HeroAction.Unlock unlock)
+            {
+                return ActUnlock(unlock);
+            }
+
             else if (CurAction is HeroAction.Descend descend)
             {
                 return ActDescend(descend);
             }
 
-
             else if (CurAction is HeroAction.Ascend ascend)
             {
                 return ActAscend(ascend);
+            }
+
+            else if (CurAction is HeroAction.Attack attack)
+            {
+                return ActAttack(attack);
+            }
+
+            else if (CurAction is HeroAction.Cook cook)
+            {
+                return ActCook(cook);
             }
         }
 
@@ -443,9 +483,26 @@ public class Hero : Char
     {
         _enemy = action.Target;
 
-        // TODO: adjacent living enemy that has not charmed hero, Spend(AttackDelay()), Sprite.Attack(Enemy.Pos)
-        MakeReady();
-        return false;
+        if (Level.Adjacent(Pos, _enemy.Pos) && _enemy.IsAlive() && !IsCharmedBy(_enemy))
+        {
+            Spend(AttackDelay());
+            Sprite.Attack(_enemy.Pos);
+
+            // false holds the scheduler until the view calls OnAttackComplete
+            return false;
+        }
+        else
+        {
+            if (Level.FieldOfView[_enemy.Pos] && GetCloser(_enemy.Pos))
+            {
+                return true;
+            }
+            else
+            {
+                MakeReady();
+                return false;
+            }
+        }
     }
 
     public void Rest(bool tillHealthy)
@@ -679,7 +736,17 @@ public class Hero : Char
     {
         base.Add(buff);
 
-        // TODO: warning logs and interrupts
+        if (buff is Cripple)
+        {
+            GLog.W("You are crippled!");
+        }
+        else if (buff is Bleeding)
+        {
+            GLog.W("You are bleeding!");
+        }
+
+        // TODO: Burning, Paralysis, Poison, Ooze, Roots, Weakness, Blindness, Fury, Charm, Vertigo warnings and interrupts
+        // TODO: BuffIndicator.RefreshHero()
     }
 
     public override void Remove(Buff buff)

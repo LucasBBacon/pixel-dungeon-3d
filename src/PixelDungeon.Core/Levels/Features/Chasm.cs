@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Scenes;
@@ -62,10 +63,10 @@ public static class Chasm
     {
         var hero = Dungeon.Hero;
 
-        hero.Sprite.Burst(0xFFBB0000, 10); // CharSprite.Blood() default colour
+        hero.Sprite.Burst(0xFFBB0000, 10); // CharSprite.Blood() default color
         GameScene.Shake(4, 0.2f);
 
-        // TODO: Buff.Prolong(hero, Cripple.Class, Cripple.Duration)
+        Buff.Prolong<Cripple>(hero, Cripple.Duration);
         hero.Damage(Random.IntRange(hero.HT / 3, hero.HT / 2), new FallDoom());
     }
 

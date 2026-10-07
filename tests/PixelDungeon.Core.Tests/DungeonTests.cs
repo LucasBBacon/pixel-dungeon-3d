@@ -16,7 +16,10 @@ public class DungeonTests : DungeonFixture
         Assert.Equal(0, Dungeon.Depth);
         Assert.Equal(0, Dungeon.Gold);
         Assert.True(Dungeon.DewVial);
-        Assert.Empty(Actor.All());
+        // Init() calls hero.Live(), which now attaches Regeneration
+        // that buff schedules itself as an actor even though the hero isn't placed
+        // on a level yet
+        Assert.Single(Actor.All());
     }
 
     [Fact]
@@ -47,7 +50,8 @@ public class DungeonTests : DungeonFixture
         Assert.True(Dungeon.Visible[level.Entrance]);
         Assert.True(level.Visited[level.Entrance]);
         Assert.Contains(Dungeon.Hero, Actor.All());
-        Assert.Equal(2 + level.Mobs.Count, Actor.All().Count);
+        // hero, hero's regen buff, respawner, and every mob
+        Assert.Equal(3 + level.Mobs.Count, Actor.All().Count);
         Assert.Equal(8, Dungeon.Hero.ViewDistance);
         Assert.Equal(1, View.ObserveCount);
 

@@ -385,11 +385,15 @@ public abstract class Level : IBundlable
                 var mob = Bestiary.Mutable(Dungeon.Depth);
                 if (mob != null) // bestiary returns null at depths whose mobs are not ported yet
                 {
-                    // TODO: mob.state = mob.Wandering
+                    mob.State = mob.WanderingState;
                     mob.Pos = _level.RandomRespawnCell();
                     if (Dungeon.Hero.IsAlive() && mob.Pos != -1)
                     {
-                        // TODO: GameScene.Add(mob); mob.Beckon(Dungeon.Hero.Pos) when amulet obtained
+                        GameScene.Add(mob);
+                        if (Statistics.AmuletObtained)
+                        {
+                            mob.Beckon(Dungeon.Hero.Pos);
+                        }
                     }
                 }
             }
