@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using PixelDungeon.Core;
@@ -35,6 +36,21 @@ public partial class GameScene : Node3D, IGameView
     private DebugConsole _console;
     private int _openWindows;
     private readonly Queue<string> _startupCommands = new();
+    private readonly Dictionary<Mob, CharView> _mobViews = new();
+
+    private static readonly Dictionary<Type, Color> MobColors = new()
+    {
+        [typeof(Rat)] = new Color(0.55f, 0.13f, 0.13f),
+        [typeof(Albino)] = new Color(0.92f, 0.90f, 0.88f),
+        [typeof(Gnoll)] = new Color(0.45f, 0.30f, 0.15f),
+        [typeof(Crab)] = new Color(0.85f, 0.35f, 0.12f),
+        [typeof(Rat)] = new Color(0.40f, 0.35f, 0.45f),
+    };
+
+    private static Color ColorForMob(Mob mob)
+    {
+        return MobColors.TryGetValue(mob.GetType(), out var c) ? c : new Color(0.7f, 0.2f, 0.2f);
+    }
 
     public override void _Ready()
     {
@@ -96,7 +112,11 @@ public partial class GameScene : Node3D, IGameView
         _chars.AddChild(_heroView);
         Dungeon.Hero.Sprite = _heroView;
         _heroView.Place(Dungeon.Hero.Pos);
-        // TODO: a view per mob, each placed and show when visible
+
+        foreach (var mob in Dungeon.Level.Mobs)
+        {
+            AddMob(mob);
+        }
 
         _camera.Follow(_heroView);
         _camera.Snap();
@@ -125,6 +145,8 @@ public partial class GameScene : Node3D, IGameView
             Dungeon.Hero.Sprite =
                 NullCharView.Instance; // no core code can touch a freed node between ClearChars and Build
         }
+
+        _mobViews.Clear();
     }
 
     public override void _Process(double delta)
@@ -135,6 +157,29 @@ public partial class GameScene : Node3D, IGameView
         }
 
         Actor.Process();
+
+        if (Dungeon.Level != null)
+        {
+            foreach (var (mob, view) in _mobViews.ToArray())
+            {
+                if (!Dungeon.Level.Mobs.Contains(mob))
+                {
+                    _mobViews.Remove(mob);
+                    view.InterruptMotion(); // kills the tween so no completion fires into a freed node
+                    // InterruptMotion() never raises Finished, so if this mob was Actor._current
+                    // (frozen mid its own attack tween) nothing would ever clear that pointer and
+                    // Actor.Process() would stop dispatching turns to everyone, forever
+                    // Next() is a no-op for any mob that is not current, so this is free insurance
+                    mob.Next();
+                    mob.Sprite = NullCharView.Instance;
+                    view.QueueFree();
+                    continue;
+                }
+
+                view.Visible = Level.FieldOfView[mob.Pos];
+                view.SetSleeping(mob.State == mob.SleepingState);
+            }
+        }
 
         if (_startupCommands.Count > 0 && Dungeon.Hero.Ready && _openWindows == 0)
         {
@@ -332,11 +377,48 @@ public partial class GameScene : Node3D, IGameView
 
     public void AddMob(Mob mob)
     {
-        // stub for IGameView
+        var view = CharView.For(mob, ColorForMob(mob));
+        _chars.AddChild(view);
+        mob.Sprite = view;
+        view.Place(mob.Pos);
+        if (mob.Flying)
+        {
+            // applied after place.
+            // Place() sets position outright, so an offset added before it
+            // would be overwritten immediately
+            view.Position += new Vector3(0f, 0.35f, 0f);
+        }
+
+        view.Visible = Level.FieldOfView[mob.Pos];
+        _mobViews[mob] = view;
     }
 
     public void GameOver()
     {
-        // stub for IGameView
+        // TODO: java shows GAME_OVER banner and plays SND_DEATH then the rankings scene takes over
+        var body = $"{Dungeon.ResultDescription}\n\n" +
+                   $"Level {Dungeon.Hero.Lvl}  ·  deepest floor {Statistics.DeepestFloor}";
+
+        _pane.ShowWindow(
+            new WindowRequest("You died", body, ["Restart", "Quit"], index =>
+            {
+                if (index == 0)
+                {
+                    Restart();
+                }
+                else
+                {
+                    GetTree().Quit();
+                }
+            }),
+            () => { });
+    }
+
+    private void Restart()
+    {
+        Dungeon.Reset();
+        Interlevel.Mode = InterlevelMode.Descend;
+        Interlevel.Run();
+        Build();
     }
 }
