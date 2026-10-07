@@ -383,7 +383,7 @@ public abstract class Level : IBundlable
             if (_level.Mobs.Count < _level.NMobs())
             {
                 var mob = Bestiary.Mutable(Dungeon.Depth);
-                if (mob != null)
+                if (mob != null) // bestiary returns null at depths whose mobs are not ported yet
                 {
                     // TODO: mob.state = mob.Wandering
                     mob.Pos = _level.RandomRespawnCell();

@@ -47,7 +47,7 @@ public class DungeonTests : DungeonFixture
         Assert.True(Dungeon.Visible[level.Entrance]);
         Assert.True(level.Visited[level.Entrance]);
         Assert.Contains(Dungeon.Hero, Actor.All());
-        Assert.Equal(2, Actor.All().Count); // hero and respawner
+        Assert.Equal(2 + level.Mobs.Count, Actor.All().Count);
         Assert.Equal(8, Dungeon.Hero.ViewDistance);
         Assert.Equal(1, View.ObserveCount);
 

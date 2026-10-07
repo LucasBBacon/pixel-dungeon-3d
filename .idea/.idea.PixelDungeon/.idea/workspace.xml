@@ -14,21 +14,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Albino.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Crab.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Gnoll.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Rat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SewerMobTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/BestiaryTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Bestiary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Bestiary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/SewerLevelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/SewerLevelTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -97,6 +97,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Bestiary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Mob.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/NPC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Assets.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Challenges.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,8 +150,10 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/BestiaryTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/MobAiTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SewerMobTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SwarmTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonFixture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonPathTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -316,7 +319,7 @@
       <workItem from="1790535350429" duration="6192000" />
       <workItem from="1790717044565" duration="66823000" />
       <workItem from="1791187287982" duration="12967000" />
-      <workItem from="1791206921435" duration="6207000" />
+      <workItem from="1791206921435" duration="15105000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -542,7 +545,23 @@
       <option name="project" value="LOCAL" />
       <updated>1791232919796</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feat(mobs): Rat, Albino, Gnoll and Crab&#10;Stat blocks copied verbatim, with tests that assert every number against the Java rather than against the implementation. Albino subclasses Rat as in the original and adds the 1-in-2 Bleeding proc; Crab keeps its speed of 2 and its &quot;parried&quot; defense verb.">
+      <option name="closed" value="true" />
+      <created>1791236875455</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1791236875455</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes.">
+      <option name="closed" value="true" />
+      <created>1791317005662</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1791317005662</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,8 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): port Bundle objects, collections, enums, and aliases" />
-    <MESSAGE value="feat(core): port PathFinder grid BFS" />
     <MESSAGE value="eat(core): port Graph distance map and path builder" />
     <MESSAGE value="docs: add GPLv3 license and rewrite README for the C# port" />
     <MESSAGE value="fix(core): harden Bundle against non-finite floats and failed stream reads&#10;&#10;Put(float) drops NaN and infinity as the Java's JSONObject does; Read(Stream) returns null on any failure as the Java does; the mistyped-key test is renamed to say what it asserts. GetEnum and Value document where they are stricter or looser than the Java." />
@@ -588,7 +605,9 @@
     <MESSAGE value="docs: sub-project 1 complete; README status and plan notes&#10;fix: final review wave: reset the chasm confirmation, turn the hero view, null the freed sprite, clear the seam on exit, cover the dr roll; docs corrected" />
     <MESSAGE value="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob." />
     <MESSAGE value="feat(mobs): damage, death, experience and loot&#10;Damage recovers from Terror and wakes a sleeper to Wandering. DefenseSkill returns 0 until the mob has seen someone, which is the sneak-attack rule. Destroy grants experience and moves the run counters, Die drops loot only while the hero is within MaxLvl + 2.&#10;DropLoot ports its full dispatch and that gate so both are testable now, but the Gnoll, Crab and Swarm loot fields stay DEFERRED(sp3) because Gold, MysteryMeat and PotionOfHealing are for later" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(mobs): damage, death, experience and loot&#10;Damage recovers from Terror and wakes a sleeper to Wandering. DefenseSkill returns 0 until the mob has seen someone, which is the sneak-attack rule. Destroy grants experience and moves the run counters, Die drops loot only while the hero is within MaxLvl + 2.&#10;DropLoot ports its full dispatch and that gate so both are testable now, but the Gnoll, Crab and Swarm loot fields stay DEFERRED(sp3) because Gold, MysteryMeat and PotionOfHealing are for later" />
+    <MESSAGE value="feat(mobs): Rat, Albino, Gnoll and Crab&#10;Stat blocks copied verbatim, with tests that assert every number against the Java rather than against the implementation. Albino subclasses Rat as in the original and adds the 1-in-2 Bleeding proc; Crab keeps its speed of 2 and its &quot;parried&quot; defense verb." />
+    <MESSAGE value="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

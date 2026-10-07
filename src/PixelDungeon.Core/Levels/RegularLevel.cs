@@ -533,7 +533,7 @@ public abstract class RegularLevel : Level
             var mob = Bestiary.Mob(Dungeon.Depth);
             if (mob == null)
             {
-                continue;
+                continue; // Bestiary returns null at depths whose mobs are not ported yet
             }
 
             do

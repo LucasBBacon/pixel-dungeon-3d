@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Utils;
 
@@ -65,6 +66,29 @@ public class SewerLevelTests : DungeonFixture
             Assert.Equal(0, level.SecretDoors);
             Assert.DoesNotContain(level.Map, t => (Terrain.Flags[t] & Terrain.Secret) != 0);
         }
+    }
+
+    [Fact]
+    public void Border_IsImpassable_AndHasNoHeapsYet()
+    {
+        var level = Generate(1, 1);
+        for (var i = 0; i < Level.Width; i++)
+        {
+            Assert.False(Level.Passable[i]);
+            Assert.False(Level.Passable[Level.Length - 1 - i]);
+            Assert.False(Level.Passable[i * Level.Width]);
+            Assert.False(Level.Passable[i * Level.Width + Level.Width - 1]);
+        }
+
+        Assert.Empty(level.Heaps); // TODO: heaps
+    }
+
+    [Fact]
+    public void CreateMobs_AtDepthOne_PopulatesOnlyRats()
+    {
+        var level = Generate(1, 1);
+        Assert.NotEmpty(level.Mobs);
+        Assert.All(level.Mobs, m => Assert.IsType<Rat>(m));
     }
 
     [Fact]
@@ -148,6 +172,5 @@ public class SewerLevelTests : DungeonFixture
         Assert.Equal(level.Exit, restored.Exit);
         Assert.True(restored.Visited[level.Entrance]);
         Assert.NotNull(restored.RoomAt(level.Entrance));
-
     }
 }
