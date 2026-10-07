@@ -15,24 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CellSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CellSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +132,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/MobAiTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SewerMobTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SwarmTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/CombatIntegrationTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonFixture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonPathTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -314,7 +300,7 @@
       <workItem from="1790717044565" duration="66823000" />
       <workItem from="1791187287982" duration="12967000" />
       <workItem from="1791206921435" duration="18938000" />
-      <workItem from="1791376520954" duration="6279000" />
+      <workItem from="1791376520954" duration="7936000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -596,7 +582,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791382892033</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="feat: sub-project 2 complete, fight through the Sewers and die&#10;Two integration tests close the loop: killing a rat earns its experience and moves the run counters, and dying to one records the cause in Dungeon.ResultDescription and reaches GameScene.GameOver.&#10;ReallyDie now calls GameOver. README and the roadmap record sub-project 2 as complete.">
+      <option name="closed" value="true" />
+      <created>1791383458295</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1791383458295</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="eat(core): add the view seam, GameScene/GLog/Sample facades, and item skeletons" />
     <MESSAGE value="feat(core): port the Level map shell, Painter, ShadowCaster, and Dungeon shell" />
     <MESSAGE value="feat(core): port Actor, Buff, Char, Door, field of view, and the hero and mob shells" />
     <MESSAGE value="feat(core): port Ballistica and the Dungeon path helpers" />
@@ -642,7 +635,8 @@
     <MESSAGE value="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java." />
     <MESSAGE value="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done." />
     <MESSAGE value="feat(view): XP readout and the spawn/kill debug commands&#10;The status pane gains hero level and experience beside HP and depth. spawn [n] places mobs on free cells around the hero and kill destroys every mob in sight through Die, so experience, loot and the death log all run. These are what make depths 1 to 4 testable without grinding.&#10;kill recomputes Level.FieldOfView for the hero via Dungeon.Observe() before reading it: the buffer is one shared static array that every actor's Act() overwrites with its own viewshed, so without recomputing it kill could act on whatever mob last moved instead of what the hero can see." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): XP readout and the spawn/kill debug commands&#10;The status pane gains hero level and experience beside HP and depth. spawn [n] places mobs on free cells around the hero and kill destroys every mob in sight through Die, so experience, loot and the death log all run. These are what make depths 1 to 4 testable without grinding.&#10;kill recomputes Level.FieldOfView for the hero via Dungeon.Observe() before reading it: the buffer is one shared static array that every actor's Act() overwrites with its own viewshed, so without recomputing it kill could act on whatever mob last moved instead of what the hero can see." />
+    <MESSAGE value="feat: sub-project 2 complete, fight through the Sewers and die&#10;Two integration tests close the loop: killing a rat earns its experience and moves the run counters, and dying to one records the cause in Dungeon.ResultDescription and reaches GameScene.GameOver.&#10;ReallyDie now calls GameOver. README and the roadmap record sub-project 2 as complete." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: sub-project 2 complete, fight through the Sewers and die&#10;Two integration tests close the loop: killing a rat earns its experience and moves the run counters, and dying to one records the cause in Dungeon.ResultDescription and reaches GameScene.GameOver.&#10;ReallyDie now calls GameOver. README and the roadmap record sub-project 2 as complete." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

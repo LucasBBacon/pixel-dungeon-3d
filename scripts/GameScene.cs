@@ -176,7 +176,7 @@ public partial class GameScene : Node3D, IGameView
                     continue;
                 }
 
-                view.Visible = Level.FieldOfView[mob.Pos];
+                view.Visible = Dungeon.Visible[mob.Pos];
                 view.SetSleeping(mob.State == mob.SleepingState);
             }
         }
@@ -389,17 +389,35 @@ public partial class GameScene : Node3D, IGameView
             view.Position += new Vector3(0f, 0.35f, 0f);
         }
 
-        view.Visible = Level.FieldOfView[mob.Pos];
+        view.Visible = Dungeon.Visible[mob.Pos];
         _mobViews[mob] = view;
     }
 
     public void GameOver()
     {
         // TODO: java shows GAME_OVER banner and plays SND_DEATH then the rankings scene takes over
+
+        // every death path (melee in Char.Attack, chasm falls, Bleeding) calls
+        // GameScene.GameOver() from Hero.ReallyDie() *before* Dungeon.Fail(...) runs
+        // and populates Dungeon.ResultDescription
+        // the Java gets away with the same ordering because its gameOver() only shows
+        // a banner and the rankings scene reads resultDescription much later
+        // so defer by one frame and build the body inside the deferred call, once
+        // ResultDescription is actually set
+        // a plain method reference, not an expression lambda — this project has hit Godot's
+        // lambda-to-Task conversion trap before (see the level-switch deferral above)
+        Callable.From(ShowDeathWindow).CallDeferred();
+    }
+
+    private void ShowDeathWindow()
+    {
         var body = $"{Dungeon.ResultDescription}\n\n" +
                    $"Level {Dungeon.Hero.Lvl}  ·  deepest floor {Statistics.DeepestFloor}";
 
-        _pane.ShowWindow(
+        // Through the counted ShowWindow(request) path (not _pane.ShowWindow directly)
+        // so _openWindows/UpdateSelector disable the selector while this is up
+        // otherwise WASD input reaches a dead hero behind the modal
+        ShowWindow(
             new WindowRequest("You died", body, ["Restart", "Quit"], index =>
             {
                 if (index == 0)
@@ -410,8 +428,7 @@ public partial class GameScene : Node3D, IGameView
                 {
                     GetTree().Quit();
                 }
-            }),
-            () => { });
+            }));
     }
 
     private void Restart()

@@ -80,7 +80,7 @@ public partial class CellSelector : Node
 
     public override void _Process(double delta)
     {
-        if (!Enabled || Dungeon.Hero == null || !Dungeon.Hero.Ready)
+        if (!Enabled || Dungeon.Hero == null || !Dungeon.Hero.Ready || !Dungeon.Hero.IsAlive())
         {
             return;
         }
@@ -150,9 +150,13 @@ public partial class CellSelector : Node
         Select(x + y * Level.Width);
     }
 
+    // CellSelector.select in the Java: only while the hero is ready
+    // The IsAlive() check is belt-and-braces
+    // GameScene routes the death window through the counted ShowWindow so Enabled should already be false by the
+    // time this could fire, but a dead-but-Ready hero must never act again regardless of how it got asked to.
     private static void Select(int cell)
     {
-        if (Dungeon.Hero.Ready)
+        if (Dungeon.Hero.Ready && Dungeon.Hero.IsAlive())
         {
             Dungeon.Hero.Handle(cell);
         }

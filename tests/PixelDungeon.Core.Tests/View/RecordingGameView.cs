@@ -20,7 +20,14 @@ public class RecordingGameView : IGameView
     public readonly List<Heap> AddedHeaps = [];
     public readonly List<Heap> DiscardedHeaps = [];
     public readonly List<Mob> AddedMobs = [];
+
     public int GameOvers;
+
+    // Dungeon.ResultDescription as it stood at the moment GameOver() was called not afterward
+    // Every Core death path calls GameOver() before Dungeon.Fail(...) sets this,
+    // so it captures the real (and, in the Godot view, deferral-worthy) ordering
+    // instead of the end-of-test snapshot
+    public string ResultDescriptionAtGameOver;
 
     public void UpdateMap() => FullMapUpdates++;
 
@@ -48,7 +55,12 @@ public class RecordingGameView : IGameView
 
     public void DiscardHeap(Heap heap) => DiscardedHeaps.Add(heap);
     public void AddMob(Mob mob) => AddedMobs.Add(mob);
-    public void GameOver() => GameOvers++;
+
+    public void GameOver()
+    {
+        GameOvers++;
+        ResultDescriptionAtGameOver = Dungeon.ResultDescription;
+    }
 
     public bool Logged(string fragment) => Logs.Exists(l => l.Text.Contains(fragment));
 }

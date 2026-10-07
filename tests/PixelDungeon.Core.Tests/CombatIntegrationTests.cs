@@ -56,5 +56,17 @@ public class CombatIntegrationTests : DungeonFixture
         Assert.False(hero.IsAlive());
         Assert.Contains("marsupial rat", Dungeon.ResultDescription);
         Assert.Equal(1, View.GameOvers);
+
+        // Pins the actual ordering defect the Godot-side fix works around
+        // Char.Attack calls enemy.Damage(...)
+        // runs Die -> ReallyDie -> GameScene.GameOver()
+        // and only *afterward* calls Dungeon.Fail(...), which sets ResultDescription
+        // So at the moment Core calls GameOver(), the cause is not there yet. This is by
+        // design on the Core side (the Java has the same ordering and gets away with it
+        // because its gameOver() only shows a banner)
+        // the Godot view is the one that must defer building the death window's body, not this method
+        // If this ever starts asserting non-null, the ordering changed and the Godot-side deferral
+        // in GameScene.GameOver() should be re-examined for whether it is still needed
+        Assert.Null(View.ResultDescriptionAtGameOver);
     }
 }
