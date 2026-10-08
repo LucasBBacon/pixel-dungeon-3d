@@ -13,6 +13,7 @@ public class FakeCharView : ICharView
     public int Bursts;
     public bool Died;
     public readonly List<int> Attacks = [];
+    public readonly List<int> Zaps = [];
     public bool AlertShown;
 
     public void Place(int cell) => Placed.Add(cell);
@@ -29,6 +30,8 @@ public class FakeCharView : ICharView
     public void Operate(int cell) => Operations.Add(cell);
 
     public void Attack(int cell) => Attacks.Add(cell);
+
+    public void Zap(int cell) => Zaps.Add(cell);
 
     public void ShowAlert() => AlertShown = true;
 

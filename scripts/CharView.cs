@@ -156,6 +156,17 @@ public partial class CharView : Node3D, ICharView
         _ch.OnAttackComplete();
     }
 
+    // CharSprite.zap
+    // turn toward the cell and play zap animation
+    // base CharSprite has no completion callback
+    public void Zap(int cell)
+    {
+        TurnTo(_ch.Pos, cell);
+        var tween = CreateTween();
+        tween.TweenProperty(_body, "scale", new Vector3(0.8f, 1.2f, 0.8f), 0.08);
+        tween.TweenProperty(_body, "scale", Vector3.One, 0.08);
+    }
+
     public void ShowAlert()
     {
         _emo.Text = "!";

@@ -431,6 +431,28 @@ public partial class GameScene : Node3D, IGameView
             }));
     }
 
+    public void PickUp(Item item)
+    {
+        // TODO: Toolbar.pickup flies the item into backpack button
+    }
+
+    public void SelectCell(ICellListener listener)
+    {
+        // TODO: cell selector hands the next click to the listener
+        listener.OnSelect(null);
+    }
+
+    public void Missile(int from, int to, Item item, Action onComplete)
+    {
+        // TODO: a MissileView flies the item before completing
+        onComplete();
+    }
+
+    public void RefreshQuickSlots()
+    {
+        // TODO: quick slot button re-resolve their items
+    }
+
     private void Restart()
     {
         Dungeon.Reset();

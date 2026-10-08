@@ -20,4 +20,8 @@ public interface IGameView
     void DiscardHeap(Heap heap);
     void AddMob(Mob mob);
     void GameOver();
+    void PickUp(Item item); // Toolbar.pickup, fly the item into the backpack button
+    void SelectCell(ICellListener listener); // next cell selection goes to the listener
+    void Missile(int from, int to, Item item, Action onComplete); // MissileSprite.reset, call onComplete exactly once
+    void RefreshQuickSlots(); // QuickSlot.Refresh()
 }

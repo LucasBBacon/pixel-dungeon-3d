@@ -24,6 +24,10 @@ public sealed class NullCharView : ICharView
     {
     }
 
+    public void Zap(int cell)
+    {
+    }
+
     public void ShowAlert()
     {
     }

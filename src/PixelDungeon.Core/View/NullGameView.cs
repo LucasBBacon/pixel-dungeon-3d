@@ -66,4 +66,19 @@ public sealed class NullGameView : IGameView
     public void GameOver()
     {
     }
+
+    public void PickUp(Item item)
+    {
+    }
+
+    public void SelectCell(ICellListener listener)
+    {
+    }
+
+    // no flight to wait for, so the throw resolves at once, tests and headless Core need this
+    public void Missile(int from, int to, Item item, Action onComplete) => onComplete();
+
+    public void RefreshQuickSlots()
+    {
+    }
 }

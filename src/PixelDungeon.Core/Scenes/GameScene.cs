@@ -41,4 +41,14 @@ public static class GameScene
     }
 
     public static void GameOver() => Instance.GameOver();
+
+    public static void PickUp(Item item) => Instance.PickUp(item);
+
+    public static void SelectCell(ICellListener listener) => Instance.SelectCell((listener));
+
+    // Item.cast in the java recycles a MissileSprite and resets it with this callback
+    public static void Missile(int from, int to, Item item, Action onComplete) =>
+        Instance.Missile(from, to, item, onComplete);
+    
+    public static void RefreshQuickSlots() => Instance.RefreshQuickSlots();
 }

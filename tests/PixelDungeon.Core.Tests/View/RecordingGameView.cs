@@ -51,9 +51,22 @@ public class RecordingGameView : IGameView
 
     public void SwitchLevel(InterlevelMode mode) => SwitchedModes.Add(mode);
 
-    public void AddHeap(Heap heap) => AddedHeaps.Add(heap);
+    public void AddHeap(Heap heap)
+    {
+        AddedHeaps.Add(heap);
+        var view = new FakeHeapView();
+        heap.Sprite = view;
+        view.Link(heap);
+    }
 
-    public void DiscardHeap(Heap heap) => DiscardedHeaps.Add(heap);
+    public void DiscardHeap(Heap heap)
+    {
+        DiscardedHeaps.Add(heap);
+        var view = new FakeHeapView();
+        heap.Sprite = view;
+        view.Link(heap);
+    }
+
     public void AddMob(Mob mob) => AddedMobs.Add(mob);
 
     public void GameOver()
@@ -61,6 +74,38 @@ public class RecordingGameView : IGameView
         GameOvers++;
         ResultDescriptionAtGameOver = Dungeon.ResultDescription;
     }
+
+    public readonly List<Item> PickedUp = [];
+    public readonly List<ICellListener> Listeners = [];
+    public readonly List<(int From, int To, Item item)> Missiles = [];
+    public bool HoldMissiles;
+    public int QuickSlotRefreshes;
+    private readonly Queue<Action> _heldMissiles = new();
+
+    public void PickUp(Item item) => PickedUp.Add(item);
+
+    public void SelectCell(ICellListener listener) => Listeners.Add(listener);
+
+
+    public void Missile(int from, int to, Item item, Action onComplete)
+    {
+        Missiles.Add((from, to, item));
+        if (HoldMissiles)
+        {
+            _heldMissiles.Enqueue(onComplete);
+        }
+        else
+        {
+            onComplete();
+        }
+    }
+
+    public void RefreshQuickSlots() => QuickSlotRefreshes++;
+
+    // what a click on a cell does to the listener the core installed last
+    public void Answer(int? cell) => Listeners[^1].OnSelect(cell);
+
+    public void CompleteMissile() => _heldMissiles.Dequeue();
 
     public bool Logged(string fragment) => Logs.Exists(l => l.Text.Contains(fragment));
 }

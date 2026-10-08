@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Utils;
+using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Items;
 
@@ -20,6 +21,7 @@ public class Heap : IBundlable
     public HeapType Type = HeapType.Heap;
     public int Pos = 0;
     public LinkedList<Item> Items = new();
+    public IHeapView Sprite = NullHeapView.Instance;
 
     public int Size()
     {

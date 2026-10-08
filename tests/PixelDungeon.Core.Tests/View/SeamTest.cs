@@ -1,5 +1,7 @@
+using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Utils;
@@ -109,6 +111,95 @@ public class SeamTest : DungeonFixture
     {
         GameScene.GameOver();
         Assert.Equal(1, View.GameOvers);
+    }
+
+    [Fact]
+    public void Facade_ForwardsPickUpSelectCellMissileAndQuickSlotRefresh()
+    {
+        var item = new Item();
+        var listener = new TestListener();
+        var completed = 0;
+
+        GameScene.PickUp(item);
+        GameScene.SelectCell(listener);
+        GameScene.Missile(3, 7, item, () => completed++);
+        GameScene.RefreshQuickSlots();
+
+        Assert.Same(item, View.PickedUp[0]);
+        Assert.Same(listener, View.Listeners[0]);
+        Assert.Equal((3, 7, item), View.Missiles[0]);
+        Assert.Equal(1, completed);
+        Assert.Equal(1, View.QuickSlotRefreshes);
+    }
+
+    [Fact]
+    public void RecordingGameView_HeldMissile_CompletesOnlyWhenReleased()
+    {
+        var completed = 0;
+        View.HoldMissiles = true;
+
+        GameScene.Missile(1, 2, null, () => completed++);
+        Assert.Equal(0, completed);
+
+        View.CompleteMissile();
+        Assert.Equal(1, completed);
+    }
+
+    [Fact]
+    public void RecordingGameView_Answer_SelectsOnTheLatestListener()
+    {
+        var first = new TestListener();
+        var second = new TestListener();
+        GameScene.SelectCell(first);
+        GameScene.SelectCell(second);
+
+        View.Answer(42);
+
+        Assert.Null(first.Selected);
+        Assert.Equal(42, second.Selected);
+    }
+
+    [Fact]
+    public void NullGameView_Missile_CompletesImmediately()
+    {
+        var completed = 0;
+        NullGameView.Instance.Missile(1, 2, null, () => completed++);
+        Assert.Equal(1, completed);
+    }
+
+    [Fact]
+    public void Heap_Sprite_DefaultsToTheNullView()
+    {
+        Assert.Same(NullHeapView.Instance, new Heap().Sprite);
+    }
+
+    [Fact]
+    public void AddHeap_AssignsALinkedHeapView()
+    {
+        var heap = new Heap { Pos = 9 };
+        GameScene.Add(heap);
+        var view = Assert.IsType<FakeHeapView>(heap.Sprite);
+        Assert.Same(heap, view.Links[0]);
+    }
+
+    [Fact]
+    public void Glowing_SplitsTheColourIntoChannels()
+    {
+        var glowing = new Glowing(0xFF8000);
+
+        Assert.Equal(0xFF8000, glowing.Color);
+        Assert.Equal(1f, glowing.Red);
+        Assert.Equal(128 / 255f, glowing.Green);
+        Assert.Equal(0f, glowing.Blue);
+        Assert.Equal(1f, glowing.Period);
+        Assert.Equal(0.6f, Glowing.White.Period);
+    }
+
+    private sealed class TestListener : ICellListener
+    {
+        public int? Selected;
+        public void OnSelect(int? cell) => Selected = cell;
+        public string Prompt() => "pick a cell";
     }
 
     // minimal mob for now
