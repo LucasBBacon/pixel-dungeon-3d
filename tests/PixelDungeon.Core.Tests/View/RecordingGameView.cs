@@ -54,17 +54,21 @@ public class RecordingGameView : IGameView
     public void AddHeap(Heap heap)
     {
         AddedHeaps.Add(heap);
-        var view = new FakeHeapView();
-        heap.Sprite = view;
-        view.Link(heap);
+        LinkNewSprite(heap);
     }
 
     public void DiscardHeap(Heap heap)
     {
         DiscardedHeaps.Add(heap);
+        LinkNewSprite(heap);
+    }
+
+    private FakeHeapView LinkNewSprite(Heap heap)
+    {
         var view = new FakeHeapView();
         heap.Sprite = view;
         view.Link(heap);
+        return view;
     }
 
     public void AddMob(Mob mob) => AddedMobs.Add(mob);
@@ -105,7 +109,7 @@ public class RecordingGameView : IGameView
     // what a click on a cell does to the listener the core installed last
     public void Answer(int? cell) => Listeners[^1].OnSelect(cell);
 
-    public void CompleteMissile() => _heldMissiles.Dequeue();
+    public void CompleteMissile() => _heldMissiles.Dequeue()();
 
     public bool Logged(string fragment) => Logs.Exists(l => l.Text.Contains(fragment));
 }

@@ -4,6 +4,7 @@ using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core;
@@ -50,6 +51,9 @@ public static class Dungeon
         NightMode = false;
         Array.Fill(Visible, false);
         DroppedItems = new Dictionary<int, List<Item>>();
+        QuickSlot.PrimaryValue = null;
+        QuickSlot.SecondaryValue = null;
+        QuickSlot.LastTarget = null;
         PotionOfStrength = 0;
         ScrollsOfUpgrade = 0;
         ScrollsOfEnchantment = 0;
@@ -92,7 +96,8 @@ public static class Dungeon
 
         Room.ShuffleTypes();
 
-        // TODO: Quickslot.PrimaryValue & SecondaryValue cleared
+        QuickSlot.PrimaryValue = null;
+        QuickSlot.SecondaryValue = null;
 
         Hero = new Hero();
         Hero.Live();

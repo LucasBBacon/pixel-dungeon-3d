@@ -12,8 +12,8 @@ public class HeapTest
         heap.Drop(null);
         Assert.Equal(0, heap.Size());
         Assert.Null(heap.Peek());
-        var first = new Item { Name = "first" };
-        var second = new Item { Name = "second" };
+        var first = new Item();
+        var second = new Item();
         heap.Drop(first);
         heap.Drop(second);
         Assert.Equal(2, heap.Size());
