@@ -160,3 +160,24 @@ packages/
 .DS_Store
 
 _NCrunch*
+
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# superpowers SDD scratch workspace
+.superpowers/
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+TestResults/
+
+# Godot Git plugin: a per-developer editor tool shipped as platform binaries.
+# See README "Editor plugins" for the install path.
+/addons/godot-git-plugin/
+
+# The open Godot editor regenerates the deleted demo scene from a stale tab.
+/scenes/main.tscn

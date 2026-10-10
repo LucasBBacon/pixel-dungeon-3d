@@ -1,4 +1,6 @@
 using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
@@ -17,7 +19,11 @@ public class Item : IBundlable
 
     private const float DurabilityWarningLevel = 1 / 6f;
 
-    // TODO: TxtPackFull, TimeToThrow/PickUp/Drop, AcDrop/AcThrow, actions, pick up, drop, throw, collect, detach
+    private const string TxtPackFull = "Your pack is too full for the {0}";
+
+    protected const float TimeToPickUp = 1.0f;
+
+    // TODO: TimeToThrow/PickUp/Drop, AcDrop/AcThrow, actions, pick up, drop, throw, collect, detach
 
     public string DefaultAction;
 
@@ -41,6 +47,123 @@ public class Item : IBundlable
     public Item()
     {
         _durability = MaxDurability(); // copying java's field initializer
+    }
+
+    public virtual bool DoPickUp(Hero hero)
+    {
+        if (Collect(hero.Belongings.Backpack))
+        {
+            GameScene.PickUp(this);
+            Sample.Play(Assets.SndItem);
+            hero.SpendAndNext(TimeToPickUp);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public virtual bool Collect(Bag container)
+    {
+        var items = container.Items;
+
+        if (items.Contains(this))
+        {
+            return true;
+        }
+
+        foreach (var item in items)
+        {
+            if (item is Bag bag && bag.Grab(this))
+            {
+                return Collect(bag);
+            }
+        }
+
+        if (Stackable)
+        {
+            var c = GetType();
+            foreach (var item in items.Where(item => item.GetType() == c))
+            {
+                item.QuantityValue += QuantityValue;
+                item.UpdateQuickslot();
+                return true;
+            }
+        }
+
+        if (items.Count < container.Size)
+        {
+            // TODO: Badges.validateItemLevelAquired(this) while the hero is alive
+
+            items.Add(this);
+            QuickSlot.Refresh();
+
+            // Collections.sort is a stable merge sort; List.Sort is not. OrderBy is stable.
+            var sorted = items.OrderBy(Generator.Order).ToList();
+            items.Clear();
+            items.AddRange(sorted);
+            return true;
+        }
+        else
+        {
+            GLog.N(TxtPackFull, Name());
+            return false;
+        }
+    }
+
+    public virtual bool Collect() => Collect(Dungeon.Hero.Belongings.Backpack);
+
+    public Item Detach(Bag container)
+    {
+        switch (QuantityValue)
+        {
+            case <= 0:
+                return null;
+            case 1:
+                return DetachAll(container);
+            default:
+                QuantityValue--;
+                UpdateQuickslot();
+
+                try
+                {
+                    var detached = (Item)Activator.CreateInstance(GetType());
+                    detached.OnDetach();
+                    return detached;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+        }
+    }
+
+    public Item DetachAll(Bag container)
+    {
+        foreach (var item in container.Items)
+        {
+            if (item == this)
+            {
+                container.Items.Remove(this);
+                item.OnDetach();
+                QuickSlot.Refresh();
+                return this; // returns before enumerator advances past removal
+            }
+
+            if (item is not Bag bag) continue;
+            
+            if (bag.Contains(this))
+            {
+                return DetachAll(bag);
+            }
+        }
+
+        return this;
+    }
+
+    protected virtual void OnDetach()
+    {
     }
 
     public int Level() => _level;
@@ -279,7 +402,7 @@ public class Item : IBundlable
     private const string TagCursedKnown = "cursedKnown";
     private const string TagDurability = "durability";
 
-    public void RestoreFromBundle(Bundle bundle)
+    public virtual void RestoreFromBundle(Bundle bundle)
     {
         QuantityValue = bundle.GetInt(TagQuantity);
         LevelKnown = bundle.GetBoolean(TagLevelKnown);
@@ -306,7 +429,7 @@ public class Item : IBundlable
         QuickSlot.Restore(bundle, this);
     }
 
-    public void StoreInBundle(Bundle bundle)
+    public virtual void StoreInBundle(Bundle bundle)
     {
         bundle.Put(TagQuantity, QuantityValue);
         bundle.Put(TagLevel, _level);

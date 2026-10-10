@@ -1,4 +1,3 @@
-using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;

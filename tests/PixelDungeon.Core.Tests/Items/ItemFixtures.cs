@@ -33,3 +33,11 @@ public class DurableItem : Item
 
     public override int MaxDurability(int lvl) => 12;
 }
+
+public class Scroll : Item
+{
+    public Scroll()
+    {
+        NameValue = "test scroll";
+    }
+}
