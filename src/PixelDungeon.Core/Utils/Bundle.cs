@@ -226,8 +226,16 @@ public class Bundle
         Aliases[alias] = type.FullName;
     }
 
-    private static Type ResolveType(string name)
+    internal static Type ResolveType(string name)
     {
+        // Class.forName("") throws in java too
+        // Assembly.GetType throws ArgumentException specifically for null/empty
+        // instead of just returning null, so that case is guarded here rather than at each caller
+        if (string.IsNullOrEmpty(name))
+        {
+            return null;
+        }
+
         var type = typeof(Bundle).Assembly.GetType(name);
         if (type != null)
         {

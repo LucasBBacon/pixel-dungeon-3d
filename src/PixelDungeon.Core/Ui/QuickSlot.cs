@@ -37,7 +37,42 @@ public static class QuickSlot
 
     private const string TagQuickslot2 = "quickslot2";
 
-    // TODO: save(Bundle) and restore(Bundle) store a slotted class by name when the hero holds one
+    // TODO: Dungeon.saveGame and loadGAme call Save(bundle) and Restore(bundle)
+    public static void Save(Bundle bundle)
+    {
+        var stuff = Dungeon.Hero.Belongings;
+
+        if (PrimaryValue is Type primary && stuff.GetItem(primary) != null)
+        {
+            bundle.Put(TagQuickslot1, primary.FullName);
+        }
+
+        if (SecondaryValue is Type secondary && stuff.GetItem(secondary) != null && SecondQuickslot)
+        {
+            bundle.Put(TagQuickslot2, secondary.FullName);
+        }
+    }
+
+    public static void Restore(Bundle bundle)
+    {
+        PrimaryValue = null;
+        SecondaryValue = null;
+
+        // Class.forName in the Java
+        // an unknown name leaves the slot empty, as its catch does.
+        var qsClass = bundle.GetString(TagQuickslot1);
+        if (qsClass != null)
+        {
+            PrimaryValue = Bundle.ResolveType(qsClass);
+        }
+
+        qsClass = bundle.GetString(TagQuickslot2);
+        if (qsClass != null)
+        {
+            SecondaryValue = Bundle.ResolveType(qsClass);
+        }
+    }
+
     public static void Save(Bundle bundle, Item item)
     {
         if (ReferenceEquals(item, PrimaryValue))

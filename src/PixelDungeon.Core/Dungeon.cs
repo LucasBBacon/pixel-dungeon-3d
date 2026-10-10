@@ -1,6 +1,8 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
@@ -54,6 +56,7 @@ public static class Dungeon
         QuickSlot.PrimaryValue = null;
         QuickSlot.SecondaryValue = null;
         QuickSlot.LastTarget = null;
+        IronKey.CurDepthQuantity = 0;
         PotionOfStrength = 0;
         ScrollsOfUpgrade = 0;
         ScrollsOfEnchantment = 0;
@@ -104,6 +107,8 @@ public static class Dungeon
 
         // TODO: Badges.Reset()
         // TODO: StartScene.CurClass.InitHero(Hero) sets class, kit, etc
+        // TODO: (hero.belongings.armor = new ClothArmor()).identify() and new Food().identify().collect()
+        new Keyring().Collect();
         Hero.UpdateAwareness(); // InitHero ends with UpdateAwareness(), lvl 1 Rogue 0.1 -> 0.15
     }
 

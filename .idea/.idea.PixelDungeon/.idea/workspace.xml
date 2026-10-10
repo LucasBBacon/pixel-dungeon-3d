@@ -14,16 +14,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Keyring.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/Key.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Sprites/ItemSpriteSheet.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ContainerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/GoldenKey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/IronKey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/SkeletonKey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -33,9 +32,7 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -48,7 +45,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +118,10 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/GoldenKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/IronKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/Key.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/SkeletonKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Chasm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Door.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" root0="FORCE_HIGHLIGHTING" />
@@ -172,6 +171,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/BuffTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroCombatTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/BestiaryTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -355,7 +355,7 @@
       <workItem from="1791206921435" duration="18938000" />
       <workItem from="1791376520954" duration="24533000" />
       <workItem from="1791549484746" duration="6864000" />
-      <workItem from="1791582981535" duration="5951000" />
+      <workItem from="1791582981535" duration="10788000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -669,7 +669,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791548595206</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack.">
+      <option name="closed" value="true" />
+      <created>1791650451764</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1791650451764</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +698,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): port Room, Patch, the four basic painters, and RegularLevel room layout" />
     <MESSAGE value="feat(core): port the Level create pipeline, drop, press, chasm, high grass, sign, and level bundling" />
     <MESSAGE value="feat(core): port SewerLevel with generation invariants" />
     <MESSAGE value="feat(core): port Hero with move, stairs, search, rest, chasm, sign, and death" />
@@ -715,7 +722,8 @@
     <MESSAGE value="fix: game-over cause, mob visibility buffer, and death-window input lock&#10;Every death path (melee, chasm fall, bleeding) called GameScene.GameOver() from Hero.ReallyDie() before Dungeon.Fail() had a chance to run and set Dungeon.ResultDescription, so the &quot;You died&quot; window's first line was always blank. The Java gets away with the identical call order because its gameOver() only shows a banner and the rankings scene reads the cause much later; porting the call site verbatim without porting that laziness broke it here. GameOver() now defers building the window body by one frame (Callable.From(ShowDeathWindow).CallDeferred(), a method reference rather than an expression lambda per this project's earlier lambda-to-Task lesson), so the cause is always populated by the time the window reads it. Verified live in a headless run against both the fixed and reverted code: the reverted version prints ResultDescription='' at GameOver() time, the fix prints the real cause. That same GameOver() call bypassed the counted ShowWindow(request) path, so the death window never disabled CellSelector's input. Hero.Die clears CurAction but not Ready, so WASD behind the window still reached Handle() and could make a corpse walk and fight. GameOver() now routes through ShowWindow(request), and CellSelector's process and select paths also require Dungeon.Hero.IsAlive() as belt-and-braces. Restart's interaction with the open-window counter was traced end to end: the dialog's Confirmed handler runs Restart() synchronously before the dialog hides, so the counter always lands back on zero.&#10;GameScene's per-frame mob-visibility reconcile and AddMob both read Level.FieldOfView, a scratch buffer every Char.Act() overwrites with its own viewshed, mobs included. Reading it after a mob's turn shows the mob's view, not the hero's, so visible mobs could vanish and hidden ones pop into view for the length of an attack tween, and wrongly-hidden mobs would teleport instead of sliding. Both sites now read Dungeon.Visible.&#10;Finally, the death integration test asserted only end-of-test state, so it could not detect the ordering defect above: Dungeon.Fail() does run eventually, just after GameOver() rather than before. RecordingGameView now captures ResultDescription at the moment GameOver() is called, and the test asserts that capture is null, the honest, by-design contract on the Core side, which is exactly what the Godot-side deferral works around." />
     <MESSAGE value="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO." />
     <MESSAGE value="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim." />
+    <MESSAGE value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

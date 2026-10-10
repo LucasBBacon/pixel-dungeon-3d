@@ -90,4 +90,25 @@ public class QuickSlotTests : DungeonFixture
         Assert.Null(QuickSlot.PrimaryValue);
         Assert.Null(QuickSlot.SecondaryValue);
     }
+
+    [Fact]
+    public void SaveAndRestore_ForAClass_KeepsItOnlyWhileTheHeroHoldsOne()
+    {
+        QuickSlot.PrimaryValue = typeof(StackItem);
+
+        var empty = new Bundle();
+        QuickSlot.Save(empty);
+        Assert.False(empty.Contains("quickslot"));
+
+        new StackItem(2).Collect();
+        var bundle = new Bundle();
+        QuickSlot.Save(bundle);
+        QuickSlot.PrimaryValue = null;
+        QuickSlot.SecondaryValue = new TestItem();
+
+        QuickSlot.Restore(bundle);
+
+        Assert.Same(typeof(StackItem), QuickSlot.PrimaryValue);
+        Assert.Null(QuickSlot.SecondaryValue);
+    }
 }
