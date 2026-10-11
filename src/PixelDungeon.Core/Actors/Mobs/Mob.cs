@@ -356,16 +356,17 @@ public abstract class Mob : Char
             }
             else if (Loot is Type type)
             {
-                // TODO: Generator.Random(class<? extends Item>) picks from class table
-                item = Generator.Random();
+                item = Generator.Random(type);
             }
             else
             {
                 item = (Item)Loot;
             }
 
-            // TODO: .sprite.drop() animate heap
-            Dungeon.Level.Drop(item, Pos);
+            if (item != null)
+            {
+                Dungeon.Level.Drop(item, Pos).Sprite.Drop();
+            }
         }
     }
 

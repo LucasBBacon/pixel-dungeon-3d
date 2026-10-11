@@ -69,7 +69,7 @@ public class SewerLevelTests : DungeonFixture
     }
 
     [Fact]
-    public void Border_IsImpassable_AndHasNoHeapsYet()
+    public void Border_IsImpassable()
     {
         var level = Generate(1, 1);
         for (var i = 0; i < Level.Width; i++)
@@ -79,8 +79,6 @@ public class SewerLevelTests : DungeonFixture
             Assert.False(Level.Passable[i * Level.Width]);
             Assert.False(Level.Passable[i * Level.Width + Level.Width - 1]);
         }
-
-        Assert.Empty(level.Heaps); // TODO: heaps
     }
 
     [Fact]

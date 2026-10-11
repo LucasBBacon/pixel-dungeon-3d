@@ -220,12 +220,13 @@ public class LevelPipelineTests : DungeonFixture
     }
 
     [Fact]
-    public void RegularLevel_CreateItems_DropsNothingWhileGeneratorIsASkeleton_AndBundleKeepsRooms()
+    public void RegularLevel_CreateItems_DropsGoldHeaps_AndBundleKeepsRooms()
     {
         Dungeon.Depth = 1;
         var level = new BareRegularLevel();
         level.Create();
-        Assert.Empty(level.Heaps);
+        Assert.NotEmpty(level.Heaps);
+        Assert.All(level.Heaps.Values, heap => Assert.IsType<Gold>(heap.Peek()));
 
         var bundle = new Bundle();
         bundle.Put("level", level);

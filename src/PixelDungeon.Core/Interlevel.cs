@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Core;
@@ -26,6 +27,9 @@ public static class Interlevel
     // Mode is left set so the view can run the arrival and then clear it, just like GameScene.create in the java
     public static void Run()
     {
+        // interlevelScene's transition thread resets the genrator before every mode's body
+        Generator.Reset();
+
         switch (Mode)
         {
             case InterlevelMode.Descend:

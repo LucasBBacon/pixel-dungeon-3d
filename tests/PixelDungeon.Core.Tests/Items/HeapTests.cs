@@ -3,7 +3,7 @@ using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Tests.Items;
 
-public class HeapTest
+public class HeapTests
 {
     [Fact]
     public void Drop_IgnoresNull_AndPutsItemsFirst()
@@ -30,12 +30,5 @@ public class HeapTest
         Assert.Equal(77, restored.Pos);
         Assert.Equal(HeapType.Chest, restored.Type);
         Assert.Equal(0, restored.Size());
-    }
-
-    [Fact]
-    public void Generator_SkeletonReturnsNull()
-    {
-        Assert.Null(Generator.Random());
-        Assert.Null(Generator.Random(Generator.Category.Food));
     }
 }

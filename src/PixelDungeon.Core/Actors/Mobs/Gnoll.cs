@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Items;
+
 namespace PixelDungeon.Core.Actors.Mobs;
 
 public class Gnoll : Mob
@@ -12,8 +14,8 @@ public class Gnoll : Mob
         Exp = 2;
         MaxLvl = 8;
 
-        // TODO: loot = typeof(Gold)
-        // TODO: lootChance = 0.5f
+        Loot = typeof(Gold);
+        LootChance = 0.5f;
     }
 
     public override int DamageRoll() => Random.NormalIntRange(2, 5);

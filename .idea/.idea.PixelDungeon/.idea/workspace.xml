@@ -14,15 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/GoldenKey.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/IronKey.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/SkeletonKey.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Gnoll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Gnoll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Mob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Mob.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Bundle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Interlevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Interlevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -32,7 +31,9 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/HeapTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/HeapTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/SewerLevelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/SewerLevelTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -116,6 +117,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Keyring.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/GoldenKey.cs" root0="FORCE_HIGHLIGHTING" />
@@ -185,6 +187,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/GlobalUsing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/InterLevelTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ContainerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/HeapTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -355,7 +358,7 @@
       <workItem from="1791206921435" duration="18938000" />
       <workItem from="1791376520954" duration="24533000" />
       <workItem from="1791549484746" duration="6864000" />
-      <workItem from="1791582981535" duration="10788000" />
+      <workItem from="1791582981535" duration="17806000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -677,7 +680,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791650451764</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="feat(items): belongings, the three keys, and the key ring at start&#10;Belongings ports whole: the equipped-then-backpack enumeration, typed and by-class lookups, key lookup by exact class and depth, the iron key count, identify, observe, resurrect and bundling. Weapon, armour and ring slots stay typed Item until their classes are ported. &#10;Every new hero collects a key ring, the one initCommon line that needs nothing from a later slice. QuickSlot gains its class form, resolved by name through Bundle's type lookup.&#10;Bundle.ResolveType now guards a null/empty name instead of letting Assembly.GetType throw: Bundle.GetString returns &quot;&quot; for a missing key (matching Java's JSONObject.optString), and QuickSlot.Restore's class form has no surrounding try/catch, so an absent quickslot2 key would otherwise throw instead of leaving the slot empty.">
+      <option name="closed" value="true" />
+      <created>1791671399443</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1791671399443</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +709,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): port the Level create pipeline, drop, press, chasm, high grass, sign, and level bundling" />
     <MESSAGE value="feat(core): port SewerLevel with generation invariants" />
     <MESSAGE value="feat(core): port Hero with move, stairs, search, rest, chasm, sign, and death" />
     <MESSAGE value="feat(core): port Dungeon init, level switching, the in-memory level store, and Interlevel transitions" />
@@ -723,7 +733,8 @@
     <MESSAGE value="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO." />
     <MESSAGE value="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim." />
     <MESSAGE value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
+    <MESSAGE value="feat(items): belongings, the three keys, and the key ring at start&#10;Belongings ports whole: the equipped-then-backpack enumeration, typed and by-class lookups, key lookup by exact class and depth, the iron key count, identify, observe, resurrect and bundling. Weapon, armour and ring slots stay typed Item until their classes are ported. &#10;Every new hero collects a key ring, the one initCommon line that needs nothing from a later slice. QuickSlot gains its class form, resolved by name through Bundle's type lookup.&#10;Bundle.ResolveType now guards a null/empty name instead of letting Assembly.GetType throw: Bundle.GetString returns &quot;&quot; for a missing key (matching Java's JSONObject.optString), and QuickSlot.Restore's class form has no surrounding try/catch, so an absent quickslot2 key would otherwise throw instead of leaving the slot empty." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): belongings, the three keys, and the key ring at start&#10;Belongings ports whole: the equipped-then-backpack enumeration, typed and by-class lookups, key lookup by exact class and depth, the iron key count, identify, observe, resurrect and bundling. Weapon, armour and ring slots stay typed Item until their classes are ported. &#10;Every new hero collects a key ring, the one initCommon line that needs nothing from a later slice. QuickSlot gains its class form, resolved by name through Bundle's type lookup.&#10;Bundle.ResolveType now guards a null/empty name instead of letting Assembly.GetType throw: Bundle.GetString returns &quot;&quot; for a missing key (matching Java's JSONObject.optString), and QuickSlot.Restore's class form has no surrounding try/catch, so an absent quickslot2 key would otherwise throw instead of leaving the slot empty." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

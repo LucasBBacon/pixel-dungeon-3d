@@ -57,6 +57,7 @@ public static class Dungeon
         QuickSlot.SecondaryValue = null;
         QuickSlot.LastTarget = null;
         IronKey.CurDepthQuantity = 0;
+        Generator.Reset();
         PotionOfStrength = 0;
         ScrollsOfUpgrade = 0;
         ScrollsOfEnchantment = 0;
