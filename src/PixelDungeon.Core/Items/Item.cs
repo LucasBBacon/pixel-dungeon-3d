@@ -1,5 +1,7 @@
+using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Mechanics;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
@@ -23,7 +25,11 @@ public class Item : IBundlable
 
     protected const float TimeToPickUp = 1.0f;
 
-    // TODO: TimeToThrow/PickUp/Drop, AcDrop/AcThrow, actions, pick up, drop, throw, collect, detach
+    protected const float TimeToThrow = 1.0f;
+    protected const float TimeToDrop = 0.5f;
+
+    public const string AcDrop = "DROP";
+    public const string AcThrow = "THROW";
 
     public string DefaultAction;
 
@@ -49,6 +55,16 @@ public class Item : IBundlable
         _durability = MaxDurability(); // copying java's field initializer
     }
 
+    public virtual List<string> Actions(Hero hero)
+    {
+        var actions = new List<string>
+        {
+            AcDrop,
+            AcThrow
+        };
+        return actions;
+    }
+
     public virtual bool DoPickUp(Hero hero)
     {
         if (Collect(hero.Belongings.Backpack))
@@ -61,6 +77,49 @@ public class Item : IBundlable
         else
         {
             return false;
+        }
+    }
+
+    public virtual void DoDrop(Hero hero)
+    {
+        hero.SpendAndNext(TimeToDrop);
+        Dungeon.Level
+            .Drop(DetachAll(hero.Belongings.Backpack), hero.Pos)
+            .Sprite
+            .Drop(hero.Pos);
+    }
+
+    public virtual void DoThrow(Hero hero)
+    {
+        GameScene.SelectCell(Thrower);
+    }
+
+    public virtual void Execute(Hero hero, string action)
+    {
+        CurUser = hero;
+        CurItem = this;
+
+        if (action == AcDrop)
+        {
+            DoDrop(hero);
+        }
+        else if (action == AcThrow)
+        {
+            DoThrow(hero);
+        }
+    }
+
+    public virtual void Execute(Hero hero)
+    {
+        Execute(hero, DefaultAction);
+    }
+
+    protected virtual void OnThrow(int cell)
+    {
+        var heap = Dungeon.Level.Drop(this, cell);
+        if (!heap.IsEmpty())
+        {
+            heap.Sprite.Drop(cell);
         }
     }
 
@@ -152,7 +211,7 @@ public class Item : IBundlable
             }
 
             if (item is not Bag bag) continue;
-            
+
             if (bag.Contains(this))
             {
                 return DetachAll(bag);
@@ -442,5 +501,52 @@ public class Item : IBundlable
         }
 
         QuickSlot.Save(bundle, this);
+    }
+
+    public virtual void Cast(Hero user, int dst)
+    {
+        var cell = Ballistica.Cast(user.Pos, dst, false, true);
+        user.Sprite.Zap(cell);
+        user.Busy();
+
+        Sample.Play(Assets.SndMiss, 1.5f);
+
+        var enemy = Actor.FindChar(cell);
+        QuickSlot.Target(this, enemy);
+
+        // TODO: FIX THIS
+        var delay = TimeToThrow;
+        // TODO: a MissileWeapon scales delay by speedFactor(user)
+        // TODO: a SnipersMark on that enemy halves it and is removed
+        var finalDelay = delay;
+
+        // hero is Actor._current and stays so until SpendAndNext below, nothing acts while it flies
+        GameScene.Missile(user.Pos, cell, this, () =>
+        {
+            Detach(user.Belongings.Backpack).OnThrow(cell);
+            user.SpendAndNext(finalDelay);
+        });
+    }
+
+    protected static Hero CurUser = null;
+    protected static Item CurItem = null;
+
+    protected static readonly ICellListener Thrower = new ThrowListener();
+
+
+    private sealed class ThrowListener : ICellListener
+    {
+        public void OnSelect(int? target)
+        {
+            if (target != null)
+            {
+                CurItem.Cast(CurUser, target.Value);
+            }
+        }
+
+        public string Prompt()
+        {
+            return "Choose direction of throw";
+        }
     }
 }

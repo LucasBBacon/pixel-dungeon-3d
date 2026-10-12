@@ -7,6 +7,7 @@ using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Utils;
@@ -451,6 +452,11 @@ public partial class GameScene : Node3D, IGameView
     public void RefreshQuickSlots()
     {
         // TODO: quick slot button re-resolve their items
+    }
+
+    public void ShowBag(Bag bag)
+    {
+        // TODO: WndBag opens on this bag
     }
 
     private void Restart()

@@ -26,7 +26,7 @@ public class Gold : Item
         QuantityValue = value;
     }
 
-    // TODO: actions(hero) returns an empty list
+    public override List<string> Actions(Hero hero) => [];
 
     public override bool DoPickUp(Hero hero)
     {

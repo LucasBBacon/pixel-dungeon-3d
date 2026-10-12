@@ -1,6 +1,7 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Scenes;
@@ -51,4 +52,5 @@ public static class GameScene
         Instance.Missile(from, to, item, onComplete);
     
     public static void RefreshQuickSlots() => Instance.RefreshQuickSlots();
+    public static void SHowBag(Bag bag) => Instance.ShowBag(bag); // GameScene.show(new WndBag(...)) in java
 }

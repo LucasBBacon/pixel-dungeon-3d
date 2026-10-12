@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
 
 namespace PixelDungeon.Core.View;
 
@@ -24,4 +25,5 @@ public interface IGameView
     void SelectCell(ICellListener listener); // next cell selection goes to the listener
     void Missile(int from, int to, Item item, Action onComplete); // MissileSprite.reset, call onComplete exactly once
     void RefreshQuickSlots(); // QuickSlot.Refresh()
+    void ShowBag(Bag bag);
 }

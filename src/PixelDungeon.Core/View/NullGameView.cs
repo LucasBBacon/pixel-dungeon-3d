@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
 
 namespace PixelDungeon.Core.View;
 
@@ -79,6 +80,10 @@ public sealed class NullGameView : IGameView
     public void Missile(int from, int to, Item item, Action onComplete) => onComplete();
 
     public void RefreshQuickSlots()
+    {
+    }
+
+    public void ShowBag(Bag bag)
     {
     }
 }

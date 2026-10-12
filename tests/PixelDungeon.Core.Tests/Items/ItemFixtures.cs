@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
 
 namespace PixelDungeon.Core.Tests.Items;

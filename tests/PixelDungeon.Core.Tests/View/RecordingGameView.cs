@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Tests.View;
@@ -105,6 +106,9 @@ public class RecordingGameView : IGameView
     }
 
     public void RefreshQuickSlots() => QuickSlotRefreshes++;
+
+    public readonly List<Bag> ShownBags = [];
+    public void ShowBag(Bag bag) => ShownBags.Add(bag);
 
     // what a click on a cell does to the listener the core installed last
     public void Answer(int? cell) => Listeners[^1].OnSelect(cell);

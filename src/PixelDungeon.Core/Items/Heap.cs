@@ -33,6 +33,8 @@ public class Heap : IBundlable
         return Items.First?.Value;
     }
 
+    public bool IsEmpty() => Items == null || Items.Count == 0;
+
     public void Drop(Item item)
     {
         if (item == null)
@@ -40,8 +42,12 @@ public class Heap : IBundlable
             return; // generator returns null until implementation
         }
 
+        // TODO: stackable merge. Dewdrop goes last, updateImage()
         Items.AddFirst(item);
     }
+
+    // TODO: open(hero), pickUp(), replace(), destroy(), image(), glowing()
+    // TODO: burn(), freeze(), transmute(), burnFX(), evaporateFX()
 
     private const string PosConst = "pos";
     private const string TypeConst = "type";

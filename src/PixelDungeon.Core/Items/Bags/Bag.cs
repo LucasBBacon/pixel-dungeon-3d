@@ -1,11 +1,13 @@
 using System.Collections;
+using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Items.Bags;
 
 public class Bag : Item, IEnumerable<Item>
 {
-    // TODO: ACOpen is the default action
+    public const string AcOpen = "OPEN";
 
     public Char Owner;
 
@@ -16,6 +18,25 @@ public class Bag : Item, IEnumerable<Item>
     public Bag()
     {
         ImageValue = 11;
+        DefaultAction = AcOpen;
+    }
+
+    public override List<string> Actions(Hero hero)
+    {
+        var actions = base.Actions(hero);
+        return actions;
+    }
+
+    public override void Execute(Hero hero, string action)
+    {
+        if (action == AcOpen)
+        {
+            GameScene.SHowBag(this);
+        }
+        else
+        {
+            base.Execute(hero, action);
+        }
     }
 
     public override bool Collect(Bag container)
