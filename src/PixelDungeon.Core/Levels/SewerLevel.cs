@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Items;
+
 namespace PixelDungeon.Core.Levels;
 
 public class SewerLevel : RegularLevel
@@ -59,6 +61,24 @@ public class SewerLevel : RegularLevel
             Map[pos] = Terrain.Sign;
             break;
         }
+    }
+
+    protected override void CreateMobs()
+    {
+        base.CreateMobs();
+
+        // TODO: Ghost.Quest.spawn(this)
+    }
+
+    protected override void CreateItems()
+    {
+        if (Dungeon.DewVial && Random.Int(4 - Dungeon.Depth) == 0)
+        {
+            AddItemToSpawn(new DewVial());
+            Dungeon.DewVial = false;
+        }
+
+        base.CreateItems();
     }
 
     public override string TileName(int tile)

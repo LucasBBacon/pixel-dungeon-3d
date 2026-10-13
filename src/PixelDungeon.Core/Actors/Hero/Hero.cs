@@ -741,7 +741,12 @@ public class Hero : Char
     {
         CurAction = null;
 
-        // TODO: DewVial.AutoDrink(this)
+        DewVial.AutoDrink(this);
+        if (IsAlive())
+        {
+            // TODO: new Flare(8, 32).color(0xFFFF66, true).show(sprite, 2f)
+            return;
+        }
 
         Actor.FixTime();
         base.Die(cause);

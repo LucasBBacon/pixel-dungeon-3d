@@ -13,27 +13,23 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemActionTests.cs" afterDir="false" />
+    <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="feat(items): dewdrops, the dew vial, and the death save&#10;&#10;Dewdrops heal on pick-up or fill the vial; the vial drinks through the&#10;&#10;operate gate, spawns in the Sewers while its flag is set, and saves a&#10;&#10;dying hero when full. Trampled high grass drops dew on its 1-in-6 roll;&#10;&#10;the seed roll still runs but drops nothing until seeds are registered.&#10;&#10;A test pins a float edge: a full vial heals 21 at HT 20, visible only&#10;&#10;when auto-drink runs with HP below zero.">
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/DewVial.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Dewdrop.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/SewerLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/SewerLevel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -116,6 +112,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Interlevel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Keyring.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/DewVial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,6 +121,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/IronKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/Key.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Keys/SkeletonKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Dewdrop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Chasm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/Door.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" root0="FORCE_HIGHLIGHTING" />
@@ -187,6 +185,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/GlobalUsing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/InterLevelTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ContainerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/HeapTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemActionTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -222,6 +221,11 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeHeapView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -359,7 +363,8 @@
       <workItem from="1791206921435" duration="18938000" />
       <workItem from="1791376520954" duration="24533000" />
       <workItem from="1791549484746" duration="6864000" />
-      <workItem from="1791582981535" duration="23074000" />
+      <workItem from="1791582981535" duration="26276000" />
+      <workItem from="1791879769304" duration="6568000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -697,7 +702,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791757064271</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="feat(items): drop, throw, and opening a bag&#10;Item gains Actions, Execute, DoDrop, DoThrow, OnThrow and Cast. A throw asks the view for a cell through the thrower listener, traces a Ballistica bolt that stops on the first char, and hands the view a missile whose completion detaches one item, lands it, and spends the turn, so the hero stays Actor._current while it flies, exactly as in the Java. A test holds the missile and proves the scheduler waits. A bag's default action shows it through the new IGameView.ShowBag.">
+      <option name="closed" value="true" />
+      <created>1791804981642</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1791804981642</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,7 +731,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): port Hero with move, stairs, search, rest, chasm, sign, and death" />
     <MESSAGE value="feat(core): port Dungeon init, level switching, the in-memory level store, and Interlevel transitions" />
     <MESSAGE value="feat(view): render the level as placeholder cells with three fog states" />
     <MESSAGE value="feat(view): add the hero view, the follow camera, and the per-frame scheduler pump" />
@@ -743,7 +755,8 @@
     <MESSAGE value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
     <MESSAGE value="feat(items): belongings, the three keys, and the key ring at start&#10;Belongings ports whole: the equipped-then-backpack enumeration, typed and by-class lookups, key lookup by exact class and depth, the iron key count, identify, observe, resurrect and bundling. Weapon, armour and ring slots stay typed Item until their classes are ported. &#10;Every new hero collects a key ring, the one initCommon line that needs nothing from a later slice. QuickSlot gains its class form, resolved by name through Bundle's type lookup.&#10;Bundle.ResolveType now guards a null/empty name instead of letting Assembly.GetType throw: Bundle.GetString returns &quot;&quot; for a missing key (matching Java's JSONObject.optString), and QuickSlot.Restore's class form has no surrounding try/catch, so an absent quickslot2 key would otherwise throw instead of leaving the slot empty." />
     <MESSAGE value="feat(items): the generator tables behind a registry, and gold&#10;Generator ports all ten category tables verbatim and filters every roll through a type registry, as the Bestiary does. Only Gold is registered, so every random item is gold until 3b and 3c register theirs, a test records the deviation. Weights halve per roll and reset on every level transition, as InterlevelScene resets them. &#10;Gold ports whole, and Gnolls drop it.&#10;Updated two older tests whose expectations assumed Generator was still a skeleton (LevelPipelineTests.RegularLevel_CreateItems_..., renamed to ...DropsGoldHeaps..., SewerLevelTests.Border_IsImpassable_AndHasNoHeapsYet, renamed to Border_IsImpassable) now that level generation drops real gold heaps." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): the generator tables behind a registry, and gold&#10;Generator ports all ten category tables verbatim and filters every roll through a type registry, as the Bestiary does. Only Gold is registered, so every random item is gold until 3b and 3c register theirs, a test records the deviation. Weights halve per roll and reset on every level transition, as InterlevelScene resets them. &#10;Gold ports whole, and Gnolls drop it.&#10;Updated two older tests whose expectations assumed Generator was still a skeleton (LevelPipelineTests.RegularLevel_CreateItems_..., renamed to ...DropsGoldHeaps..., SewerLevelTests.Border_IsImpassable_AndHasNoHeapsYet, renamed to Border_IsImpassable) now that level generation drops real gold heaps." />
+    <MESSAGE value="feat(items): drop, throw, and opening a bag&#10;Item gains Actions, Execute, DoDrop, DoThrow, OnThrow and Cast. A throw asks the view for a cell through the thrower listener, traces a Ballistica bolt that stops on the first char, and hands the view a missile whose completion detaches one item, lands it, and spends the turn, so the hero stays Actor._current while it flies, exactly as in the Java. A test holds the missile and proves the scheduler waits. A bag's default action shows it through the new IGameView.ShowBag." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): drop, throw, and opening a bag&#10;Item gains Actions, Execute, DoDrop, DoThrow, OnThrow and Cast. A throw asks the view for a cell through the thrower listener, traces a Ballistica bolt that stops on the first char, and hands the view a missile whose completion detaches one item, lands it, and spends the turn, so the hero stays Actor._current while it flies, exactly as in the Java. A test holds the missile and proves the scheduler waits. A bag's default action shows it through the new IGameView.ShowBag." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
