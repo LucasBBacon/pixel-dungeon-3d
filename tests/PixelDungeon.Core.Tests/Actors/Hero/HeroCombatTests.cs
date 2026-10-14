@@ -170,6 +170,13 @@ public class HeroCombatTests : DungeonFixture
         Assert.Contains(rat.Pos, view.Attacks);
         var before = rat.HP;
 
+        // AttackIndicator.UpdateState() wired into Act(), and the first Handle()
+        // above now spends one Random draw picking the rat as the sole adjacent candidate
+        // (Random.Element draws even for a one-element list, same as the Java's
+        // Random.element). That draw is incidental to this test, whose 1-damage,
+        // 1-in-2-chance-of-0-after-Rat.Dr() swing is sensitive to exactly where the
+        // stream sits; reseed so the swing's own hit/damage rolls are unaffected by it.
+        Random.Seed(1);
         hero.OnAttackComplete();
 
         // Strictly less: a mutation that skips the swing (or the stub) leaves HP

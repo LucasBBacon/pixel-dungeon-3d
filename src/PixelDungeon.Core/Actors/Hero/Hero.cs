@@ -2,9 +2,11 @@ using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Actors.Mobs.Npcs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 
@@ -19,7 +21,11 @@ public class Hero : Char
     private const string TxtNewLevel =
         "Welcome to level {0}! Now you are healthier and more focused. It's easier for you to hit enemies and dodge their attacks.";
 
-    // TODO: TxtSomethingElse, TxtLockedChest, TxtLockedDoor
+    private const string TxtYouNowHave = "You now have {0}";
+
+    private const string TxtSomethingElse = "There is something else here";
+    private const string TxtLockedChest = "This chest is locked and you don't have matching key";
+    private const string TxtLockedDoor = "You don't have a matching key";
     private const string TxtNoticedSomething = "You noticed something";
 
     private const string TxtWait = "...";
@@ -44,7 +50,8 @@ public class Hero : Char
     private Char _enemy;
 
     // TODO: Armor.Glyph
-    // TODO: key item
+    private Item _theKey;
+    // TODO: public MissileWeapon rangedWeapon
 
     public bool RestoreHealth = false;
 
@@ -248,7 +255,7 @@ public class Hero : Char
         }
 
         CheckVisibleMobs();
-        // TODO: AttackIndicator.UpdateState()
+        AttackIndicator.UpdateState();
 
         if (CurAction == null)
         {
@@ -377,23 +384,161 @@ public class Hero : Char
 
     private bool ActPickUp(HeroAction.PickUp action)
     {
-        // TODO: at heap pick up top item, log
-        MakeReady();
-        return false;
+        var dst = action.Dst;
+        if (Pos == dst)
+        {
+            var heap = Dungeon.Level.Heaps.GetValueOrDefault(Pos);
+            if (heap != null)
+            {
+                var item = heap.PickUp();
+                if (item.DoPickUp(this))
+                {
+                    if (item is Dewdrop)
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        // TODO: important = true for known Scroll of Upgrade or Enchantment, or known Potion of Strength or Might
+                        var important = false;
+                        if (important)
+                        {
+                            GLog.P(TxtYouNowHave, item.Name());
+                        }
+                        else
+                        {
+                            GLog.I(TxtYouNowHave, item.Name());
+                        }
+                    }
+
+                    if (!heap.IsEmpty())
+                    {
+                        GLog.I(TxtSomethingElse);
+                    }
+
+                    CurAction = null;
+                }
+                else
+                {
+                    Dungeon.Level.Drop(item, Pos).Sprite.Drop();
+                    MakeReady();
+                }
+            }
+            else
+            {
+                MakeReady();
+            }
+
+            return false;
+        }
+        else if (GetCloser(dst))
+        {
+            return true;
+        }
+        else
+        {
+            MakeReady();
+            return false;
+        }
     }
 
     private bool ActOpenChest(HeroAction.OpenChest action)
     {
-        // TODO: adjacent chest find key, Sprite.Operate
-        MakeReady();
-        return false;
+        var dst = action.Dst;
+        if (Level.Adjacent(Pos, dst) || Pos == dst)
+        {
+            var heap = Dungeon.Level.Heaps.GetValueOrDefault(dst);
+            if (heap != null && heap.Type != HeapType.Heap && heap.Type != HeapType.ForSale)
+            {
+                _theKey = null;
+
+                if (heap.Type is HeapType.LockedChest or HeapType.CrystalChest)
+                {
+                    _theKey = Belongings.GetKey<GoldenKey>(Dungeon.Depth);
+
+                    if (_theKey == null)
+                    {
+                        GLog.W(TxtLockedChest);
+                        MakeReady();
+                        return false;
+                    }
+                }
+
+                switch (heap.Type)
+                {
+                    case HeapType.Tomb:
+                        Sample.Play(Assets.SndTomb);
+                        GameScene.Shake(1, 0.5f);
+                        break;
+                    case HeapType.Skeleton:
+                        break;
+                    default:
+                        Sample.Play(Assets.SndUnlock);
+                        break;
+                }
+
+                Spend(Key.TimeToUnlock);
+                Sprite.Operate(dst);
+            }
+            else
+            {
+                MakeReady();
+            }
+
+            return false;
+        }
+        else if (GetCloser(dst))
+        {
+            return true;
+        }
+        else
+        {
+            MakeReady();
+            return false;
+        }
     }
 
     private bool ActUnlock(HeroAction.Unlock action)
     {
-        // TODO: adjacent door or exit, find key, Sprite.Operate
-        MakeReady();
-        return false;
+        var doorCell = action.Dst;
+        if (Level.Adjacent(Pos, doorCell))
+        {
+            _theKey = null;
+            var door = Dungeon.Level.Map[doorCell];
+
+            if (door == Terrain.LockedDoor)
+            {
+                _theKey = Belongings.GetKey<IronKey>(Dungeon.Depth);
+            }
+            else if (door == Terrain.LockedExit)
+            {
+                _theKey = Belongings.GetKey<SkeletonKey>(Dungeon.Depth);
+            }
+
+            if (_theKey != null)
+            {
+                Spend(Key.TimeToUnlock);
+                Sprite.Operate(doorCell);
+
+                Sample.Play(Assets.SndUnlock);
+            }
+            else
+            {
+                GLog.W(TxtLockedDoor);
+                MakeReady();
+            }
+
+            return false;
+        }
+        else if (GetCloser(doorCell))
+        {
+            return true;
+        }
+        else
+        {
+            MakeReady();
+            return false;
+        }
     }
 
     private bool ActDescend(HeroAction.Descend action)
@@ -783,7 +928,35 @@ public class Hero : Char
 
         Dungeon.Hero.Belongings.Identify();
 
-        // TODO: scatter backpack over shuffled passable neighbours without heaps
+        var pos = Dungeon.Hero.Pos;
+
+        var passable = new List<int>();
+        foreach (var ofs in Level.Neighbours8)
+        {
+            var cell = pos + ofs;
+            if ((Level.Passable[cell] || Level.Avoid[cell]) && Dungeon.Level.Heaps.GetValueOrDefault(cell) == null)
+            {
+                passable.Add(cell);
+            }
+        }
+
+        // collections.shuffle in java which does not use the game's RNG
+        // Random.Shuffle does, so seeding controls the scatter
+        var shuffled = passable.ToArray();
+        Random.Shuffle(shuffled);
+
+        var items = new List<Item>(Dungeon.Hero.Belongings.Backpack.Items);
+        foreach (var cell in shuffled)
+        {
+            if (items.Count == 0)
+            {
+                break;
+            }
+
+            var item = Random.Element(items);
+            Dungeon.Level.Drop(item, cell).Sprite.Drop(pos);
+            items.Remove(item);
+        }
 
         GameScene.GameOver();
 
@@ -824,7 +997,8 @@ public class Hero : Char
 
     public override void OnAttackComplete()
     {
-        // TODO: AttackIndicator.Target(enemy)
+        AttackIndicator.Target(_enemy);
+
         Attack(_enemy);
 
         CurAction = null;
@@ -836,7 +1010,37 @@ public class Hero : Char
 
     public override void OnOperateComplete()
     {
-        // TODO: unlock consumes key and opens the door or exit
+        if (CurAction is HeroAction.Unlock unlock)
+        {
+            if (_theKey != null)
+            {
+                _theKey.Detach(Belongings.Backpack);
+                _theKey = null;
+            }
+
+            var doorCell = unlock.Dst;
+            var door = Dungeon.Level.Map[doorCell];
+
+            Level.Set(doorCell, door == Terrain.LockedDoor ? Terrain.Door : Terrain.UnlockedExit);
+            GameScene.UpdateMap(doorCell);
+        }
+
+        if (CurAction is HeroAction.OpenChest openChest)
+        {
+            if (_theKey != null)
+            {
+                _theKey.Detach(Belongings.Backpack);
+                _theKey = null;
+            }
+
+            var heap = Dungeon.Level.Heaps[openChest.Dst];
+            if (heap.Type == HeapType.Skeleton)
+            {
+                Sample.Play(Assets.SndBones);
+            }
+
+            heap.Open(this);
+        }
 
         CurAction = null;
 
