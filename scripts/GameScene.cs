@@ -38,6 +38,8 @@ public partial class GameScene : Node3D, IGameView
     private int _openWindows;
     private readonly Queue<string> _startupCommands = new();
     private readonly Dictionary<Mob, CharView> _mobViews = new();
+    private Node3D _heaps;
+    private readonly Dictionary<Heap, HeapView> _heapViews = new();
 
     private static readonly Dictionary<Type, Color> MobColors = new()
     {
@@ -62,6 +64,9 @@ public partial class GameScene : Node3D, IGameView
 
         _chars = new Node3D { Name = "Chars" };
         AddChild(_chars);
+
+        _heaps = new Node3D { Name = "Heaps" };
+        AddChild(_heaps);
 
         _camera = new CameraRig { Name = "CameraRig" };
         AddChild(_camera);
@@ -109,6 +114,12 @@ public partial class GameScene : Node3D, IGameView
         _renderer.Rebuild(Dungeon.Level);
 
         ClearChars();
+
+        foreach (var heap in Dungeon.Level.Heaps.Values)
+        {
+            AddHeap(heap);
+        }
+
         _heroView = CharView.For(Dungeon.Hero, new Color(0.2f, 0.4f, 1f));
         _chars.AddChild(_heroView);
         Dungeon.Hero.Sprite = _heroView;
@@ -148,6 +159,19 @@ public partial class GameScene : Node3D, IGameView
         }
 
         _mobViews.Clear();
+
+        foreach (var (heap, view) in _heapViews)
+        {
+            heap.Sprite = NullHeapView.Instance; // no core code can touch a freed node
+        }
+
+        _heapViews.Clear();
+
+        foreach (var child in _heaps.GetChildren())
+        {
+            _heaps.RemoveChild(child);
+            child.QueueFree(); // discarded heaps included
+        }
     }
 
     public override void _Process(double delta)
@@ -180,6 +204,34 @@ public partial class GameScene : Node3D, IGameView
                 view.Visible = Dungeon.Visible[mob.Pos];
                 view.SetSleeping(mob.State == mob.SleepingState);
             }
+
+            foreach (var (heap, view) in _heapViews.ToArray())
+            {
+                var stale = !IsInstanceValid(view) ||
+                            view.IsQueuedForDeletion() ||
+                            !Dungeon.Level.Heaps.TryGetValue(heap.Pos, out var current) ||
+                            current != heap;
+                if (stale)
+                {
+                    // Heap.Destroy kills its own view, net for any other way out of Level.Heaps
+                    _heapViews.Remove(heap);
+                    if (IsInstanceValid(view))
+                    {
+                        view.QueueFree();
+                    }
+
+                    if (heap.Sprite == view)
+                    {
+                        heap.Sprite = NullHeapView.Instance;
+                    }
+
+                    continue;
+                }
+
+                var p = heap.Pos;
+                view.Visible = Dungeon.Visible[p] || Dungeon.Level.Visited[p] || Dungeon.Level.Mapped[p];
+                view.SetLit(Dungeon.Visible[p]);
+            }
         }
 
         if (_startupCommands.Count > 0 && Dungeon.Hero.Ready && _openWindows == 0)
@@ -200,8 +252,9 @@ public partial class GameScene : Node3D, IGameView
         {
             Chasm.HeroLand();
         }
+
         // TODO: WndStory chapter windows on depths 1, 6, 11, 16, 22
-        // TODO: Dungeon.droppedItems for this depth land on random respawn cells
+        CoreScene.LandDroppedItems();
 
         if (Dungeon.Depth < Statistics.DeepestFloor)
         {
@@ -368,12 +421,19 @@ public partial class GameScene : Node3D, IGameView
 
     public void AddHeap(Heap heap)
     {
-        // TODO: heap sprites
+        var view = HeapView.Create(discarded: false);
+        _heaps.AddChild(view);
+        heap.Sprite = view;
+        view.Link(heap);
+        _heapViews[heap] = view;
     }
 
     public void DiscardHeap(Heap heap)
     {
-        // TODO: heap sprites
+        var view = HeapView.Create(discarded: true);
+        _heaps.AddChild(view);
+        heap.Sprite = view;
+        view.Link(heap);
     }
 
     public void AddMob(Mob mob)
@@ -443,11 +503,8 @@ public partial class GameScene : Node3D, IGameView
         listener.OnSelect(null);
     }
 
-    public void Missile(int from, int to, Item item, Action onComplete)
-    {
-        // TODO: a MissileView flies the item before completing
-        onComplete();
-    }
+    public void Missile(int from, int to, Item item, Action onComplete) =>
+        MissileView.Launch(this, from, to, item, onComplete);
 
     public void RefreshQuickSlots()
     {
