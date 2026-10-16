@@ -52,7 +52,7 @@ public static class GameScene
         Instance.Missile(from, to, item, onComplete);
 
     public static void RefreshQuickSlots() => Instance.RefreshQuickSlots();
-    public static void SHowBag(Bag bag) => Instance.ShowBag(bag); // GameScene.show(new WndBag(...)) in java
+    public static void ShowBag(Bag bag) => Instance.ShowBag(bag); // GameScene.show(new WndBag(...)) in java
 
     // The droppedItems loop from GameScene.create in the Java: items that fell down a chasm land on random respawn cells of the level below
     // Core owns it so it can be tested, the view calls it

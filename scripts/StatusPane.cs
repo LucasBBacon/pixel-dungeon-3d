@@ -14,6 +14,9 @@ public partial class StatusPane : CanvasLayer
 
     private readonly Label[] _logLines = new Label[4];
     private readonly Queue<(string Text, LogKind Kind)> _log = new();
+    private Button _prompt;
+
+    public event Action PromptPressed;
 
     public ColorRect Fade { get; private set; }
 
@@ -46,6 +49,11 @@ public partial class StatusPane : CanvasLayer
             _logLines[i] = new Label();
             box.AddChild(_logLines[i]);
         }
+
+        // toast in the java, centered above toolbar, tapping it cancels selection
+        _prompt = new Button { Visible = false, FocusMode = Control.FocusModeEnum.None };
+        _prompt.Pressed += () => PromptPressed?.Invoke();
+        AddChild(_prompt);
     }
 
     public override void _Process(double delta)
@@ -90,6 +98,20 @@ public partial class StatusPane : CanvasLayer
         {
             _logLines[i].Text = "";
         }
+    }
+
+    public void ShowPrompt(string text)
+    {
+        _prompt.Visible = text != null;
+        if (text == null)
+        {
+            return;
+        }
+
+        _prompt.Text = text;
+        _prompt.ResetSize();
+        var screen = _prompt.GetViewportRect().Size;
+        _prompt.Position = new Vector2((screen.X - _prompt.Size.X) / 2f, screen.Y - 10f);
     }
 
     public void ShowWindow(WindowRequest request, Action onClosed)

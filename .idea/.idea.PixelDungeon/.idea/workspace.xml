@@ -14,11 +14,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/HeapView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/ItemVisuals.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/MissileView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/ExamineListener.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CellSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CellSelector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/StatusPane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/StatusPane.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -31,6 +33,12 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +79,7 @@
     <setting file="file://$PROJECT_DIR$/scripts/CellSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CharView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/DebugConsole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/scripts/ExamineListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/GameScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/GlobalUsings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/LevelRenderer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -161,7 +170,6 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HerItemTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroCombatTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/BestiaryTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -353,7 +361,8 @@
       <workItem from="1791376520954" duration="24533000" />
       <workItem from="1791549484746" duration="6864000" />
       <workItem from="1791582981535" duration="26276000" />
-      <workItem from="1791879769304" duration="22314000" />
+      <workItem from="1791879769304" duration="22463000" />
+      <workItem from="1792172000146" duration="3834000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -723,7 +732,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792015139063</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="feat(view): heap cubes, thrown items, and chasm landings&#10;HeapView implements IHeapView: a box in the top item's colour that hops when dropped, arcs in from another cell, pulses while its item glows and dims under the fog. Discarded heaps shrink away. MissileView flies a thrown item at the Java's 15 cells per second and completes the throw exactly once. Items that fell down a chasm land when the level below is built.">
+      <option name="closed" value="true" />
+      <created>1792095648222</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1792095648222</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -744,7 +761,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(view): click and keyboard cell selection feeding Hero.Handle&#10;fix(view): camera shake decays over its duration" />
     <MESSAGE value="feat(view): status pane, message and choice windows, and the faded level switch" />
     <MESSAGE value="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails" />
     <MESSAGE value="fix(view): defer the level switch with a statement lambda so Godot does not convert the Task. Depth recovers from a failed transition; stairs command and startup console" />
@@ -769,7 +785,8 @@
     <MESSAGE value="feat(items): dewdrops, the dew vial, and the death save&#10;Dewdrops heal on pick-up or fill the vial; the vial drinks through the operate gate, spawns in the Sewers while its flag is set, and saves a dying hero when full. Trampled high grass drops dew on its 1-in-6 roll, the seed roll still runs but drops nothing until seeds are registered.&#10;A test pins a float edge: a full vial heals 21 at HT 20, visible only when auto-drink runs with HP below zero." />
     <MESSAGE value="feat(items): heaps open, merge, pick up, and destroy&#10;Heap ports whole apart from burning, freezing and alchemy. Stacks merge and move to the front, a dewdrop goes to the back, and an emptied heap removes itself and kills its view. Opening takes the Java's own no-mimic and no-wraith branches: a mimic opens as a plain chest and a cursed skeleton costs half the hero's HP for now." />
     <MESSAGE value="feat(hero): pick up, open chests, unlock doors, and scatter on death&#10;The hero's PickUp, OpenChest and Unlock actions port verbatim, with the key consumed when the operate animation ends. Death scatters the backpack over free neighbouring cells. AttackIndicator's logic half moves to Core, since its choice among adjacent enemies consumes the game's RNG.&#10;Items that fell down a chasm land through GameScene.LandDroppedItems, so the loop from GameScene.create is testable in Core.&#10;Wiring AttackIndicator.UpdateState() into Hero.Act() makes it spend one Random draw per turn once a mob is visible and adjacent (matching the Java's Random.element(candidates), which draws even for a one-candidate list). That shifts the RNG stream one position earlier than before, which flipped a pre-existing seeded assertion in HeroCombatTests (OnAttackComplete_AfterASwing_DamagesTheRatAndFreesTheScheduler): its 1-damage swing against a Rat's Dr()==1 is a coin flip on the very next draw. Reseeded immediately before that swing, with a comment, following the same mid-test reseed convention already used elsewhere (MobAiTests, PatchTests, DewTests) to pin a specific roll." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(hero): pick up, open chests, unlock doors, and scatter on death&#10;The hero's PickUp, OpenChest and Unlock actions port verbatim, with the key consumed when the operate animation ends. Death scatters the backpack over free neighbouring cells. AttackIndicator's logic half moves to Core, since its choice among adjacent enemies consumes the game's RNG.&#10;Items that fell down a chasm land through GameScene.LandDroppedItems, so the loop from GameScene.create is testable in Core.&#10;Wiring AttackIndicator.UpdateState() into Hero.Act() makes it spend one Random draw per turn once a mob is visible and adjacent (matching the Java's Random.element(candidates), which draws even for a one-candidate list). That shifts the RNG stream one position earlier than before, which flipped a pre-existing seeded assertion in HeroCombatTests (OnAttackComplete_AfterASwing_DamagesTheRatAndFreesTheScheduler): its 1-damage swing against a Rat's Dr()==1 is a coin flip on the very next draw. Reseeded immediately before that swing, with a comment, following the same mid-test reseed convention already used elsewhere (MobAiTests, PatchTests, DewTests) to pin a specific roll." />
+    <MESSAGE value="feat(view): heap cubes, thrown items, and chasm landings&#10;HeapView implements IHeapView: a box in the top item's colour that hops when dropped, arcs in from another cell, pulses while its item glows and dims under the fog. Discarded heaps shrink away. MissileView flies a thrown item at the Java's 15 cells per second and completes the throw exactly once. Items that fell down a chasm land when the level below is built." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(view): heap cubes, thrown items, and chasm landings&#10;HeapView implements IHeapView: a box in the top item's colour that hops when dropped, arcs in from another cell, pulses while its item glows and dims under the fog. Discarded heaps shrink away. MissileView flies a thrown item at the Java's 15 cells per second and completes the throw exactly once. Items that fell down a chasm land when the level below is built." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

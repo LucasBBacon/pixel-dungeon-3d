@@ -79,6 +79,9 @@ public partial class GameScene : Node3D, IGameView
         _pane = new StatusPane { Name = "Ui" };
         AddChild(_pane);
 
+        _selector.PromptChanged += text => _pane.ShowPrompt(text);
+        _pane.PromptPressed += () => _selector.Cancel();
+
         _console = new DebugConsole { Name = "DebugConsole" };
         _console.AfterLevelChange = Build;
         _console.OpenChanged += _ => UpdateSelector();
@@ -309,13 +312,13 @@ public partial class GameScene : Node3D, IGameView
         _renderer.UpdateMap(cell);
     }
 
-    public void AfterObserve()
-    {
+    public void AfterObserve() =>
         _renderer.UpdateVisibility(Dungeon.Visible, Dungeon.Level.Visited, Dungeon.Level.Mapped);
-    }
 
     void IGameView.Ready()
     {
+        // GameScene.ready(), back to the default listener, then re-arm input
+        _selector.SetListener(null);
         UpdateSelector();
     }
 
@@ -499,8 +502,12 @@ public partial class GameScene : Node3D, IGameView
 
     public void SelectCell(ICellListener listener)
     {
-        // TODO: cell selector hands the next click to the listener
-        listener.OnSelect(null);
+        _selector.SetListener(listener);
+    }
+
+    public void Examine()
+    {
+        SelectCell(new ExamineListener());
     }
 
     public void Missile(int from, int to, Item item, Action onComplete) =>

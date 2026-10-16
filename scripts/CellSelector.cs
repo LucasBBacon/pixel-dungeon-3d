@@ -1,6 +1,8 @@
+using System;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Client;
 
@@ -9,6 +11,27 @@ public partial class CellSelector : Node
     public bool Enabled = true;
 
     private CameraRig _rig;
+
+    // CellSelector.listener in java
+    // null stands for GameScene's defaultCellListener, which hands the cell to Dungeon.Hero.Handle
+    public ICellListener Listener { get; private set; }
+
+    // raised with the listener's prompt, or null when the default listener is back
+    public Action<string> PromptChanged;
+
+    public void SetListener(ICellListener listener)
+    {
+        Listener = listener;
+        PromptChanged?.Invoke(listener?.Prompt());
+    }
+
+    // CellSelector.cancel(), the listener hears null, the GameScene.ready() restores the default
+    public void Cancel()
+    {
+        var listener = Listener;
+        listener?.OnSelect(null);
+        SetListener(null);
+    }
 
     private static readonly (string Action, Key[] Keys, bool Shift)[] Bindings =
     [
@@ -23,7 +46,8 @@ public partial class CellSelector : Node
         ("search", [Key.Space], false),
         ("rest", [Key.Period], false),
         ("rest_full", [Key.Period], true),
-        ("debug_console", [Key.Quoteleft], false)
+        ("debug_console", [Key.Quoteleft], false),
+        ("cancel", [Key.Escape], false),
     ];
 
     public static void RegisterActions()
@@ -58,6 +82,13 @@ public partial class CellSelector : Node
             return;
         }
 
+        if (Listener != null && @event.IsActionPressed("cancel"))
+        {
+            Cancel();
+            GetViewport().SetInputAsHandled();
+            return;
+        }
+
         if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left } mouse)
         {
             var cell = CellUnder(mouse.Position);
@@ -83,6 +114,11 @@ public partial class CellSelector : Node
         if (!Enabled || Dungeon.Hero == null || !Dungeon.Hero.Ready || !Dungeon.Hero.IsAlive())
         {
             return;
+        }
+
+        if (Listener != null)
+        {
+            return; // a pending selection owns the next click
         }
 
         if (Input.IsActionJustPressed("search"))
@@ -150,15 +186,24 @@ public partial class CellSelector : Node
         Select(x + y * Level.Width);
     }
 
-    // CellSelector.select in the Java: only while the hero is ready
-    // The IsAlive() check is belt-and-braces
-    // GameScene routes the death window through the counted ShowWindow so Enabled should already be false by the
-    // time this could fire, but a dead-but-Ready hero must never act again regardless of how it got asked to.
-    private static void Select(int cell)
+    // CellSelector.select in the Java: only while the hero is ready (GameScene.update sets enabled = hero.ready)
+    // The IsAlive() check is belt-and-braces, a dead-but-Ready hero
+    // (Hero.Die clears CurAction, not Ready) must never act again.
+    private void Select(int cell)
     {
-        if (Dungeon.Hero.Ready && Dungeon.Hero.IsAlive())
+        if (!Dungeon.Hero.Ready || !Dungeon.Hero.IsAlive())
         {
-            Dungeon.Hero.Handle(cell);
+            return;
         }
+
+        if (Listener != null)
+        {
+            var listener = Listener;
+            listener.OnSelect(cell);
+            SetListener(null); // GameScene.ready*( after listener.onSelect
+            return;
+        }
+
+        Dungeon.Hero.Handle(cell);
     }
 }

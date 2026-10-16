@@ -31,7 +31,7 @@ public class Bag : Item, IEnumerable<Item>
     {
         if (action == AcOpen)
         {
-            GameScene.SHowBag(this);
+            GameScene.ShowBag(this);
         }
         else
         {
