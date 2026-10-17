@@ -518,9 +518,67 @@ public partial class GameScene : Node3D, IGameView
         // TODO: quick slot button re-resolve their items
     }
 
-    public void ShowBag(Bag bag)
+    public void ShowBag(Bag bag) =>
+        OpenBag(WndBag.Create(bag, null, BagMode.All, null));
+
+    // toolbar's backpack button and the "I" key
+    public void OpenBackpack() =>
+        OpenBag(WndBag.Create(Dungeon.Hero.Belongings.Backpack, null, BagMode.All, null));
+
+    public void SelectItem(Action<Item> listener, BagMode mode, string title)
     {
-        // TODO: WndBag opens on this bag
+        if (_selector.Listener != null)
+        {
+            _selector.Cancel();
+        }
+
+        OpenBag(WndBag.LastBag(listener, mode, title));
+    }
+
+    private void OpenBag(WndBag wnd)
+    {
+        wnd.ItemClicked += (owner, item) => OpenWindow(WndItem.Create(owner, item), owner);
+        wnd.Reopened += OpenBag;
+        OpenWindow(wnd, null);
+    }
+
+    private void OpenWindow(Window wnd, Window parent)
+    {
+        _openWindows++;
+        UpdateSelector();
+
+        var open = true;
+
+        void Closed()
+        {
+            if (!open)
+            {
+                return;
+            }
+
+            open = false;
+            _openWindows--;
+            UpdateSelector();
+        }
+
+        wnd.VisibilityChanged += () =>
+        {
+            if (!wnd.Visible)
+            {
+                Closed();
+                wnd.QueueFree();
+            }
+        };
+        wnd.TreeExiting += Closed; // freed with its parent before it ever hid
+        wnd.WindowInput += e =>
+        {
+            if (e.IsActionPressed("ui_cancel"))
+            {
+                wnd.Hide();
+            }
+        };
+        (parent ?? (Node)_pane).AddChild(wnd);
+        wnd.PopupCentered();
     }
 
     private void Restart()
