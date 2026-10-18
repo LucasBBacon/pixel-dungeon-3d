@@ -19,6 +19,9 @@ public partial class CellSelector : Node
     // raised with the listener's prompt, or null when the default listener is back
     public Action<string> PromptChanged;
 
+    public Action InventoryPressed;
+    public Action<int> QuickSlotPressed;
+
     public void SetListener(ICellListener listener)
     {
         Listener = listener;
@@ -48,6 +51,10 @@ public partial class CellSelector : Node
         ("rest_full", [Key.Period], true),
         ("debug_console", [Key.Quoteleft], false),
         ("cancel", [Key.Escape], false),
+        ("inventory", [Key.I], false),
+        ("quickslot_1", [Key.Key1], false),
+        ("quickslot_2", [Key.Key2], false),
+        ("pick_up", [Key.G], false),
     ];
 
     public static void RegisterActions()
@@ -119,6 +126,30 @@ public partial class CellSelector : Node
         if (Listener != null)
         {
             return; // a pending selection owns the next click
+        }
+
+        if (Input.IsActionJustPressed("inventory"))
+        {
+            InventoryPressed?.Invoke();
+            return;
+        }
+
+        if (Input.IsActionJustPressed("quickslot_1"))
+        {
+            QuickSlotPressed?.Invoke(1);
+            return;
+        }
+
+        if (Input.IsActionJustPressed("quickslot_2"))
+        {
+            QuickSlotPressed?.Invoke(2);
+            return;
+        }
+
+        if (Input.IsActionJustPressed("pick_up") && Dungeon.Level.Heaps.ContainsKey(Dungeon.Hero.Pos))
+        {
+            Dungeon.Hero.Handle(Dungeon.Hero.Pos); // what LootIndicator's click does 
+            return;
         }
 
         if (Input.IsActionJustPressed("search"))

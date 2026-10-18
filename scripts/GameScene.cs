@@ -34,6 +34,7 @@ public partial class GameScene : Node3D, IGameView
     private CharView _heroView;
     private CellSelector _selector;
     private StatusPane _pane;
+    private Toolbar _toolbar;
     private DebugConsole _console;
     private int _openWindows;
     private readonly Queue<string> _startupCommands = new();
@@ -81,6 +82,14 @@ public partial class GameScene : Node3D, IGameView
 
         _selector.PromptChanged += text => _pane.ShowPrompt(text);
         _pane.PromptPressed += () => _selector.Cancel();
+
+        _toolbar = new Toolbar { Name = "Toolbar" };
+        AddChild(_toolbar);
+        _toolbar.OnExamine = Examine;
+        _toolbar.OnBackpack = OpenBackpack;
+        _toolbar.OnChooseQuickSlot = slot => SelectItem(slot.Assign, BagMode.Quickslot, slot.SelectPrompt);
+        _selector.InventoryPressed += OpenBackpack;
+        _selector.QuickSlotPressed += n => (n == 1 ? _toolbar.Primary : _toolbar.Secondary).Use();
 
         _console = new DebugConsole { Name = "DebugConsole" };
         _console.AfterLevelChange = Build;
@@ -139,6 +148,8 @@ public partial class GameScene : Node3D, IGameView
         Arrive();
         Dungeon.Observe();
         GD.Print($"Level built: depth {Dungeon.Depth}, hero at {Dungeon.Hero.Pos}, feeling {Dungeon.Level.Feeling}");
+
+        RefreshQuickSlots();
     }
 
     private void ClearChars()
@@ -420,7 +431,14 @@ public partial class GameScene : Node3D, IGameView
         await ToSignal(tween, Tween.SignalName.Finished);
     }
 
-    private void UpdateSelector() => _selector.Enabled = !_switching && _openWindows == 0 && !_console.IsOpen;
+    private void UpdateSelector()
+    {
+        _selector.Enabled = !_switching && _openWindows == 0 && !_console.IsOpen;
+        if (_toolbar != null)
+        {
+            _toolbar.Blocked = !_selector.Enabled;
+        }
+    }
 
     public void AddHeap(Heap heap)
     {
@@ -495,9 +513,27 @@ public partial class GameScene : Node3D, IGameView
             }));
     }
 
+    // Toolbar.pickup, a swatch of the item flies from the hero into the backpack button
     public void PickUp(Item item)
     {
-        // TODO: Toolbar.pickup flies the item into backpack button
+        if (_heroView == null || _toolbar == null)
+        {
+            return;
+        }
+
+        var from = _camera.Camera.UnprojectPosition(_heroView.GlobalPosition);
+        var to = _toolbar.Backpack.GetGlobalRect().GetCenter();
+        var swatch = new ColorRect
+        {
+            Color = ItemVisuals.ColorOf(item.Image()),
+            Size = new Vector2(16f, 16f),
+            Position = from,
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+        };
+        _toolbar.AddChild(swatch);
+        var tween = swatch.CreateTween();
+        tween.TweenProperty(swatch, "position", to - swatch.Size / 2f, 0.2); // PickUpItem.Duration
+        tween.TweenCallback(Callable.From(swatch.QueueFree));
     }
 
     public void SelectCell(ICellListener listener)
@@ -515,7 +551,11 @@ public partial class GameScene : Node3D, IGameView
 
     public void RefreshQuickSlots()
     {
-        // TODO: quick slot button re-resolve their items
+        if (_toolbar != null)
+        {
+            _toolbar.Primary.Refresh();
+            _toolbar.Secondary.Refresh();
+        }
     }
 
     public void ShowBag(Bag bag) =>
