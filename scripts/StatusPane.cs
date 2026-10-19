@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using PixelDungeon.Core;
+using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Client;
@@ -11,6 +12,7 @@ public partial class StatusPane : CanvasLayer
     private Label _depth;
     private Label _hp;
     private Label _exp;
+    private Label _keys;
 
     private readonly Label[] _logLines = new Label[4];
     private readonly Queue<(string Text, LogKind Kind)> _log = new();
@@ -44,6 +46,8 @@ public partial class StatusPane : CanvasLayer
         box.AddChild(_hp);
         _exp = new Label();
         box.AddChild(_exp);
+        _keys = new Label();
+        box.AddChild(_keys);
         for (var i = 0; i < _logLines.Length; i++)
         {
             _logLines[i] = new Label();
@@ -66,6 +70,10 @@ public partial class StatusPane : CanvasLayer
         _depth.Text = $"Depth {Dungeon.Depth}";
         _hp.Text = $"HP {Dungeon.Hero.HP}/{Dungeon.Hero.HT}";
         _exp.Text = $"Lvl {Dungeon.Hero.Lvl}   XP {Dungeon.Hero.Exp}/{Dungeon.Hero.MaxExp()}";
+
+        // StatusPane.keys in java
+        _keys.Visible = IronKey.CurDepthQuantity > 0;
+        _keys.Text = $"Iron keys {IronKey.CurDepthQuantity}";
     }
 
     private static Color ColorFor(LogKind kind) =>

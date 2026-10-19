@@ -51,7 +51,7 @@ public partial class GameScene : Node3D, IGameView
         [typeof(Rat)] = new Color(0.40f, 0.35f, 0.45f),
     };
 
-    private static Color ColorForMob(Mob mob)
+    internal static Color ColorForMob(Mob mob)
     {
         return MobColors.TryGetValue(mob.GetType(), out var c) ? c : new Color(0.7f, 0.2f, 0.2f);
     }
@@ -90,6 +90,19 @@ public partial class GameScene : Node3D, IGameView
         _toolbar.OnChooseQuickSlot = slot => SelectItem(slot.Assign, BagMode.Quickslot, slot.SelectPrompt);
         _selector.InventoryPressed += OpenBackpack;
         _selector.QuickSlotPressed += n => (n == 1 ? _toolbar.Primary : _toolbar.Secondary).Use();
+
+        _pane.AddChild(GoldIndicator.Create());
+
+        // right edge above the toolbar, attack indicator over the loot indicator
+        var tags = new VBoxContainer();
+        tags.SetAnchorsPreset(Control.LayoutPreset.BottomRight);
+        tags.GrowHorizontal = Control.GrowDirection.Begin;
+        tags.GrowVertical = Control.GrowDirection.Begin;
+        tags.OffsetRight = -8f;
+        tags.OffsetBottom = -72f;
+        tags.AddChild(AttackIndicatorView.Create(ColorForMob));
+        tags.AddChild(LootIndicator.Create());
+        _toolbar.AddChild(tags);
 
         _console = new DebugConsole { Name = "DebugConsole" };
         _console.AfterLevelChange = Build;
