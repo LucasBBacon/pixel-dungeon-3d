@@ -17,6 +17,7 @@ public interface ICharView
     void Burst(uint color, int n);
     void BloodBurst(int damage);
     void Flash();
+    void UpdateArmor(int tier); // HeroSprite.updateArmor(), show armor tier 0 (none) to 5; Armor's equip hooks call it
     bool Visible { get; set; }
     bool IsMoving { get; }
 }

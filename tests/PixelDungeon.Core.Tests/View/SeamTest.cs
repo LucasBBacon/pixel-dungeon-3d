@@ -70,6 +70,20 @@ public class SeamTest : DungeonFixture
     }
 
     [Fact]
+    public void UpdateArmor_TheNullViewIgnoresIt_AndTheFakeRecordsEachTier()
+    {
+        var nullView = NullCharView.Instance;
+        nullView.UpdateArmor(3); // must not throw
+
+        var fake = new FakeCharView();
+        var seam = fake;
+        seam.UpdateArmor(1);
+        seam.UpdateArmor(0);
+
+        Assert.Equal(new[] { 1, 0 }, fake.ArmorTiers);
+    }
+
+    [Fact]
     public void GameSceneAdd_Mob_AddsToLevelSchedulesAndOccupiesTheCell()
     {
         LoadLevel(

@@ -64,6 +64,10 @@ public sealed class NullCharView : ICharView
     {
     }
 
+    public void UpdateArmor(int tier)
+    {
+    }
+
     public bool Visible { get; set; } = true;
     public bool IsMoving => false;
 }

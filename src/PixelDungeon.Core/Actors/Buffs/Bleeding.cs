@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Actors.Buffs;
@@ -25,7 +26,7 @@ public class Bleeding : Buff
         Level = level;
     }
 
-    // TODO: icon() returning BuffIndicator.Bleeding
+    public override int Icon() => BuffIndicator.Bleeding;
 
     public override string ToString() => "Bleeding";
 

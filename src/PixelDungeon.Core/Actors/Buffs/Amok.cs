@@ -1,8 +1,10 @@
+using PixelDungeon.Core.Ui;
+
 namespace PixelDungeon.Core.Actors.Buffs;
 
 public class Amok : FlavorBuff
 {
-    // TODO: icon() returning BuffIndicator.AMOK
+    public override int Icon() => BuffIndicator.Amok;
 
     public override string ToString() => "Amok";
 }

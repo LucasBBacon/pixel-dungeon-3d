@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Actors.Buffs;
@@ -22,7 +23,7 @@ public class Terror : FlavorBuff
         bundle.Put(TagObject, Object);
     }
 
-    // TODO: icon() returning BuffIndicator.Terror
+    public override int Icon() => BuffIndicator.Terror;
 
     public override string ToString() => "Terror";
 

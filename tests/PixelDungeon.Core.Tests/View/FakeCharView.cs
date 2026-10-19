@@ -15,6 +15,7 @@ public class FakeCharView : ICharView
     public readonly List<int> Attacks = [];
     public readonly List<int> Zaps = [];
     public bool AlertShown;
+    public readonly List<int> ArmorTiers = [];
 
     public void Place(int cell) => Placed.Add(cell);
 
@@ -58,6 +59,8 @@ public class FakeCharView : ICharView
     public void Flash()
     {
     }
+
+    public void UpdateArmor(int tier) => ArmorTiers.Add(tier);
 
     public bool Visible { get; set; } = true;
     public bool IsMoving => IsMovingFlag;

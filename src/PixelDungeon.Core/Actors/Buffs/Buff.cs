@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Ui;
+
 namespace PixelDungeon.Core.Actors.Buffs;
 
 public class Buff : Actor
@@ -27,6 +29,8 @@ public class Buff : Actor
         Diactivate();
         return true;
     }
+
+    public virtual int Icon() => BuffIndicator.None;
 
     public static T Append<T>(Char target) where T : Buff, new()
     {

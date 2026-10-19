@@ -14,24 +14,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/BuffIndicator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroItemTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroItemTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonFixture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemActionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemActionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -43,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +171,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/View/WindowRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/ActorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/BuffTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -370,15 +369,7 @@
       <workItem from="1791582981535" duration="26276000" />
       <workItem from="1791879769304" duration="22463000" />
       <workItem from="1792172000146" duration="11436000" />
-      <workItem from="1792273307008" duration="13575000" />
-    </task>
-    <task id="LOCAL-00006" summary="feat(core): port PathFinder grid BFS">
-      <option name="closed" value="true" />
-      <created>1789688247961</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1789688247961</updated>
+      <workItem from="1792273307008" duration="15082000" />
     </task>
     <task id="LOCAL-00007" summary="eat(core): port Graph distance map and path builder">
       <option name="closed" value="true" />
@@ -764,7 +755,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792428034922</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="test: turn costs of item actions, and a lettered marker in MobAiTests&#10;F: MobAiTests' bare &quot;DEFERRED(sp3): armour/Barkskin&quot; comment violates the lettered-marker rule and was invisible to the marker audit (which scans only src/ and scripts/). Split it into &quot;TODO: armour, TODO: Barkskin&quot;, matching where each actually lands.&#10;G: adds six turn-cost assertions the design spec's &quot;## Tests&quot; section calls for but nothing checked: a drop spends TIME_TO_DROP, a completed throw spends TIME_TO_THROW, a cancelled throw spends nothing, an adjacent chest spends TIME_TO_UNLOCK before OnOperateComplete, drinking the dew vial spends 1, and a pick-up spends 1. Each is a small sibling Fact next to the behaviour test it pins, using a shared SpyHero (moved from HeroTests into DungeonFixture so ItemActionTests, HeroItemTests and DewTests can all read Cooldown()).&#10;The drop and throw assertions were proven to bite: temporarily changing TIME_TO_DROP to 0.75f failed ExecuteDrop_SpendsTimeToDrop (expected 0.5, got 0.75), and TIME_TO_THROW to 1.5f failed Throw_Completed_SpendsTimeToThrow (expected 1, got 1.5), both constants were then reverted.">
+      <option name="closed" value="true" />
+      <created>1792438696351</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1792438696352</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,7 +784,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes." />
     <MESSAGE value="feat(mobs): the whole Bestiary table behind a type registry&#10;All 25 depths port verbatim as chance/name pairs. A Dictionary&lt;Type, Func&gt; holds factories for the ported classes; entries naming an unported class are dropped before the roll, and a depth with nothing registered returns null, which the existing guards in RegularLevel.CreateMobs and Level.RespawnerActor already handle.&#10;Later sub-projects add a mob by registering a factory. The table is written once and never edited again.&#10;The depth-4 distribution loses Skeleton and Thief (0.02 of 6.04 weight) until later projects, and depths 5 and up spawn nothing until theirs. Both are asserted by tests so the deviation stays visible." />
     <MESSAGE value="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero." />
     <MESSAGE value="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java." />
@@ -810,7 +808,8 @@
     <MESSAGE value="feat(view): give, heap, lock and fill console commands&#10;Keys, locked chests and locked doors come only from special rooms and bosses in the original, so these commands are what make every item branch of this sub-project playable on depth 1. depth and stairs now refuse while the hero is busy, so a thrown item cannot land on the wrong level." />
     <MESSAGE value="test: item integration tests, and a minor fix&#10;Generated Sewer levels carry only gold and the dew vial in non-empty heaps, every item class constructs by type, a hero walks to distant gold and picks it up through the scheduler, and heaps survive leaving a level and coming back." />
     <MESSAGE value="fix(view): bags cancel a pending cell selection, and scene builds reset gold and iron-key counts&#10;A: WndBag.OpenBag now cancels any pending cell selector before it opens (scenes/GameScene.java show -&gt; cancelCellSelector), so leaving a THROW listener armed and then opening the backpack no longer throws on the next floor click. SelectItem no longer duplicates the check.&#10;B: WndBag hands its listener null on any close that is not a choice (windows/WndBag.java onBackPressed), via a VisibilityChanged handler guarded by a new _chosen flag set right before every choice's own Hide() call (a slot pick, a tab switch).&#10;C: GoldIndicator gets a ResetState() that GameScene.Build calls, so a level switch or Restart no longer shows the previous run's stale gold total. Confirmed against the Java: GoldIndicator is built fresh inside Toolbar.createChildren (ui/Toolbar.java), and Toolbar itself is rebuilt by GameScene.create() on every scene, including Restart.&#10;D: GameScene.Build recounts iron keys (Belongings.CountIronKeys) before RefreshQuickSlots, matching ui/StatusPane.java's createChildren, so the &quot;Iron keys&quot; readout no longer sticks to the previous depth's count after a level switch, console jump, or restart." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(view): bags cancel a pending cell selection, and scene builds reset gold and iron-key counts&#10;A: WndBag.OpenBag now cancels any pending cell selector before it opens (scenes/GameScene.java show -&gt; cancelCellSelector), so leaving a THROW listener armed and then opening the backpack no longer throws on the next floor click. SelectItem no longer duplicates the check.&#10;B: WndBag hands its listener null on any close that is not a choice (windows/WndBag.java onBackPressed), via a VisibilityChanged handler guarded by a new _chosen flag set right before every choice's own Hide() call (a slot pick, a tab switch).&#10;C: GoldIndicator gets a ResetState() that GameScene.Build calls, so a level switch or Restart no longer shows the previous run's stale gold total. Confirmed against the Java: GoldIndicator is built fresh inside Toolbar.createChildren (ui/Toolbar.java), and Toolbar itself is rebuilt by GameScene.create() on every scene, including Restart.&#10;D: GameScene.Build recounts iron keys (Belongings.CountIronKeys) before RefreshQuickSlots, matching ui/StatusPane.java's createChildren, so the &quot;Iron keys&quot; readout no longer sticks to the previous depth's count after a level switch, console jump, or restart." />
+    <MESSAGE value="test: turn costs of item actions, and a lettered marker in MobAiTests&#10;F: MobAiTests' bare &quot;DEFERRED(sp3): armour/Barkskin&quot; comment violates the lettered-marker rule and was invisible to the marker audit (which scans only src/ and scripts/). Split it into &quot;TODO: armour, TODO: Barkskin&quot;, matching where each actually lands.&#10;G: adds six turn-cost assertions the design spec's &quot;## Tests&quot; section calls for but nothing checked: a drop spends TIME_TO_DROP, a completed throw spends TIME_TO_THROW, a cancelled throw spends nothing, an adjacent chest spends TIME_TO_UNLOCK before OnOperateComplete, drinking the dew vial spends 1, and a pick-up spends 1. Each is a small sibling Fact next to the behaviour test it pins, using a shared SpyHero (moved from HeroTests into DungeonFixture so ItemActionTests, HeroItemTests and DewTests can all read Cooldown()).&#10;The drop and throw assertions were proven to bite: temporarily changing TIME_TO_DROP to 0.75f failed ExecuteDrop_SpendsTimeToDrop (expected 0.5, got 0.75), and TIME_TO_THROW to 1.5f failed Throw_Completed_SpendsTimeToThrow (expected 1, got 1.5), both constants were then reverted." />
+    <option name="LAST_COMMIT_MESSAGE" value="test: turn costs of item actions, and a lettered marker in MobAiTests&#10;F: MobAiTests' bare &quot;DEFERRED(sp3): armour/Barkskin&quot; comment violates the lettered-marker rule and was invisible to the marker audit (which scans only src/ and scripts/). Split it into &quot;TODO: armour, TODO: Barkskin&quot;, matching where each actually lands.&#10;G: adds six turn-cost assertions the design spec's &quot;## Tests&quot; section calls for but nothing checked: a drop spends TIME_TO_DROP, a completed throw spends TIME_TO_THROW, a cancelled throw spends nothing, an adjacent chest spends TIME_TO_UNLOCK before OnOperateComplete, drinking the dew vial spends 1, and a pick-up spends 1. Each is a small sibling Fact next to the behaviour test it pins, using a shared SpyHero (moved from HeroTests into DungeonFixture so ItemActionTests, HeroItemTests and DewTests can all read Cooldown()).&#10;The drop and throw assertions were proven to bite: temporarily changing TIME_TO_DROP to 0.75f failed ExecuteDrop_SpendsTimeToDrop (expected 0.5, got 0.75), and TIME_TO_THROW to 1.5f failed Throw_Completed_SpendsTimeToThrow (expected 1, got 1.5), both constants were then reverted." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -277,5 +277,10 @@ public partial class CharView : Node3D, ICharView
         };
     }
 
+    public void UpdateArmor(int tier)
+    {
+        // TODO: HeroSprite.updateArmor() swaps the hero's animations to the armour tier's sprite strip
+    }
+
     public bool IsMoving { get; private set; }
 }
