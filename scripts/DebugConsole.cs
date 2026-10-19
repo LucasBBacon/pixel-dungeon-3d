@@ -5,6 +5,9 @@ using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Client;
@@ -59,6 +62,11 @@ public partial class DebugConsole : CanvasLayer
             if (args.Length != 1 || !int.TryParse(args[0], out var target) || target < 1)
             {
                 Print("usage: depth N");
+                return;
+            }
+
+            if (!RequireHeroReady())
+            {
                 return;
             }
 
@@ -138,6 +146,11 @@ public partial class DebugConsole : CanvasLayer
                 return;
             }
 
+            if (!RequireHeroReady())
+            {
+                return;
+            }
+
             var cell = args[0] == "down" ? Dungeon.Level.Exit : Dungeon.Level.Entrance;
             Dungeon.Hero.Interrupt();
             Dungeon.Hero.Pos = cell;
@@ -213,9 +226,163 @@ public partial class DebugConsole : CanvasLayer
 
             Print($"killed {killed}");
         });
+
+        Register("give",
+            "give <gold N|dewdrop N|dewvial|ironkey|goldenkey|skeletonkey|keyrin>: add to the hero's belongings",
+            args =>
+            {
+                if (args.Length == 0)
+                {
+                    Print("usage: give <gold N|dewdrop N|dewvial|ironkey|goldenkey|skeletonkey|keyring>");
+                    return;
+                }
+
+                var name = args[0].ToLowerInvariant();
+                var n = args.Length > 1 && int.TryParse(args[1], out var parsed) ? parsed : 1;
+
+                if (name == "gold")
+                {
+                    Dungeon.Gold += n;
+                    Print($"gold now {Dungeon.Gold}");
+                    return;
+                }
+
+                var item = MakeItem(name, n);
+                if (item == null)
+                {
+                    Print($"unknown item '{args[0]}'");
+                    return;
+                }
+
+                Print(item.Collect() ? $"gave {item}" : "the pack is full");
+            });
+
+        Register("heap", "heap <heap|chest|locked|crystal|skeleton|mimic> [item] [n]: put a heap next to the hero",
+            args =>
+            {
+                HeapType? type = args.Length == 0
+                    ? null
+                    : args[0].ToLowerInvariant() switch
+                    {
+                        "heap" => HeapType.Heap,
+                        "chest" => HeapType.Chest,
+                        "locked" => HeapType.LockedChest,
+                        "crystal" => HeapType.CrystalChest,
+                        "skeleton" => HeapType.Skeleton,
+                        "mimic" => HeapType.Mimic,
+                        _ => null,
+                    };
+                if (type == null)
+                {
+                    Print("usage: heap <heap|chest|locked|crystal|skeleton|mimic> [item] [n]");
+                    return;
+                }
+
+                var itemName = args.Length > 1
+                    ? args[1].ToLowerInvariant()
+                    : "gold";
+                var n = args.Length > 2 && int.TryParse(args[2], out var parsed)
+                    ? parsed
+                    : (itemName == "gold" ? 50 : 1);
+                var item = MakeItem(itemName, n);
+                if (item == null)
+                {
+                    Print($"unknown item '{args[1]}'");
+                    return;
+                }
+
+                foreach (var offset in Level.Neighbours8)
+                {
+                    var cell = Dungeon.Hero.Pos + offset;
+                    if (Level.Passable[cell] && Actor.FindChar(cell) == null && !Dungeon.Level.Heaps.ContainsKey(cell))
+                    {
+                        var heap = Dungeon.Level.Drop(item, cell);
+                        heap.Type = type.Value;
+                        heap.Sprite.Link(); // the view drew it as a plain heap before the type changed
+                        heap.Sprite.Drop();
+                        Print($"{type.Value} with {item} at {cell}");
+                        return;
+                    }
+                }
+
+                Print("no free cell next to the hero");
+            });
+
+        Register("lock", "turn the nearest visible door into a locked door", _ =>
+        {
+            var pos = Dungeon.Hero.Pos;
+            var best = -1;
+            for (var i = 0; i < Level.Length; i++)
+            {
+                if (Dungeon.Visible[i] && Dungeon.Level.Map[i] == Terrain.Door &&
+                    (best == -1 || Level.Distance(pos, i) < Level.Distance(pos, best)))
+                {
+                    best = i;
+                }
+            }
+
+            if (best == -1)
+            {
+                Print("no visible door");
+                return;
+            }
+
+            Level.Set(best, Terrain.LockedDoor);
+            PixelDungeon.Core.Scenes.GameScene.UpdateMap(best);
+            Print($"locked the door at {best}");
+        });
+
+        Register("fill", "fill the dew vial in the backpack", _ =>
+        {
+            DewVial vial = Dungeon.Hero.Belongings.GetItem<DewVial>();
+            if (vial == null)
+            {
+                Print("no dew vial; try give dewvial");
+                return;
+            }
+
+            vial.Fill();
+            Print("dew vial filled");
+        });
     }
 
     public void Register(string name, string help, Action<string[]> run) => _commands[name] = (help, run);
+
+    private bool RequireHeroReady()
+    {
+        if (Dungeon.Hero.Ready)
+        {
+            return true;
+        }
+
+        Print("the hero is busy; try again when it is ready");
+        return false;
+    }
+
+    private static Item MakeItem(string name, int n)
+    {
+        switch (name)
+        {
+            case "gold":
+                return new Gold(n);
+            case "dewdrop":
+                var dew = new Dewdrop();
+                dew.Quantity(n);
+                return dew;
+            case "dewvial":
+                return new DewVial();
+            case "ironkey":
+                return new IronKey();
+            case "goldenkey":
+                return new GoldenKey();
+            case "skeletonkey":
+                return new SkeletonKey();
+            case "keyring":
+                return new Keyring();
+            default:
+                return null;
+        }
+    }
 
     // runs one command line exactly as if it had been typed, also used for startup commands
     public void Execute(string text)
