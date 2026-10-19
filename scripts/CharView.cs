@@ -228,17 +228,22 @@ public partial class CharView : Node3D, ICharView
     {
         _status.Text = text;
         _status.Modulate = ColorFor(color);
+        _status.OutlineModulate = Colors.Black;
         _status.Position = new Vector3(0f, 1.2f, 0f);
         _status.Visible = true;
         _statusTween?.Kill();
+        // FloatingText, rises and fades over its LIFESPAN, then is killed. Label3D's outline has its
+        // own modulate, so it fades separately; without the hide, the outline would linger.
         _statusTween = CreateTween().SetParallel();
         _statusTween.TweenProperty(_status, "position", new Vector3(0f, 1.7f, 0f), 1.0);
         _statusTween.TweenProperty(_status, "modulate:a", 0f, 1f);
+        _statusTween.TweenProperty(_status, "outline_modulate:a", 0f, 1.0);
+        _statusTween.Finished += () => _status.Visible = false;
     }
 
     public void Burst(uint color, int n)
     {
-        for (int i = 0; i < n; i++)
+        for (var i = 0; i < n; i++)
         {
             var bit = new MeshInstance3D
             {

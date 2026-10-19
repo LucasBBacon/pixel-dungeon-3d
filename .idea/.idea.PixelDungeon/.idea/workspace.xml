@@ -14,8 +14,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/DebugConsole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/DebugConsole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +185,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/GlobalUsing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/InterLevelTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ContainerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -341,15 +367,7 @@
       <workItem from="1791582981535" duration="26276000" />
       <workItem from="1791879769304" duration="22463000" />
       <workItem from="1792172000146" duration="11436000" />
-      <workItem from="1792273307008" duration="10349000" />
-    </task>
-    <task id="LOCAL-00003" summary="feat(core): port Random with a seed hook.">
-      <option name="closed" value="true" />
-      <created>1789596963714</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1789596963714</updated>
+      <workItem from="1792273307008" duration="11453000" />
     </task>
     <task id="LOCAL-00004" summary="feat(core): port Bundle primitives, arrays, nesting, and stream I/O">
       <option name="closed" value="true" />
@@ -735,7 +753,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792425083259</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="feat(view): give, heap, lock and fill console commands&#10;Keys, locked chests and locked doors come only from special rooms and bosses in the original, so these commands are what make every item branch of this sub-project playable on depth 1. depth and stairs now refuse while the hero is busy, so a thrown item cannot land on the wrong level.">
+      <option name="closed" value="true" />
+      <created>1792426258359</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1792426258359</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,7 +782,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob." />
     <MESSAGE value="feat(mobs): damage, death, experience and loot&#10;Damage recovers from Terror and wakes a sleeper to Wandering. DefenseSkill returns 0 until the mob has seen someone, which is the sneak-attack rule. Destroy grants experience and moves the run counters, Die drops loot only while the hero is within MaxLvl + 2.&#10;DropLoot ports its full dispatch and that gate so both are testable now, but the Gnoll, Crab and Swarm loot fields stay DEFERRED(sp3) because Gold, MysteryMeat and PotionOfHealing are for later" />
     <MESSAGE value="feat(mobs): Rat, Albino, Gnoll and Crab&#10;Stat blocks copied verbatim, with tests that assert every number against the Java rather than against the implementation. Albino subclasses Rat as in the original and adds the 1-in-2 Bleeding proc; Crab keeps its speed of 2 and its &quot;parried&quot; defense verb." />
     <MESSAGE value="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes." />
@@ -781,7 +806,8 @@
     <MESSAGE value="feat(view): the backpack and item windows&#10;WndBag lays out the Java's landscape grid: equipment slots, the bag's items, free slots, the gold slot, and a tab per bag held. Right-clicking an item with a default action puts it in the first quick slot. WndItem lists the item's actions and runs the one chosen. Both count toward the open-window gate that disables input." />
     <MESSAGE value="feat(view): the toolbar, two quick slots, and item keys&#10;The toolbar mirrors the Java's strip: wait, search and examine on the left, backpack and both quick slots on the right, enabled only while the hero is ready. Quick slots resolve instances or classes from Core's model, use their item on click, and choose one on right-click or an empty click. Picked-up items fly into the backpack button. I opens the backpack, 1 and 2 use the slots, and G picks up what lies underfoot." />
     <MESSAGE value="feat(view): gold, loot and attack indicators, and the iron-key count&#10;The gold total appears for two seconds whenever it changes. The loot indicator shows what lies underfoot while the hero is ready and picks it up on click, the attack indicator shows Core's chosen adjacent enemy in its species colour and attacks it. The status pane counts this depth's iron keys." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): gold, loot and attack indicators, and the iron-key count&#10;The gold total appears for two seconds whenever it changes. The loot indicator shows what lies underfoot while the hero is ready and picks it up on click, the attack indicator shows Core's chosen adjacent enemy in its species colour and attacks it. The status pane counts this depth's iron keys." />
+    <MESSAGE value="feat(view): give, heap, lock and fill console commands&#10;Keys, locked chests and locked doors come only from special rooms and bosses in the original, so these commands are what make every item branch of this sub-project playable on depth 1. depth and stairs now refuse while the hero is busy, so a thrown item cannot land on the wrong level." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(view): give, heap, lock and fill console commands&#10;Keys, locked chests and locked doors come only from special rooms and bosses in the original, so these commands are what make every item branch of this sub-project playable on depth 1. depth and stairs now refuse while the hero is busy, so a thrown item cannot land on the wrong level." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
