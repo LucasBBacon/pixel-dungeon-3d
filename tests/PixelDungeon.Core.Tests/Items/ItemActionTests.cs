@@ -44,6 +44,20 @@ public class ItemActionTests : DungeonFixture
     }
 
     [Fact]
+    public void ExecuteDrop_SpendsTimeToDrop()
+    {
+        LoadCorridor();
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceHero(TestLevel.At(2, 1));
+        var item = new TestItem();
+        item.Collect();
+
+        item.Execute(hero, Item.AcDrop);
+
+        Assert.Equal(0.5f, hero.TimeLeft);
+    }
+
+    [Fact]
     public void Throw_AtACell_ZapsFliesAndLandsOneItemWhereTheBoltStops()
     {
         LoadCorridor();
@@ -95,6 +109,25 @@ public class ItemActionTests : DungeonFixture
     }
 
     [Fact]
+    public void Throw_Completed_SpendsTimeToThrow()
+    {
+        LoadCorridor();
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var item = new TestItem();
+        item.Collect();
+        Actor.Process();
+
+        View.HoldMissiles = true;
+        item.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(3, 1));
+        View.CompleteMissile();
+
+        Assert.Equal(1f, hero.TimeLeft);
+    }
+
+    [Fact]
     public void Throw_Cancelled_KeepsTheItemAndLaunchesNothing()
     {
         LoadCorridor();
@@ -107,6 +140,22 @@ public class ItemActionTests : DungeonFixture
 
         Assert.Empty(View.Missiles);
         Assert.Contains(item, hero.Belongings.Backpack.Items);
+    }
+
+    [Fact]
+    public void Throw_Cancelled_SpendsNoTime()
+    {
+        LoadCorridor();
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceHero(TestLevel.At(1, 1));
+        var item = new TestItem();
+        item.Collect();
+        var before = hero.TimeLeft;
+
+        item.Execute(hero, Item.AcThrow);
+        View.Answer(null);
+
+        Assert.Equal(before, hero.TimeLeft);
     }
 
     [Fact]

@@ -54,6 +54,18 @@ public class HeroItemTests : DungeonFixture
     }
 
     [Fact]
+    public void Handle_OnAHeadUnderfoot_SpendsOneTurn()
+    {
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceIn(Corridor, 1, 1);
+        DropAt(hero.Pos, new TestItem(), HeapType.Heap);
+
+        hero.Handle(hero.Pos);
+
+        Assert.Equal(1f, hero.TimeLeft);
+    }
+
+    [Fact]
     public void Handle_OnHeapWithMoreUnderneath_SaysThereIsSomethingElse()
     {
         var hero = PlaceIn(Corridor, 1, 1);
@@ -117,6 +129,19 @@ public class HeroItemTests : DungeonFixture
 
         Assert.Equal(HeapType.Heap, heap.Type);
         Assert.Null(hero.CurAction);
+    }
+
+    [Fact]
+    public void Handle_OnAnAdjacentChest_SpendsTimeTOUnlockBeforeOperateCompletes()
+    {
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceIn(Corridor, 1, 1);
+        var chest = TestLevel.At(2, 1);
+        DropAt(chest, new Gold(5), HeapType.Chest);
+
+        hero.Handle(chest);
+
+        Assert.Equal(1f, hero.TimeLeft);
     }
 
     [Theory]

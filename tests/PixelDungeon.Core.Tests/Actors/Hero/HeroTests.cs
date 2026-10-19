@@ -12,11 +12,6 @@ namespace PixelDungeon.Core.Tests.Actors.Hero;
 
 public class HeroTests : DungeonFixture
 {
-    private sealed class SpyHero : PixelDungeon.Core.Actors.Hero.Hero
-    {
-        public float TimeLeft => Cooldown();
-    }
-
     private sealed class Rat : Mob
     {
         protected override bool Act() => false;

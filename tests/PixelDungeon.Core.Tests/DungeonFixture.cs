@@ -11,6 +11,11 @@ namespace PixelDungeon.Core.Tests;
 
 public abstract class DungeonFixture : IDisposable
 {
+    protected sealed class SpyHero : Hero
+    {
+        public float TimeLeft => Cooldown();
+    }
+
     protected readonly RecordingGameView View;
 
     protected DungeonFixture()

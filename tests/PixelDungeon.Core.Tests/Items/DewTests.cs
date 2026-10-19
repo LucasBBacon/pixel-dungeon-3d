@@ -118,6 +118,18 @@ public class DewTests : DungeonFixture
     }
 
     [Fact]
+    public void Drink_SpendsTimeToDrink()
+    {
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceHurtHero(5);
+        var vial = VialWith(5);
+        
+        vial.Execute(hero);
+        
+        Assert.Equal(1f, hero.TimeLeft);
+    }
+
+    [Fact]
     public void Drink_AnEmptyVial_Warns()
     {
         var hero = PlaceHurtHero(5);
