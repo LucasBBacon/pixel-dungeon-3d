@@ -41,6 +41,7 @@ public partial class GameScene : Node3D, IGameView
     private readonly Dictionary<Mob, CharView> _mobViews = new();
     private Node3D _heaps;
     private readonly Dictionary<Heap, HeapView> _heapViews = new();
+    private GoldIndicator _goldIndicator;
 
     private static readonly Dictionary<Type, Color> MobColors = new()
     {
@@ -91,7 +92,8 @@ public partial class GameScene : Node3D, IGameView
         _selector.InventoryPressed += OpenBackpack;
         _selector.QuickSlotPressed += n => (n == 1 ? _toolbar.Primary : _toolbar.Secondary).Use();
 
-        _pane.AddChild(GoldIndicator.Create());
+        _goldIndicator = GoldIndicator.Create();
+        _pane.AddChild(_goldIndicator);
 
         // right edge above the toolbar, attack indicator over the loot indicator
         var tags = new VBoxContainer();
@@ -162,6 +164,12 @@ public partial class GameScene : Node3D, IGameView
         Dungeon.Observe();
         GD.Print($"Level built: depth {Dungeon.Depth}, hero at {Dungeon.Hero.Pos}, feeling {Dungeon.Level.Feeling}");
 
+        // ui/StatusPane.java createChildren calls Dungeon.hero.belongings.countIronKeys() when a
+        // new StatusPane is built for each game scene, this covers the same cases (startup,
+        // every level switch, console level changes, restart) since a new StatusPane isn't built
+        // here but Build() runs on all of them
+        Dungeon.Hero.Belongings.CountIronKeys(); // StatusPane.createChildren in the Java
+        _goldIndicator.ResetState();
         RefreshQuickSlots();
     }
 
@@ -580,16 +588,16 @@ public partial class GameScene : Node3D, IGameView
 
     public void SelectItem(Action<Item> listener, BagMode mode, string title)
     {
-        if (_selector.Listener != null)
-        {
-            _selector.Cancel();
-        }
-
         OpenBag(WndBag.LastBag(listener, mode, title));
     }
 
     private void OpenBag(WndBag wnd)
     {
+        if (_selector.Listener != null)
+        {
+            _selector.Cancel();
+        }
+
         wnd.ItemClicked += (owner, item) => OpenWindow(WndItem.Create(owner, item), owner);
         wnd.Reopened += OpenBag;
         OpenWindow(wnd, null);

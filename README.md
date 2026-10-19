@@ -35,8 +35,10 @@ Godot...console.exe --headless --path . --quit-after 3
 ```
 
 In the game: click a cell or use WASD / arrows / QEZC to move, Space to search, Period to rest a turn, Shift+Period to
-rest until healed, and hte backtick key for the debug console (`depth N`, `reveal`, `seed N`, `where`, `stairs down`,
-`stairs up`, `spawn`, `kill`). A headless run can queue commands with `--console="stairs down" console="where"`.
+rest until healed, I to open the backpack, 1 and 2 for the quick slots, G to pick up, Escape to cancel a target prompt,
+and right-click where the original long-presses. The backtick opens the debug console (`depth N`, `reveal`, `seed N`,
+`where`, `stairs down`, `stairs up`, `spawn`, `kill`, `give`, `heap`, `lock`, `fill`). A headless run can queue commands
+with` --console="stairs down" console="where"`.
 
 ## Porting conventions
 

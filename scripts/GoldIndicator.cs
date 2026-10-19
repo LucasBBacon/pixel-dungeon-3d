@@ -26,6 +26,13 @@ public partial class GoldIndicator : Label
         return label;
     }
 
+    public void ResetState()
+    {
+        _lastValue = 0;
+        _time = 0f;
+        Visible = false;
+    }
+
     public override void _Process(double delta)
     {
         if (Visible)

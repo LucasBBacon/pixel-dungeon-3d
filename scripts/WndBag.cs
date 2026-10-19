@@ -22,6 +22,8 @@ public partial class WndBag : Window
     private BagMode _mode;
     private Action<Item> _listener;
 
+    private bool _chosen;
+
     // clicking an item with no listener opens its WndItem, GameScene does that
     public event Action<WndBag, Item> ItemClicked;
 
@@ -44,6 +46,10 @@ public partial class WndBag : Window
         _lastMode = mode;
         _lastBag = bag;
         wnd.CloseRequested += wnd.Hide;
+        // windows/WndBag.java onBackPressed: any close that isn't a choice hands the listener null
+        // VisibilityChanged covers ui_cancel and the title bar's close button, which both
+        // just Hide() the window (GameScene.OpenWindow), as well as CloseRequested above
+        wnd.VisibilityChanged += wnd.OnVisibilityChanged;
         wnd.Build();
         return wnd;
     }
@@ -141,6 +147,7 @@ public partial class WndBag : Window
             var target = bag;
             tab.Pressed += () =>
             {
+                _chosen = true;
                 Hide();
                 Reopened?.Invoke(Create(target, _listener, _mode, _listener == null ? null : Title));
             };
@@ -198,12 +205,26 @@ public partial class WndBag : Window
     {
         if (_listener != null)
         {
+            _chosen = true;
             Hide();
             _listener(item);
         }
         else
         {
             ItemClicked?.Invoke(this, item);
+        }
+    }
+
+    // windows/WndBag.java onBackPressed, listener.onSelect(null), then hide. Every close this
+    // window did not already account for as a choice (ui_cancel, the title bar's close button,
+    // CloseRequested) lands here instead, exactly once, since _chosen is set right before any
+    // choice's own Hide() call above
+    private void OnVisibilityChanged()
+    {
+        if (!Visible && !_chosen && _listener != null)
+        {
+            _chosen = true;
+            _listener(null);
         }
     }
 
