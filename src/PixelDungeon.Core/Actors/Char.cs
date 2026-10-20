@@ -232,6 +232,11 @@ public abstract class Char : Actor
     public override void Spend(float time)
     {
         var timeScale = 1f;
+        if (GetBuff<Slow>() != null)
+        {
+            timeScale *= 0.5f;
+        }
+
         base.Spend(time / timeScale);
     }
 
