@@ -855,7 +855,21 @@ public class Hero : Char
     {
         base.Add(buff);
 
-        if (buff is Cripple)
+        if (buff is Paralysis)
+        {
+            GLog.W("You are paralysed!");
+            Interrupt();
+        }
+        else if (buff is Poison)
+        {
+            GLog.W("You are poisoned!");
+            Interrupt();
+        }
+        else if (buff is Roots)
+        {
+            GLog.W("You can't move!");
+        }
+        else if (buff is Cripple)
         {
             GLog.W("You are crippled!");
         }
@@ -864,7 +878,7 @@ public class Hero : Char
             GLog.W("You are bleeding!");
         }
 
-        // TODO: Burning, Paralysis, Poison, Ooze, Roots, Weakness, Blindness, Fury, Charm, Vertigo warnings and interrupts
+        // TODO: Burning, Ooze, Weakness, Blindness, Fury, Charm, Vertigo warnings and interrupts
         // TODO: BuffIndicator.RefreshHero()
     }
 

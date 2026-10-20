@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
@@ -90,7 +91,11 @@ public class Swarm : Mob
     private Swarm Split()
     {
         var clone = new Swarm { _generation = _generation + 1 };
-        // TODO: a burning parent reignites the clone and a Poison parent sets its poison to 2
+        if (GetBuff<Poison>() != null)
+        {
+            Buff.Affect<Poison>(clone).Set(2);
+        }
+
         return clone;
     }
 
@@ -98,8 +103,8 @@ public class Swarm : Mob
     {
         if (Random.Int(5 * (_generation + 1)) == 0)
         {
+            // TODO: Dungeon.Level.Drop(new PotionOfHealing(), pos).Sprite.Drop()
         }
-        // TODO: Dungeon.Level.Drop(new PotionOfHealing(), pos).Sprite.Drop()
     }
 
     public override string Description() =>

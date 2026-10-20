@@ -14,22 +14,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Paralysis.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Poison.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Roots.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Slow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/AfflictionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/AfflictionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/AfflictionTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -37,7 +34,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
@@ -371,15 +367,7 @@
       <workItem from="1791582981535" duration="26276000" />
       <workItem from="1791879769304" duration="22463000" />
       <workItem from="1792172000146" duration="11436000" />
-      <workItem from="1792273307008" duration="18468000" />
-    </task>
-    <task id="LOCAL-00008" summary="docs: add GPLv3 license and rewrite README for the C# port">
-      <option name="closed" value="true" />
-      <created>1789723880788</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1789723880788</updated>
+      <workItem from="1792273307008" duration="19794000" />
     </task>
     <task id="LOCAL-00009" summary="fix(core): harden Bundle against non-finite floats and failed stream reads&#10;&#10;Put(float) drops NaN and infinity as the Java's JSONObject does; Read(Stream) returns null on any failure as the Java does; the mistyped-key test is renamed to say what it asserts. GetEnum and Value document where they are stricter or looser than the Java.">
       <option name="closed" value="true" />
@@ -765,7 +753,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792442659916</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO.">
+      <option name="closed" value="true" />
+      <created>1792521948919</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1792521948919</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -786,7 +782,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero." />
     <MESSAGE value="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java." />
     <MESSAGE value="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done." />
     <MESSAGE value="feat(view): XP readout and the spawn/kill debug commands&#10;The status pane gains hero level and experience beside HP and depth. spawn [n] places mobs on free cells around the hero and kill destroys every mob in sight through Die, so experience, loot and the death log all run. These are what make depths 1 to 4 testable without grinding.&#10;kill recomputes Level.FieldOfView for the hero via Dungeon.Observe() before reading it: the buffer is one shared static array that every actor's Act() overwrites with its own viewshed, so without recomputing it kill could act on whatever mob last moved instead of what the hero can see." />
@@ -811,7 +806,8 @@
     <MESSAGE value="fix(view): bags cancel a pending cell selection, and scene builds reset gold and iron-key counts&#10;A: WndBag.OpenBag now cancels any pending cell selector before it opens (scenes/GameScene.java show -&gt; cancelCellSelector), so leaving a THROW listener armed and then opening the backpack no longer throws on the next floor click. SelectItem no longer duplicates the check.&#10;B: WndBag hands its listener null on any close that is not a choice (windows/WndBag.java onBackPressed), via a VisibilityChanged handler guarded by a new _chosen flag set right before every choice's own Hide() call (a slot pick, a tab switch).&#10;C: GoldIndicator gets a ResetState() that GameScene.Build calls, so a level switch or Restart no longer shows the previous run's stale gold total. Confirmed against the Java: GoldIndicator is built fresh inside Toolbar.createChildren (ui/Toolbar.java), and Toolbar itself is rebuilt by GameScene.create() on every scene, including Restart.&#10;D: GameScene.Build recounts iron keys (Belongings.CountIronKeys) before RefreshQuickSlots, matching ui/StatusPane.java's createChildren, so the &quot;Iron keys&quot; readout no longer sticks to the previous depth's count after a level switch, console jump, or restart." />
     <MESSAGE value="test: turn costs of item actions, and a lettered marker in MobAiTests&#10;F: MobAiTests' bare &quot;DEFERRED(sp3): armour/Barkskin&quot; comment violates the lettered-marker rule and was invisible to the marker audit (which scans only src/ and scripts/). Split it into &quot;TODO: armour, TODO: Barkskin&quot;, matching where each actually lands.&#10;G: adds six turn-cost assertions the design spec's &quot;## Tests&quot; section calls for but nothing checked: a drop spends TIME_TO_DROP, a completed throw spends TIME_TO_THROW, a cancelled throw spends nothing, an adjacent chest spends TIME_TO_UNLOCK before OnOperateComplete, drinking the dew vial spends 1, and a pick-up spends 1. Each is a small sibling Fact next to the behaviour test it pins, using a shared SpyHero (moved from HeroTests into DungeonFixture so ItemActionTests, HeroItemTests and DewTests can all read Cooldown()).&#10;The drop and throw assertions were proven to bite: temporarily changing TIME_TO_DROP to 0.75f failed ExecuteDrop_SpendsTimeToDrop (expected 0.5, got 0.75), and TIME_TO_THROW to 1.5f failed Throw_Completed_SpendsTimeToThrow (expected 1, got 1.5), both constants were then reverted." />
     <MESSAGE value="feat(core): buff icons and the armour-tier seam member&#10;BuffIndicator carries every constant from the Java. Buff.Icon() returns NONE unless a buff overrides it, and Amok, Terror, Cripple and Bleeding now do. ICharView gains UpdateArmor(int tier) for Armor's equip hooks: the null view ignores it, the test fake records each tier, and the Godot CharView stubs it until later." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): buff icons and the armour-tier seam member&#10;BuffIndicator carries every constant from the Java. Buff.Icon() returns NONE unless a buff overrides it, and Amok, Terror, Cripple and Bleeding now do. ICharView gains UpdateArmor(int tier) for Armor's equip hooks: the null view ignores it, the test fake records each tier, and the Godot CharView stubs it until later." />
+    <MESSAGE value="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

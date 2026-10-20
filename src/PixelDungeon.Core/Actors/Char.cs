@@ -17,6 +17,8 @@ public abstract class Char : Actor
     private const string TxtYouMissed = "{0} {1} your attack";
     private const string TxtSmbMissed = "{0} {1} {2}'s attack";
 
+    private const string TxtOutOfParalysis = "The pain snapped {0} out of paralysis";
+
     public int Pos = 0;
 
     public ICharView Sprite = NullCharView.Instance;
@@ -199,6 +201,18 @@ public abstract class Char : Actor
             dmg = Random.IntRange(0, dmg);
         }
 
+        if (GetBuff<Paralysis>() != null)
+        {
+            if (Random.Int(dmg) >= Random.Int(HP))
+            {
+                Buff.Detach<Paralysis>(this);
+                if (Dungeon.Visible[Pos])
+                {
+                    GLog.I(TxtOutOfParalysis, Name);
+                }
+            }
+        }
+
         HP -= dmg;
         if (dmg > 0 || src is Char)
         {
@@ -276,13 +290,31 @@ public abstract class Char : Actor
         _buffs.Add(buff);
         Actor.Add(buff);
 
-        if (buff is Amok)
+        if (buff is Poison)
+        {
+            Sprite.Burst(0xFF8844FF,
+                5); // CellEmitter.center(pos).burst(PoisonParticle.SPLASH, 5); the particles start 0x8844FF
+            Sprite.ShowStatus(StatusColor.Negative, "poisoned");
+        }
+        else if (buff is Amok)
         {
             Sprite.ShowStatus(StatusColor.Negative, "amok");
+        }
+        else if (buff is Slow)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "slowed");
+        }
+        else if (buff is Paralysis)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "paralysed");
         }
         else if (buff is Terror)
         {
             Sprite.ShowStatus(StatusColor.Negative, "frightened");
+        }
+        else if (buff is Roots)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "rooted");
         }
         else if (buff is Bleeding)
         {
@@ -297,13 +329,17 @@ public abstract class Char : Actor
             Sprite.Idle();
         }
 
-        // TODO: Poison, Slow, MindVision, Paralysis, Roots, Vertigo, Burning, Levitation, Frost, Invisibility
+        // TODO: MindVision, Vertigo, Burning, Levitation, Frost, Invisibility
     }
 
     public virtual void Remove(Buff buff)
     {
         _buffs.Remove(buff);
         Actor.Remove(buff);
+
+        // TODO: sprite state removal for Burning, Frost (Char.java remove)
+        // TODO: sprite state removal for Levitation, Invisibility (Char.java remove)
+        // Paralysis removes CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
     }
 
     public void Remove<T>() where T : Buff
@@ -324,6 +360,9 @@ public abstract class Char : Actor
 
     public void UpdateSpriteState()
     {
+        // TODO: re-add sprite states for Burning, Frost, Light
+        // TODO: re-add sprite states for Levitation, Invisibility
+        // Paralysis re-adds CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
     }
 
     public virtual int Stealth() => 0;
