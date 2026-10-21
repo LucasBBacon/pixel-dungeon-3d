@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Core.Tests;
@@ -19,7 +20,8 @@ public class DungeonTests : DungeonFixture
         // Init() calls hero.Live(), which now attaches Regeneration
         // that buff schedules itself as an actor even though the hero isn't placed
         // on a level yet
-        Assert.Single(Actor.All());
+        Assert.Equal(2, Actor.All().Count);
+        Assert.NotNull(Dungeon.Hero.GetBuff<Hunger>());
     }
 
     [Fact]
@@ -50,8 +52,8 @@ public class DungeonTests : DungeonFixture
         Assert.True(Dungeon.Visible[level.Entrance]);
         Assert.True(level.Visited[level.Entrance]);
         Assert.Contains(Dungeon.Hero, Actor.All());
-        // hero, hero's regen buff, respawner, and every mob
-        Assert.Equal(3 + level.Mobs.Count, Actor.All().Count);
+        // hero, hero's regen buff, hero's hunger buff, respawner, and every mob
+        Assert.Equal(4 + level.Mobs.Count, Actor.All().Count);
         Assert.Equal(8, Dungeon.Hero.ViewDistance);
         Assert.Equal(1, View.ObserveCount);
 

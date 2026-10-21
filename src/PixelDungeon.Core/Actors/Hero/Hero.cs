@@ -138,7 +138,7 @@ public class Hero : Char
     public void Live()
     {
         Buff.Affect<Regeneration>(this);
-        // TODO: Buff.affect(this, Hunger.Class)
+        Buff.Affect<Hunger>(this);
     }
 
     public int Tier()
@@ -548,7 +548,11 @@ public class Hero : Char
         {
             CurAction = null;
 
-            // TODO: Hunger.Satisfy(-HUnger.Starving / 10) unless starving
+            var hunger = GetBuff<Hunger>();
+            if (hunger != null && !hunger.IsStarving())
+            {
+                hunger.Satisfy(-Hunger.Starving / 10);
+            }
 
             Interlevel.Mode = InterlevelMode.Descend;
             GameScene.SwitchLevel(InterlevelMode.Descend);
@@ -580,7 +584,11 @@ public class Hero : Char
             {
                 CurAction = null;
 
-                // TODO: Hunger.Satisfy(-Hunger.Starving / 10) unless starving
+                var hunger = GetBuff<Hunger>();
+                if (hunger != null && !hunger.IsStarving())
+                {
+                    hunger.Satisfy(-Hunger.Starving / 10);
+                }
 
                 Interlevel.Mode = InterlevelMode.Ascend;
                 GameScene.SwitchLevel(InterlevelMode.Ascend);
@@ -847,8 +855,8 @@ public class Hero : Char
 
     public bool IsStarving()
     {
-        // TODO: hunger buffs
-        return false;
+        var hunger = GetBuff<Hunger>();
+        return hunger != null && hunger.IsStarving();
     }
 
     public override void Add(Buff buff)
