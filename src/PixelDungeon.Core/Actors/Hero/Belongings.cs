@@ -14,10 +14,9 @@ public class Belongings : IEnumerable<Item>
 
     public Bag Backpack;
 
-    // TODO: weapon is a KindOfWeapon and armor an Armor
+    public KindOfWeapon Weapon = null;
 
-    public Item Weapon = null;
-
+    // TODO: amor is an Armor
     public Item Armor = null;
 
     // TODO: ring1 and ring2 are rings
@@ -36,7 +35,7 @@ public class Belongings : IEnumerable<Item>
         };
     }
 
-    private const string TagWeapon = "wepaon";
+    private const string TagWeapon = "weapon";
     private const string TagArmor = "armor";
     private const string TagRing1 = "ring1";
     private const string TagRing2 = "ring2";
@@ -56,8 +55,8 @@ public class Belongings : IEnumerable<Item>
         Backpack.Clear();
         Backpack.RestoreFromBundle(bundle);
 
-        Weapon = (Item)bundle.Get(TagWeapon);
-        // TODO: weapon.activate(owner) when a weapon is restored
+        Weapon = (KindOfWeapon)bundle.Get(TagWeapon);
+        Weapon?.Activate(Owner);
 
         Armor = (Item)bundle.Get(TagArmor);
 
@@ -176,7 +175,7 @@ public class Belongings : IEnumerable<Item>
         if (Weapon != null)
         {
             Weapon.Cursed = false;
-            // TODO: weapon.activate(owner)
+            Weapon.Activate(Owner);
         }
 
         if (Armor != null)

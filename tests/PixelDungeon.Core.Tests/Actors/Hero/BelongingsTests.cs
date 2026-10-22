@@ -14,7 +14,7 @@ public class BelongingsTests : DungeonFixture
     [Fact]
     public void Enumerator_ListsEquippedSlotsThenTheBackpackWithNestedBags()
     {
-        var weapon = new TestItem();
+        var weapon = new TestWeapon();
         var ring = new TestItem();
         Stuff.Weapon = weapon;
         Stuff.Ring1 = ring;
@@ -84,7 +84,7 @@ public class BelongingsTests : DungeonFixture
     {
         var packed = new TestItem();
         packed.Collect();
-        Stuff.Weapon = new TestItem();
+        Stuff.Weapon = new TestWeapon();
 
         Stuff.Identify();
 
@@ -111,7 +111,7 @@ public class BelongingsTests : DungeonFixture
     {
         var packed = new TestItem();
         packed.Collect();
-        Stuff.Weapon = new TestItem();
+        Stuff.Weapon = new TestWeapon();
 
         Assert.Same(packed, Stuff.RandomUnequipped());
     }
@@ -157,6 +157,33 @@ public class BelongingsTests : DungeonFixture
         var ring = Assert.Single(restored.Backpack.Items.OfType<Keyring>());
         Assert.Equal(5, Assert.IsType<GoldenKey>(Assert.Single(ring.Items)).Depth);
         Assert.Equal(4, Assert.Single(restored.Backpack.Items.OfType<StackItem>()).Quantity());
+    }
+
+    [Fact]
+    public void Bundle_RestoringAWeapon_ActivatesIt()
+    {
+        Stuff.Weapon = new TestWeapon();
+
+        var bundle = new Bundle();
+        Stuff.StoreInBundle(bundle);
+        var restored = new Belongings(Dungeon.Hero);
+        restored.RestoreFromBundle(bundle);
+
+        var weapon = Assert.IsType<TestWeapon>(restored.Weapon);
+        Assert.NotSame(Stuff.Weapon, weapon);
+        Assert.Equal(1, weapon.Activations); // Belongings.restoreFromBundle, if (weapon != null) weapon.activate(owner)
+    }
+
+    [Fact]
+    public void Resurrect_UncursesAndReactivatesTheWeapon()
+    {
+        var weapon = new TestWeapon { Cursed = true };
+        Stuff.Weapon = weapon;
+
+        Stuff.Resurrect(1);
+
+        Assert.False(weapon.Cursed);
+        Assert.Equal(1, weapon.Activations); // Belongings.resurrect: weapon.cursed = false; weapon.activate(owner)
     }
 
     [Fact]
