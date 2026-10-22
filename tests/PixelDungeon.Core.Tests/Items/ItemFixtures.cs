@@ -52,6 +52,42 @@ public class TestWeapon : Weapon
     public override void Activate(Hero hero) => Activations++;
 }
 
+public static class WeaponRolls
+{
+    public static readonly float[] EnchantmentChances =
+    [
+        10,
+        10,
+        1,
+        2,
+        1,
+        2,
+        6,
+        3,
+        2,
+        2,
+        3
+    ];
+
+    public static int ReplayWeaponRandom()
+    {
+        if (!(Random.Float() < 0.4))
+            return 0;
+
+        var n = 1;
+        if (Random.Int(3) != 0)
+            return Random.Int(2) == 0 ? n : -n;
+
+        n++;
+        if (Random.Int(3) == 0)
+        {
+            n++;
+        }
+
+        return Random.Int(2) == 0 ? n : -n;
+    }
+}
+
 public class Scroll : Item
 {
     public Scroll()
