@@ -480,4 +480,121 @@ public class ArmorTests : DungeonFixture
         Assert.True(leather.IsBroken());
         Assert.Equal("broken leather armor+1 :10", leather.ToString()); // "broken %s :%d"
     }
+
+    [Fact]
+    public void Info_UnknownLevel_GivesTypicalStats_AndWarnsWhenTooHeavy()
+    {
+        Assert.Equal("Interlocking metal links make for a tough but flexible suit of armor." +
+                     "\n\nTypical mail armor provides damage absorption up to 6 points per attack " + // typicalDR 3 * 2
+                     " and requires 13 points of strength. " + // the Java's doubled space; typicalSTR 7 + 3*2
+                     "Probably this armor is too heavy for you. ", // 13 > the hero's 10
+            new MailArmor().Info());
+    }
+
+    [Fact]
+    public void Info_UnknownLevelLightEnough_OmitsTheWarning()
+    {
+        Assert.Equal(
+            "This lightweight armor offers basic protection." +
+            "\n\nTypical cloth armor provides damage absorption up to 2 points per attack " +
+            " and requires 9 points of strength. ", // 9 <= 10: no warning
+            new ClothArmor().Info());
+    }
+
+    [Fact]
+    public void Info_KnownNotWornTooHeavy_WarnsThatWearingItWillSlowYou()
+    {
+        var leather = new LeatherArmor();
+        leather.Identify();
+
+        Assert.Equal(
+            "Armor made from tanned monster hide. Not as light as cloth armor but provides better protection." +
+            "\n\nThis leather armor provides damage absorption up to 4 points per attack. " + // max(DR() 2 * 2, 0)
+            "\n\nBecause of your inadequate strength wearing this armor " + // STR 11 > 10, not worn
+            "will decrease your movement speed and defense skill. ",
+            leather.Info());
+    }
+
+    [Fact]
+    public void Info_KnownWornTooHeavy_SaysSpeedAndDefenseAreDecreased()
+    {
+        var scale = new ScaleArmor();
+        scale.Identify();
+        Dungeon.Hero.Belongings.Armor = scale;
+
+        Assert.Equal(
+            "The metal scales sewn onto a leather vest create a flexible, yet protective armor." +
+            "\n\nThis scale armor provides damage absorption up to 8 points per attack. " + // 4 * 2
+            "\n\nBecause of your inadequate strength your " + // STR 15 > 10, worn
+            "movement speed and defense skill is decreased. " +
+            "\n\nYou are wearing the scale armor.",
+            scale.Info());
+    }
+
+    [Fact]
+    public void Info_WornAndCursed_SaysItCannotBeRemoved()
+    {
+        var cloth = new ClothArmor { Cursed = true };
+        Dungeon.Hero.Belongings.Armor = cloth;
+
+        Assert.Equal(
+            "This lightweight armor offers basic protection." +
+            "\n\nTypical cloth armor provides damage absorption up to 2 points per attack " +
+            " and requires 9 points of strength. " +
+            "\n\nYou are wearing the cloth armor, and because it is cursed, you are powerless to remove it.",
+            cloth.Info());
+    }
+
+    [Fact]
+    public void Info_KnownCurseNotWorn_WarnsOfMalevolentMagic()
+    {
+        var plate = new PlateArmor { Cursed = true, CursedKnown = true };
+
+        Assert.Equal(
+            "Enormous plates of metal are joined together into a suit that provides " +
+            "unmatched protection to any adventurer strong enough to bear its staggering weight." +
+            "\n\nTypical plate armor provides damage absorption up to 10 points per attack " + // 5 * 2
+            " and requires 17 points of strength. " + // 7 + 5*2
+            "Probably this armor is too heavy for you. " +
+            "\n\nYou can feel a malevolent magic lurking within the plate armor.",
+            plate.Info());
+    }
+
+    [Fact]
+    public void Info_KnownWithNegativeDr_ShowsZero()
+    {
+        var cloth = new ClothArmor();
+        cloth.Degrade(3); // STR 12, DR() 1 * (2 - 3) = -1
+        cloth.LevelKnown = true;
+
+        Assert.Equal(
+            "This lightweight armor offers basic protection." +
+            "\n\nThis cloth armor provides damage absorption up to 0 points per attack. " + // Math.max(DR(), 0)
+            "\n\nBecause of your inadequate strength wearing this armor " + // STR 12 > 10
+            "will decrease your movement speed and defense skill. ",
+            cloth.Info());
+    }
+
+    [Fact]
+    public void Price_DoublesPerTier_AndConsidersState()
+    {
+        Assert.Equal(10, new ClothArmor().Price()); // 10 * (1 << 0)
+        Assert.Equal(20, new LeatherArmor().Price()); // 10 * (1 << 1)
+        Assert.Equal(40, new MailArmor().Price()); // 10 * (1 << 2)
+        Assert.Equal(80, new ScaleArmor().Price()); // 10 * (1 << 3)
+        Assert.Equal(160, new PlateArmor().Price()); // 10 * (1 << 4)
+
+        Assert.Equal(5,
+            new ClothArmor { Cursed = true, CursedKnown = true }.Price()); // considerState halves a known curse
+
+        var leather = new LeatherArmor();
+        leather.Upgrade(2);
+        leather.LevelKnown = true;
+        Assert.Equal(60, leather.Price()); // known level 2: 20 * (2 + 1)
+
+        var mail = new MailArmor();
+        mail.Degrade();
+        mail.LevelKnown = true;
+        Assert.Equal(20, mail.Price()); // known level -1: 40 / (1 - -1)
+    }
 }

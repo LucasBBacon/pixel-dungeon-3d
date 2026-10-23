@@ -1,3 +1,4 @@
+using System.Text;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Utils;
 
@@ -135,7 +136,7 @@ public class Armor : EquipableItem
         {
             Inscribe();
         }
-        
+
         Str--;
 
         return base.Upgrade();
@@ -223,6 +224,70 @@ public class Armor : EquipableItem
     public int TypicalStr() => 7 + Tier * 2;
 
     public int TypicalDr() => Tier * 2;
+
+    public override string Info()
+    {
+        var name = Name();
+        var info = new StringBuilder(Desc());
+
+        if (LevelKnown)
+        {
+            info.Append(
+                "\n\nThis " + name + " provides damage absorption up to " + "" + Math.Max(Dr(), 0) +
+                " points per attack. ");
+
+            if (Str > Dungeon.Hero.Str())
+            {
+                if (IsEquipped(Dungeon.Hero))
+                {
+                    info.Append(
+                        "\n\nBecause of your inadequate strength your " +
+                        "movement speed and defense skill is decreased. ");
+                }
+                else
+                {
+                    info.Append("\n\nBecause of your inadequate strength wearing this armor " +
+                                "will decrease your movement speed and defense skill. ");
+                }
+            }
+        }
+        else
+        {
+            info.Append("\n\nTypical " + name + " provides damage absorption up to " + TypicalDr() +
+                        " points per attack " +
+                        " and requires " + TypicalStr() + " points of strength. ");
+
+            if (TypicalStr() > Dungeon.Hero.Str())
+            {
+                info.Append("Probably this armor is too heavy for you. ");
+            }
+        }
+
+        // TODO: "enchanted" when carries glyph
+
+        if (IsEquipped(Dungeon.Hero))
+        {
+            info.Append("\n\nYou are wearing the " + name + (Cursed
+                ? ", and because it is cursed, you are powerless to remove it."
+                : "."));
+        }
+        else
+        {
+            if (CursedKnown && Cursed)
+            {
+                info.Append("\n\nYou can feel a malevolent magic lurking within the " + name + ".");
+            }
+        }
+
+        return info.ToString();
+    }
+
+    public override int Price()
+    {
+        var price = 10 * (1 << (Tier - 1));
+        // TODO: 1.5x for inscribed armors
+        return ConsiderState(price);
+    }
 
     // TODO: inscribe(Glyph) stores a glyph and isInscribed() reports one
 
