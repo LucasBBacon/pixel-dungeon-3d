@@ -148,8 +148,18 @@ public class Hero : Char
         var bonus = 0;
         // TODO: ring of accuracy levels add to bonus
         var accuracy = (bonus == 0) ? 1 : (float)Math.Pow(1.4, bonus);
-        // TODO: ranged weapon at distance 1 halves accuracy, accuracyFactor scales result
-        return (int)(_attackSkill * accuracy);
+        // TODO: with a rangedWeapon, Level.distance(pos, target.pos) == 1 halves accuracy: accuracy *= 0.5f
+
+        // TODO: attackSkill()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
+        var wep = Belongings.Weapon;
+        if (wep != null)
+        {
+            return (int)(_attackSkill * accuracy * wep.AccuracyFactor(this));
+        }
+        else
+        {
+            return (int)(_attackSkill * accuracy);
+        }
     }
 
     public override int DefenseSkill(Char enemy)
@@ -163,8 +173,10 @@ public class Hero : Char
             evasion /= 2;
         }
 
-        var aEnc = 0;
-        // TODO: aEnc = belongings.armor.STR - STR() when armor is worn
+        var aEnc = Belongings.Armor != null
+            ? Belongings.Armor.Str - Str()
+            : 0;
+
         if (aEnc > 0)
         {
             return (int)(_defenseSkill * evasion / Math.Pow(1.5, aEnc));
@@ -189,24 +201,36 @@ public class Hero : Char
 
     public override int Dr()
     {
-        var dr = 0;
-        // TODO: armor worn
+        var dr = Belongings.Armor != null
+            ? Math.Max(Belongings.Armor.Dr(), 0)
+            : 0;
         // TODO: barkskin level adds to dr
         return dr;
     }
 
     public override int DamageRoll()
     {
-        // TODO: equipped weapon's DamageRoll(this) replaces bare-hands attack
-        var dmg = Str() > 10 ? Random.IntRange(1, Str() - 9) : 1;
+        // TODO: damageRoll()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
+        var wep = Belongings.Weapon;
+        int dmg;
+        if (wep != null)
+        {
+            dmg = wep.DamageRoll(this);
+        }
+        else
+        {
+            dmg = Str() > 10 ? Random.IntRange(1, Str() - 9) : 1;
+        }
+
         // TODO: Fury multiplier x 1.5
         return dmg;
     }
 
     public override float Speed()
     {
-        var aEnc = 0;
-        // TODO: aEnc calculation with armor!
+        var aEnc = Belongings.Armor != null
+            ? Belongings.Armor.Str - Str()
+            : 0;
         if (aEnc > 0)
         {
             return (float)(base.Speed() * Math.Pow(1.3, -aEnc));
@@ -221,8 +245,16 @@ public class Hero : Char
 
     public float AttackDelay()
     {
-        // TODO: equipped weapon's speedFactor(this)
-        return 1f;
+        // TODO: attackDelay()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
+        var wep = Belongings.Weapon;
+        if (wep != null)
+        {
+            return wep.SpeedFactor(this);
+        }
+        else
+        {
+            return 1f;
+        }
     }
 
     public override void Spend(float time)
@@ -641,13 +673,26 @@ public class Hero : Char
 
     public override int AttackProc(Char enemy, int damage)
     {
-        // TODO: weapon's proc, gladiator combo, battlemage...
+        // TODO: attackProc()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
+        var wep = Belongings.Weapon;
+        if (wep != null)
+        {
+            wep.Proc(this, enemy, damage);
+
+            // TODO: gladiator combo, battlemage wand charges, etc...
+        }
+
         return damage;
     }
 
     public override int DefenseProc(Char enemy, int damage)
     {
         // TODO: ring of thorns, earthroot armour
+        if (Belongings.Armor != null)
+        {
+            damage = Belongings.Armor.Proc(enemy, this, damage);
+        }
+
         return damage;
     }
 
