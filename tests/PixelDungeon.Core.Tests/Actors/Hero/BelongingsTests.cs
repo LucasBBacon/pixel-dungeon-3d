@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Tests.Items;
@@ -31,12 +32,12 @@ public class BelongingsTests : DungeonFixture
     [Fact]
     public void GetItem_FindsEquippedAndPackedItemsByType()
     {
-        var armor = new TestItem();
+        var armor = new ClothArmor();
         Stuff.Armor = armor;
         var stack = new StackItem(1);
         stack.Collect();
 
-        Assert.Same(armor, Stuff.GetItem<TestItem>());
+        Assert.Same(armor, Stuff.GetItem<ClothArmor>());
         Assert.Same(stack, Stuff.GetItem<StackItem>());
         Assert.Same(stack, Stuff.GetItem(typeof(StackItem)));
         Assert.Null(Stuff.GetItem<DurableItem>());
@@ -97,7 +98,7 @@ public class BelongingsTests : DungeonFixture
     {
         var packed = new TestItem();
         packed.Collect();
-        Stuff.Armor = new TestItem();
+        Stuff.Armor = new ClothArmor();
 
         Stuff.Observe();
 
@@ -128,7 +129,7 @@ public class BelongingsTests : DungeonFixture
             item.Collect();
         }
 
-        Stuff.Armor = new TestItem { Cursed = true };
+        Stuff.Armor = new ClothArmor { Cursed = true };
 
         Stuff.Resurrect(2);
 
@@ -145,14 +146,14 @@ public class BelongingsTests : DungeonFixture
         new Keyring().Collect();
         new GoldenKey { Depth = 5 }.Collect();
         new StackItem(4).Collect();
-        Stuff.Armor = new TestItem();
+        Stuff.Armor = new ClothArmor();
 
         var bundle = new Bundle();
         Stuff.StoreInBundle(bundle);
         var restored = new Belongings(Dungeon.Hero);
         restored.RestoreFromBundle(bundle);
 
-        Assert.IsType<TestItem>(restored.Armor);
+        Assert.IsType<ClothArmor>(restored.Armor);
         Assert.Null(restored.Weapon);
         var ring = Assert.Single(restored.Backpack.Items.OfType<Keyring>());
         Assert.Equal(5, Assert.IsType<GoldenKey>(Assert.Single(ring.Items)).Depth);
@@ -184,6 +185,27 @@ public class BelongingsTests : DungeonFixture
 
         Assert.False(weapon.Cursed);
         Assert.Equal(1, weapon.Activations); // Belongings.resurrect: weapon.cursed = false; weapon.activate(owner)
+    }
+
+    [Fact]
+    public void Bundle_RestoringArmor_ReplaysItsLevelIntoStrAndDr()
+    {
+        var mail = new MailArmor();
+        mail.Upgrade(); // level 1
+        mail.Identify();
+        Stuff.Armor = mail;
+
+        var bundle = new Bundle();
+        Stuff.StoreInBundle(bundle);
+        var restored = new Belongings(Dungeon.Hero);
+        restored.RestoreFromBundle(bundle);
+
+        var armor = Assert.IsType<MailArmor>(restored.Armor);
+        Assert.NotSame(mail, armor);
+        Assert.Equal(1, armor.Level());
+        Assert.Equal(12, armor.Str); // 13 - 1, replayed through Armor.upgrade() rather than bundled
+        Assert.Equal(9, armor.Dr()); // tier 3 * (2 + 1)
+        Assert.True(armor.LevelKnown);
     }
 
     [Fact]

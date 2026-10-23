@@ -14,17 +14,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/Armor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/ClothArmor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/LeatherArmor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/MailArmor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/PlateArmor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Armor/ScaleArmor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ArmorTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/MeleeWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/MeleeWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Belongings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -32,6 +42,7 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
@@ -185,6 +196,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/GlobalUsing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/InterLevelTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ArmorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ContainerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/EquipmentTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -369,15 +381,7 @@
       <workItem from="1791582981535" duration="26276000" />
       <workItem from="1791879769304" duration="22463000" />
       <workItem from="1792172000146" duration="11436000" />
-      <workItem from="1792273307008" duration="58437000" />
-    </task>
-    <task id="LOCAL-00014" summary="feat(core): port Ballistica and the Dungeon path helpers">
-      <option name="closed" value="true" />
-      <created>1790200042983</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1790200042983</updated>
+      <workItem from="1792273307008" duration="66562000" />
     </task>
     <task id="LOCAL-00015" summary="feat(core): port Room, Patch, the four basic painters, and RegularLevel room layout">
       <option name="closed" value="true" />
@@ -763,7 +767,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792705268771</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="feat(items): melee weapon info and price&#10;MeleeWeapon.info() ports the Java text:&#10;&#10;- the quality and tier&#10;- the average damage when the level is known, or the typical damage and strength with the too-heavy warning when it is not&#10;- the fast, slow, accurate and inaccurate sentence with its &quot;and&quot; or &quot;but&quot;&#10;- the balancing lines&#10;- the strength penalty and bonus for a known weapon in the pack&#10;- the held and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: enchanted text and price.">
+      <option name="closed" value="true" />
+      <created>1792751119186</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1792751119194</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -784,7 +796,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO." />
     <MESSAGE value="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim." />
     <MESSAGE value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
     <MESSAGE value="feat(items): belongings, the three keys, and the key ring at start&#10;Belongings ports whole: the equipped-then-backpack enumeration, typed and by-class lookups, key lookup by exact class and depth, the iron key count, identify, observe, resurrect and bundling. Weapon, armour and ring slots stay typed Item until their classes are ported. &#10;Every new hero collects a key ring, the one initCommon line that needs nothing from a later slice. QuickSlot gains its class form, resolved by name through Bundle's type lookup.&#10;Bundle.ResolveType now guards a null/empty name instead of letting Assembly.GetType throw: Bundle.GetString returns &quot;&quot; for a missing key (matching Java's JSONObject.optString), and QuickSlot.Restore's class form has no surrounding try/catch, so an absent quickslot2 key would otherwise throw instead of leaving the slot empty." />
@@ -809,7 +820,8 @@
     <MESSAGE value="feat(items): equip and unequip weapons&#10;EquipableItem and KindOfWeapon port whole:&#10;&#10;- equipping a weapon spends 1 turn, and replacing one spends 2, because the old weapon's unequip and the new weapon's equip each SpendAndNext&#10;- a cursed weapon still equips, with a shadow burst, SND_CURSED and the wince warning, and then refuses to come off.&#10;- dropping or throwing a wielded weapon unequips it with a Spend and no Next, so the drop or throw ends the turn&#10;&#10;Belongings.Weapon is now a KindOfWeapon, and restoring or resurrecting activates it. Weapon starts as its fields, TODO: rest." />
     <MESSAGE value="feat(items): weapon strength penalties, identification and rolls&#10;Weapon ports whole, apart from enchantments:&#10;&#10;- accuracy divides by 1.5 and delay multiplies by 1.2 per point of encumbrance, in float, with the Imbue multipliers&#10;- excess strength adds IntRange(0, exStr) damage outside a Huntress's melee&#10;- the twentieth hit while unknown identifies the weapon with the Java message&#10;- &quot;unfamiliarity&quot; and &quot;imbue&quot; round-trip, a zero unfamiliarity restores twenty, and durability is 5 * (16 - level)&#10;- random() rolls upgrade or curse in the Java order&#10;&#10;Enchantments TODO, but Enchant() still draws Enchantment.random()'s&#10;roll." />
     <MESSAGE value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
+    <MESSAGE value="feat(items): melee weapon info and price&#10;MeleeWeapon.info() ports the Java text:&#10;&#10;- the quality and tier&#10;- the average damage when the level is known, or the typical damage and strength with the too-heavy warning when it is not&#10;- the fast, slow, accurate and inaccurate sentence with its &quot;and&quot; or &quot;but&quot;&#10;- the balancing lines&#10;- the strength penalty and bonus for a known weapon in the pack&#10;- the held and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: enchanted text and price." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): melee weapon info and price&#10;MeleeWeapon.info() ports the Java text:&#10;&#10;- the quality and tier&#10;- the average damage when the level is known, or the typical damage and strength with the too-heavy warning when it is not&#10;- the fast, slow, accurate and inaccurate sentence with its &quot;and&quot; or &quot;but&quot;&#10;- the balancing lines&#10;- the strength penalty and bonus for a known weapon in the pack&#10;- the held and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: enchanted text and price." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

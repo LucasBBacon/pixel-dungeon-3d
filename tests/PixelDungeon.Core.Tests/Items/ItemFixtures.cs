@@ -88,6 +88,36 @@ public static class WeaponRolls
     }
 }
 
+public static class ArmorRolls
+{
+    public static readonly float[] GlyphChances =
+    [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ];
+
+    public static int ReplayArmorRandom(out bool inscribed)
+    {
+        var level = WeaponRolls.ReplayWeaponRandom();
+        inscribed = Random.Int(10) == 0;
+        if (inscribed)
+        {
+            Random.Chances(GlyphChances);
+        }
+
+        return level;
+    }
+}
+
 public class Scroll : Item
 {
     public Scroll()

@@ -141,11 +141,7 @@ public class Hero : Char
         Buff.Affect<Hunger>(this);
     }
 
-    public int Tier()
-    {
-        // TODO: belongings.armor.tier when armor is worn
-        return 0;
-    }
+    public int Tier() => Belongings.Armor?.Tier ?? 0; // belongings.armor == null ? 0 : belongings.armor.tier
 
     public override int AttackSkill(Char target)
     {

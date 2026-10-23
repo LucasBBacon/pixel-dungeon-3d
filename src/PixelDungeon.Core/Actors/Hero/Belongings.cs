@@ -1,5 +1,6 @@
 using System.Collections;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Utils;
@@ -16,8 +17,7 @@ public class Belongings : IEnumerable<Item>
 
     public KindOfWeapon Weapon = null;
 
-    // TODO: amor is an Armor
-    public Item Armor = null;
+    public Armor Armor = null;
 
     // TODO: ring1 and ring2 are rings
     public Item Ring1 = null;
@@ -58,7 +58,7 @@ public class Belongings : IEnumerable<Item>
         Weapon = (KindOfWeapon)bundle.Get(TagWeapon);
         Weapon?.Activate(Owner);
 
-        Armor = (Item)bundle.Get(TagArmor);
+        Armor = (Armor)bundle.Get(TagArmor);
 
         Ring1 = (Item)bundle.Get(TagRing1);
         // TODO: ring1.activate(owner) when a ring is restored
