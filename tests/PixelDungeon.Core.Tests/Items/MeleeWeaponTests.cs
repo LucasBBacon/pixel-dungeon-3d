@@ -1,12 +1,21 @@
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.Utils;
+using Xunit.Abstractions;
 
 namespace PixelDungeon.Core.Tests.Items;
 
 public class MeleeWeaponTests : DungeonFixture
 {
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public MeleeWeaponTests(ITestOutputHelper testOutputHelper)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
     [Theory]
     [InlineData(typeof(Dagger), 10, 10, 1,
         8)] // tier 1, ACU 1.2f: STR 8 + 1*2; max0 (1 - 1 + 10) / 1.2f * 1f = 8.33f -> 8
@@ -207,5 +216,162 @@ public class MeleeWeaponTests : DungeonFixture
         Assert.Equal(8, restored.Str); // 10 - 2, replayed through upgrade()
         Assert.Equal(3, restored.Min()); // 1 + 2
         Assert.Equal(10, restored.Max()); // 8 + 2 * 1
+    }
+
+    [Fact]
+    public void Info_UnknownLevel_GivesTypicalStats_AndWarnsWhenTooHeavy()
+    {
+        Assert.Equal(
+            "The razor-sharp length of steel blade shines reassuringly." +
+            "\n\nThis sword is a tier-3 melee weapon. " + // indefinite("") is "a"
+            "Its typical average damage is 9 points per hit and usually it requires 14 points of strength. " + // min0 3 + (max0 16 - 3) / 2; 8 + 3*2
+            "Probably this weapon is too heavy for you. ", // typicalSTR 14 > the hero's 10
+            new Sword().Info());
+    }
+
+    [Fact]
+    public void Info_UnknownLevelLightEnough_OmitsTheWarning_AndNamesTheAccuracy()
+    {
+        Assert.Equal(
+            "A simple iron dagger with a well worn wooden handle." +
+            "\n\nThis dagger is a tier-1 melee weapon. " +
+            "Its typical average damage is 4 points per hit and usually it requires 10 points of strength. " + // 1 + (8 - 1) / 2
+            "This is a rather accurate weapon. ", // DLY 1, ACU 1.2 > 1
+            new Dagger().Info());
+    }
+
+    [Fact]
+    public void Info_KnownInThePackTooHeavy_WarnsOfInadequateStrength()
+    {
+        var sword = new Sword();
+        sword.Identify();
+        sword.Collect();
+
+        Assert.Equal(
+            "The razor-sharp length of steel blade shines reassuringly." +
+            "\n\nThis sword is a tier-3 melee weapon. " +
+            "Its average damage is 9 points per hit. " + // min 3 + (max 16 - 3) / 2
+            "\n\nBecause of your inadequate strength the accuracy and speed of your attack with this sword is decreased.", // STR 14 > 10
+            sword.Info());
+    }
+
+    [Fact]
+    public void Info_KnownUpgradedInThePack_NotesExcessStrength()
+    {
+        var dagger = new Dagger();
+        dagger.Upgrade(2); // STR 8, min 3, max 10
+        dagger.Identify();
+        dagger.Collect();
+
+        Assert.Equal(
+            "A simple iron dagger with a well worn wooden handle." +
+            "\n\nThis dagger is an upgraded tier-1 melee weapon. " + // visiblyUpgraded() 2 > 0, not broken
+            "Its average damage is 6 points per hit. " + // 3 + (10 - 3) / 2
+            "This is a rather accurate weapon. " +
+            "\n\nBecause of your excess strength the damage of your attack with this dagger is increased.", // STR 8 < 10
+            dagger.Info());
+    }
+
+    [Fact]
+    public void Info_EquippedAndCursed_SaysItCannotBeLetGo()
+    {
+        var knuckles = new Knuckles { Cursed = true };
+        Dungeon.Hero.Belongings.Weapon = knuckles;
+
+        Assert.Equal(
+            "A piece of iron shaped to fit around the knuckles." +
+            "\n\nThis knuckleduster is a tier-1 melee weapon. " +
+            "Its typical average damage is 3 points per hit and usually it requires 10 points of strength. " + // 1 + (5 - 1) / 2
+            "This is a rather fast weapon. " + // DLY 0.5 < 1, ACU 1
+            "\n\nYou hold the knuckleduster at the ready, and because it is cursed, you are powerless to let go.",
+            knuckles.Info());
+    }
+
+    [Fact]
+    public void Info_EquippedKnownTooHeavy_SkipsTheStrengthLine_AndHoldsItAtTheReady()
+    {
+        var spear = new Spear();
+        spear.Identify();
+        Dungeon.Hero.Belongings.Weapon = spear; // wielded, so not in backpack.items: the Java skips the strength lines
+
+        _testOutputHelper.WriteLine(spear.Info());
+
+        Assert.Equal(
+            "A slender wooden rod tipped with sharpened iron." +
+            "\n\nThis spear is a tier-2 melee weapon. " +
+            "Its average damage is 10 points per hit. " + // 2 + (18 - 2) / 2
+            "This is a rather slow weapon. " + // DLY 1.5 > 1
+            "\n\nYou hold the spear at the ready.",
+            spear.Info());
+    }
+
+    [Fact]
+    public void Info_KnownCurseNotEquipped_WarnsOfMalevolentMagic()
+    {
+        var spear = new Spear { Cursed = true, CursedKnown = true };
+
+        Assert.Equal(
+            "A slender wooden rod tipped with sharpened iron." +
+            "\n\nThis spear is a tier-2 melee weapon. " +
+            "Its typical average damage is 10 points per hit and usually it requires 12 points of strength. " + // 2 + (18 - 2) / 2; 8 + 2*2
+            "Probably this weapon is too heavy for you. " + // 12 > 10
+            "This is a rather slow weapon. " +
+            "\n\nYou can feel a malevolent magic lurking within spear.",
+            spear.Info());
+    }
+
+    [Fact]
+    public void Info_DegradedAndBroken_NameTheirQuality()
+    {
+        var glaive = new Glaive();
+        glaive.Degrade(); // min 4, max 25
+        glaive.LevelKnown = true;
+        Assert.Contains("This glaive is a degraded tier-5 melee weapon. Its average damage is 14 points per hit. ",
+            glaive.Info()); // 4 + (25 - 4) / 2
+
+        var sword = new Sword();
+        sword.Upgrade(); // durability 75
+        for (var i = 0; i < 75; i++)
+        {
+            sword.Use();
+        }
+
+        sword.LevelKnown = true;
+        Assert.Contains("This sword is a broken tier-3 melee weapon. Its average damage is 9 points per hit. ",
+            sword.Info()); // broken: min0 3, max0 16
+    }
+
+    [Theory]
+    [InlineData(1.2f, 0.5f, "This is a rather fast and accurate weapon. ")] // (ACU > 1) == (DLY < 1): " and "
+    [InlineData(0.8f, 0.5f, "This is a rather fast but inaccurate weapon. ")] // they differ: " but "
+    [InlineData(1.2f, 1.5f, "This is a rather slow but accurate weapon. ")] // they differ: " but "
+    [InlineData(0.8f, 1.5f, "This is a rather slow and inaccurate weapon. ")] // both false: " and "
+    [InlineData(0.8f, 1f, "This is a rather inaccurate weapon. ")] // DLY 1: the accuracy-only sentence
+    public void Info_SpeedAndAccuracy_JoinWithAndOrBut(float acu, float dly, string sentence)
+    {
+        Assert.Contains(sentence, new MeleeWeapon(2, acu, dly).Info());
+    }
+
+    [Fact]
+    public void Info_Imbue_NamesTheBalancing()
+    {
+        var fast = new Sword { ImbueValue = Weapon.Imbue.Speed };
+        var sure = new Sword { ImbueValue = Weapon.Imbue.Accuracy };
+
+        Assert.Contains("It was balanced to make it faster. ", fast.Info());
+        Assert.Contains("It was balanced to make it more accurate. ", sure.Info());
+        Assert.DoesNotContain("balanced", new Sword().Info());
+    }
+
+    [Fact]
+    public void Price_DoublesPerTier_AndConsidersAKnownCurse()
+    {
+        Assert.Equal(20, new Dagger().Price()); // 20 * (1 << 0)
+        Assert.Equal(40, new Spear().Price()); // 20 * (1 << 1)
+        Assert.Equal(80, new Mace().Price()); // 20 * (1 << 2)
+        Assert.Equal(160, new BattleAxe().Price()); // 20 * (1 << 3)
+        Assert.Equal(320, new WarHammer().Price()); // 20 * (1 << 4)
+        Assert.Equal(10,
+            new Dagger { Cursed = true, CursedKnown = true }.Price()); // considerState halves a known curse
     }
 }

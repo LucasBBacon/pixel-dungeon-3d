@@ -14,29 +14,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/BattleAxe.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Dagger.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Glaive.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Knuckles.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Longsword.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Mace.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/MeleeWeapon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Quarterstaff.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/ShortSword.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Spear.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/Sword.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/WarHammer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/MeleeWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/MeleeWeapon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -44,7 +32,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
@@ -382,15 +369,7 @@
       <workItem from="1791582981535" duration="26276000" />
       <workItem from="1791879769304" duration="22463000" />
       <workItem from="1792172000146" duration="11436000" />
-      <workItem from="1792273307008" duration="53527000" />
-    </task>
-    <task id="LOCAL-00013" summary="feat(core): port Actor, Buff, Char, Door, field of view, and the hero and mob shells">
-      <option name="closed" value="true" />
-      <created>1790195590778</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1790195590778</updated>
+      <workItem from="1792273307008" duration="58437000" />
     </task>
     <task id="LOCAL-00014" summary="feat(core): port Ballistica and the Dungeon path helpers">
       <option name="closed" value="true" />
@@ -776,7 +755,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792673618854</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge.">
+      <option name="closed" value="true" />
+      <created>1792705268771</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1792705268771</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,7 +784,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix: game-over cause, mob visibility buffer, and death-window input lock&#10;Every death path (melee, chasm fall, bleeding) called GameScene.GameOver() from Hero.ReallyDie() before Dungeon.Fail() had a chance to run and set Dungeon.ResultDescription, so the &quot;You died&quot; window's first line was always blank. The Java gets away with the identical call order because its gameOver() only shows a banner and the rankings scene reads the cause much later; porting the call site verbatim without porting that laziness broke it here. GameOver() now defers building the window body by one frame (Callable.From(ShowDeathWindow).CallDeferred(), a method reference rather than an expression lambda per this project's earlier lambda-to-Task lesson), so the cause is always populated by the time the window reads it. Verified live in a headless run against both the fixed and reverted code: the reverted version prints ResultDescription='' at GameOver() time, the fix prints the real cause. That same GameOver() call bypassed the counted ShowWindow(request) path, so the death window never disabled CellSelector's input. Hero.Die clears CurAction but not Ready, so WASD behind the window still reached Handle() and could make a corpse walk and fight. GameOver() now routes through ShowWindow(request), and CellSelector's process and select paths also require Dungeon.Hero.IsAlive() as belt-and-braces. Restart's interaction with the open-window counter was traced end to end: the dialog's Confirmed handler runs Restart() synchronously before the dialog hides, so the counter always lands back on zero.&#10;GameScene's per-frame mob-visibility reconcile and AddMob both read Level.FieldOfView, a scratch buffer every Char.Act() overwrites with its own viewshed, mobs included. Reading it after a mob's turn shows the mob's view, not the hero's, so visible mobs could vanish and hidden ones pop into view for the length of an attack tween, and wrongly-hidden mobs would teleport instead of sliding. Both sites now read Dungeon.Visible.&#10;Finally, the death integration test asserted only end-of-test state, so it could not detect the ordering defect above: Dungeon.Fail() does run eventually, just after GameOver() rather than before. RecordingGameView now captures ResultDescription at the moment GameOver() is called, and the test asserts that capture is null, the honest, by-design contract on the Core side, which is exactly what the Godot-side deferral works around." />
     <MESSAGE value="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO." />
     <MESSAGE value="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim." />
     <MESSAGE value="feat(items): bags, the key ring, and collecting and detaching items&#10;Item gains Collect, Detach, DetachAll and DoPickUp. Bags take matching items first, stacks merge by class, and a full container logs and refuses. The backpack re-sorts by Generator category after every collect, with a stable sort: Java's Collections.sort is stable and List.Sort is not.&#10;Key, Bag and Keyring port whole; Belongings gains its 19-slot backpack." />
@@ -822,7 +808,8 @@
     <MESSAGE value="feat(buffs): hunger&#10;Hunger ports whole:&#10;- a 10-point step every 12 turns for a Rogue, and every 10 turns otherwise&#10;- &quot;You are hungry.&quot; on crossing 260, and &quot;You are starving!&quot; with an interrupt on reaching 360&#10;- a 30% chance of 1 damage per starving turn, unless a paralysed hero is at 1 HP &#10;- the hunger death cause&#10;&#10;Hero.Live() attaches it, each stair adds 36 unless the hero is starving, and IsStarving reads it. Heroes without Live() report not starving. The two Dungeon.Init actor counts grow by the new buff. Ring of Satiety and Shadows stay TODO.&#10;HungerTests.Act_WhileStarving_TakesOneDamageWhenTheRollIsUnderThreeTenths releases the hero with hero.Next() at the end of each loop iteration, per the controller's ruling: Hero.Act idles and stays Actor._current until Next() is called, as ActorTests.cs already documents, so the original loop only ever ran the first of its 30 iterations." />
     <MESSAGE value="feat(items): equip and unequip weapons&#10;EquipableItem and KindOfWeapon port whole:&#10;&#10;- equipping a weapon spends 1 turn, and replacing one spends 2, because the old weapon's unequip and the new weapon's equip each SpendAndNext&#10;- a cursed weapon still equips, with a shadow burst, SND_CURSED and the wince warning, and then refuses to come off.&#10;- dropping or throwing a wielded weapon unequips it with a Spend and no Next, so the drop or throw ends the turn&#10;&#10;Belongings.Weapon is now a KindOfWeapon, and restoring or resurrecting activates it. Weapon starts as its fields, TODO: rest." />
     <MESSAGE value="feat(items): weapon strength penalties, identification and rolls&#10;Weapon ports whole, apart from enchantments:&#10;&#10;- accuracy divides by 1.5 and delay multiplies by 1.2 per point of encumbrance, in float, with the Imbue multipliers&#10;- excess strength adds IntRange(0, exStr) damage outside a Huntress's melee&#10;- the twentieth hit while unknown identifies the weapon with the Java message&#10;- &quot;unfamiliarity&quot; and &quot;imbue&quot; round-trip, a zero unfamiliarity restores twenty, and durability is 5 * (16 - level)&#10;- random() rolls upgrade or curse in the Java order&#10;&#10;Enchantments TODO, but Enchant() still draws Enchantment.random()'s&#10;roll." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): weapon strength penalties, identification and rolls&#10;Weapon ports whole, apart from enchantments:&#10;&#10;- accuracy divides by 1.5 and delay multiplies by 1.2 per point of encumbrance, in float, with the Imbue multipliers&#10;- excess strength adds IntRange(0, exStr) damage outside a Huntress's melee&#10;- the twentieth hit while unknown identifies the weapon with the Java message&#10;- &quot;unfamiliarity&quot; and &quot;imbue&quot; round-trip, a zero unfamiliarity restores twenty, and durability is 5 * (16 - level)&#10;- random() rolls upgrade or curse in the Java order&#10;&#10;Enchantments TODO, but Enchant() still draws Enchantment.random()'s&#10;roll." />
+    <MESSAGE value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
