@@ -1,6 +1,7 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Mechanics;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Ui;
@@ -516,8 +517,12 @@ public class Item : IBundlable
 
         // TODO: FIX THIS
         var delay = TimeToThrow;
-        // TODO: a MissileWeapon scales delay by speedFactor(user)
-        // TODO: a SnipersMark on that enemy halves it and is removed
+        if (this is MissileWeapon)
+        {
+            delay *= ((MissileWeapon)this).SpeedFactor(user);
+            // TODO: a SnipersMark on that enemy halves it and is removed
+        }
+
         var finalDelay = delay;
 
         // hero is Actor._current and stays so until SpendAndNext below, nothing acts while it flies

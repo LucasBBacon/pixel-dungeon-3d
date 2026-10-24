@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Items.Weapon;
@@ -93,7 +94,20 @@ public abstract class Weapon : KindOfWeapon
     {
         var encumbrance = Str - hero.Str();
 
-        // TODO: MissileWeapon, Warrior's encumbrance rises by 3, Huntress's falls by 2
+        if (this is MissileWeapon)
+        {
+            switch (hero.HeroClass)
+            {
+                case HeroClass.Warrior:
+                    encumbrance += 3;
+                    break;
+                case HeroClass.Huntress:
+                    encumbrance -= 2;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         return (encumbrance > 0 ? (float)(Acu / Math.Pow(1.5, encumbrance)) : Acu) *
                (ImbueValue == Imbue.Accuracy ? 1.5f : 1.0f);
@@ -102,8 +116,10 @@ public abstract class Weapon : KindOfWeapon
     public override float SpeedFactor(Hero hero)
     {
         var encumbrance = Str - hero.Str();
-
-        // TODO: MissileWeapon, Huntress's encumbrance falls by 2
+        if (this is MissileWeapon && hero.HeroClass == HeroClass.Huntress)
+        {
+            encumbrance -= 2;
+        }
 
         return (encumbrance > 0 ? (float)(Dly * Math.Pow(1.2, encumbrance)) : Dly) *
                (ImbueValue == Imbue.Speed ? 0.6f : 1.0f);
@@ -113,8 +129,7 @@ public abstract class Weapon : KindOfWeapon
     {
         var damage = base.DamageRoll(hero);
 
-        // TODO: bonus applies when (hero.rangedWeapon != null) == (hero.heroClass == HUNTRESS)
-        if (hero.HeroClass != HeroClass.Huntress)
+        if ((hero.RangedWeapon != null) == (hero.HeroClass == HeroClass.Huntress))
         {
             var exStr = hero.Str() - Str;
             if (exStr > 0)

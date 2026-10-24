@@ -158,10 +158,12 @@ public class Hero : Char
         var bonus = 0;
         // TODO: ring of accuracy levels add to bonus
         var accuracy = (bonus == 0) ? 1 : (float)Math.Pow(1.4, bonus);
-        // TODO: with a rangedWeapon, Level.distance(pos, target.pos) == 1 halves accuracy: accuracy *= 0.5f
+        if (RangedWeapon != null && Level.Distance(Pos, target.Pos) == 1)
+        {
+            accuracy *= 0.5f;
+        }
 
-        // TODO: attackSkill()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
-        var wep = Belongings.Weapon;
+        var wep = RangedWeapon ?? Belongings.Weapon;
         if (wep != null)
         {
             return (int)(_attackSkill * accuracy * wep.AccuracyFactor(this));
@@ -220,8 +222,7 @@ public class Hero : Char
 
     public override int DamageRoll()
     {
-        // TODO: damageRoll()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
-        var wep = Belongings.Weapon;
+        var wep = RangedWeapon ?? Belongings.Weapon;
         int dmg;
         if (wep != null)
         {
@@ -255,8 +256,7 @@ public class Hero : Char
 
     public float AttackDelay()
     {
-        // TODO: attackDelay()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
-        var wep = Belongings.Weapon;
+        var wep = RangedWeapon ?? Belongings.Weapon;
         if (wep != null)
         {
             return wep.SpeedFactor(this);
@@ -683,8 +683,7 @@ public class Hero : Char
 
     public override int AttackProc(Char enemy, int damage)
     {
-        // TODO: attackProc()'s wep is rangedWeapon when one is set, otherwise belongings.weapon
-        var wep = Belongings.Weapon;
+        var wep = RangedWeapon ?? Belongings.Weapon;
         if (wep != null)
         {
             wep.Proc(this, enemy, damage);

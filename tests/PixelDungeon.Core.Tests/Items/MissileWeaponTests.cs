@@ -54,6 +54,17 @@ public class MissileWeaponTests : DungeonFixture
         public override int DefenseSkill(Char enemy) => 1000000;
     }
 
+    private sealed class SpyDart : Dart
+    {
+        public MissileWeapon SeenRangedWeapon;
+
+        public override float AccuracyFactor(Hero hero)
+        {
+            SeenRangedWeapon = hero.RangedWeapon;
+            return base.AccuracyFactor(hero);
+        }
+    }
+
     [Theory]
     [InlineData(typeof(Dart), "dart", ItemSpriteSheet.Dart, 10, 1f, 1, 4, 2)]
     [InlineData(typeof(CurareDart), "curare dart", ItemSpriteSheet.CurareDart, 14, 1f, 1, 3, 12)]
@@ -445,5 +456,197 @@ public class MissileWeaponTests : DungeonFixture
         Assert.Equal(4, restored.Quantity());
         Assert.Equal(14, restored.Str);
         Assert.True(restored.LevelKnown);
+    }
+
+    [Fact]
+    public void AttackSkill_WithARangedWeapon_HalvesAtDistanceOne()
+    {
+        LoadLevel("#####",
+            "#...#",
+            "#...#",
+            "#####");
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        var beside = new Rat { Pos = TestLevel.At(2, 1) };
+        var diagonal = new Rat { Pos = TestLevel.At(2, 2) };
+        var twoAway = new Rat { Pos = TestLevel.At(3, 1) };
+
+        Assert.Equal(10, hero.AttackSkill(beside)); // no ranged weapon, no halving
+
+        hero.RangedWeapon = new Dart(); // STR 10 against 10: factor 1
+        Assert.Equal(5, hero.AttackSkill(beside)); // (int)(10 * 0.5f * 1)
+        Assert.Equal(5, hero.AttackSkill(diagonal)); // Level.distance takes the larger axis gap, so this is 1 too
+        Assert.Equal(10, hero.AttackSkill(twoAway)); // distance 2
+    }
+
+    [Fact]
+    public void AttackSkill_WithARangedWeapon_UsesItsFactorOverTheWieldedWeapons()
+    {
+        var hero = Dungeon.Hero;
+        hero.Pos = TestLevel.At(1, 1);
+        var far = new Rat { Pos = TestLevel.At(4, 1) };
+        hero.STR = 13;
+        hero.Belongings.Weapon = new Dagger(); // STR 10, encumbrance -3: ACU 1.2
+        Assert.Equal(12, hero.AttackSkill(far)); // (int)(10 * 1 * 1.2f)
+
+        hero.RangedWeapon = new Shuriken(); // STR 13, encumbrance 0: ACU 1
+        Assert.Equal(10, hero.AttackSkill(far));
+    }
+
+    [Theory]
+    [InlineData(HeroClass.Warrior, 10, typeof(Dart), 0.2963)] // 10 - 10 + 3 = 3: 1 / 1.5^3 = 1 / 3.375
+    [InlineData(HeroClass.Mage, 10, typeof(Dart), 1.0)] // no class shift: 0
+    [InlineData(HeroClass.Rogue, 13, typeof(Javelin), 0.4444)] // 15 - 13 = 2: 1 / 2.25
+    [InlineData(HeroClass.Huntress, 13, typeof(Javelin), 1.0)] // 2 - 2 = 0
+    [InlineData(HeroClass.Huntress, 12, typeof(Javelin), 0.6667)] // 3 - 2 = 1: 1 / 1.5
+    [InlineData(HeroClass.Warrior, 14, typeof(Sword), 1.0)] // a melee weapon takes no shift: 14 - 14 = 0
+    public void AccuracyFactor_ForAMissile_ShiftsEncumbranceByClass(HeroClass heroClass, int str, Type type,
+        double expected)
+    {
+        var hero = Dungeon.Hero;
+        hero.HeroClass = heroClass;
+        hero.STR = str;
+        var weapon = (KindOfWeapon)Activator.CreateInstance(type);
+
+        Assert.NotNull(weapon);
+        Assert.Equal(expected, weapon.AccuracyFactor(hero), 4);
+    }
+
+    [Theory]
+    [InlineData(HeroClass.Huntress, 13, typeof(Javelin), 1.0)] // 15 - 13 - 2 = 0: DLY 1
+    [InlineData(HeroClass.Huntress, 12, typeof(Javelin), 1.2)] // 3 - 2 = 1: 1 * 1.2
+    [InlineData(HeroClass.Rogue, 13, typeof(Javelin), 1.44)] // 2: 1.2^2
+    [InlineData(HeroClass.Warrior, 13, typeof(Javelin), 1.44)] // speed takes no Warrior shift
+    [InlineData(HeroClass.Huntress, 13, typeof(Sword), 1.2)] // a melee weapon takes no shift: 14 - 13 = 1
+    public void SpeedFactor_ForAHuntresssMissile_LowersEncumbranceByTwo(HeroClass heroClass, int str, Type type,
+        double expected)
+    {
+        var hero = Dungeon.Hero;
+        hero.HeroClass = heroClass;
+        hero.STR = str;
+        var weapon = (KindOfWeapon)Activator.CreateInstance(type);
+
+        Assert.NotNull(weapon);
+        Assert.Equal(expected, weapon.SpeedFactor(hero), 4);
+    }
+
+    [Theory]
+    [InlineData(HeroClass.Rogue, false, true)] // wielded: (false) == (false)
+    [InlineData(HeroClass.Rogue, true, false)] // thrown: (true) == (false) fails
+    [InlineData(HeroClass.Huntress, false, false)] // wielded: (false) == (true) fails
+    [InlineData(HeroClass.Huntress, true, true)] // thrown: (true) == (true)
+    [InlineData(HeroClass.Warrior, true, false)] // thrown: (true) == (false) fails
+    public void DamageRoll_StrengthBonus_FollowsTheRangedAndHuntressGate(HeroClass heroClass, bool thrown, bool bonus)
+    {
+        var hero = Dungeon.Hero;
+        hero.HeroClass = heroClass;
+        hero.STR = 14; // exStr 14 - the Dart's 10 = 4
+        var darts = new Dart(5);
+        if (thrown)
+        {
+            hero.Belongings.Weapon = new Dagger(); // wielded, but the thrown dart is the one that rolls
+            hero.RangedWeapon = darts;
+        }
+        else
+        {
+            hero.Belongings.Weapon = darts;
+        }
+
+        for (var seed = 1; seed <= 20; seed++)
+        {
+            Random.Seed(seed);
+            var damage = hero.DamageRoll();
+            var next = Random.Int(1000);
+
+            Random.Seed(seed);
+            var expected = Random.NormalIntRange(1, 4); // the Dart's Min() and Max()
+            if (bonus)
+            {
+                expected += Random.IntRange(0, 4);
+            }
+
+            Assert.Equal(expected, damage);
+            Assert.Equal(Random.Int(1000), next);
+        }
+    }
+
+    [Fact]
+    public void AttackDelay_WithARangedShuriken_IsItsHalfTurn_OverTheWieldedSpear()
+    {
+        var hero = Dungeon.Hero;
+        hero.STR = 13;
+        hero.Belongings.Weapon = new Spear(); // STR 12, encumbrance -1, dly 1.5
+        Assert.Equal(1.5f, hero.AttackDelay());
+
+        hero.RangedWeapon = new Shuriken(); // STR 13, encumbrance 0, dly 0.5
+        Assert.Equal(0.5f, hero.AttackDelay());
+    }
+
+    [Fact]
+    public void AttackProc_WithARangedWeapon_ProcsItInsteadOfTheWieldedWeapon()
+    {
+        var hero = Dungeon.Hero;
+        var rat = new Rat { Sprite = new FakeCharView() };
+        var dagger = new Dagger();
+        dagger.Upgrade(); // level 1: durability 5 * (16 - 1) = 75
+        hero.Belongings.Weapon = dagger;
+        hero.RangedWeapon = new Javelin();
+
+        Assert.Equal(3, hero.AttackProc(rat, 3));
+
+        Assert.NotNull(rat.GetBuff<Cripple>()); // javelin's proc ran
+        Assert.Equal(75, dagger.Durability()); // dagger's weapon.proc never did
+    }
+
+    [Fact]
+    public void Shoot_SetSRangedWeaponForTheAttack_AndClearsItAfter()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var rat = PlaceRat(4);
+        var dart = new SpyDart();
+
+        Assert.True(hero.Shoot(rat, dart)); // rat's DefenseSkill = 0, sure hit
+
+        Assert.Same(dart, dart.SeenRangedWeapon); // attackSkill() reached the dart through rangedWeapon
+        Assert.Null(hero.RangedWeapon);
+    }
+
+    [Fact]
+    public void Throw_AJavelinThatHits_CripplesTheTarget()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var rat = new Rat
+            { Pos = TestLevel.At(4, 1), Sprite = new FakeCharView(), HP = 100, HT = 100 }; // outlives a 2-15 javelin
+        GameScene.Add(rat);
+        var javelins = new Javelin(2);
+        javelins.Collect();
+
+        javelins.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(5, 1));
+
+        Assert.NotNull(rat.GetBuff<Cripple>());
+        Assert.Equal(1, javelins.Quantity());
+        Assert.Empty(Dungeon.Level.Heaps);
+    }
+
+    [Theory]
+    [InlineData(HeroClass.Rogue, 13, 0.5)] // Shuriken STR 13, encumbrance 0: TIME_TO_THROW 1 * DLY 0.5
+    [InlineData(HeroClass.Rogue, 10, 0.864)] // encumbrance 3: 1 * 0.5 * 1.2^3 = 0.5 * 1.728
+    [InlineData(HeroClass.Huntress, 11, 0.5)] // encumbrance 2 - 2 = 0
+    public void Throw_AMissile_ScalesTheThrowDelayBySpeedFactor(HeroClass heroClass, int str, double expected)
+    {
+        var hero = PlaceSpy(1);
+        hero.HeroClass = heroClass;
+        hero.STR = str;
+        var shuriken = new Shuriken(3);
+        shuriken.Collect();
+
+        shuriken.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(4, 1)); // an empty cell: the shuriken lands, and the callback spends the delay
+
+        Assert.Equal(expected, hero.TimeLeft, 4);
     }
 }
