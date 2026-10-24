@@ -1,3 +1,4 @@
+using System.Reflection;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Levels;
@@ -14,6 +15,13 @@ public abstract class DungeonFixture : IDisposable
     protected sealed class SpyHero : Hero
     {
         public float TimeLeft => Cooldown();
+    }
+
+    protected static float CooldownOf(Actor actor)
+    {
+        var cooldown = typeof(Actor).GetMethod("Cooldown",
+            BindingFlags.NonPublic | BindingFlags.Instance);
+        return (float)cooldown.Invoke(actor, null);
     }
 
     protected readonly RecordingGameView View;

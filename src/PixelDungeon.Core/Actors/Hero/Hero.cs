@@ -3,6 +3,7 @@ using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Actors.Mobs.Npcs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
@@ -51,7 +52,7 @@ public class Hero : Char
 
     // TODO: Armor.Glyph
     private Item _theKey;
-    // TODO: public MissileWeapon rangedWeapon
+    public MissileWeapon RangedWeapon = null;
 
     public bool RestoreHealth = false;
 
@@ -142,6 +143,15 @@ public class Hero : Char
     }
 
     public int Tier() => Belongings.Armor?.Tier ?? 0; // belongings.armor == null ? 0 : belongings.armor.tier
+
+    public bool Shoot(Char enemy, MissileWeapon wep)
+    {
+        RangedWeapon = wep;
+        var result = Attack(enemy);
+        RangedWeapon = null;
+
+        return result;
+    }
 
     public override int AttackSkill(Char target)
     {
