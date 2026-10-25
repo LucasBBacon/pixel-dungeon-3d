@@ -1,5 +1,8 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
+using PixelDungeon.Core.Items.Food;
+using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Tests.View;
@@ -9,8 +12,10 @@ namespace PixelDungeon.Core.Tests;
 public class ItemIntegrationTests : DungeonFixture
 {
     [Fact]
-    public void GeneratedSewerLevels_HoldOnlyGoldAndTheDewVial_InNonEmptyHeaps()
+    public void GeneratedSewerLevels_HoldOnlyRegisteredClassesAndTheDewVial_InNonEmptyHeaps()
     {
+        var sawWeapon = false;
+        var sawArmor = false;
         for (var seed = 1; seed <= 100; seed++)
         {
             Random.Seed(seed);
@@ -26,8 +31,37 @@ public class ItemIntegrationTests : DungeonFixture
             {
                 Assert.False(heap.IsEmpty(), $"seed {seed} has an empty heap at {heap.Pos}");
                 Assert.NotEqual(HeapType.Mimic, heap.Type);
-                Assert.All(heap.Items, item => Assert.True(item is Gold or DewVial, $"seed {seed}: {item}"));
+                Assert.All(heap.Items,
+                    item => Assert.True(Generator.RegisteredTypes.Contains(item.GetType()) || item is DewVial,
+                        $"seed {seed}: {item}"));
+                sawWeapon |= heap.Items.Any(item => item is Weapon);
+                sawArmor |= heap.Items.Any(item => item is Armor);
             }
+        }
+
+        Assert.True(sawWeapon && sawArmor);
+    }
+
+    [Fact]
+    public void GeneratedSewerLevels_EachCarryOneFoodItem()
+    {
+        for (var seed = 1; seed <= 100; seed++)
+        {
+            Random.Seed(seed);
+            Dungeon.Depth = 1;
+            Dungeon.DewVial = true;
+            Generator.Reset();
+
+            var level = new SewerLevel();
+            level.Create();
+
+            var food = Assert.Single(
+                level.Heaps.Values
+                    .SelectMany(heap => heap.Items)
+                    .OfType<Food>());
+            Assert.Equal(1, food.Quantity());
+            Assert.True(food.GetType() == typeof(Food) || food.GetType() == typeof(Pasty),
+                $"seed {seed}: {food}");
         }
     }
 

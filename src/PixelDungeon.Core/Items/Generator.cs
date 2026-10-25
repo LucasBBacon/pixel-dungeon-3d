@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items.Bags;
 
 namespace PixelDungeon.Core.Items;
@@ -185,6 +186,33 @@ public static class Generator
     private static readonly Dictionary<Type, Func<Item>> Registry = new()
     {
         [typeof(Gold)] = () => new Gold(),
+
+        [typeof(Weapon.Melee.Dagger)] = () => new Weapon.Melee.Dagger(),
+        [typeof(Weapon.Melee.Knuckles)] = () => new Weapon.Melee.Knuckles(),
+        [typeof(Weapon.Melee.Quarterstaff)] = () => new Weapon.Melee.Quarterstaff(),
+        [typeof(Weapon.Melee.Spear)] = () => new Weapon.Melee.Spear(),
+        [typeof(Weapon.Melee.Mace)] = () => new Weapon.Melee.Mace(),
+        [typeof(Weapon.Melee.Sword)] = () => new Weapon.Melee.Sword(),
+        [typeof(Weapon.Melee.Longsword)] = () => new Weapon.Melee.Longsword(),
+        [typeof(Weapon.Melee.BattleAxe)] = () => new Weapon.Melee.BattleAxe(),
+        [typeof(Weapon.Melee.WarHammer)] = () => new Weapon.Melee.WarHammer(),
+        [typeof(Weapon.Melee.Glaive)] = () => new Weapon.Melee.Glaive(),
+        [typeof(Weapon.Melee.ShortSword)] = () => new Weapon.Melee.ShortSword(), // weight 0: a class kit's
+        [typeof(Weapon.Missiles.Dart)] = () => new Weapon.Missiles.Dart(), // weight 0: a class kit's
+        [typeof(Weapon.Missiles.Javelin)] = () => new Weapon.Missiles.Javelin(),
+        [typeof(Weapon.Missiles.CurareDart)] = () => new Weapon.Missiles.CurareDart(),
+        [typeof(Weapon.Missiles.Shuriken)] = () => new Weapon.Missiles.Shuriken(),
+        [typeof(Weapon.Missiles.Tamahawk)] = () => new Weapon.Missiles.Tamahawk(),
+
+        [typeof(Armor.ClothArmor)] = () => new Armor.ClothArmor(),
+        [typeof(Armor.LeatherArmor)] = () => new Armor.LeatherArmor(),
+        [typeof(Armor.MailArmor)] = () => new Armor.MailArmor(),
+        [typeof(Armor.ScaleArmor)] = () => new Armor.ScaleArmor(),
+        [typeof(Armor.PlateArmor)] = () => new Armor.PlateArmor(),
+
+        [typeof(Food.Food)] = () => new Food.Food(),
+        [typeof(Food.Pasty)] = () => new Food.Pasty(),
+        [typeof(Food.MysteryMeat)] = () => new Food.MysteryMeat(),
     };
 
     public static IEnumerable<Type> RegisteredTypes => Registry.Keys;
@@ -214,8 +242,8 @@ public static class Generator
         }
 
         // Utils.Random.Chances reads the first weight unguarded, empty table throws
-        return eligible.Count == 0 
-            ? null 
+        return eligible.Count == 0
+            ? null
             : Random(Utils.Random.Chances(eligible));
     }
 
@@ -243,16 +271,46 @@ public static class Generator
             ? factory().Random()
             : null;
 
-    // TODO: randomArmor() builds 2 armours and keeps the one whose STR is closer to Hero.StartingStr + Dungeon.potionOfStrength
     private static Item RandomArmor()
     {
-        return null;
+        var curStr = Hero.StartingStr + Dungeon.PotionOfStrength;
+
+        var cat = Category.Armor;
+
+        var cl1 = Roll(Tables[cat]);
+        if (cl1 == null)
+        {
+            return null;
+        }
+
+        var a1 = (Armor.Armor)Registry[cl1]();
+        var a2 = (Armor.Armor)Registry[Roll(Tables[cat])]();
+
+        a1.Random();
+        a2.Random();
+
+        return Math.Abs(curStr - a1.Str) < Math.Abs(curStr - a2.Str) ? a1 : a2;
     }
 
-    // TODO: randomArmor() builds 2 weapons and keeps the one whose STR is closer to Hero.StartingStr + Dungeon.potionOfStrength
     private static Item RandomWeapon()
     {
-        return null;
+        var curStr = Hero.StartingStr + Dungeon.PotionOfStrength;
+
+        var cat = Category.Weapon;
+
+        var cl1 = Roll(Tables[cat]);
+        if (cl1 == null)
+        {
+            return null;
+        }
+
+        var w1 = (Weapon.Weapon)Registry[cl1]();
+        var w2 = (Weapon.Weapon)Registry[Roll(Tables[cat])]();
+
+        w1.Random();
+        w2.Random();
+
+        return Math.Abs(curStr - w1.Str) < Math.Abs(curStr - w2.Str) ? w1 : w2;
     }
 
     private static Type Roll((float Chance, string Cls)[] table)

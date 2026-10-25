@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Utils;
 
@@ -220,13 +221,15 @@ public class LevelPipelineTests : DungeonFixture
     }
 
     [Fact]
-    public void RegularLevel_CreateItems_DropsGoldHeaps_AndBundleKeepsRooms()
+    public void RegularLevel_CreateItems_DropsRegisteredItemsAndOneFood_AndBundleKeepsRooms()
     {
         Dungeon.Depth = 1;
         var level = new BareRegularLevel();
         level.Create();
         Assert.NotEmpty(level.Heaps);
-        Assert.All(level.Heaps.Values, heap => Assert.IsType<Gold>(heap.Peek()));
+        var items = level.Heaps.Values.SelectMany(heap => heap.Items).ToList();
+        Assert.All(items, item => Assert.Contains(item.GetType(), Generator.RegisteredTypes));
+        Assert.Single(items.OfType<Food>()); // Level.create()'s food roll
 
         var bundle = new Bundle();
         bundle.Put("level", level);
