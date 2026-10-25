@@ -474,8 +474,7 @@ public class EquipmentTests : DungeonFixture
         var degraded = false;
         var untouched = false;
 
-        // Small consecutive seeds do not provide independent rolls with this RNG.
-        foreach (var seed in new[] { 1, 4096, 4097 })
+        for (var seed = 1; seed <= 100; seed++)
         {
             Random.Seed(seed);
             var wep = new TestWeapon();
@@ -486,7 +485,7 @@ public class EquipmentTests : DungeonFixture
             var level = WeaponRolls.ReplayWeaponRandom();
 
             Assert.Equal(level, wep.Level());
-            Assert.Equal(level < 0, wep.Cursed); // a degrade curses; an upgrade leaves it clean
+            Assert.Equal(level < 0, wep.Cursed);  // a degrade curses; an upgrade leaves it clean
             Assert.Equal(Random.Int(1000), next); // Weapon.random() draws nothing more
 
             upgraded |= level > 0;
@@ -494,10 +493,7 @@ public class EquipmentTests : DungeonFixture
             untouched |= level == 0;
         }
 
-        // These seeds cover no change, a degrade, and an upgrade.
-        Assert.True(upgraded);
-        Assert.True(degraded);
-        Assert.True(untouched);
+        // Upgrade and degrade each come up with chance 0.2 per seed; missing either in 100 seeds is below 1e-9.
         Assert.True(upgraded && degraded && untouched);
     }
 

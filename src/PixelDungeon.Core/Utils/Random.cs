@@ -2,65 +2,28 @@ namespace PixelDungeon.Core.Utils;
 
 public static class Random
 {
-    private const long Multiplier = 0x5DEECE66DL;
-    private const long Increment = 0xBL;
-    private const long Mask = (1L << 48) - 1;
-
-    private static long _seed = 0;
+    private static System.Random _rng = new();
 
     public static void Seed(int seed)
     {
-        _seed = (seed ^ Multiplier) & Mask;
+        _rng = new System.Random(seed);
     }
 
-    private static int Next(int bits)
-    {
-        _seed = (_seed * Multiplier + Increment) & Mask;
-        return (int)(_seed >> (48 - bits));
-    }
+    private static double Next() => _rng.NextDouble();
 
-    private static double NextDouble()
-    {
-        return (((long)Next(26) << 27) + Next(27)) / (double)(1L << 53);
-    }
+    public static float Float(float min, float max) => (float)(min + Next() * (max - min));
 
-    public static float Float()
-    {
-        return (float)NextDouble();
-    }
+    public static float Float(float max) => (float)(Next() * max);
 
-    public static float Float(float max)
-    {
-        return (float)(NextDouble() * max);
-    }
+    public static float Float() => (float)Next();
 
-    public static float Float(float min, float max)
-    {
-        return min + (float)(NextDouble() * (max - min));
-    }
+    public static int Int(int max) => max > 0 ? (int)(Next() * max) : 0;
 
-    public static int Int(int max)
-    {
-        return max > 0 ? (int)(NextDouble() * max) : 0;
-    }
+    public static int Int(int min, int max) => min + (int)(Next() * (max - min));
 
-    public static int Int(int min, int max)
-    {
-        var range = max - min;
-        return range <= 0 ? min : min + (int)(NextDouble() * range);
-    }
+    public static int IntRange(int min, int max) => min + (int)(Next() * (max - min + 1));
 
-    public static int IntRange(int min, int max)
-    {
-        var range = max - min + 1;
-        return range <= 0 ? min : min + (int)(NextDouble() * range);
-    }
-
-    public static int NormalIntRange(int min, int max)
-    {
-        var range = max - min + 1;
-        return range <= 0 ? min : min + (int)((NextDouble() + NextDouble()) * range / 2f);
-    }
+    public static int NormalIntRange(int min, int max) => min + (int)((Next() + Next()) * (max - min + 1) / 2f);
 
     public static int Chances(float[] chances)
     {
@@ -81,6 +44,9 @@ public static class Random
                 return i;
             }
 
+            // The Java reads chances[i + 1] unguarded. That overruns when every weight is 0 and,
+            // about once in 10^7 rolls, when Float(sum) rounds up to exactly sum; the Java throws
+            // in both cases. The guard makes them fall through to the 0 default instead.
             if (i + 1 < length)
             {
                 sum += chances[i + 1];
@@ -95,56 +61,46 @@ public static class Random
         var size = chances.Count;
 
         var values = chances.Keys.ToArray();
-        var probabilities = new float[size];
+        var probs = new float[size];
         float sum = 0;
         for (var i = 0; i < size; i++)
         {
-            probabilities[i] = chances[values[i]];
-            sum += probabilities[i];
+            probs[i] = chances[values[i]];
+            sum += probs[i];
         }
 
         var value = Float(sum);
 
-        sum = probabilities[0];
+        sum = probs[0];
         for (var i = 0; i < size; i++)
         {
             if (value < sum)
             {
                 return values[i];
             }
+
+            // Same guard as Chances(float[]) above, for the same two overrun cases.
             if (i + 1 < size)
             {
-                sum += probabilities[i + 1];
+                sum += probs[i + 1];
             }
         }
 
         return default;
     }
 
-    public static T Element<T>(T[] array)
-    {
-        return Element(array, array.Length);
-    }
+    public static int Index<T>(ICollection<T> collection) => (int)(Next() * collection.Count);
 
-    public static T Element<T>(T[] array, int max)
-    {
-        return array[(int)(NextDouble() * max)];
-    }
+    public static T OneOf<T>(params T[] array) => array[(int)(Next() * array.Length)];
+
+    public static T Element<T>(T[] array) => Element(array, array.Length);
+
+    public static T Element<T>(T[] array, int max) => array[(int)(Next() * max)];
 
     public static T Element<T>(ICollection<T> collection)
     {
         var size = collection.Count;
         return size > 0 ? collection.ElementAt(Int(size)) : default;
-    }
-
-    public static T OneOf<T>(params T[] array)
-    {
-        return array[(int)(NextDouble() * array.Length)];
-    }
-
-    public static int Index<T>(ICollection<T> collection)
-    {
-        return (int)(NextDouble() * collection.Count);
     }
 
     public static void Shuffle<T>(T[] array)
@@ -161,14 +117,15 @@ public static class Random
 
     public static void Shuffle<TU, TV>(TU[] u, TV[] v)
     {
-        for (var i = 0; i < u.Length; i++)
+        for (var i = 0; i < u.Length - 1; i++)
         {
             var j = Int(i, u.Length);
+            if (j != i)
+            {
+                (u[i], u[j]) = (u[j], u[i]);
 
-            if (j == i) continue;
-
-            (u[i], u[j]) = (u[j], u[i]);
-            (v[i], v[j]) = (v[j], v[i]);
+                (v[i], v[j]) = (v[j], v[i]);
+            }
         }
     }
 }

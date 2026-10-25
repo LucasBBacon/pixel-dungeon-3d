@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Items.Food;
+
 namespace PixelDungeon.Core.Actors.Mobs;
 
 public class Crab : Mob
@@ -13,8 +15,8 @@ public class Crab : Mob
         Exp = 3;
         MaxLvl = 9;
 
-        // TODO: loot = new MysteryMeat
-        // TODO: lootChance = 0.167f;
+        Loot = new MysteryMeat();
+        LootChance = 0.167f;
     }
 
     public override int DamageRoll() => Random.NormalIntRange(3, 6);

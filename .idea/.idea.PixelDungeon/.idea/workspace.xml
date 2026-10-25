@@ -14,10 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/Food.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/Pasty.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/FoodTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/MysteryMeat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Crab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Crab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Random.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/Random.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -27,6 +26,8 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/EquipmentTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/EquipmentTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/FoodTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/FoodTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -34,7 +35,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
@@ -113,6 +113,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Bag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/Keyring.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/DewVial.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/MysteryMeat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Gold.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" root0="FORCE_HIGHLIGHTING" />
@@ -378,15 +379,7 @@
       <workItem from="1792273307008" duration="68858000" />
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
-      <workItem from="1792873863094" duration="4463000" />
-    </task>
-    <task id="LOCAL-00020" summary="feat(view): render the level as placeholder cells with three fog states">
-      <option name="closed" value="true" />
-      <created>1791042716428</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1791042716428</updated>
+      <workItem from="1792873863094" duration="6770000" />
     </task>
     <task id="LOCAL-00021" summary="feat(view): add the hero view, the follow camera, and the per-frame scheduler pump">
       <option name="closed" value="true" />
@@ -772,7 +765,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792855800193</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge.">
+      <option name="closed" value="true" />
+      <created>1792922150835</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1792922150835</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -793,7 +794,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(items): dewdrops, the dew vial, and the death save&#10;Dewdrops heal on pick-up or fill the vial; the vial drinks through the operate gate, spawns in the Sewers while its flag is set, and saves a dying hero when full. Trampled high grass drops dew on its 1-in-6 roll, the seed roll still runs but drops nothing until seeds are registered.&#10;A test pins a float edge: a full vial heals 21 at HT 20, visible only when auto-drink runs with HP below zero." />
     <MESSAGE value="feat(items): heaps open, merge, pick up, and destroy&#10;Heap ports whole apart from burning, freezing and alchemy. Stacks merge and move to the front, a dewdrop goes to the back, and an emptied heap removes itself and kills its view. Opening takes the Java's own no-mimic and no-wraith branches: a mimic opens as a plain chest and a cursed skeleton costs half the hero's HP for now." />
     <MESSAGE value="feat(hero): pick up, open chests, unlock doors, and scatter on death&#10;The hero's PickUp, OpenChest and Unlock actions port verbatim, with the key consumed when the operate animation ends. Death scatters the backpack over free neighbouring cells. AttackIndicator's logic half moves to Core, since its choice among adjacent enemies consumes the game's RNG.&#10;Items that fell down a chasm land through GameScene.LandDroppedItems, so the loop from GameScene.create is testable in Core.&#10;Wiring AttackIndicator.UpdateState() into Hero.Act() makes it spend one Random draw per turn once a mob is visible and adjacent (matching the Java's Random.element(candidates), which draws even for a one-candidate list). That shifts the RNG stream one position earlier than before, which flipped a pre-existing seeded assertion in HeroCombatTests (OnAttackComplete_AfterASwing_DamagesTheRatAndFreesTheScheduler): its 1-damage swing against a Rat's Dr()==1 is a coin flip on the very next draw. Reseeded immediately before that swing, with a comment, following the same mid-test reseed convention already used elsewhere (MobAiTests, PatchTests, DewTests) to pin a specific roll." />
     <MESSAGE value="feat(view): heap cubes, thrown items, and chasm landings&#10;HeapView implements IHeapView: a box in the top item's colour that hops when dropped, arcs in from another cell, pulses while its item glows and dims under the fog. Discarded heaps shrink away. MissileView flies a thrown item at the Java's 15 cells per second and completes the throw exactly once. Items that fell down a chasm land when the level below is built." />
@@ -818,7 +818,8 @@
     <MESSAGE value="feat(hero): weapons and armour change the hero's combat numbers&#10;The hero's stat hooks read its equipment, as Hero.java's do:&#10;&#10;- accuracy and attack delay take the weapon's factors, and damage rolls the weapon instead of bare hands&#10;- armour heavier than STR divides defence by 1.5 and multiplies speed by 1.3^-1 per point lighter armour adds to a Rogue's defence&#10;- damage reduction is the armour's DR, floored at 0&#10;- attacks proc the weapon and hits taken proc the armour, which identifies armour on the tenth hit&#10;&#10;A swap to heavier armour spends the new armour's time at its own speed. Ranged weapons stay marked for the missile task; Barkskin, Fury, the sprint, TODO: the rings and the subclass procs stay." />
     <MESSAGE value="feat(items): missile weapons, and Hero.Shoot&#10;MissileWeapon and the Dart, Curare Dart, Shuriken, Javelin and Tamahawk port from the Java:&#10;&#10;- a missile is a thrown, identified stack whose random() rolls only its quantity; its stats, prices, descriptions and info are verbatim&#10;- only a Rogue or a Huntress sees EQUIP, which asks &quot;Do you really want to equip it as a melee weapon?&quot; before it wields the stack&#10;- a throw at a character calls Hero.Shoot: a hit uses the missile up, a miss lands it on the cell&#10;- the Curare Dart paralyses for 3 turns, the Javelin cripples and the Tamahawk bleeds by its damage&#10;- a melee hit with equipped missiles uses one up&#10;&#10;Hero gains RangedWeapon and Shoot. The ranged branches of the hero's and the weapon's stat hooks follow in the next commit." />
     <MESSAGE value="feat(hero): a thrown missile drives the hero's accuracy, damage and delay While Hero.Shoot holds a RangedWeapon, the hero's stat hooks use it, as Hero.java's do:&#10;&#10;- attackSkill, damageRoll, attackDelay and attackProc take the ranged weapon over the wielded one, and accuracy halves at distance 1&#10;- a Warrior's missile counts 3 more points of encumbrance for accuracy, and a Huntress's 2 fewer for accuracy and speed&#10;- the excess-strength damage bonus applies when (ranged) == (Huntress), so a Rogue gets it in melee but not when throwing&#10;- Item.Cast scales a missile's throw delay by its speed factor&#10;&#10;TODO: The Sniper's Mark half of the throw delay." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(hero): a thrown missile drives the hero's accuracy, damage and delay While Hero.Shoot holds a RangedWeapon, the hero's stat hooks use it, as Hero.java's do:&#10;&#10;- attackSkill, damageRoll, attackDelay and attackProc take the ranged weapon over the wielded one, and accuracy halves at distance 1&#10;- a Warrior's missile counts 3 more points of encumbrance for accuracy, and a Huntress's 2 fewer for accuracy and speed&#10;- the excess-strength damage bonus applies when (ranged) == (Huntress), so a Rogue gets it in melee but not when throwing&#10;- Item.Cast scales a missile's throw delay by its speed factor&#10;&#10;TODO: The Sniper's Mark half of the throw delay." />
+    <MESSAGE value="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
