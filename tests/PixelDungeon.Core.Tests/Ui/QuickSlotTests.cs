@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Tests.Items;
 using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
@@ -82,12 +83,12 @@ public class QuickSlotTests : DungeonFixture
     }
 
     [Fact]
-    public void DungeonInit_ClearsBothSlots()
+    public void DungeonInit_ClearsTheSecondSlot_AndSlotsTheDartClassFirst()
     {
         QuickSlot.PrimaryValue = new TestItem();
         QuickSlot.SecondaryValue = typeof(StackItem);
         Dungeon.Init();
-        Assert.Null(QuickSlot.PrimaryValue);
+        Assert.Same(typeof(Dart), QuickSlot.PrimaryValue); // initRogue's QuickSlot.primaryValue = Dart.class
         Assert.Null(QuickSlot.SecondaryValue);
     }
 

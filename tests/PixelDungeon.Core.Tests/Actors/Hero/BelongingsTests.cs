@@ -212,6 +212,7 @@ public class BelongingsTests : DungeonFixture
     public void DungeonInit_GivesTheHeroAKeyRing()
     {
         Dungeon.Init();
-        Assert.IsType<Keyring>(Assert.Single(Dungeon.Hero.Belongings.Backpack.Items));
+        // The kit's Darts and Food share the backpack; DungeonTests pins the whole kit
+        Assert.Single(Dungeon.Hero.Belongings.Backpack.Items.OfType<Keyring>());
     }
 }

@@ -1,5 +1,11 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Items.Armor;
+using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Food;
+using PixelDungeon.Core.Items.Weapon.Melee;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Core.Tests;
@@ -83,7 +89,7 @@ public class DungeonTests : DungeonFixture
     {
         Dungeon.Init();
         Dungeon.Depth = 9;
-        Assert.Throws<KeyNotFoundException>(() => Dungeon.LoadLevel());
+        Assert.Throws<KeyNotFoundException>(Dungeon.LoadLevel);
     }
 
     [Fact]
@@ -95,7 +101,7 @@ public class DungeonTests : DungeonFixture
         Dungeon.Reset();
         Dungeon.Depth = 1;
 
-        Assert.Throws<KeyNotFoundException>(() => Dungeon.LoadLevel());
+        Assert.Throws<KeyNotFoundException>(Dungeon.LoadLevel);
     }
 
     [Fact]
@@ -109,5 +115,61 @@ public class DungeonTests : DungeonFixture
 
         Assert.Equal(map, Dungeon.Level.Map);
         Assert.Equal(level.Entrance, Dungeon.Hero.Pos);
+    }
+
+    [Fact]
+    public void Init_WearsClothArmourAndWieldsADagger_IdentifiedAndWithoutSpendingTime()
+    {
+        Dungeon.Init();
+        var hero = Dungeon.Hero;
+
+        var armor = Assert.IsType<ClothArmor>(hero.Belongings.Armor);
+        var dagger = Assert.IsType<Dagger>(hero.Belongings.Weapon);
+        Assert.True(armor.IsIdentified());
+        Assert.True(dagger.IsIdentified());
+        Assert.Equal(1, hero.Tier());
+        Assert.Equal(0f, CooldownOf(hero));
+    }
+
+    [Fact]
+    public void Init_PacksEightDartAndAFood_BesideTheKeyRing_InCategoryOrder()
+    {
+        Dungeon.Init();
+        var pack = Dungeon.Hero.Belongings.Backpack.Items;
+
+        Assert.Equal([
+            typeof(Dart),
+            typeof(Food),
+            typeof(Keyring)
+        ], pack.Select(item => item.GetType()));
+        Assert.Equal(8, pack[0].Quantity());
+        Assert.True(pack[0].CursedKnown);
+        Assert.True(pack[1].IsIdentified());
+    }
+
+    [Fact]
+    public void Init_KitsTheRogue_ToAttack12_Defense6_AndArmor2()
+    {
+        Dungeon.Init();
+        var hero = Dungeon.Hero;
+
+        Assert.Equal(12, hero.AttackSkill(new Rat()));
+        Assert.Equal(6, hero.DefenseSkill(null));
+        Assert.Equal(2, hero.Dr());
+    }
+    
+    [Fact]
+    public void Init_KitsTheRogue_ToHitForOneToEight()
+    {
+        Dungeon.Init();
+        var hero = Dungeon.Hero;
+        var rolls = new List<int>();
+        for (var i = 0; i < 200; i++)
+        {
+            rolls.Add(hero.DamageRoll());
+        }
+
+        Assert.All(rolls, roll => Assert.InRange(roll, 1, 8));
+        Assert.Contains(rolls, roll => roll > 1); // each roll is 1 with chance 1/32, so 200 rolls of 1 never happen
     }
 }

@@ -1,8 +1,12 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Weapon.Melee;
+using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
@@ -109,8 +113,19 @@ public static class Dungeon
 
         // TODO: Badges.Reset()
         // TODO: StartScene.CurClass.InitHero(Hero) sets class, kit, etc
-        // TODO: (hero.belongings.armor = new ClothArmor()).identify() and new Food().identify().collect()
+        (Hero.Belongings.Armor = new ClothArmor()).Identify();
+        new Food().Identify().Collect();
         new Keyring().Collect();
+
+        // HeroClass.initRogue
+        (Hero.Belongings.Weapon = new Dagger()).Identify();
+        // TODO: (hero.belongings.ring1 = new RingOfShadows()).upgrade().identify()
+        new Dart(8).Identify().Collect();
+        // TODO: hero.belongings.ring1.activate(hero)
+        QuickSlot.PrimaryValue = typeof(Dart);
+        // TODO: new ScrollOfMagicMapping().setKnown()
+
+        // TODO: new TomeOfMastery().collect() when the class's mastery badge is unlocked
         Hero.UpdateAwareness(); // InitHero ends with UpdateAwareness(), lvl 1 Rogue 0.1 -> 0.15
     }
 

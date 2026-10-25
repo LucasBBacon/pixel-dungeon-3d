@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PixelDungeon.Core.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d118387b0ae28ec291e86ec0ba5117811f4b6cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d6ed0768c45da575eab888228a2996b127c9a79")]
 [assembly: System.Reflection.AssemblyProductAttribute("PixelDungeon.Core.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PixelDungeon.Core.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
