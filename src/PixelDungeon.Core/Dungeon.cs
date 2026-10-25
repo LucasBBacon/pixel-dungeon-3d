@@ -61,6 +61,7 @@ public static class Dungeon
         QuickSlot.SecondaryValue = null;
         QuickSlot.LastTarget = null;
         AttackIndicator.LastTarget = null;
+        HealthIndicator.SetTarget(null);
         IronKey.CurDepthQuantity = 0;
         Generator.Reset();
         PotionOfStrength = 0;

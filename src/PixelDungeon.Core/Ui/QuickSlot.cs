@@ -29,7 +29,8 @@ public static class QuickSlot
         if (target != Dungeon.Hero)
         {
             LastTarget = target;
-            // TODO: HealthIndicator.instance.target(target)
+
+            HealthIndicator.SetTarget(target);
         }
     }
 

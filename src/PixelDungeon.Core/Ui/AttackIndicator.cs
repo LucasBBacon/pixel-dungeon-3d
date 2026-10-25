@@ -34,6 +34,7 @@ public static class AttackIndicator
     public static void Target(Char target)
     {
         LastTarget = (Mob)target;
-        // TODO: HealthIndicator.instance.target(target
+
+        HealthIndicator.SetTarget(target);
     }
 }
