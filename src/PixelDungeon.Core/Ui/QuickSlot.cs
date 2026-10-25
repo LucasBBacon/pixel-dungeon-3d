@@ -1,5 +1,7 @@
+using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Mechanics;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Utils;
 
@@ -17,6 +19,53 @@ public static class QuickSlot
 
     // Toolbar.secondQuickslot() is a preference in java
     private const bool SecondQuickslot = true;
+
+    public static bool UseTargeting()
+    {
+        var targeting = LastTarget != null && LastTarget.IsAlive() && Dungeon.Visible[LastTarget.Pos];
+
+        if (targeting)
+        {
+            var pos = Ballistica.Cast(Dungeon.Hero.Pos,
+                LastTarget.Pos,
+                false,
+                true);
+            if (pos != LastTarget.Pos)
+            {
+                LastTarget = null;
+                targeting = false;
+            }
+        }
+
+        if (!targeting)
+        {
+            var n = Dungeon.Hero.VisibleEnemies();
+
+            for (var i = 0; i < n; i++)
+            {
+                var enemy = Dungeon.Hero.VisibleEnemy(i);
+                var pos = Ballistica.Cast(Dungeon.Hero.Pos,
+                    enemy.Pos,
+                    false,
+                    true);
+                if (pos == enemy.Pos)
+                {
+                    LastTarget = enemy;
+                    targeting = true;
+                    break;
+                }
+            }
+        }
+
+        // target still among the actors, Java puts crossM on its cell and shows crossB, view draws both
+        if (targeting && !Actor.All().Contains(LastTarget))
+        {
+            LastTarget = null;
+            targeting = false; // Deviation, Java leaves targeting on with lastTarget null, so its next click dereferences null
+        }
+
+        return targeting;
+    }
 
     // refresh() re-resolves both buttons, only the view has buttons
     public static void Refresh()
@@ -39,6 +88,7 @@ public static class QuickSlot
     private const string TagQuickslot2 = "quickslot2";
 
     // TODO: Dungeon.saveGame and loadGAme call Save(bundle) and Restore(bundle)
+
     public static void Save(Bundle bundle)
     {
         var stuff = Dungeon.Hero.Belongings;

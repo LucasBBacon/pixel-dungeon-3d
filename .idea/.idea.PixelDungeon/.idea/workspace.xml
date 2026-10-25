@@ -14,7 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -23,8 +24,8 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/DungeonTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
@@ -32,10 +33,12 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +215,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Mechanics/BallisticaTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Mechanics/ShadowCasterTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/StatisticsTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/HealthIndicatorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/BArrayTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/BundleFixtures.cs" root0="FORCE_HIGHLIGHTING" />
@@ -313,7 +317,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -329,7 +333,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -376,23 +380,7 @@
       <workItem from="1792273307008" duration="68858000" />
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
-      <workItem from="1792873863094" duration="11621000" />
-    </task>
-    <task id="LOCAL-00023" summary="feat(view): status pane, message and choice windows, and the faded level switch">
-      <option name="closed" value="true" />
-      <created>1791129293180</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1791129293180</updated>
-    </task>
-    <task id="LOCAL-00024" summary="feat(view): text debug console with depth, reveal, seed, where, and help&#10;fix(view): release the fade and the switching flag even when a level switch fails">
-      <option name="closed" value="true" />
-      <created>1791131613845</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1791131613845</updated>
+      <workItem from="1792873863094" duration="15148000" />
     </task>
     <task id="LOCAL-00025" summary="fix(view): defer the level switch with a statement lambda so Godot does not convert the Task. Depth recovers from a failed transition; stairs command and startup console">
       <option name="closed" value="true" />
@@ -770,7 +758,23 @@
       <option name="project" value="LOCAL" />
       <updated>1792949723744</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="feat(dungeon): the hero starts with the common and Rogue kits&#10;Dungeon.Init puts on identified cloth armour, packs a ration, wields an identified dagger, packs eight identified darts and slots the Dart class, in HeroClass.initHero's order. The slots are assigned directly, as the Java does, so no equip time is spent. The Ring of Shadows, the known Scroll of Magic Mapping and the Tome of Mastery stay deferred. A kitted Rogue attacks at 12, defends at 6, blocks 2 and hits for 1-8.">
+      <option name="closed" value="true" />
+      <created>1792951229872</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1792951229872</updated>
+    </task>
+    <task id="LOCAL-00073" summary="feat(ui): the health indicator's target&#10;HealthIndicator keeps the character from the last AttackIndicator.Target or QuickSlot.Target call, or null for a dead or missing one, so a melee swing or a throw puts the bar on its target and a throw at an empty cell clears it. The view polls the target; Dungeon.Reset clears it.">
+      <option name="closed" value="true" />
+      <created>1792952496663</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1792952496663</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,8 +795,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(view): heap cubes, thrown items, and chasm landings&#10;HeapView implements IHeapView: a box in the top item's colour that hops when dropped, arcs in from another cell, pulses while its item glows and dims under the fog. Discarded heaps shrink away. MissileView flies a thrown item at the Java's 15 cells per second and completes the throw exactly once. Items that fell down a chasm land when the level below is built." />
-    <MESSAGE value="feat(view): cell listeners, the prompt toast, and examine&#10;The cell selector hands the next click to a pending listener and restoresHero.Handle afterwards, as CellSelector.select and GameScene.ready do. Escape or the toast cancels with null. Throws now ask for their target. Examine follows Toolbar.informer's branch order and describes cells, mobs and heaps through the existing window." />
     <MESSAGE value="feat(view): the backpack and item windows&#10;WndBag lays out the Java's landscape grid: equipment slots, the bag's items, free slots, the gold slot, and a tab per bag held. Right-clicking an item with a default action puts it in the first quick slot. WndItem lists the item's actions and runs the one chosen. Both count toward the open-window gate that disables input." />
     <MESSAGE value="feat(view): the toolbar, two quick slots, and item keys&#10;The toolbar mirrors the Java's strip: wait, search and examine on the left, backpack and both quick slots on the right, enabled only while the hero is ready. Quick slots resolve instances or classes from Core's model, use their item on click, and choose one on right-click or an empty click. Picked-up items fly into the backpack button. I opens the backpack, 1 and 2 use the slots, and G picks up what lies underfoot." />
     <MESSAGE value="feat(view): gold, loot and attack indicators, and the iron-key count&#10;The gold total appears for two seconds whenever it changes. The loot indicator shows what lies underfoot while the hero is ready and picks it up on click, the attack indicator shows Core's chosen adjacent enemy in its species colour and attacks it. The status pane counts this depth's iron keys." />
@@ -816,7 +818,9 @@
     <MESSAGE value="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge." />
     <MESSAGE value="feat(items): mystery meat, and the sewer crab drops it&#10;Mystery Meat is food worth 100 that tastes strange, then rolls Random.Int(5) as MysteryMeat.java does:&#10;&#10;- 1 roots the hero for Paralysis.duration: &quot;You can't feel your legs!&quot;&#10;- 2 poisons it for HT / 5: &quot;You are not feeling well.&quot;&#10;- 3 slows it for Slow.duration: &quot;You are stuffed.&quot;&#10;- 4 does nothing.&#10;&#10;A roll of 0 would ignite Burning, which is sp4: the roll still draws so the random stream matches the Java, but nothing happens yet.&#10;A sewer crab now carries Mystery Meat and drops it on a 0.167 loot roll, through the existing Mob.DropLoot." />
     <MESSAGE value="feat(items): the generator spawns weapons, armour and food Registers the eleven melee weapons, five missiles, five armours and three foods. TODO: Incendiary Dart and Boomerang. &#10;RandomWeapon and RandomArmor roll two classes, then both items, and keep the one whose strength is strictly closer to STARTING_STR plus the potions of strength found, as the Java does. A random item is now gold, a weapon or armour, and every level carries one ration or pasty. The tests that assumed gold-only heaps now assert registered classes; a replay pins the roll order." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(items): the generator spawns weapons, armour and food Registers the eleven melee weapons, five missiles, five armours and three foods. TODO: Incendiary Dart and Boomerang. &#10;RandomWeapon and RandomArmor roll two classes, then both items, and keep the one whose strength is strictly closer to STARTING_STR plus the potions of strength found, as the Java does. A random item is now gold, a weapon or armour, and every level carries one ration or pasty. The tests that assumed gold-only heaps now assert registered classes; a replay pins the roll order." />
+    <MESSAGE value="feat(dungeon): the hero starts with the common and Rogue kits&#10;Dungeon.Init puts on identified cloth armour, packs a ration, wields an identified dagger, packs eight identified darts and slots the Dart class, in HeroClass.initHero's order. The slots are assigned directly, as the Java does, so no equip time is spent. The Ring of Shadows, the known Scroll of Magic Mapping and the Tome of Mastery stay deferred. A kitted Rogue attacks at 12, defends at 6, blocks 2 and hits for 1-8." />
+    <MESSAGE value="feat(ui): the health indicator's target&#10;HealthIndicator keeps the character from the last AttackIndicator.Target or QuickSlot.Target call, or null for a dead or missing one, so a melee swing or a throw puts the bar on its target and a throw at an empty cell clears it. The view polls the target; Dungeon.Reset clears it." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ui): the health indicator's target&#10;HealthIndicator keeps the character from the last AttackIndicator.Target or QuickSlot.Target call, or null for a dead or missing one, so a melee swing or a throw puts the bar on its target and a throw at an empty cell clears it. The view polls the target; Dungeon.Reset clears it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
