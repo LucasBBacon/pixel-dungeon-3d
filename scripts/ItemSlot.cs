@@ -1,6 +1,11 @@
 using System;
 using Godot;
+using PixelDungeon.Core;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
+using PixelDungeon.Core.Items.Weapon;
+using PixelDungeon.Core.Items.Weapon.Melee;
+using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Client;
 
@@ -8,15 +13,22 @@ public partial class ItemSlot : Button
 {
     public const float SlotSize = 56f;
 
-    private static readonly Color Degraded = new(1f, 0.27f, 0.27f); // ItemSlot.DEGRADED 0xFF4444
-    private static readonly Color Upgraded = new(0.27f, 1f, 0.27f); // ItemSlot.UPGRADED 0x44FF44
-    private static readonly Color Warning = new(1f, 0.53f, 0f); // ItemSlot.WARNING 0xFF8800
+    public static readonly Color Degraded = new(1f, 0.27f, 0.27f); // ItemSlot.DEGRADED 0xFF4444
+    public static readonly Color Upgraded = new(0.27f, 1f, 0.27f); // ItemSlot.UPGRADED 0x44FF44
+    public static readonly Color Warning = new(1f, 0.53f, 0f); // ItemSlot.WARNING 0xFF8800
+
+    public static float ENABLED = 1.0f;
+    public static float DISABLED = 0.3f;
+
+    private const string TxtStrength = ":{0}";
+    private const string TxtTypicalStr = "{0}?";
 
     // Key.status() ends in character 0x7F, the key glyph of the Java's bitmap font.
     private static readonly string KeyGlyph = ((char)0x7F).ToString();
 
     private ColorRect _swatch;
     private Label _topLeft;
+    private Label _topRight;
     private Label _bottomRight;
 
     public Item Item { get; private set; }
@@ -43,6 +55,16 @@ public partial class ItemSlot : Button
         slot._topLeft = new Label { MouseFilter = MouseFilterEnum.Ignore };
         slot._topLeft.AddThemeFontSizeOverride("font_size", 12);
         slot.AddChild(slot._topLeft);
+
+        slot._topRight = new Label
+        {
+            MouseFilter = MouseFilterEnum.Ignore,
+            HorizontalAlignment = HorizontalAlignment.Right
+        };
+        slot._topRight.SetAnchorsPreset(LayoutPreset.FullRect);
+        slot._topRight.OffsetRight = -3f;
+        slot._topRight.AddThemeFontSizeOverride("font_size", 12);
+        slot.AddChild(slot._topRight);
 
         slot._bottomRight = new Label
         {
@@ -76,6 +98,7 @@ public partial class ItemSlot : Button
         {
             _swatch.Visible = false;
             _topLeft.Text = "";
+            _topRight.Text = "";
             _bottomRight.Text = "";
             return;
         }
@@ -86,13 +109,48 @@ public partial class ItemSlot : Button
         var status = item.Status();
         _topLeft.Text = status == null ? "" : status.Replace(KeyGlyph, "");
 
-        // TODO: top right str requirement for weapons and armor
+        var isArmor = item is Armor;
+        var isWeapon = item is Weapon;
+        if (isArmor || isWeapon)
+        {
+            // A missile is a Weapon but not a MeleeWeapon, show strength regardless of level
+            if (item.LevelKnown || (isWeapon && item is not MeleeWeapon))
+            {
+                var str = isArmor ? ((Armor)item).Str : ((Weapon)item).Str;
+                _topRight.Text = TextUtils.Format(TxtStrength, str);
+                if (str > Dungeon.Hero.Str())
+                {
+                    _topRight.AddThemeColorOverride("font_color", Degraded);
+                }
+                else
+                {
+                    _topRight.RemoveThemeColorOverride("font_color");
+                }
+            }
+            else
+            {
+                _topRight.Text = TextUtils.Format(TxtTypicalStr,
+                    isArmor
+                        ? ((Armor)item).TypicalStr()
+                        : ((MeleeWeapon)item).TypicalStr());
+                _topRight.AddThemeColorOverride("font_color", Warning);
+            }
+        }
+        else
+        {
+            _topRight.Text = "";
+        }
 
         var level = item.VisiblyUpgraded();
         if (level != 0 || (item.Cursed && item.CursedKnown))
         {
             _bottomRight.Text = item.LevelKnown ? level.ToString("+#;-#;+0") : "";
-            _bottomRight.Modulate = level > 0 ? (item.IsBroken() ? Warning : Upgraded) : Degraded;
+            _bottomRight.AddThemeColorOverride("font_color",
+                level > 0
+                    ? (item.IsBroken()
+                        ? Warning
+                        : Upgraded)
+                    : Degraded);
         }
         else
         {
@@ -107,12 +165,42 @@ public partial class ItemSlot : Button
         _swatch.Visible = true;
         _swatch.Color = ItemVisuals.ColorOf(image);
         _topLeft.Text = "";
+        _topRight.Text = "";
         _bottomRight.Text = "";
+    }
+
+    public void SetBackground(Color color)
+    {
+        var flat = new StyleBoxFlat();
+        AddThemeStyleboxOverride("normal", flat);
+        AddThemeStyleboxOverride("hover", flat);
+        AddThemeStyleboxOverride("disabled", flat);
+        AddThemeStyleboxOverride("pressed",
+            new StyleBoxFlat
+            {
+                BgColor = new Color(color.R * 1.5f,
+                    color.G * 1.5f,
+                    color.B * 1.5f)
+            });
+    }
+
+    // ItemButton sets bg.visible = false behind gold slot.
+    public void HideBackground()
+    {
+        var empty = new StyleBoxEmpty();
+        AddThemeStyleboxOverride("pressed", empty);
+        AddThemeStyleboxOverride("hover", empty);
+        AddThemeStyleboxOverride("disabled", empty);
+        AddThemeStyleboxOverride("pressed", empty);
     }
 
     public void Enable(bool value)
     {
         Disabled = !value;
-        Modulate = new Color(1f, 1f, 1f, value ? 1f : 0.3f);
+        var alpha = new Color(1f, 1f, 1f, value ? ENABLED : DISABLED);
+        _swatch.Modulate = alpha;
+        _topLeft.Modulate = alpha;
+        _topRight.Modulate = alpha;
+        _bottomRight.Modulate = alpha;
     }
 }

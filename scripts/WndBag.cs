@@ -15,6 +15,13 @@ public partial class WndBag : Window
 {
     private const int Cols = 6;
 
+    private static readonly Color Normal = CharView.FromArgb(0xFF4A4D44); // ItemButton.NORMAL
+    private static readonly Color Equipped = CharView.FromArgb(0xFF63665B); // ItemButton.NORMAL
+
+    private const int NBars = 3; // ItemButton.NBARS
+    private static readonly Color BarFull = CharView.FromArgb(0xFF00EE00);
+    private static readonly Color BarEmpty = CharView.FromArgb(0xFFCC0000);
+
     private static Bag _lastBag;
     private static BagMode _lastMode;
 
@@ -164,10 +171,12 @@ public partial class WndBag : Window
             if (placeholderImage >= 0)
             {
                 slot.ShowPlaceholder(placeholderImage);
+                slot.SetBackground(Equipped);
                 slot.Enable(false);
             }
             else
             {
+                slot.SetBackground(Normal);
                 slot.Disabled = true;
             }
 
@@ -175,15 +184,49 @@ public partial class WndBag : Window
         }
 
         slot.Show(item);
-        // TODO: tint the slot background EQUIPPED vs NORMAL for item.isEquipped(hero)
-        // TODO: tint the slot background when item.cursed && item.cursedKnown
-        // TODO: draw durability pips when item.isUpgradable() && item.levelKnown
-        // TODO: tint the slot background when !item.isIdentified()
+        if (item is Gold)
+        {
+            slot.HideBackground();
+        }
+        else
+        {
+            var bg = item.IsEquipped(Dungeon.Hero) ? Equipped : Normal;
+            if (item.Cursed && item.CursedKnown)
+            {
+                bg = new Color(bg.R + 0.2f, bg.G - 0.1f, bg.B); // bg.ra = +0.2f, bg.ga = -0.1f
+            }
+
+            // TODO: tint the slot background when !item.isIdentified()
+            slot.SetBackground(bg);
+        }
+
+        if (_bag.Owner.IsAlive() && item.IsUpgradable() && item.LevelKnown)
+        {
+            AddDurability(slot, item);
+        }
+
         slot.Enable(IsSelectable(item));
         slot.Pressed += () => OnSlotPressed(item);
         slot.RightClicked += _ => OnSlotRightClicked(item);
     }
 
+    private static void AddDurability(ItemSlot slot, Item item)
+    {
+        // GameMath.gate(0, Math.round((float)NBARS * durability / maxDurability), NBARS), Math.round rounds half up
+        var nBars = (int)GameMath.Gate(0,
+            MathF.Floor((float)NBars * item.Durability() / item.MaxDurability() + 0.5f),
+            NBars);
+        for (var i = 0; i < NBars; i++)
+        {
+            slot.AddChild(new ColorRect
+            {
+                Color = i < nBars ? BarFull : BarEmpty,
+                Position = new Vector2(2f + i * 6f, ItemSlot.SlotSize - 6f),
+                Size = new Vector2(4f, 4f),
+                MouseFilter = Control.MouseFilterEnum.Ignore,
+            });
+        }
+    }
 
     private bool IsSelectable(Item item)
     {

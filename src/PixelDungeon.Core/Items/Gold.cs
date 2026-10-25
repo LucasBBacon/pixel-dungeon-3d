@@ -36,6 +36,7 @@ public class Gold : Item
 
         GameScene.PickUp(this);
         hero.Sprite.ShowStatus(StatusColor.Neutral, TextUtils.Format(TxtValue, QuantityValue));
+        hero.SpendAndNext(TimeToPickUp);
 
         Sample.Play(Assets.SndGold, Utils.Random.Float(0.9f, 1.1f));
 

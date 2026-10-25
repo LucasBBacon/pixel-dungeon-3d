@@ -148,6 +148,7 @@ public partial class GameScene : Node3D, IGameView
         }
 
         _heroView = CharView.For(Dungeon.Hero, new Color(0.2f, 0.4f, 1f));
+        _heroView.UpdateArmor(Dungeon.Hero.Tier());
         _chars.AddChild(_heroView);
         Dungeon.Hero.Sprite = _heroView;
         _heroView.Place(Dungeon.Hero.Pos);

@@ -1,5 +1,6 @@
 using Godot;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Client;
@@ -8,7 +9,20 @@ public partial class CharView : Node3D, ICharView
 {
     private const float MoveInterval = 0.1f; // CharSprite.MOVE_INTERVAL
 
+    private static readonly int[] ArmorImages =
+    [
+        ItemSpriteSheet.ArmorCloth,
+        ItemSpriteSheet.ArmorLeather,
+        ItemSpriteSheet.ArmorMail,
+        ItemSpriteSheet.ArmorScale,
+        ItemSpriteSheet.ArmorPlate
+    ];
+
+    private const float ArmorBlend = 0.6f;
+
     private Char _ch;
+    private Color _color;
+    private StandardMaterial3D _material;
     private MeshInstance3D _body;
     private Label3D _status;
     private Label3D _emo;
@@ -25,10 +39,13 @@ public partial class CharView : Node3D, ICharView
 
     private void BuildNodes(Color color)
     {
+        _color = color;
+        _material = TerrainVisuals.Unshaded(color);
+
         _body = new MeshInstance3D
         {
             Mesh = new BoxMesh { Size = new Vector3(0.6f, 0.8f, 0.6f) },
-            MaterialOverride = TerrainVisuals.Unshaded(color),
+            MaterialOverride = _material,
             Position = new Vector3(0f, 0.4f, 0f),
         };
         AddChild(_body);
@@ -279,7 +296,16 @@ public partial class CharView : Node3D, ICharView
 
     public void UpdateArmor(int tier)
     {
-        // TODO: HeroSprite.updateArmor() swaps the hero's animations to the armour tier's sprite strip
+        // Deviation, Java swaps to tier's strip of hero sprite sheet
+        // cube takes a tint instead, tier 0 its own color
+        if (tier <= 0)
+        {
+            _material.AlbedoColor = _color;
+        }
+
+        // TODO: HeroSprite shows worn class armour, tier 6, as own sprite strip. until class armours exist a tier above 5 draws as plate
+        var image = ArmorImages[Mathf.Min(tier, ArmorImages.Length) - 1];
+        _material.AlbedoColor = _color.Lerp(ItemVisuals.ColorOf(image), ArmorBlend);
     }
 
     public bool IsMoving { get; private set; }

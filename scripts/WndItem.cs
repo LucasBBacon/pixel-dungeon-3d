@@ -19,7 +19,21 @@ internal partial class WndItem : Window
             Unresizable = true,
             WrapControls = true,
         };
-        // TODO: the titlebar colours DEGRADED for level() < 0, UPGRADED or WARNING (if broken) for level() > 0
+        if (item.LevelKnown)
+        {
+            if (item.Level() < 0)
+            {
+                wnd.AddThemeColorOverride("title_color", ItemSlot.Degraded);
+            }
+            else if (item.Level() > 0)
+            {
+                wnd.AddThemeColorOverride("title_color",
+                    item.IsBroken()
+                        ? ItemSlot.Warning
+                        : ItemSlot.Upgraded);
+            }
+        }
+
         wnd.CloseRequested += wnd.Hide;
 
         var root = new VBoxContainer { CustomMinimumSize = new Vector2(320f, 0f) };
