@@ -19,6 +19,7 @@ public partial class StatusPane : CanvasLayer
     private Button _prompt;
 
     public event Action PromptPressed;
+    public event Action HeroPressed;
 
     public ColorRect Fade { get; private set; }
 
@@ -35,7 +36,20 @@ public partial class StatusPane : CanvasLayer
         Fade.SetAnchorsPreset(Control.LayoutPreset.FullRect);
         AddChild(Fade);
 
-        var panel = new PanelContainer { Position = new Vector2(8f, 8f) };
+        // Stop: a click on the panel opens the hero window and never reaches the cell selector underneath
+        var panel = new PanelContainer
+        {
+            Position = new Vector2(8f, 8f),
+            MouseFilter = Control.MouseFilterEnum.Stop
+        };
+        panel.GuiInput += @event =>
+        {
+            if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
+            {
+                HeroPressed?.Invoke();
+                panel.AcceptEvent();
+            }
+        };
         AddChild(panel);
         var box = new VBoxContainer();
         panel.AddChild(box);
@@ -48,7 +62,7 @@ public partial class StatusPane : CanvasLayer
         box.AddChild(_exp);
         _keys = new Label();
         box.AddChild(_keys);
-        
+
         // StatusPane.java buffs = new BuffIndicator(Dungeon.hero)
         box.AddChild(BuffIndicatorView.Create(() => Dungeon.Hero));
         for (var i = 0; i < _logLines.Length; i++)

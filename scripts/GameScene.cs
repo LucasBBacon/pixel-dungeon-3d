@@ -101,6 +101,7 @@ public partial class GameScene : Node3D, IGameView
 
         _goldIndicator = GoldIndicator.Create();
         _pane.AddChild(_goldIndicator);
+        _pane.HeroPressed += OpenHeroWindow;
 
         // right edge above the toolbar, attack indicator over the loot indicator
         var tags = new VBoxContainer();
@@ -572,7 +573,23 @@ public partial class GameScene : Node3D, IGameView
 
     public void Examine()
     {
-        SelectCell(new ExamineListener());
+        SelectCell(new ExamineListener(OpenHeroWindow));
+    }
+
+    public void OpenHeroWindow()
+    {
+        if (_switching || Dungeon.Hero == null)
+        {
+            return; // no window over a level that is being rebuilt behind the fade
+        }
+
+        // GameScene.show: cancelCellSelector() runs before the window opens, as it does in OpenBag
+        if (_selector.Listener != null)
+        {
+            _selector.Cancel();
+        }
+
+        OpenWindow(WndHero.Create(), null);
     }
 
     public void Missile(int from, int to, Item item, Action onComplete) =>

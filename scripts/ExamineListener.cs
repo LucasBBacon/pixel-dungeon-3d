@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 using CoreScene = PixelDungeon.Core.Scenes.GameScene;
@@ -32,6 +35,13 @@ public sealed class ExamineListener : ICellListener
         "This is all that's left from one of your predecessors. " +
         "Maybe it's worth checking for any valuables.";
 
+    private readonly Action _openHeroWindow;
+
+    public ExamineListener(Action openHeroWindow)
+    {
+        _openHeroWindow = openHeroWindow;
+    }
+
     public void OnSelect(int? target)
     {
         if (target == null)
@@ -56,7 +66,8 @@ public sealed class ExamineListener : ICellListener
 
         if (cell == Dungeon.Hero.Pos)
         {
-            // TODO: GameScene.show(new WndHero())
+            _openHeroWindow();
+            return;
         }
         else if (Actor.FindChar(cell) is Mob mob)
         {
@@ -97,9 +108,23 @@ public sealed class ExamineListener : ICellListener
 
     private WindowRequest InfoMob(Mob mob)
     {
-        // TODO: MobTitle's BuffIndicator row of the mob's buffs
-        var body = $"HP {mob.HP}/{mob.HT}\n\n" + mob.Description() + "\n\n" + mob.State.Status() + ".";
+        var buffs = BuffLine(mob);
+        var body = $"HP {mob.HP}/{mob.HT}\n\n" + (
+            buffs.Length > 0
+                ? buffs + "\n"
+                : ""
+        ) + mob.Description() + "\n\n" + mob.State.Status() + ".";
         return Info(mob.Name, body);
+    }
+
+    private static string BuffLine(Char ch)
+    {
+        var names = (from buff in ch.Buffs()
+                where buff.Icon() != BuffIndicator.None
+                select buff.ToString())
+            .ToList();
+
+        return string.Join(", ", names);
     }
 
     private WindowRequest InfoHeap(Heap heap)
