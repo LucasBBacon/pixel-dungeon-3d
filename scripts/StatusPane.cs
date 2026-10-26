@@ -48,6 +48,9 @@ public partial class StatusPane : CanvasLayer
         box.AddChild(_exp);
         _keys = new Label();
         box.AddChild(_keys);
+        
+        // StatusPane.java buffs = new BuffIndicator(Dungeon.hero)
+        box.AddChild(BuffIndicatorView.Create(() => Dungeon.Hero));
         for (var i = 0; i < _logLines.Length; i++)
         {
             _logLines[i] = new Label();

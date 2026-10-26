@@ -73,6 +73,13 @@ public partial class GameScene : Node3D, IGameView
         _camera = new CameraRig { Name = "CameraRig" };
         AddChild(_camera);
 
+        // GameScene.java:206 adds the HealthIndicator after hero and before cell selector and status pane
+        // bar is screen-space, layer under toolbar (4) and status pane (5) -> level-switch fade covers it
+        // added after the rig, it is placed after the camera moves each frame.
+        var overlay = new CanvasLayer { Name = "Overlay", Layer = 3 };
+        AddChild(overlay);
+        overlay.AddChild(HealthIndicatorView.Create(_camera));
+
         CellSelector.RegisterActions();
         _selector = new CellSelector { Name = "CellSelector" };
         _selector.Init(_camera);

@@ -14,8 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/BuffIndicatorView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/HealthIndicatorView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Ui/QuickSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/StatusPane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/StatusPane.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -26,18 +29,9 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Ui/QuickSlotTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -380,23 +374,7 @@
       <workItem from="1792273307008" duration="68858000" />
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
-      <workItem from="1792873863094" duration="15148000" />
-    </task>
-    <task id="LOCAL-00025" summary="fix(view): defer the level switch with a statement lambda so Godot does not convert the Task. Depth recovers from a failed transition; stairs command and startup console">
-      <option name="closed" value="true" />
-      <created>1791134204518</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1791134204518</updated>
-    </task>
-    <task id="LOCAL-00026" summary="docs: sub-project 1 complete; README status and plan notes&#10;fix: final review wave: reset the chasm confirmation, turn the hero view, null the freed sprite, clear the seam on exit, cover the dr roll; docs corrected">
-      <option name="closed" value="true" />
-      <created>1791135451283</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1791135451283</updated>
+      <workItem from="1792873863094" duration="21125000" />
     </task>
     <task id="LOCAL-00027" summary="feat(seam): mob views, attack, alert, and game over ICharView gains Attack/ShowAlert/HideAlert; IGameView gains AddMob and GameOver. ShowSleep/HideSleep are deliberately absent: the Java derives the sleep icon by polling mob.state, so the view polls too. GameScene.Add(Mob[, delay]) keeps the level bookkeeping, scheduling and cell occupancy in Core and sends only the sprite across the seam, so NullGameView stays inert without swallowing a mob.">
       <option name="closed" value="true" />
@@ -774,7 +752,23 @@
       <option name="project" value="LOCAL" />
       <updated>1792952496663</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="feat(ui): quick-slot auto-targeting&#10;QuickSlot.UseTargeting keeps a last target that is alive, visible and in the line of fire. Otherwise it takes the first visible enemy that the line reaches. A dead or hidden last target is kept but not aimed at, as in the Java. A target no longer among the actors is dropped, and the port also turns targeting off where the Java leaves its flag on over a null target. The crosshair and each slot's flag stay in the view.">
+      <option name="closed" value="true" />
+      <created>1792967644616</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1792967644616</updated>
+    </task>
+    <task id="LOCAL-00075" summary="feat(view): armour tint, strength corners, slot tints and title colours&#10;The hero cube moves toward the worn armour's colour, from cloth to plate, and a new scene applies the tier as HeroSprite's constructor does. Weapon and armour slots show their strength in the top-right, red when too heavy and orange while only the typical value is known. Backpack slots take the Java's normal, equipped and known-cursed backgrounds, upgradable items of known level show three durability pips, and the item window colours its title by level. Every weapon, missile, armour and food has a colour.">
+      <option name="closed" value="true" />
+      <created>1792971623021</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1792971623021</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,8 +789,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(view): the backpack and item windows&#10;WndBag lays out the Java's landscape grid: equipment slots, the bag's items, free slots, the gold slot, and a tab per bag held. Right-clicking an item with a default action puts it in the first quick slot. WndItem lists the item's actions and runs the one chosen. Both count toward the open-window gate that disables input." />
-    <MESSAGE value="feat(view): the toolbar, two quick slots, and item keys&#10;The toolbar mirrors the Java's strip: wait, search and examine on the left, backpack and both quick slots on the right, enabled only while the hero is ready. Quick slots resolve instances or classes from Core's model, use their item on click, and choose one on right-click or an empty click. Picked-up items fly into the backpack button. I opens the backpack, 1 and 2 use the slots, and G picks up what lies underfoot." />
     <MESSAGE value="feat(view): gold, loot and attack indicators, and the iron-key count&#10;The gold total appears for two seconds whenever it changes. The loot indicator shows what lies underfoot while the hero is ready and picks it up on click, the attack indicator shows Core's chosen adjacent enemy in its species colour and attacks it. The status pane counts this depth's iron keys." />
     <MESSAGE value="feat(view): give, heap, lock and fill console commands&#10;Keys, locked chests and locked doors come only from special rooms and bosses in the original, so these commands are what make every item branch of this sub-project playable on depth 1. depth and stairs now refuse while the hero is busy, so a thrown item cannot land on the wrong level." />
     <MESSAGE value="test: item integration tests, and a minor fix&#10;Generated Sewer levels carry only gold and the dew vial in non-empty heaps, every item class constructs by type, a hero walks to distant gold and picks it up through the scheduler, and heaps survive leaving a level and coming back." />
@@ -820,7 +812,9 @@
     <MESSAGE value="feat(items): the generator spawns weapons, armour and food Registers the eleven melee weapons, five missiles, five armours and three foods. TODO: Incendiary Dart and Boomerang. &#10;RandomWeapon and RandomArmor roll two classes, then both items, and keep the one whose strength is strictly closer to STARTING_STR plus the potions of strength found, as the Java does. A random item is now gold, a weapon or armour, and every level carries one ration or pasty. The tests that assumed gold-only heaps now assert registered classes; a replay pins the roll order." />
     <MESSAGE value="feat(dungeon): the hero starts with the common and Rogue kits&#10;Dungeon.Init puts on identified cloth armour, packs a ration, wields an identified dagger, packs eight identified darts and slots the Dart class, in HeroClass.initHero's order. The slots are assigned directly, as the Java does, so no equip time is spent. The Ring of Shadows, the known Scroll of Magic Mapping and the Tome of Mastery stay deferred. A kitted Rogue attacks at 12, defends at 6, blocks 2 and hits for 1-8." />
     <MESSAGE value="feat(ui): the health indicator's target&#10;HealthIndicator keeps the character from the last AttackIndicator.Target or QuickSlot.Target call, or null for a dead or missing one, so a melee swing or a throw puts the bar on its target and a throw at an empty cell clears it. The view polls the target; Dungeon.Reset clears it." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ui): the health indicator's target&#10;HealthIndicator keeps the character from the last AttackIndicator.Target or QuickSlot.Target call, or null for a dead or missing one, so a melee swing or a throw puts the bar on its target and a throw at an empty cell clears it. The view polls the target; Dungeon.Reset clears it." />
+    <MESSAGE value="feat(ui): quick-slot auto-targeting&#10;QuickSlot.UseTargeting keeps a last target that is alive, visible and in the line of fire. Otherwise it takes the first visible enemy that the line reaches. A dead or hidden last target is kept but not aimed at, as in the Java. A target no longer among the actors is dropped, and the port also turns targeting off where the Java leaves its flag on over a null target. The crosshair and each slot's flag stay in the view." />
+    <MESSAGE value="feat(view): armour tint, strength corners, slot tints and title colours&#10;The hero cube moves toward the worn armour's colour, from cloth to plate, and a new scene applies the tier as HeroSprite's constructor does. Weapon and armour slots show their strength in the top-right, red when too heavy and orange while only the typical value is known. Backpack slots take the Java's normal, equipped and known-cursed backgrounds, upgradable items of known level show three durability pips, and the item window colours its title by level. Every weapon, missile, armour and food has a colour." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(view): armour tint, strength corners, slot tints and title colours&#10;The hero cube moves toward the worn armour's colour, from cloth to plate, and a new scene applies the tier as HeroSprite's constructor does. Weapon and armour slots show their strength in the top-right, red when too heavy and orange while only the typical value is known. Backpack slots take the Java's normal, equipped and known-cursed backgrounds, upgradable items of known level show three durability pips, and the item window colours its title by level. Every weapon, missile, armour and food has a colour." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
