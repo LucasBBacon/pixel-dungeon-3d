@@ -3,6 +3,7 @@ using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.View;
+using CoreScene = PixelDungeon.Core.Scenes.GameScene;
 
 namespace PixelDungeon.Client;
 
@@ -15,6 +16,7 @@ public partial class CellSelector : Node
     // CellSelector.listener in java
     // null stands for GameScene's defaultCellListener, which hands the cell to Dungeon.Hero.Handle
     public ICellListener Listener { get; private set; }
+
 
     // raised with the listener's prompt, or null when the default listener is back
     public Action<string> PromptChanged;
@@ -33,7 +35,17 @@ public partial class CellSelector : Node
     {
         var listener = Listener;
         listener?.OnSelect(null);
-        SetListener(null);
+        CoreScene.Ready();
+    }
+
+    public void HandleCell(int cell)
+    {
+        if (!Enabled || Dungeon.Hero == null)
+        {
+            return;
+        }
+
+        Select(cell);
     }
 
     private static readonly (string Action, Key[] Keys, bool Shift)[] Bindings =
@@ -123,17 +135,6 @@ public partial class CellSelector : Node
             return;
         }
 
-        if (Listener != null)
-        {
-            return; // a pending selection owns the next click
-        }
-
-        if (Input.IsActionJustPressed("inventory"))
-        {
-            InventoryPressed?.Invoke();
-            return;
-        }
-
         if (Input.IsActionJustPressed("quickslot_1"))
         {
             QuickSlotPressed?.Invoke(1);
@@ -143,6 +144,17 @@ public partial class CellSelector : Node
         if (Input.IsActionJustPressed("quickslot_2"))
         {
             QuickSlotPressed?.Invoke(2);
+            return;
+        }
+
+        if (Listener != null)
+        {
+            return;
+        }
+
+        if (Input.IsActionJustPressed("inventory"))
+        {
+            InventoryPressed?.Invoke();
             return;
         }
 

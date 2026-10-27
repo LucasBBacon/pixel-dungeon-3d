@@ -10,10 +10,22 @@ public partial class QuickSlotView : Control
 {
     private const string TxtSelectItem = "Select an item for the quickslot";
 
+    private static readonly Color CrossColor = new Color(1f, 0.25f, 0.25f);
+    private const float CrossLift = 0.06f; // the ring's tube radius, so the ring rests on the floor
+
     private bool _primary;
     private ItemSlot _slot;
     private Item _itemInSlot;
     private bool _enabled = true;
+
+    private bool _targeting = false;
+    private Control _crossB; // badge centered on slot
+    private MeshInstance3D _crossM; // ring on the target's cell
+
+    // GameScene.handleCell(cell). GameScene sets it to CellSelector.HandleCell.
+    public Action<int> HandleCell;
+
+    public MeshInstance3D Crosshair => _crossM;
 
     public event Action<QuickSlotView> ChooseRequested;
 
@@ -31,7 +43,34 @@ public partial class QuickSlotView : Control
         view._slot.Pressed += view.OnSlotPressed;
         view._slot.RightClicked += _ => view.RequestChoose();
         view.GuiInput += view.OnGuiInput;
+
+        // crossB = Icons.TARGET.get(), centred on slot and hidden
+        // added after the ItemSlot, so it draws on top
+        // ItemSlot.Enable dims only the slot's own children, so the badge keeps full alpha
+        view._crossB = new Control { MouseFilter = MouseFilterEnum.Ignore, Visible = false };
+        view._crossB.SetAnchorsPreset(LayoutPreset.FullRect);
+        var badge = view._crossB;
+        badge.Draw += () => DrawTarget(badge);
+        view.AddChild(view._crossB);
+
+        // crossM, flat ring about 1 cell across, hidden until targeting places it
+        view._crossM = new MeshInstance3D
+        {
+            Mesh = new TorusMesh { InnerRadius = 0.32f, OuterRadius = 0.44f },
+            MaterialOverride = TerrainVisuals.Unshaded(CrossColor),
+            Visible = false,
+        };
         return view;
+    }
+
+    private static void DrawTarget(Control badge)
+    {
+        var c = badge.Size / 2f;
+        badge.DrawArc(c, 12f, 0f, Mathf.Tau, 32, CrossColor, 2f);
+        badge.DrawLine(c + new Vector2(0f, -20f), c + new Vector2(0f, -6f), CrossColor, 3f);
+        badge.DrawLine(c + new Vector2(0f, 6f), c + new Vector2(0f, 20f), CrossColor, 3f);
+        badge.DrawLine(c + new Vector2(-20f, 0f), c + new Vector2(-6f, 0f), CrossColor, 3f);
+        badge.DrawLine(c + new Vector2(6f, 0f), c + new Vector2(20f, 0f), CrossColor, 3f);
     }
 
     // QuickSlot.select(), an instance, the first held item of a slotted class, or a virtual one.
@@ -107,11 +146,39 @@ public partial class QuickSlotView : Control
     // The slot's onClick.
     private void OnSlotPressed()
     {
-        // TODO: useTargeting() — with a target locked, a click throws at QuickSlot.LastTarget and draws the crosshair
-        Select()?.Execute(Dungeon.Hero);
+        if (_targeting && QuickSlot.LastTarget != null)
+        {
+            HandleCell?.Invoke(QuickSlot.LastTarget.Pos);
+        }
+        else
+        {
+            UseTargeting();
+            Select()?.Execute(Dungeon.Hero);
+        }
+    }
+
+    private void UseTargeting()
+    {
+        _targeting = QuickSlot.UseTargeting();
+        if (_targeting)
+        {
+            _crossM.Position = LevelRenderer.CellToWorld(QuickSlot.LastTarget.Pos) + new Vector3(0f, CrossLift, 0f);
+            _crossM.Visible = true;
+            _crossB.Visible = true;
+        }
     }
 
     // Keys 1 and 2.
+    public void CancelTargeting()
+    {
+        if (_targeting)
+        {
+            _crossB.Visible = false;
+            _crossM.Visible = false;
+            _targeting = false;
+        }
+    }
+
     public void Use()
     {
         if (_enabled && !_slot.Disabled)
@@ -121,6 +188,7 @@ public partial class QuickSlotView : Control
     }
 
     // QuickSlot.onClick: a click on an empty or unusable slot chooses an item.
+
     private void OnGuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton mouse && mouse.Pressed && mouse.ButtonIndex == MouseButton.Left &&

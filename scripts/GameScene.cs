@@ -52,10 +52,10 @@ public partial class GameScene : Node3D, IGameView
         [typeof(Rat)] = new Color(0.40f, 0.35f, 0.45f),
     };
 
-    internal static Color ColorForMob(Mob mob)
-    {
-        return MobColors.TryGetValue(mob.GetType(), out var c) ? c : new Color(0.7f, 0.2f, 0.2f);
-    }
+    internal static Color ColorForMob(Mob mob) =>
+        MobColors.TryGetValue(mob.GetType(), out var c)
+            ? c
+            : new Color(0.7f, 0.2f, 0.2f);
 
     public override void _Ready()
     {
@@ -96,6 +96,13 @@ public partial class GameScene : Node3D, IGameView
         _toolbar.OnExamine = Examine;
         _toolbar.OnBackpack = OpenBackpack;
         _toolbar.OnChooseQuickSlot = slot => SelectItem(slot.Assign, BagMode.Quickslot, slot.SelectPrompt);
+        // QuickSlot's second press calls GameScene.handleCell(lastTarget.pos). Each slot's crosshair ring lives in
+        // the 3D world, where the Java adds crossM to the target sprite's parent. It sits under the scene root,
+        // not under _chars, so ClearChars never frees it
+        _toolbar.Primary.HandleCell = _selector.HandleCell;
+        _toolbar.Secondary.HandleCell = _selector.HandleCell;
+        AddChild(_toolbar.Primary.Crosshair);
+        AddChild(_toolbar.Secondary.Crosshair);
         _selector.InventoryPressed += OpenBackpack;
         _selector.QuickSlotPressed += n => (n == 1 ? _toolbar.Primary : _toolbar.Secondary).Use();
 
@@ -179,6 +186,7 @@ public partial class GameScene : Node3D, IGameView
         // here but Build() runs on all of them
         Dungeon.Hero.Belongings.CountIronKeys(); // StatusPane.createChildren in the Java
         _goldIndicator.ResetState();
+        CancelQuickSlotTargeting();
         RefreshQuickSlots();
     }
 
@@ -360,6 +368,7 @@ public partial class GameScene : Node3D, IGameView
     {
         // GameScene.ready(), back to the default listener, then re-arm input
         _selector.SetListener(null);
+        CancelQuickSlotTargeting();
         UpdateSelector();
     }
 
@@ -584,10 +593,7 @@ public partial class GameScene : Node3D, IGameView
         }
 
         // GameScene.show: cancelCellSelector() runs before the window opens, as it does in OpenBag
-        if (_selector.Listener != null)
-        {
-            _selector.Cancel();
-        }
+        _selector.Cancel();
 
         OpenWindow(WndHero.Create(), null);
     }
@@ -601,6 +607,15 @@ public partial class GameScene : Node3D, IGameView
         {
             _toolbar.Primary.Refresh();
             _toolbar.Secondary.Refresh();
+        }
+    }
+
+    private void CancelQuickSlotTargeting()
+    {
+        if (_toolbar != null)
+        {
+            _toolbar.Primary.CancelTargeting();
+            _toolbar.Secondary.CancelTargeting();
         }
     }
 
@@ -618,10 +633,7 @@ public partial class GameScene : Node3D, IGameView
 
     private void OpenBag(WndBag wnd)
     {
-        if (_selector.Listener != null)
-        {
-            _selector.Cancel();
-        }
+        _selector.Cancel();
 
         wnd.ItemClicked += (owner, item) => OpenWindow(WndItem.Create(owner, item), owner);
         wnd.Reopened += OpenBag;
