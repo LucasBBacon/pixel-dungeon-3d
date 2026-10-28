@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Sprites;
@@ -20,14 +21,15 @@ public partial class CharView : Node3D, ICharView
 
     private const float ArmorBlend = 0.6f;
 
+    private const float StatusStackOffset = 0.25f;
+
     private Char _ch;
     private Color _color;
     private StandardMaterial3D _material;
     private MeshInstance3D _body;
-    private Label3D _status;
+    private readonly List<Label3D> _statusFloaters = [];
     private Label3D _emo;
     private Tween _motion;
-    private Tween _statusTween;
     private bool _sleeping;
 
     public static CharView For(Char ch, Color color)
@@ -49,17 +51,6 @@ public partial class CharView : Node3D, ICharView
             Position = new Vector3(0f, 0.4f, 0f),
         };
         AddChild(_body);
-
-        _status = new Label3D
-        {
-            Billboard = BaseMaterial3D.BillboardModeEnum.Enabled,
-            NoDepthTest = true,
-            PixelSize = 0.01f,
-            FontSize = 48,
-            Position = new Vector3(0f, 1.2f, 0f),
-            Visible = false,
-        };
-        AddChild(_status);
 
         _emo = new Label3D
         {
@@ -243,19 +234,30 @@ public partial class CharView : Node3D, ICharView
 
     public void ShowStatus(StatusColor color, string text)
     {
-        _status.Text = text;
-        _status.Modulate = ColorFor(color);
-        _status.OutlineModulate = Colors.Black;
-        _status.Position = new Vector3(0f, 1.2f, 0f);
-        _status.Visible = true;
-        _statusTween?.Kill();
-        // FloatingText, rises and fades over its LIFESPAN, then is killed. Label3D's outline has its
-        // own modulate, so it fades separately; without the hide, the outline would linger.
-        _statusTween = CreateTween().SetParallel();
-        _statusTween.TweenProperty(_status, "position", new Vector3(0f, 1.7f, 0f), 1.0);
-        _statusTween.TweenProperty(_status, "modulate:a", 0f, 1f);
-        _statusTween.TweenProperty(_status, "outline_modulate:a", 0f, 1.0);
-        _statusTween.Finished += () => _status.Visible = false;
+        var offset = StatusStackOffset + _statusFloaters.Count;
+        var status = new Label3D
+        {
+            Billboard = BaseMaterial3D.BillboardModeEnum.Enabled,
+            NoDepthTest = true,
+            PixelSize = 0.01f,
+            FontSize = 48,
+            Text = text,
+            Modulate = ColorFor(color),
+            OutlineModulate = Colors.Black,
+            Position = new Vector3(0f, 1.2f + offset, 0f),
+        };
+        AddChild(status);
+        _statusFloaters.Add(status);
+
+        var tween = CreateTween().SetParallel();
+        tween.TweenProperty(status, "position", new Vector3(0f, 1.7f + offset, 0f), 1.0);
+        tween.TweenProperty(status, "modulate:a", 0f, 1.0);
+        tween.TweenProperty(status, "outline_modulate:a", 0f, 1.0);
+        tween.Finished += () =>
+        {
+            _statusFloaters.Remove(status);
+            status.QueueFree();
+        };
     }
 
     public void Burst(uint color, int n)

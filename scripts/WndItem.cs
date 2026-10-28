@@ -73,9 +73,9 @@ internal partial class WndItem : Window
                 var chosen = action;
                 button.Pressed += () =>
                 {
-                    item.Execute(Dungeon.Hero, chosen);
                     wnd.Hide();
                     owner.Hide();
+                    item.Execute(Dungeon.Hero, chosen);
                 };
                 buttons.AddChild(button);
             }

@@ -4,11 +4,13 @@ using System.Linq;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.Ui;
 
 namespace PixelDungeon.Client;
 
@@ -228,17 +230,40 @@ public partial class DebugConsole : CanvasLayer
         });
 
         Register("give",
-            "give <gold N|dewdrop N|dewvial|ironkey|goldenkey|skeletonkey|keyrin>: add to the hero's belongings",
+            "give <item> [n] [cursed] [+n|-n]: add to the hero's belongings; <item> is gold, dewdrop, dewvial, ironkey, goldenkey, skeletonkey, keyring, or any registered item class such as dart, tomahawk, sword, platearmor, food or mysterymeat",
             args =>
             {
+                const string usage = "usage: give <item> [n] [cursed] [+n|-n]";
                 if (args.Length == 0)
                 {
-                    Print("usage: give <gold N|dewdrop N|dewvial|ironkey|goldenkey|skeletonkey|keyring>");
+                    Print(usage);
                     return;
                 }
 
                 var name = args[0].ToLowerInvariant();
-                var n = args.Length > 1 && int.TryParse(args[1], out var parsed) ? parsed : 1;
+                var n = 1;
+                var cursed = false;
+                int? level = null;
+                foreach (var token in args.Skip(1))
+                {
+                    if (token.Equals("cursed", StringComparison.OrdinalIgnoreCase))
+                    {
+                        cursed = true;
+                    }
+                    else if ((token[0] == '+' || token[0] == '-') && int.TryParse(token, out var signed))
+                    {
+                        level = signed;
+                    }
+                    else if (int.TryParse(token, out var count) && count > 0)
+                    {
+                        n = count;
+                    }
+                    else
+                    {
+                        Print(usage);
+                        return;
+                    }
+                }
 
                 if (name == "gold")
                 {
@@ -252,6 +277,23 @@ public partial class DebugConsole : CanvasLayer
                 {
                     Print($"unknown item '{args[0]}'");
                     return;
+                }
+
+                if (level.HasValue)
+                {
+                    if (level.Value > 0)
+                    {
+                        item.Upgrade(level.Value);
+                    }
+                    else
+                    {
+                        item.Degrade(-level.Value);
+                    }
+                }
+
+                if (cursed)
+                {
+                    item.Cursed = true;
                 }
 
                 Print(item.Collect() ? $"gave {item}" : "the pack is full");
@@ -334,7 +376,7 @@ public partial class DebugConsole : CanvasLayer
 
         Register("fill", "fill the dew vial in the backpack", _ =>
         {
-            DewVial vial = Dungeon.Hero.Belongings.GetItem<DewVial>();
+            var vial = Dungeon.Hero.Belongings.GetItem<DewVial>();
             if (vial == null)
             {
                 Print("no dew vial; try give dewvial");
@@ -343,6 +385,34 @@ public partial class DebugConsole : CanvasLayer
 
             vial.Fill();
             Print("dew vial filled");
+        });
+
+        Register("hunger",
+            "hunger <level>: set the hero's hunger level; 260 is hungry, 360 starving; with no level, print it", args =>
+            {
+                var hunger = Dungeon.Hero.GetBuff<Hunger>();
+                if (args.Length != 1 || !int.TryParse(args[0], out var level))
+                {
+                    Print(
+                        $"usage: hunger <level>; hunger is {hunger.HungerLevel}, hungry at {Hunger.Hungry}, starving at {Hunger.Starving}");
+                    return;
+                }
+
+                hunger.Satisfy(hunger.HungerLevel - level);
+                Print($"hunger now {hunger.HungerLevel}");
+            });
+
+        Register("str", "str <n>: set the hero's strength; with no n, print it", args =>
+        {
+            if (args.Length != 1 || !int.TryParse(args[0], out var str) && str < 1)
+            {
+                Print($"usage: str <n?, strength is {Dungeon.Hero.STR}");
+                return;
+            }
+
+            Dungeon.Hero.STR = str;
+            QuickSlot.Refresh();
+            Print($"strength now {Dungeon.Hero.STR}");
         });
     }
 
@@ -380,8 +450,27 @@ public partial class DebugConsole : CanvasLayer
             case "keyring":
                 return new Keyring();
             default:
-                return null;
+                return MakeRegistered(name, n);
         }
+    }
+
+    private static Item MakeRegistered(string name, int n)
+    {
+        var className = name == "tomahawk" ? "tamahawk" : name;
+        var type = Generator.RegisteredTypes.FirstOrDefault(t =>
+            t.Name.Equals(className, StringComparison.OrdinalIgnoreCase));
+        if (type == null)
+        {
+            return null;
+        }
+
+        var item = (Item)Activator.CreateInstance(type);
+        if (item.Stackable)
+        {
+            item.Quantity(n);
+        }
+
+        return item;
     }
 
     // runs one command line exactly as if it had been typed, also used for startup commands
