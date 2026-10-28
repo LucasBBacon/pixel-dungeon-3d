@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Scenes;
@@ -81,6 +82,98 @@ public class SeamTest : DungeonFixture
         seam.UpdateArmor(0);
 
         Assert.Equal(new[] { 1, 0 }, fake.ArmorTiers);
+    }
+
+    [Fact]
+    public void SpriteStatesReadAndFadeIn_TheNullViewIgnoresThem_AndTheFakeRecordsThem()
+    {
+        var nullView = NullCharView.Instance;
+        nullView.Read();
+        nullView.Add(CharState.Invisible);
+        nullView.Remove(CharState.Levitating);
+        nullView.FadeIn(); // none should throw
+
+        var fake = new FakeCharView();
+        var seam = fake;
+        seam.Read();
+        seam.Add(CharState.Levitating);
+        seam.Remove(CharState.Levitating);
+        seam.FadeIn();
+        seam.Burst(0xFF33FF33, 4);
+        seam.Burst(0xFFFFFFFF, 3);
+
+        Assert.Equal(1, fake.Reads);
+        Assert.Equal(new[] { (CharState.Levitating, true), (CharState.Levitating, false) }, fake.States);
+        Assert.Equal(1, fake.FadeIns);
+        Assert.Equal(new[] { (0xFF33FF33, 4), (0xFFFFFFFF, 3) }, fake.BurstLog);
+        Assert.Equal(7, fake.Bursts);
+    }
+
+    [Fact]
+    public void Facade_ForwardsSelectItemFlashSplashAndTheDiscoverEffect()
+    {
+        var chosen = new Item();
+        var item = new Item();
+
+        GameScene.SelectItem(i => chosen = i, BagMode.Unidentified, "Select an item to identify");
+        GameScene.Flash(0xFFFFFF);
+        GameScene.Splash(9, 0xFF40E0D0, 5);
+        GameScene.Effect(EffectKind.Discover, 12);
+
+        Assert.Single(View.ItemSelections);
+        Assert.Equal(BagMode.Unidentified, View.ItemSelections[0].Mode);
+        Assert.Equal("Select an item to identify", View.ItemSelections[0].Title);
+        View.ChooseItem(item);
+        Assert.Same(item, chosen);
+        View.ChooseItem(null);
+        Assert.Null(chosen);
+        Assert.Equal(new[] { 0xFFFFFFu }, View.Flashes);
+        Assert.Equal((9, 0xFF40E0D0u, 5), View.Splashes[0]);
+        Assert.Equal((EffectKind.Discover, 12), View.Effects[0]);
+    }
+
+    [Fact]
+    public void GameSceneAdd_Blob_SchedulesItAndHandsItToTheView()
+    {
+        var blob = new TestBlob();
+
+        GameScene.Add(blob);
+
+        Assert.Contains(blob, Actor.All());
+        Assert.Same(blob, View.AddedBlobs[0]);
+    }
+
+    [Fact]
+    public void NullGameView_IgnoresSelectItemBlobsFlashAndSplash()
+    {
+        var view = NullGameView.Instance;
+        view.SelectItem(_ => { }, BagMode.All, null);
+        view.AddBlob(new TestBlob());
+        view.Flash(0xFFFFFF);
+        view.Splash(1, 0xFFFFFFFF, 5);
+    }
+
+    [Fact]
+    public void WindowRequest_IgnoresBack_DefaultsToFalse_AndCanBeSet()
+    {
+        Assert.False(WindowRequest.Message("Hello").IgnoresBack);
+        Assert.False(new WindowRequest("T",
+            "B",
+            new[]
+            {
+                "Yes",
+                "No"
+            },
+            _ => { }).IgnoresBack);
+        Assert.True(new WindowRequest("T",
+            "B",
+            new[]
+            {
+                "Yes",
+                "No"
+            },
+            _ => { },
+            ignoresBack: true).IgnoresBack);
     }
 
     [Fact]
@@ -213,6 +306,10 @@ public class SeamTest : DungeonFixture
         public int? Selected;
         public void OnSelect(int? cell) => Selected = cell;
         public string Prompt() => "pick a cell";
+    }
+
+    private sealed class TestBlob : Blob
+    {
     }
 
     // minimal mob for now

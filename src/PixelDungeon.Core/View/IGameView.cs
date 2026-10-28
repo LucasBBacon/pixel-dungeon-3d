@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
@@ -26,4 +27,8 @@ public interface IGameView
     void Missile(int from, int to, Item item, Action onComplete); // MissileSprite.reset, call onComplete exactly once
     void RefreshQuickSlots(); // QuickSlot.Refresh()
     void ShowBag(Bag bag);
+    void SelectItem(Action<Item> listener, BagMode mode, string title);
+    void AddBlob(Blob blob);
+    void Flash(uint color);
+    void Splash(int cell, uint color, int n);
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
@@ -629,6 +630,21 @@ public partial class GameScene : Node3D, IGameView
     public void SelectItem(Action<Item> listener, BagMode mode, string title)
     {
         OpenBag(WndBag.LastBag(listener, mode, title));
+    }
+
+    public void AddBlob(Blob blob)
+    {
+        // TODO: GameScene.addBlobSprite adds a BlobEmitter that draws the gas
+    }
+
+    public void Flash(uint color)
+    {
+        // TODO: GameScene.flash fades a full-screen block of the colour out over Fader.FADE_TIME
+    }
+
+    public void Splash(int cell, uint color, int n)
+    {
+        // TODO: Splash.at bursts n particles of the colour from the cell
     }
 
     private void OpenBag(WndBag wnd)

@@ -6,16 +6,19 @@ public sealed class WindowRequest
     public readonly string Body;
     public readonly string[] Options;
     public readonly Action<int> OnSelect;
+    public readonly bool IgnoresBack;
 
     public WindowRequest(string title,
         string body,
         string[] options,
-        Action<int> onSelect)
+        Action<int> onSelect,
+        bool ignoresBack = false)
     {
         Title = title;
         Body = body;
         Options = options;
         OnSelect = onSelect;
+        IgnoresBack = ignoresBack;
     }
 
     public static WindowRequest Message(string body)

@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
@@ -109,6 +110,25 @@ public class RecordingGameView : IGameView
 
     public readonly List<Bag> ShownBags = [];
     public void ShowBag(Bag bag) => ShownBags.Add(bag);
+
+    public readonly List<(Action<Item> Listener, BagMode Mode, string Title)> ItemSelections = [];
+
+    public readonly List<Blob> AddedBlobs = [];
+
+    public readonly List<uint> Flashes = [];
+
+    public readonly List<(int Cell, uint Color, int N)> Splashes = [];
+
+    public void SelectItem(Action<Item> listener, BagMode mode, string title) =>
+        ItemSelections.Add((listener, mode, title));
+
+    public void AddBlob(Blob blob) => AddedBlobs.Add(blob);
+
+    public void Flash(uint color) => Flashes.Add(color);
+
+    public void Splash(int cell, uint color, int n) => Splashes.Add((cell, color, n));
+
+    public void ChooseItem(Item item) => ItemSelections[^1].Listener(item);
 
     // what a click on a cell does to the listener the core installed last
     public void Answer(int? cell) => Listeners[^1].OnSelect(cell);

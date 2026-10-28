@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
@@ -84,6 +85,22 @@ public sealed class NullGameView : IGameView
     }
 
     public void ShowBag(Bag bag)
+    {
+    }
+
+    public void SelectItem(Action<Item> listener, BagMode mode, string title)
+    {
+    }
+
+    public void AddBlob(Blob blob)
+    {
+    }
+
+    public void Flash(uint color)
+    {
+    }
+
+    public void Splash(int cell, uint color, int n)
     {
     }
 }

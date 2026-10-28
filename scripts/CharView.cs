@@ -310,5 +310,26 @@ public partial class CharView : Node3D, ICharView
         _material.AlbedoColor = _color.Lerp(ItemVisuals.ColorOf(image), ArmorBlend);
     }
 
+    public void Read()
+    {
+        // TODO: HeroSprite.read() plays its ten-frame read animation before onOperateComplete
+        Operate(_ch.Pos);
+    }
+
+    public void Add(CharState state)
+    {
+        // TODO: CharSprite.add(INVISIBLE) fades the sprite to 0.4 alpha and add(LEVITATING) pours jet puffs under it
+    }
+
+    public void Remove(CharState state)
+    {
+        // TODO: CharSprite.remove(INVISIBLE) fades the sprite back to opaque and remove(LEVITATING) stops the jet puffs
+    }
+
+    public void FadeIn()
+    {
+        // TODO: WandOfBlink.appear sets alpha 0 and tweens it to 1 over 0.4 s
+    }
+
     public bool IsMoving { get; private set; }
 }

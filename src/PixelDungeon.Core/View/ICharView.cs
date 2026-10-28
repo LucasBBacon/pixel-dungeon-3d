@@ -18,6 +18,10 @@ public interface ICharView
     void BloodBurst(int damage);
     void Flash();
     void UpdateArmor(int tier); // HeroSprite.updateArmor(), show armor tier 0 (none) to 5; Armor's equip hooks call it
+    void Read(); // HeroSprite.read(), must call Char.OnOperateComplete() when done, as Operate does
+    void Add(CharState state); // CharSprite.add(State)
+    void Remove(CharState state); // CharSprite.remove(State)
+    void FadeIn(); // WandOfBlink.appear: alpha from 0 to 1 over 0.4 s
     bool Visible { get; set; }
     bool IsMoving { get; }
 }

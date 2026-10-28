@@ -68,6 +68,22 @@ public sealed class NullCharView : ICharView
     {
     }
 
+    public void Read()
+    {
+    }
+
+    public void Add(CharState state)
+    {
+    }
+
+    public void Remove(CharState state)
+    {
+    }
+
+    public void FadeIn()
+    {
+    }
+
     public bool Visible { get; set; } = true;
     public bool IsMoving => false;
 }

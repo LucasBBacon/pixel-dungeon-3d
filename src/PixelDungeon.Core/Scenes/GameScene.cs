@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
@@ -53,6 +54,19 @@ public static class GameScene
 
     public static void RefreshQuickSlots() => Instance.RefreshQuickSlots();
     public static void ShowBag(Bag bag) => Instance.ShowBag(bag); // GameScene.show(new WndBag(...)) in java
+
+    public static void SelectItem(Action<Item> listener, BagMode mode, string title) =>
+        Instance.SelectItem(listener, mode, title);
+
+    public static void Add(Blob gas)
+    {
+        Actor.Add(gas);
+        Instance.AddBlob(gas);
+    }
+    
+    public static void Flash(uint color) => Instance.Flash(color);
+
+    public static void Splash(int cell, uint color, int n) => Instance.Splash(cell, color, n);
 
     // The droppedItems loop from GameScene.create in the Java: items that fell down a chasm land on random respawn cells of the level below
     // Core owns it so it can be tested, the view calls it
