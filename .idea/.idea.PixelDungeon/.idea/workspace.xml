@@ -14,23 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/EquipmentIntegrationTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/ItemStatusHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemStatusHandlerTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/DebugConsole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/DebugConsole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/WndItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/WndItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -203,6 +198,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemActionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemFixtures.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemStatusHandlerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MissileWeaponTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -385,23 +381,7 @@
       <workItem from="1792273307008" duration="68858000" />
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
-      <workItem from="1792873863094" duration="30939000" />
-    </task>
-    <task id="LOCAL-00030" summary="feat(mobs): Swarm and its split&#10;The split ports in full. HP &gt;= damage + 2 gate, the orthogonal-only candidate cells, the (HP - damage) / 2 clone, the generation counter, the clone entering HUNTING, and Door.Enter when it lands in a doorway, and is tested by calling DefenseProc directly, so its 1-in-200 spawn rate does not gate verification.&#10;TODO: pusihing, the clone appears at its cell instead of sliding. Burning and Poison propagation and the PotionOfHealing drop are likewise deferred to the sub-projects that bring those classes.">
-      <option name="closed" value="true" />
-      <created>1791317005662</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1791317005662</updated>
-    </task>
-    <task id="LOCAL-00031" summary="feat(mobs): the whole Bestiary table behind a type registry&#10;All 25 depths port verbatim as chance/name pairs. A Dictionary&lt;Type, Func&gt; holds factories for the ported classes; entries naming an unported class are dropped before the roll, and a depth with nothing registered returns null, which the existing guards in RegularLevel.CreateMobs and Level.RespawnerActor already handle.&#10;Later sub-projects add a mob by registering a factory. The table is written once and never edited again.&#10;The depth-4 distribution loses Skeleton and Thief (0.02 of 6.04 weight) until later projects, and depths 5 and up spawn nothing until theirs. Both are asserted by tests so the deviation stays visible.">
-      <option name="closed" value="true" />
-      <created>1791372703751</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1791372703751</updated>
+      <workItem from="1792873863094" duration="40689000" />
     </task>
     <task id="LOCAL-00032" summary="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero.">
       <option name="closed" value="true" />
@@ -779,7 +759,23 @@
       <option name="project" value="LOCAL" />
       <updated>1793100485102</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="feat(view): give any registered item, and set hunger and strength&#10;give now names any class in the Generator's registry, case-insensitive (tomahawk included), and takes a stack size, a curse flag and a signed level that upgrades or degrades the item and identifies it. hunger sets the Hunger buff's level through Satisfy, and str sets the hero's strength; with no argument, each prints the current value. Generator.RegisteredTypes becomes public so the view can read the registry.&#10;&#10;tests: integration tests for equipment and hunger, a resting Rogue goes hungry after 300 turns and starves after 420, and a starving hero dies of hunger without regenerating.&#10;&#10;stack status floaters, and hide the item window before its action CharView kept one status label, so a status shown in the same frame as a damage number (a curare dart's &quot;paralysed&quot;) was overwritten before it drew. Each ShowStatus now spawns its own rising, fading label, stacked above any still alive, as FloatingText does. WndItem ran the item's action before hiding itself, so an action that opens a window (a missile's equip confirmation) collided with the still exclusive item window. It now hides first, as the Java does.">
+      <option name="closed" value="true" />
+      <created>1793146588434</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1793146588434</updated>
+    </task>
+    <task id="LOCAL-00080" summary="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack.">
+      <option name="closed" value="true" />
+      <created>1793220099107</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1793220099108</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -800,8 +796,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fix(view): bags cancel a pending cell selection, and scene builds reset gold and iron-key counts&#10;A: WndBag.OpenBag now cancels any pending cell selector before it opens (scenes/GameScene.java show -&gt; cancelCellSelector), so leaving a THROW listener armed and then opening the backpack no longer throws on the next floor click. SelectItem no longer duplicates the check.&#10;B: WndBag hands its listener null on any close that is not a choice (windows/WndBag.java onBackPressed), via a VisibilityChanged handler guarded by a new _chosen flag set right before every choice's own Hide() call (a slot pick, a tab switch).&#10;C: GoldIndicator gets a ResetState() that GameScene.Build calls, so a level switch or Restart no longer shows the previous run's stale gold total. Confirmed against the Java: GoldIndicator is built fresh inside Toolbar.createChildren (ui/Toolbar.java), and Toolbar itself is rebuilt by GameScene.create() on every scene, including Restart.&#10;D: GameScene.Build recounts iron keys (Belongings.CountIronKeys) before RefreshQuickSlots, matching ui/StatusPane.java's createChildren, so the &quot;Iron keys&quot; readout no longer sticks to the previous depth's count after a level switch, console jump, or restart." />
-    <MESSAGE value="test: turn costs of item actions, and a lettered marker in MobAiTests&#10;F: MobAiTests' bare &quot;DEFERRED(sp3): armour/Barkskin&quot; comment violates the lettered-marker rule and was invisible to the marker audit (which scans only src/ and scripts/). Split it into &quot;TODO: armour, TODO: Barkskin&quot;, matching where each actually lands.&#10;G: adds six turn-cost assertions the design spec's &quot;## Tests&quot; section calls for but nothing checked: a drop spends TIME_TO_DROP, a completed throw spends TIME_TO_THROW, a cancelled throw spends nothing, an adjacent chest spends TIME_TO_UNLOCK before OnOperateComplete, drinking the dew vial spends 1, and a pick-up spends 1. Each is a small sibling Fact next to the behaviour test it pins, using a shared SpyHero (moved from HeroTests into DungeonFixture so ItemActionTests, HeroItemTests and DewTests can all read Cooldown()).&#10;The drop and throw assertions were proven to bite: temporarily changing TIME_TO_DROP to 0.75f failed ExecuteDrop_SpendsTimeToDrop (expected 0.5, got 0.75), and TIME_TO_THROW to 1.5f failed Throw_Completed_SpendsTimeToThrow (expected 1, got 1.5), both constants were then reverted." />
     <MESSAGE value="feat(core): buff icons and the armour-tier seam member&#10;BuffIndicator carries every constant from the Java. Buff.Icon() returns NONE unless a buff overrides it, and Amok, Terror, Cripple and Bleeding now do. ICharView gains UpdateArmor(int tier) for Armor's equip hooks: the null view ignores it, the test fake records each tier, and the Godot CharView stubs it until later." />
     <MESSAGE value="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO." />
     <MESSAGE value="feat(actors): affliction status texts, hero warnings and the snap-out&#10;Poison and Paralysis ship complete, as the 3b spec decides:&#10;- Char.Add shows &quot;poisoned&quot; with a poison splash, and &quot;slowed&quot;, &quot;paralysed&quot; and &quot;rooted&quot;.&#10;- Hero.Add warns on Paralysis, Poison and Roots, and the first two interrupt.&#10;- Char.Damage rolls Random.Int(dmg) against Random.Int(HP) to snap a paralysed character out, logging it when visible.&#10;- A poisoned Swarm splits into a clone poisoned for 2.&#10;The shared markers are split. Burning, Frost, Vertigo, Ooze and the rest stay TODO. MindVision, Levitation and Invisibility stay sp3c. The paralysed sprite state draws nothing, because the cubes have no animation to pause." />
@@ -825,7 +819,9 @@
     <MESSAGE value="feat(view): the buff row and the target health bar&#10;The status pane shows one lettered, coloured tile per hero buff with an icon, named on hover, polled every frame. A red and green bar floats above HealthIndicator.Target while it lives and its view is visible, on an overlay layer under the toolbar and the level-switch fade." />
     <MESSAGE value="feat(view): the hero window, and buffs in a mob's info&#10;WndHero shows the Java's Stats tab (level and class, strength, health, experience, gold collected, deepest floor) and a Buffs tab of lettered tiles. Clicking the status panel or examining the hero's own cell opens it through the open-window gate, cancelling any pending cell selection. A mob's info now names its buffs under its HP. TODO: The Catalogus and Journal buttons stay." />
     <MESSAGE value="feat(view): quick-slot auto-targeting and the crosshair&#10;A quick slot's press aims at QuickSlot.UseTargeting's target: a red ring lies on its cell and a crosshair badge sits on the slot. The next press, by click or key, hands that cell to the throw prompt the first press opened. CellSelector's select and cancel now end in GameScene.ready(), as in the Java, which clears both slots' targeting, as does a new level and opening any window." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): quick-slot auto-targeting and the crosshair&#10;A quick slot's press aims at QuickSlot.UseTargeting's target: a red ring lies on its cell and a crosshair badge sits on the slot. The next press, by click or key, hands that cell to the throw prompt the first press opened. CellSelector's select and cancel now end in GameScene.ready(), as in the Java, which clears both slots' targeting, as does a new level and opening any window." />
+    <MESSAGE value="feat(view): give any registered item, and set hunger and strength&#10;give now names any class in the Generator's registry, case-insensitive (tomahawk included), and takes a stack size, a curse flag and a signed level that upgrades or degrades the item and identifies it. hunger sets the Hunger buff's level through Satisfy, and str sets the hero's strength; with no argument, each prints the current value. Generator.RegisteredTypes becomes public so the view can read the registry.&#10;&#10;tests: integration tests for equipment and hunger, a resting Rogue goes hungry after 300 turns and starves after 420, and a starving hero dies of hunger without regenerating.&#10;&#10;stack status floaters, and hide the item window before its action CharView kept one status label, so a status shown in the same frame as a damage number (a curare dart's &quot;paralysed&quot;) was overwritten before it drew. Each ShowStatus now spawns its own rising, fading label, stacked above any still alive, as FloatingText does. WndItem ran the item's action before hiding itself, so an action that opens a window (a missile's equip confirmation) collided with the still exclusive item window. It now hides first, as the Java does." />
+    <MESSAGE value="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
