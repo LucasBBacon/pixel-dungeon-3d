@@ -14,9 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/ItemStatusHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/ItemStatusHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/ParalyticGas.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/ToxicGas.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/BlobTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/GasTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Blob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Blob.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -26,6 +29,7 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -38,6 +42,7 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +173,8 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/View/StatusColor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/View/WindowRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/ActorTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/BlobTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/GasTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/BuffTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/AfflictionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -318,7 +325,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -334,7 +341,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -381,15 +388,8 @@
       <workItem from="1792273307008" duration="68858000" />
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
-      <workItem from="1792873863094" duration="40689000" />
-    </task>
-    <task id="LOCAL-00032" summary="feat(hero): attack action, regeneration, and the crippling fall&#10; ActAttack ports verbatim: an adjacent living enemy that has not charmed the hero gets a swing, which returns false and holds the scheduler until the view calls OnAttackComplete; anything else steps closer or hands control back. Live attaches Regeneration, without which the hero never heals and Rest(tillHealthy) never terminates.&#10; The respawner now wakes its mob into WANDERING and registers it with the scene, and a chasm landing cripples the hero.">
-      <option name="closed" value="true" />
-      <created>1791377616774</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1791377616775</updated>
+      <workItem from="1792873863094" duration="47004000" />
+      <workItem from="1793376329998" duration="1875000" />
     </task>
     <task id="LOCAL-00033" summary="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java.">
       <option name="closed" value="true" />
@@ -775,7 +775,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793220099108</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists.">
+      <option name="closed" value="true" />
+      <created>1793305490051</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1793305490051</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,7 +804,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(core): buff icons and the armour-tier seam member&#10;BuffIndicator carries every constant from the Java. Buff.Icon() returns NONE unless a buff overrides it, and Amok, Terror, Cripple and Bleeding now do. ICharView gains UpdateArmor(int tier) for Armor's equip hooks: the null view ignores it, the test fake records each tier, and the Godot CharView stubs it until later." />
     <MESSAGE value="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO." />
     <MESSAGE value="feat(actors): affliction status texts, hero warnings and the snap-out&#10;Poison and Paralysis ship complete, as the 3b spec decides:&#10;- Char.Add shows &quot;poisoned&quot; with a poison splash, and &quot;slowed&quot;, &quot;paralysed&quot; and &quot;rooted&quot;.&#10;- Hero.Add warns on Paralysis, Poison and Roots, and the first two interrupt.&#10;- Char.Damage rolls Random.Int(dmg) against Random.Int(HP) to snap a paralysed character out, logging it when visible.&#10;- A poisoned Swarm splits into a clone poisoned for 2.&#10;The shared markers are split. Burning, Frost, Vertigo, Ooze and the rest stay TODO. MindVision, Levitation and Invisibility stay sp3c. The paralysed sprite state draws nothing, because the cubes have no animation to pause." />
     <MESSAGE value="feat(buffs): hunger&#10;Hunger ports whole:&#10;- a 10-point step every 12 turns for a Rogue, and every 10 turns otherwise&#10;- &quot;You are hungry.&quot; on crossing 260, and &quot;You are starving!&quot; with an interrupt on reaching 360&#10;- a 30% chance of 1 damage per starving turn, unless a paralysed hero is at 1 HP &#10;- the hunger death cause&#10;&#10;Hero.Live() attaches it, each stair adds 36 unless the hero is starving, and IsStarving reads it. Heroes without Live() report not starving. The two Dungeon.Init actor counts grow by the new buff. Ring of Satiety and Shadows stay TODO.&#10;HungerTests.Act_WhileStarving_TakesOneDamageWhenTheRollIsUnderThreeTenths releases the hero with hero.Next() at the end of each loop iteration, per the controller's ruling: Hero.Act idles and stays Actor._current until Next() is called, as ActorTests.cs already documents, so the original loop only ever ran the first of its 30 iterations." />
@@ -821,7 +828,8 @@
     <MESSAGE value="feat(view): quick-slot auto-targeting and the crosshair&#10;A quick slot's press aims at QuickSlot.UseTargeting's target: a red ring lies on its cell and a crosshair badge sits on the slot. The next press, by click or key, hands that cell to the throw prompt the first press opened. CellSelector's select and cancel now end in GameScene.ready(), as in the Java, which clears both slots' targeting, as does a new level and opening any window." />
     <MESSAGE value="feat(view): give any registered item, and set hunger and strength&#10;give now names any class in the Generator's registry, case-insensitive (tomahawk included), and takes a stack size, a curse flag and a signed level that upgrades or degrades the item and identifies it. hunger sets the Hunger buff's level through Satisfy, and str sets the hero's strength; with no argument, each prints the current value. Generator.RegisteredTypes becomes public so the view can read the registry.&#10;&#10;tests: integration tests for equipment and hunger, a resting Rogue goes hungry after 300 turns and starves after 420, and a starving hero dies of hunger without regenerating.&#10;&#10;stack status floaters, and hide the item window before its action CharView kept one status label, so a status shown in the same frame as a damage number (a curare dart's &quot;paralysed&quot;) was overwritten before it drew. Each ShowStatus now spawns its own rising, fading label, stacked above any still alive, as FloatingText does. WndItem ran the item's action before hiding itself, so an action that opens a window (a missile's equip confirmation) collided with the still exclusive item window. It now hides first, as the Java does." />
     <MESSAGE value="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack." />
+    <MESSAGE value="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
