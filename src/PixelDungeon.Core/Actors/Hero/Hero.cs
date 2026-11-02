@@ -927,6 +927,10 @@ public class Hero : Char
         {
             GLog.W("You can't move!");
         }
+        else if (buff is Blindness)
+        {
+            GLog.W("You are blinded!");
+        }
         else if (buff is Cripple)
         {
             GLog.W("You are crippled!");
@@ -936,7 +940,7 @@ public class Hero : Char
             GLog.W("You are bleeding!");
         }
 
-        // TODO: Burning, Ooze, Weakness, Blindness, Fury, Charm, Vertigo warnings and interrupts
+        // TODO: Burning, Ooze, Weakness, Fury, Charm, Vertigo warnings and interrupts
         // TODO: BuffIndicator.RefreshHero()
     }
 
@@ -1075,7 +1079,7 @@ public class Hero : Char
 
         CurAction = null;
 
-        // TODO: Invisibility.Dispel()
+        Invisibility.Dispel();
 
         base.OnAttackComplete();
     }
@@ -1241,9 +1245,8 @@ public class Hero : Char
 
     public override HashSet<Type> Immunities()
     {
-        // TODO: GasesImmunity.Immunities
-
-        return base.Immunities();
+        var buff = GetBuff<GasesImmunity>();
+        return buff == null ? base.Immunities() : GasesImmunity.Immunities;
     }
 
     public interface IDoom

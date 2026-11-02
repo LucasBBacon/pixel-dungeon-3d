@@ -65,6 +65,12 @@ public class BuffIconTests : DungeonFixture
     [InlineData(typeof(Terror), 10)] // BuffIndicator.TERROR
     [InlineData(typeof(Cripple), 23)] // BuffIndicator.CRIPPLE
     [InlineData(typeof(Bleeding), 26)] // BuffIndicator.BLEEDING
+    [InlineData(typeof(MindVision), 0)] // BuffIndicator.MIND_VISION
+    [InlineData(typeof(Levitation), 1)] // BuffIndicator.LEVITATION
+    [InlineData(typeof(Invisibility), 12)] // BuffIndicator.INVISIBLE
+    [InlineData(typeof(Blindness), 16)] // BuffIndicator.BLINDNESS
+    [InlineData(typeof(GasesImmunity), 25)] // BuffIndicator.IMMUNITY
+    [InlineData(typeof(Rage), 30)] // BuffIndicator.RAGE
     public void Icon_ForEachPortedBuff_matchesTheJava(Type type, int icon)
     {
         Assert.Equal(icon, ((Buff)Activator.CreateInstance(type)).Icon());

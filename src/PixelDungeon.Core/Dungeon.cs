@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Armor;
@@ -316,7 +317,8 @@ public static class Dungeon
             return Actor.FindChar(to) == null && (pass[to] || Level.Avoid[to]) ? to : -1;
         }
 
-        if (ch.Flying)
+        // TODO: amok alos lets the char pass through avoid cells
+        if (ch.Flying || ch.GetBuff<Rage>() != null)
         {
             BArray.Or(pass, Level.Avoid, _passable);
         }

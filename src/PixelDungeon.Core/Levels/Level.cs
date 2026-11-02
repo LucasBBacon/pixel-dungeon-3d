@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Blobs;
+using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
@@ -667,7 +668,7 @@ public abstract class Level : IBundlable
         var cx = c.Pos % Width;
         var cy = c.Pos / Width;
 
-        var sighted = c.IsAlive();
+        var sighted = c.GetBuff<Blindness>() == null && c.IsAlive();
         if (sighted)
         {
             ShadowCaster.CastShadow(cx, cy, FieldOfView, c.ViewDistance);
@@ -677,7 +678,15 @@ public abstract class Level : IBundlable
             Array.Fill(FieldOfView, false);
         }
 
-        const int sense = 1;
+        var sense = 1;
+
+        if (c.IsAlive())
+        {
+            sense = c.GetBuffs<MindVision>()
+                .Select(b => b.Distance)
+                .Prepend(sense)
+                .Max();
+        }
 
         if ((sighted && sense > 1) || !sighted)
         {
@@ -699,24 +708,39 @@ public abstract class Level : IBundlable
             }
         }
 
-        if (!c.IsAlive() ||
-            c != Dungeon.Hero ||
-            ((Hero)c).HeroClass != HeroClass.Huntress)
-            return FieldOfView;
-
-        foreach (var p in Mobs
-                     .Select(mob => mob.Pos)
-                     .Where(p => Distance(c.Pos, p) == 2))
+        if (c.IsAlive())
         {
-            FieldOfView[p] = true;
-            FieldOfView[p + 1] = true;
-            FieldOfView[p - 1] = true;
-            FieldOfView[p + Width + 1] = true;
-            FieldOfView[p + Width - 1] = true;
-            FieldOfView[p - Width + 1] = true;
-            FieldOfView[p - Width - 1] = true;
-            FieldOfView[p + Width] = true;
-            FieldOfView[p - Width] = true;
+            if (c.GetBuff<MindVision>() != null)
+            {
+                foreach (var p in Mobs.Select(mob => mob.Pos))
+                {
+                    FieldOfView[p] = true;
+                    FieldOfView[p + 1] = true;
+                    FieldOfView[p - 1] = true;
+                    FieldOfView[p + Width + 1] = true;
+                    FieldOfView[p + Width - 1] = true;
+                    FieldOfView[p - Width + 1] = true;
+                    FieldOfView[p - Width - 1] = true;
+                    FieldOfView[p + Width] = true;
+                    FieldOfView[p - Width] = true;
+                }
+            }
+            else if (c == Dungeon.Hero && ((Hero)c).HeroClass == HeroClass.Huntress)
+            {
+                foreach (var p in Mobs.Select(mob => mob.Pos)
+                             .Where(p => Distance(c.Pos, p) == 2))
+                {
+                    FieldOfView[p] = true;
+                    FieldOfView[p + 1] = true;
+                    FieldOfView[p - 1] = true;
+                    FieldOfView[p + Width + 1] = true;
+                    FieldOfView[p + Width - 1] = true;
+                    FieldOfView[p - Width + 1] = true;
+                    FieldOfView[p - Width - 1] = true;
+                    FieldOfView[p + Width] = true;
+                    FieldOfView[p - Width] = true;
+                }
+            }
         }
 
         return FieldOfView;

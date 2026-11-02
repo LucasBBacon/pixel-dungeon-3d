@@ -14,12 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/ParalyticGas.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/ToxicGas.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/BlobTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/GasTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Blindness.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/GasesImmunity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Invisibility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Levitation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/MindVision.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Rage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/SightAndStealthTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Blob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Blob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -29,7 +35,7 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -42,7 +48,6 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +185,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/HungerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/SightAndStealthTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/BelongingsTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroCombatTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -247,6 +253,65 @@
     </layout>
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.4521748650718265" />
+      <entry key="MS500" value="2.4806247876301213" />
+      <entry key="S2" value="2.8548794140491105" />
+      <entry key="S5" value="2.9406124914067013" />
+      <entry key="S10" value="2.9700784833514273" />
+      <entry key="S30" value="3.00062655851384" />
+      <entry key="S60" value="3.217480745534766" />
+      <entry key="M2" value="4.0547304202027705" />
+      <entry key="M5" value="8.798850363395179" />
+      <entry key="M10" value="30.415525412082726" />
+      <entry key="M15" value="54.96094381571917" />
+      <entry key="M30" value="105.54435360271724" />
+      <entry key="H1" value="148.86185037123602" />
+      <entry key="H2" value="177.4837480924384" />
+      <entry key="H4" value="195.65009930320338" />
+      <entry key="D1" value="258.4696453902265" />
+      <entry key="W1" value="301.1973074831817" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.4578524802542614E-143" />
+      <entry key="S2" value="3.824332283133781E-36" />
+      <entry key="S5" value="1.486445798084849E-14" />
+      <entry key="S10" value="2.4582870371232864E-7" />
+      <entry key="S30" value="0.01729870184518385" />
+      <entry key="S60" value="0.2907088624124702" />
+      <entry key="M2" value="1.202334714887238" />
+      <entry key="M5" value="3.4349811095868126" />
+      <entry key="M10" value="10.154069294162017" />
+      <entry key="M15" value="18.382266053727292" />
+      <entry key="M30" value="36.619405802855425" />
+      <entry key="H1" value="53.08608488503044" />
+      <entry key="H2" value="64.25888433929246" />
+      <entry key="H4" value="71.26918306991274" />
+      <entry key="D1" value="98.0355306010652" />
+      <entry key="W1" value="119.01156510231156" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.7347971580842563" />
+      <entry key="MS500" value="2.076905587121717" />
+      <entry key="S2" value="2.7203681915115574" />
+      <entry key="S5" value="2.8834185636120617" />
+      <entry key="S10" value="2.9408857347923063" />
+      <entry key="S30" value="3.0077221153259655" />
+      <entry key="S60" value="3.5001570594069698" />
+      <entry key="M2" value="5.247849510534302" />
+      <entry key="M5" value="12.223611535373303" />
+      <entry key="M10" value="40.551850776100146" />
+      <entry key="M15" value="73.32106088478675" />
+      <entry key="M30" value="142.1414146929967" />
+      <entry key="H1" value="201.93173739766803" />
+      <entry key="H2" value="241.73283964136652" />
+      <entry key="H4" value="266.9138499541697" />
+      <entry key="D1" value="356.50392781734166" />
+      <entry key="W1" value="420.20865711873137" />
+    </decayedShown>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
   </component>
@@ -273,6 +338,7 @@
     </option>
     <option name="panelTemplate">
       <template>
+        <option name="ensembleEnabled" value="false" />
         <option name="modeId" value="Agent" />
         <option name="model">
           <model>
@@ -284,6 +350,7 @@
         <option name="worktreeMode" value="WORKSPACE" />
       </template>
     </option>
+    <option name="version" value="1" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -389,15 +456,8 @@
       <workItem from="1792770663948" duration="424000" />
       <workItem from="1792771195613" duration="16216000" />
       <workItem from="1792873863094" duration="47004000" />
-      <workItem from="1793376329998" duration="1875000" />
-    </task>
-    <task id="LOCAL-00033" summary="feat(view): attack tween and the emo glyph&#10;Attack turns toward the target, lunges a third of a cell and returns, then calls OnAttackComplete. It reuses Move's kill-and-reset discipline, so an interrupted swing cannot strand the scheduler.&#10;One Label3D holds one glyph at a time, &quot;!&quot; for alert and &quot;z&quot; for sleep, mirroring CharSprite's single emo field. Alert is pushed through the seam, sleep is derived per frame from mob.state, as MobSprite does in the Java.">
-      <option name="closed" value="true" />
-      <created>1791378539131</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1791378539131</updated>
+      <workItem from="1793376329998" duration="8785000" />
+      <workItem from="1793467808454" duration="6557000" />
     </task>
     <task id="LOCAL-00034" summary="feat(view): mob cubes, per-frame reconcile, and a game-over window&#10;One CharView per mob in a species colour, rebuilt on every level switch. A single per-frame pass frees views whose mob has left the level, sets visibility from the field of view, and derives the sleep glyph from mob.State, which is what the Java's MobSprite.update does, and which covers death, chasm falls, Swarm splits and respawns through one path.&#10;The free path also calls Actor.Next() before queuing the view free: killing a live tween via InterruptMotion() never raises Finished, so if the freed mob were ever Actor._current (frozen mid its own attack tween), nothing would clear that pointer and the scheduler would stop dispatching turns to every actor. Next() is a no-op for any mob that isn't current, so this closes the gap at no cost.&#10;GameOver reads Dungeon.ResultDescription into the existing window with Restart and Quit. Sub-project 10 replaces the body; the call site is done.">
       <option name="closed" value="true" />
@@ -783,7 +843,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793305490051</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="feat(core): the gas Blob base, toxic gas and paralytic gas&#10;Blob spreads each turn by averaging open cells with their open neighbours, seeds and clears cells, finds or creates a level's gas by class, and bundles the trimmed cells. Toxic gas damages by HT and depth, can kill with the gas cause, and cancels against paralytic gas exactly as the Java does. paralytic gas prolongs Paralysis.">
+      <option name="closed" value="true" />
+      <created>1793378374100</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1793378374101</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -804,7 +872,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(buffs): Poison, Paralysis, Slow and Roots&#10;The four afflictions port whole. Poison deals (int)(left / 3) + 1 a turn and records its death cause. Paralysis and Roots set and clear their Char flags, and Roots will not take hold of a flyer. Slow halves Char.Spend's time scale, so every action takes twice as long. Ring of Elements and the Frost check stay TODO." />
     <MESSAGE value="feat(actors): affliction status texts, hero warnings and the snap-out&#10;Poison and Paralysis ship complete, as the 3b spec decides:&#10;- Char.Add shows &quot;poisoned&quot; with a poison splash, and &quot;slowed&quot;, &quot;paralysed&quot; and &quot;rooted&quot;.&#10;- Hero.Add warns on Paralysis, Poison and Roots, and the first two interrupt.&#10;- Char.Damage rolls Random.Int(dmg) against Random.Int(HP) to snap a paralysed character out, logging it when visible.&#10;- A poisoned Swarm splits into a clone poisoned for 2.&#10;The shared markers are split. Burning, Frost, Vertigo, Ooze and the rest stay TODO. MindVision, Levitation and Invisibility stay sp3c. The paralysed sprite state draws nothing, because the cubes have no animation to pause." />
     <MESSAGE value="feat(buffs): hunger&#10;Hunger ports whole:&#10;- a 10-point step every 12 turns for a Rogue, and every 10 turns otherwise&#10;- &quot;You are hungry.&quot; on crossing 260, and &quot;You are starving!&quot; with an interrupt on reaching 360&#10;- a 30% chance of 1 damage per starving turn, unless a paralysed hero is at 1 HP &#10;- the hunger death cause&#10;&#10;Hero.Live() attaches it, each stair adds 36 unless the hero is starving, and IsStarving reads it. Heroes without Live() report not starving. The two Dungeon.Init actor counts grow by the new buff. Ring of Satiety and Shadows stay TODO.&#10;HungerTests.Act_WhileStarving_TakesOneDamageWhenTheRollIsUnderThreeTenths releases the hero with hero.Next() at the end of each loop iteration, per the controller's ruling: Hero.Act idles and stays Actor._current until Next() is called, as ActorTests.cs already documents, so the original loop only ever ran the first of its 30 iterations." />
     <MESSAGE value="feat(items): equip and unequip weapons&#10;EquipableItem and KindOfWeapon port whole:&#10;&#10;- equipping a weapon spends 1 turn, and replacing one spends 2, because the old weapon's unequip and the new weapon's equip each SpendAndNext&#10;- a cursed weapon still equips, with a shadow burst, SND_CURSED and the wince warning, and then refuses to come off.&#10;- dropping or throwing a wielded weapon unequips it with a Spend and no Next, so the drop or throw ends the turn&#10;&#10;Belongings.Weapon is now a KindOfWeapon, and restoring or resurrecting activates it. Weapon starts as its fields, TODO: rest." />
@@ -829,7 +896,8 @@
     <MESSAGE value="feat(view): give any registered item, and set hunger and strength&#10;give now names any class in the Generator's registry, case-insensitive (tomahawk included), and takes a stack size, a curse flag and a signed level that upgrades or degrades the item and identifies it. hunger sets the Hunger buff's level through Satisfy, and str sets the hero's strength; with no argument, each prints the current value. Generator.RegisteredTypes becomes public so the view can read the registry.&#10;&#10;tests: integration tests for equipment and hunger, a resting Rogue goes hungry after 300 turns and starves after 420, and a starving hero dies of hunger without regenerating.&#10;&#10;stack status floaters, and hide the item window before its action CharView kept one status label, so a status shown in the same frame as a damage number (a curare dart's &quot;paralysed&quot;) was overwritten before it drew. Each ShowStatus now spawns its own rising, fading label, stacked above any still alive, as FloatingText does. WndItem ran the item's action before hiding itself, so an action that opens a window (a missile's equip confirmation) collided with the still exclusive item window. It now hides first, as the Java does." />
     <MESSAGE value="feat(core): seam members for sprite states, reading, gases, flash and splash&#10;ICharView gains Read, Add(CharState), Remove(CharState) and FadeIn; IGameView gains SelectItem, AddBlob, Flash and Splash, with GameScene statics for each, and GameScene.Add(Blob) schedules the gas before the view draws it. EffectKind gains Discover and WindowRequest gains IgnoresBack." />
     <MESSAGE value="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists." />
+    <MESSAGE value="feat(core): the gas Blob base, toxic gas and paralytic gas&#10;Blob spreads each turn by averaging open cells with their open neighbours, seeds and clears cells, finds or creates a level's gas by class, and bundles the trimmed cells. Toxic gas damages by HT and depth, can kill with the gas cause, and cancels against paralytic gas exactly as the Java does. paralytic gas prolongs Paralysis." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): the gas Blob base, toxic gas and paralytic gas&#10;Blob spreads each turn by averaging open cells with their open neighbours, seeds and clears cells, finds or creates a level's gas by class, and bundles the trimmed cells. Toxic gas damages by HT and depth, can kill with the gas cause, and cancels against paralytic gas exactly as the Java does. paralytic gas prolongs Paralysis." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

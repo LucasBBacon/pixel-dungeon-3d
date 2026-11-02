@@ -304,6 +304,11 @@ public abstract class Char : Actor
         {
             Sprite.ShowStatus(StatusColor.Negative, "slowed");
         }
+        else if (buff is MindVision)
+        {
+            Sprite.ShowStatus(StatusColor.Positive, "mind");
+            Sprite.ShowStatus(StatusColor.Positive, "vision");
+        }
         else if (buff is Paralysis)
         {
             Sprite.ShowStatus(StatusColor.Negative, "paralysed");
@@ -328,8 +333,18 @@ public abstract class Char : Actor
         {
             Sprite.Idle();
         }
+        else if (buff is Levitation)
+        {
+            Sprite.Add(CharState.Levitating);
+        }
+        else if (buff is Invisibility)
+        {
+            // TODO: Shadows buff, itself invisibility, adds state without text
+            Sprite.ShowStatus(StatusColor.Positive, "invisible");
+            Sprite.Add(CharState.Invisible);
+        }
 
-        // TODO: MindVision, Vertigo, Burning, Levitation, Frost, Invisibility
+        // TODO: MindVision, Vertigo, Burning, Levitation, Frost
     }
 
     public virtual void Remove(Buff buff)
@@ -338,7 +353,15 @@ public abstract class Char : Actor
         Actor.Remove(buff);
 
         // TODO: sprite state removal for Burning, Frost (Char.java remove)
-        // TODO: sprite state removal for Levitation, Invisibility (Char.java remove)
+        if (buff is Levitation)
+        {
+            Sprite.Remove(CharState.Levitating);
+        }
+
+        else if (buff is Invisibility && Invisible <= 0)
+        {
+            Sprite.Remove(CharState.Invisible);
+        }
         // Paralysis removes CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
     }
 
@@ -361,7 +384,17 @@ public abstract class Char : Actor
     public void UpdateSpriteState()
     {
         // TODO: re-add sprite states for Burning, Frost, Light
-        // TODO: re-add sprite states for Levitation, Invisibility
+        foreach (var buff in _buffs)
+        {
+            if (buff is Levitation)
+            {
+                Sprite.Add(CharState.Levitating);
+            }
+            else if (buff is Invisibility)
+            {
+                Sprite.Add(CharState.Invisible);
+            }
+        }
         // Paralysis re-adds CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
     }
 
