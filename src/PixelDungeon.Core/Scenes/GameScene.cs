@@ -3,6 +3,7 @@ using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Potions;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Scenes;
@@ -63,7 +64,7 @@ public static class GameScene
         Actor.Add(gas);
         Instance.AddBlob(gas);
     }
-    
+
     public static void Flash(uint color) => Instance.Flash(color);
 
     public static void Splash(int cell, uint color, int n) => Instance.Splash(cell, color, n);
@@ -78,9 +79,16 @@ public static class GameScene
             foreach (var item in dropped)
             {
                 var pos = Dungeon.Level.RandomRespawnCell();
-                // TODO: potion shatters instead of dropping
-                // TODO: Plant.Seed is planted instead of dropping
-                Dungeon.Level.Drop(item, pos);
+
+                if (item is Potion potion)
+                {
+                    potion.Shatter(pos);
+                }
+                else
+                {
+                    // TODO: Plant.Seed is planted instead of dropping
+                    Dungeon.Level.Drop(item, pos);
+                }
             }
 
             Dungeon.DroppedItems.Remove(Dungeon.Depth);

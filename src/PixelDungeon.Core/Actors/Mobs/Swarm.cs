@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Items.Potions;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Scenes;
@@ -103,7 +104,7 @@ public class Swarm : Mob
     {
         if (Random.Int(5 * (_generation + 1)) == 0)
         {
-            // TODO: Dungeon.Level.Drop(new PotionOfHealing(), pos).Sprite.Drop()
+            Dungeon.Level.Drop(new PotionOfHealing(), Pos).Sprite.Drop();
         }
     }
 

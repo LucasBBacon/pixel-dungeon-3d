@@ -6,6 +6,7 @@ using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Potions;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
@@ -65,6 +66,8 @@ public static class Dungeon
         HealthIndicator.SetTarget(null);
         IronKey.CurDepthQuantity = 0;
         Generator.Reset();
+        // deviation: reset builds table too, so no test or registry lookup constructs a potion against an empty one
+        Potion.InitColors();
         PotionOfStrength = 0;
         ScrollsOfUpgrade = 0;
         ScrollsOfEnchantment = 0;
@@ -86,7 +89,11 @@ public static class Dungeon
 
         PathFinder.SetMapSize(Level.Width, Level.Height);
 
-        // TODO: Scroll.InitLabels(), Potion.InitColors(), Wand.InitWoods(), Ring.InitGems()
+        // TODO: Scroll.InitLabels()
+
+        Potion.InitColors();
+
+        // TODO: Wand.InitWoods(), Ring.InitGems()
 
         Statistics.Reset();
         // TODO: Journal.Reset()
