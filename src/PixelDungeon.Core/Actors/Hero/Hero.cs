@@ -400,9 +400,27 @@ public class Hero : Char
 
     private bool ActInteract(HeroAction.Interact action)
     {
-        // TODO: adjacent NPC: ready(), Sprite.TurnTo(Pos, Npc.Pos), Npc.Interact(), otherwise GetCloser()
-        MakeReady();
-        return false;
+        var npc = action.Npc;
+
+        if (Level.Adjacent(Pos, npc.Pos))
+        {
+            MakeReady();
+            Sprite.TurnTo(Pos, npc.Pos);
+            npc.Interact();
+            return false;
+        }
+        else
+        {
+            if (Level.FieldOfView[npc.Pos] && GetCloser(npc.Pos))
+            {
+                return true;
+            }
+            else
+            {
+                MakeReady();
+                return false;
+            }
+        }
     }
 
     private bool ActBuy(HeroAction.Buy action)
@@ -813,7 +831,7 @@ public class Hero : Char
         }
         else if (Level.FieldOfView[cell] && (ch = Actor.FindChar(cell)) is Mob)
         {
-            if (ch is NPC npc)
+            if (ch is Npc npc)
             {
                 CurAction = new HeroAction.Interact(npc);
             }

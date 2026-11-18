@@ -14,25 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/Potion.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfExperience.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfFrost.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfHealing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfInvisibility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfLevitation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfLiquidFlame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfMight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfMindVision.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfParalyticGas.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfPurity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfStrength.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Potions/PotionOfToxicGas.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GasPotionTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/PotionTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/MirrorImage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/MirrorImageTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Dungeon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/HeroAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/HeroAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/NPC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -118,6 +105,7 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/HeroSubclass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Bestiary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Mob.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/MirrorImage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/NPC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/Assets.cs" root0="FORCE_HIGHLIGHTING" />
@@ -198,6 +186,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/HeroTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Hero/heroEquipmentTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/BestiaryTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/MirorImageTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/MobAiTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SewerMobTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Mobs/SwarmTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -263,61 +252,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="8.665169460290435E-54" />
-      <entry key="MS500" value="9.111745245890771E-11" />
-      <entry key="S2" value="0.014207026342057725" />
-      <entry key="S5" value="0.6332317330774785" />
-      <entry key="S10" value="2.2496155472240678" />
-      <entry key="S30" value="5.317388976785316" />
-      <entry key="S60" value="8.613383452556782" />
-      <entry key="M2" value="21.071844193578908" />
-      <entry key="M5" value="58.772867567471195" />
-      <entry key="M10" value="102.62954738801399" />
-      <entry key="M15" value="144.21382129306318" />
-      <entry key="M30" value="286.57097559759" />
-      <entry key="H1" value="570.379844001794" />
-      <entry key="H2" value="994.3842793581576" />
-      <entry key="H4" value="1437.5885445428958" />
-      <entry key="D1" value="2188.7308673615057" />
-      <entry key="W1" value="2453.220064021671" />
+      <entry key="MS100" value="8.487101769752544E-11" />
+      <entry key="MS500" value="0.012911504918533863" />
+      <entry key="S2" value="0.8391424986572714" />
+      <entry key="S5" value="3.1732190420503" />
+      <entry key="S10" value="6.451564152436035" />
+      <entry key="S30" value="17.457838074344522" />
+      <entry key="S60" value="35.939889112729404" />
+      <entry key="M2" value="62.94201278918551" />
+      <entry key="M5" value="107.01611128554798" />
+      <entry key="M10" value="174.55866318853168" />
+      <entry key="M15" value="250.94751865728466" />
+      <entry key="M30" value="467.20863588914136" />
+      <entry key="H1" value="821.5786700754766" />
+      <entry key="H2" value="1353.6406400532605" />
+      <entry key="H4" value="1964.4793752956557" />
+      <entry key="D1" value="3052.9719633334257" />
+      <entry key="W1" value="3416.349321380717" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000419013877" />
-      <entry key="MS500" value="1.0420134081714978" />
-      <entry key="S2" value="1.8434665496197553" />
-      <entry key="S5" value="3.3277769146691365" />
-      <entry key="S10" value="4.970425158035454" />
-      <entry key="S30" value="7.427158630378905" />
-      <entry key="S60" value="9.494885062677366" />
-      <entry key="M2" value="16.44813878706089" />
-      <entry key="M5" value="40.06616538008395" />
-      <entry key="M10" value="70.58474129522799" />
-      <entry key="M15" value="96.34989511506915" />
-      <entry key="M30" value="168.48969444579797" />
-      <entry key="H1" value="288.4386580492123" />
-      <entry key="H2" value="442.49331265735043" />
-      <entry key="H4" value="588.339424455224" />
-      <entry key="D1" value="829.0703364965548" />
-      <entry key="W1" value="922.2919837193886" />
+      <entry key="MS100" value="1.0000095902509676" />
+      <entry key="MS500" value="1.1004146628266043" />
+      <entry key="S2" value="1.890952645588079" />
+      <entry key="S5" value="3.319312470999558" />
+      <entry key="S10" value="5.124350753255188" />
+      <entry key="S30" value="10.74154714120542" />
+      <entry key="S60" value="17.26531868861679" />
+      <entry key="M2" value="26.117871244655984" />
+      <entry key="M5" value="45.458948359177725" />
+      <entry key="M10" value="75.13258638901233" />
+      <entry key="M15" value="103.44568065990445" />
+      <entry key="M30" value="179.87695681330987" />
+      <entry key="H1" value="313.4043881852308" />
+      <entry key="H2" value="512.9908504521413" />
+      <entry key="H4" value="729.1750935758013" />
+      <entry key="D1" value="1097.7773816281228" />
+      <entry key="W1" value="1226.5247217193203" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.002228054452823801" />
-      <entry key="MS500" value="0.30753100125706806" />
-      <entry key="S2" value="1.2657215244688862" />
-      <entry key="S5" value="3.4320106964202086" />
-      <entry key="S10" value="6.800183799383629" />
-      <entry key="S30" value="12.528180716511852" />
-      <entry key="S60" value="17.96846314842887" />
-      <entry key="M2" value="37.39280085209403" />
-      <entry key="M5" value="98.70793045188033" />
-      <entry key="M10" value="173.09660810406004" />
-      <entry key="M15" value="240.4553661067052" />
-      <entry key="M30" value="454.9618773277099" />
-      <entry key="H1" value="858.7277984544105" />
-      <entry key="H2" value="1436.8032152850008" />
-      <entry key="H4" value="2025.876393421078" />
-      <entry key="D1" value="3017.788744035432" />
-      <entry key="W1" value="3375.5100726774585" />
+      <entry key="MS100" value="1.2394676040164584E-5" />
+      <entry key="MS500" value="0.12876435777783174" />
+      <entry key="S2" value="1.918787271282843" />
+      <entry key="S5" value="5.8510544846929955" />
+      <entry key="S10" value="11.076152112598338" />
+      <entry key="S30" value="27.867980061878537" />
+      <entry key="S60" value="52.94116010909103" />
+      <entry key="M2" value="88.85649218396283" />
+      <entry key="M5" value="152.33012869076947" />
+      <entry key="M10" value="249.5679529842912" />
+      <entry key="M15" value="354.2771055600568" />
+      <entry key="M30" value="646.9804633913486" />
+      <entry key="H1" value="1134.8876869694197" />
+      <entry key="H2" value="1866.5493924153404" />
+      <entry key="H4" value="2693.593667689741" />
+      <entry key="D1" value="4150.733511638671" />
+      <entry key="W1" value="4642.871510461078" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -466,15 +455,9 @@
       <workItem from="1792873863094" duration="47004000" />
       <workItem from="1793376329998" duration="8785000" />
       <workItem from="1793467808454" duration="15573000" />
-      <workItem from="1794144587802" duration="5371000" />
-    </task>
-    <task id="LOCAL-00035" summary="feat(view): XP readout and the spawn/kill debug commands&#10;The status pane gains hero level and experience beside HP and depth. spawn [n] places mobs on free cells around the hero and kill destroys every mob in sight through Die, so experience, loot and the death log all run. These are what make depths 1 to 4 testable without grinding.&#10;kill recomputes Level.FieldOfView for the hero via Dungeon.Observe() before reading it: the buffer is one shared static array that every actor's Act() overwrites with its own viewshed, so without recomputing it kill could act on whatever mob last moved instead of what the hero can see.">
-      <option name="closed" value="true" />
-      <created>1791382892033</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1791382892033</updated>
+      <workItem from="1794144587802" duration="9856000" />
+      <workItem from="1795039995775" duration="72000" />
+      <workItem from="1795040113399" duration="2775000" />
     </task>
     <task id="LOCAL-00036" summary="feat: sub-project 2 complete, fight through the Sewers and die&#10;Two integration tests close the loop: killing a rat earns its experience and moves the run counters, and dying to one records the cause in Dungeon.ResultDescription and reaches GameScene.GameOver.&#10;ReallyDie now calls GameOver. README and the roadmap record sub-project 2 as complete.">
       <option name="closed" value="true" />
@@ -860,7 +843,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793618339303</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="feat(core): potions - the colour table, drinking, throwing and shattering&#10;Potion assigns each class a random colour through ItemStatusHandler, hides unknown potions behind their colour, asks before drinking a known harmful potion or throwing a known beneficial one, and applies, drops or shatters by where it lands. Ten potions work in full, Liquid Flame and Frost keep their fire and freezing. Dungeon.Init and Reset build the table, landed potions shatter, and a dying Swarm can drop Healing.">
+      <option name="closed" value="true" />
+      <created>1794150969008</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1794150969008</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -881,7 +872,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(buffs): hunger&#10;Hunger ports whole:&#10;- a 10-point step every 12 turns for a Rogue, and every 10 turns otherwise&#10;- &quot;You are hungry.&quot; on crossing 260, and &quot;You are starving!&quot; with an interrupt on reaching 360&#10;- a 30% chance of 1 damage per starving turn, unless a paralysed hero is at 1 HP &#10;- the hunger death cause&#10;&#10;Hero.Live() attaches it, each stair adds 36 unless the hero is starving, and IsStarving reads it. Heroes without Live() report not starving. The two Dungeon.Init actor counts grow by the new buff. Ring of Satiety and Shadows stay TODO.&#10;HungerTests.Act_WhileStarving_TakesOneDamageWhenTheRollIsUnderThreeTenths releases the hero with hero.Next() at the end of each loop iteration, per the controller's ruling: Hero.Act idles and stays Actor._current until Next() is called, as ActorTests.cs already documents, so the original loop only ever ran the first of its 30 iterations." />
     <MESSAGE value="feat(items): equip and unequip weapons&#10;EquipableItem and KindOfWeapon port whole:&#10;&#10;- equipping a weapon spends 1 turn, and replacing one spends 2, because the old weapon's unequip and the new weapon's equip each SpendAndNext&#10;- a cursed weapon still equips, with a shadow burst, SND_CURSED and the wince warning, and then refuses to come off.&#10;- dropping or throwing a wielded weapon unequips it with a Spend and no Next, so the drop or throw ends the turn&#10;&#10;Belongings.Weapon is now a KindOfWeapon, and restoring or resurrecting activates it. Weapon starts as its fields, TODO: rest." />
     <MESSAGE value="feat(items): weapon strength penalties, identification and rolls&#10;Weapon ports whole, apart from enchantments:&#10;&#10;- accuracy divides by 1.5 and delay multiplies by 1.2 per point of encumbrance, in float, with the Imbue multipliers&#10;- excess strength adds IntRange(0, exStr) damage outside a Huntress's melee&#10;- the twentieth hit while unknown identifies the weapon with the Java message&#10;- &quot;unfamiliarity&quot; and &quot;imbue&quot; round-trip, a zero unfamiliarity restores twenty, and durability is 5 * (16 - level)&#10;- random() rolls upgrade or curse in the Java order&#10;&#10;Enchantments TODO, but Enchant() still draws Enchantment.random()'s&#10;roll." />
     <MESSAGE value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
@@ -906,7 +896,8 @@
     <MESSAGE value="feat(core): ItemStatusHandler assigns and remembers labels and images&#10;One Random.Int draw per class in table order picks a label and the image at the same index. Knowing all but one class knows the last, and the tables save and restore per class, rolling any class missing from the save. Known() and Unknown() return table-ordered lists." />
     <MESSAGE value="feat(core): the gas Blob base, toxic gas and paralytic gas&#10;Blob spreads each turn by averaging open cells with their open neighbours, seeds and clears cells, finds or creates a level's gas by class, and bundles the trimmed cells. Toxic gas damages by HT and depth, can kill with the gas cause, and cancels against paralytic gas exactly as the Java does. paralytic gas prolongs Paralysis." />
     <MESSAGE value="feat(core): invisibility, levitation, mind vision, gas immunity, rage, blindness&#10;Invisibility counts on Char.Invisible, which mobs already check, and an attack dispels it while enemies are in view. Levitation flies, frees a rooted char and presses its cell when it ends. Mind Vision and Blindness reshape the field of view, Rage paths through cells to avoid, and gas immunity shields the hero from paralysis and toxic gas. Char shows the new texts and sprite states, and the hero warns when blinded." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): invisibility, levitation, mind vision, gas immunity, rage, blindness&#10;Invisibility counts on Char.Invisible, which mobs already check, and an attack dispels it while enemies are in view. Levitation flies, frees a rooted char and presses its cell when it ends. Mind Vision and Blindness reshape the field of view, Rage paths through cells to avoid, and gas immunity shields the hero from paralysis and toxic gas. Char shows the new texts and sprite states, and the hero warns when blinded." />
+    <MESSAGE value="feat(core): potions - the colour table, drinking, throwing and shattering&#10;Potion assigns each class a random colour through ItemStatusHandler, hides unknown potions behind their colour, asks before drinking a known harmful potion or throwing a known beneficial one, and applies, drops or shatters by where it lands. Ten potions work in full, Liquid Flame and Frost keep their fire and freezing. Dungeon.Init and Reset build the table, landed potions shatter, and a dying Swarm can drop Healing." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): potions - the colour table, drinking, throwing and shattering&#10;Potion assigns each class a random colour through ItemStatusHandler, hides unknown potions behind their colour, asks before drinking a known harmful potion or throwing a known beneficial one, and applies, drops or shatters by where it lands. Ten potions work in full, Liquid Flame and Frost keep their fire and freezing. Dungeon.Init and Reset build the table, landed potions shatter, and a dying Swarm can drop Healing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

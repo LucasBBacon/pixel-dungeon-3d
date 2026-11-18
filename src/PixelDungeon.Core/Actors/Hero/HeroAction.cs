@@ -40,9 +40,9 @@ public class HeroAction
 
     public class Interact : HeroAction
     {
-        public NPC Npc;
+        public Npc Npc;
 
-        public Interact(NPC npc)
+        public Interact(Npc npc)
         {
             Npc = npc;
         }
