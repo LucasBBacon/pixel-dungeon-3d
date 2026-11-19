@@ -10,3 +10,15 @@ C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\o
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.pdb
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\ref\PixelDungeon.Core.dll
 C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.sourcelink.json
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\bin\Debug\net8.0\PixelDungeon.Core.deps.json
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\bin\Debug\net8.0\PixelDungeon.Core.dll
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\bin\Debug\net8.0\PixelDungeon.Core.pdb
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.AssemblyInfoInputs.cache
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.AssemblyInfo.cs
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.csproj.CoreCompileInputs.cache
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.sourcelink.json
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.dll
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\refint\PixelDungeon.Core.dll
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\PixelDungeon.Core.pdb
+E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d\src\PixelDungeon.Core\obj\Debug\net8.0\ref\PixelDungeon.Core.dll

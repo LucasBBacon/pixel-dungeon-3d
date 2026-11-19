@@ -7,6 +7,7 @@ using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Items.Keys;
 using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
@@ -66,7 +67,8 @@ public static class Dungeon
         HealthIndicator.SetTarget(null);
         IronKey.CurDepthQuantity = 0;
         Generator.Reset();
-        // deviation: reset builds table too, so no test or registry lookup constructs a potion against an empty one
+        // deviation: reset builds both tables too, so no test or registry lookup constructs a potion against an empty one
+        Scroll.InitLabels();
         Potion.InitColors();
         PotionOfStrength = 0;
         ScrollsOfUpgrade = 0;
@@ -89,8 +91,7 @@ public static class Dungeon
 
         PathFinder.SetMapSize(Level.Width, Level.Height);
 
-        // TODO: Scroll.InitLabels()
-
+        Scroll.InitLabels();
         Potion.InitColors();
 
         // TODO: Wand.InitWoods(), Ring.InitGems()
@@ -132,7 +133,7 @@ public static class Dungeon
         new Dart(8).Identify().Collect();
         // TODO: hero.belongings.ring1.activate(hero)
         QuickSlot.PrimaryValue = typeof(Dart);
-        // TODO: new ScrollOfMagicMapping().setKnown()
+        new ScrollOfMagicMapping().SetKnown();
 
         // TODO: new TomeOfMastery().collect() when the class's mastery badge is unlocked
         Hero.UpdateAwareness(); // InitHero ends with UpdateAwareness(), lvl 1 Rogue 0.1 -> 0.15

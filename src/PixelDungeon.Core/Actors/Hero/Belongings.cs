@@ -3,6 +3,7 @@ using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Actors.Hero;
@@ -147,7 +148,7 @@ public class Belongings : IEnumerable<Item>
         }
     }
 
-    // TODO: uncurseEquipped() calls ScrollOfRemoveCurse.uncurse(owner, armor, weapon, ring1, ring2)
+    public void UncurseEquipped() => ScrollOfRemoveCurse.Uncurse(Owner, Armor, Weapon, Ring1, Ring2);
 
     public Item RandomUnequipped() => Random.Element(Backpack.Items);
 

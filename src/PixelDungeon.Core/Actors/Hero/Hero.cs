@@ -3,6 +3,8 @@ using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Actors.Mobs.Npcs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
@@ -455,8 +457,8 @@ public class Hero : Char
                     }
                     else
                     {
-                        // TODO: important = true for known Scroll of Upgrade or Enchantment, or known Potion of Strength or Might
-                        var important = false;
+                        var important = (item is ScrollOfUpgrade or ScrollOfEnchantment && ((Scroll)item).IsKnown()) 
+                                        || (item is PotionOfStrength or PotionOfMight && ((Potion)item).IsKnown());
                         if (important)
                         {
                             GLog.P(TxtYouNowHave, item.Name());
@@ -1207,7 +1209,7 @@ public class Hero : Char
                         Level.Set(p, Terrain.Discover(oldValue));
                         GameScene.UpdateMap(p);
 
-                        // TODO: ScrollOfMagicMapping.Discover(p)
+                        ScrollOfMagicMapping.Discover(p);
 
                         somethingFound = true;
                     }

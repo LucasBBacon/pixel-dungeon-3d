@@ -152,7 +152,7 @@ public class HeroTests : DungeonFixture
         hero.Awareness = 1f;
         Assert.True(hero.Search(false));
         Assert.Equal(Terrain.Door, level.Map[TestLevel.At(2, 1)]);
-        Assert.Empty(View.Effects);
+        Assert.Contains((EffectKind.Discover, TestLevel.At(2, 1)), View.Effects);
     }
 
     [Fact]

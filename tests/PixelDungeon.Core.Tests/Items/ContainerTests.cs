@@ -2,6 +2,7 @@ using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Utils;
 
@@ -96,7 +97,7 @@ public class ContainerTests : DungeonFixture
     public void Collect_SortsByCategory_MatchingSuperclassesByName()
     {
         var misc = new TestItem();
-        var scroll = new Scroll();
+        var scroll = new ScrollOfIdentify();
         misc.Collect();
         scroll.Collect();
 

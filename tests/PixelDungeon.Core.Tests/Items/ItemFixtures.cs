@@ -117,11 +117,3 @@ public static class ArmorRolls
         return level;
     }
 }
-
-public class Scroll : Item
-{
-    public Scroll()
-    {
-        NameValue = "test scroll";
-    }
-}

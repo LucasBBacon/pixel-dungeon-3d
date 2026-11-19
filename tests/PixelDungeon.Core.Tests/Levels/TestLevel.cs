@@ -35,6 +35,10 @@ public sealed class TestLevel : Level
 
     public int SpawnCount => ItemsToSpawn.Count;
 
+    public Func<int> RespawnCells;
+
+    public override int RandomRespawnCell() => RespawnCells?.Invoke() ?? base.RandomRespawnCell();
+
     private void WriteRows(string[] rows)
     {
         for (var y = 0; y < rows.Length; y++)

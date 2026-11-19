@@ -4,5 +4,7 @@ public enum BagMode
 {
     All,
     Quickslot,
-    Unidentified
+    Unidentified,
+    Enchantable,
+    Upgradable
 }
