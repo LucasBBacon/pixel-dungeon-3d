@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {}
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {}
   },
   "projects": {
-    "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
         "projectName": "PixelDungeon.Core",
-        "projectPath": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\obj\\",
+        "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -64,17 +64,17 @@
         }
       }
     },
-    "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {
+    "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
         "projectName": "PixelDungeon.Core.Tests",
-        "projectPath": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\PixelDungeon.Core.Tests.csproj",
+        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\tests\\PixelDungeon.Core.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -87,8 +87,8 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
-                "projectPath": "E:\\lucas\\CodeStuff\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj"
+              "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj": {
+                "projectPath": "C:\\Users\\Lucas\\Documents\\Godot\\projects\\pixel-dungeon-3d\\src\\PixelDungeon.Core\\PixelDungeon.Core.csproj"
               }
             }
           }

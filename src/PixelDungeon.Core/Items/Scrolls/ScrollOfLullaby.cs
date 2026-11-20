@@ -1,3 +1,7 @@
+using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Utils;
+
 namespace PixelDungeon.Core.Items.Scrolls;
 
 public class ScrollOfLullaby : Scroll
@@ -9,8 +13,39 @@ public class ScrollOfLullaby : Scroll
 
     protected override void DoRead()
     {
-        // TODO: note burst, SndLullaby and dispel, Sleep on every mob in view
+        CurUser.Sprite.Burst(0xFFAADDFF, 5);
+        Sample.Play(Assets.SndLullaby);
+        Invisibility.Dispel();
+
+        var count = 0;
+        Mob affected = null;
+        foreach (var mob in Dungeon.Level.Mobs.ToArray())
+        {
+            if (!Levels.Level.FieldOfView[mob.Pos]) continue;
+            
+            Buff.Affect<Sleep>(mob);
+            
+            if (mob.GetBuff<Sleep>() == null) continue;
+            
+            affected = mob;
+            count++;
+        }
+
+        switch (count)
+        {
+            case 0:
+                GLog.I("The scroll utters a soothing melody.");
+                break;
+            case 1:
+                GLog.I("The scroll utters a soothing melody and the " + affected.Name + " falls asleep!");
+                break;
+            default:
+                GLog.I("The scroll utters a soothing melody and the monsters fall asleep!");
+                break;
+        }
+
         SetKnown();
+
         ReadAnimation();
     }
 

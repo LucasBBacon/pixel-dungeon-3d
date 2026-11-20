@@ -1,3 +1,6 @@
+using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Utils;
+
 namespace PixelDungeon.Core.Items.Scrolls;
 
 public class ScrollOfChallenge : Scroll
@@ -9,8 +12,22 @@ public class ScrollOfChallenge : Scroll
 
     protected override void DoRead()
     {
-        // TODO: beckon every mob, enrage visible ones, log the roar, scream burst, SndChallenge, dispel before setKnown and read animation
+        foreach (var mob in Dungeon.Level.Mobs.ToArray())
+        {
+            mob.Beckon(CurUser.Pos);
+            if (Dungeon.Visible[mob.Pos])
+            {
+                Buff.Affect<Rage>(mob, Levels.Level.Distance(CurUser.Pos, mob.Pos));
+            }
+        }
+
+        GLog.W("The scroll emits a challenging roar that echoes throughout the dungeon!");
         SetKnown();
+        
+        CurUser.Sprite.Burst(0xFFFFFFFF, 3);
+        Sample.Play(Assets.SndChallenge);
+        Invisibility.Dispel();
+        
         ReadAnimation();
     }
 

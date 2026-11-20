@@ -1,3 +1,7 @@
+using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Utils;
+
 namespace PixelDungeon.Core.Items.Scrolls;
 
 public class ScrollOfTerror : Scroll
@@ -9,8 +13,38 @@ public class ScrollOfTerror : Scroll
 
     protected override void DoRead()
     {
-        // TODO: red flare, SndRead + dispel, Terror on every mob in view
+        CurUser.Sprite.Burst(0xFFFF0000, 5);
+        Sample.Play(Assets.SndRead);
+        Invisibility.Dispel();
+
+        var count = 0;
+        Mob affected = null;
+        foreach (var mob in Dungeon.Level.Mobs.ToArray())
+        {
+            if (Levels.Level.FieldOfView[mob.Pos])
+            {
+                Buff.Affect<Terror>(mob, Terror.Duration).Object = CurUser.Id();
+
+                count++;
+                affected = mob;
+            }
+        }
+
+        switch (count)
+        {
+            case 0:
+                GLog.I("The scroll emits a brilliant flash of red light");
+                break;
+            case 1:
+                GLog.I("The scroll emits a brilliant flash of red light and the " + affected.Name + " flees!");
+                break;
+            default:
+                GLog.I("The scroll emits a brilliant flash of red light and the monsters flee!");
+                break;
+        }
+
         SetKnown();
+
         ReadAnimation();
     }
 

@@ -1,3 +1,7 @@
+using PixelDungeon.Core.Actors.Buffs;
+using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Utils;
+
 namespace PixelDungeon.Core.Items.Scrolls;
 
 public class ScrollOfPsionicBlast : Scroll
@@ -9,8 +13,24 @@ public class ScrollOfPsionicBlast : Scroll
 
     protected override void DoRead()
     {
-        // TODO: the white flash, SndBlast and dispel, blindness + damage on every mob in view
+        GameScene.Flash(0xFFFFFF);
+
+        Sample.Play(Assets.SndBlast);
+        Invisibility.Dispel();
+
+        foreach (var mob in Dungeon.Level.Mobs.ToArray())
+        {
+            if (!Levels.Level.FieldOfView[mob.Pos]) continue;
+
+            Buff.Prolong<Blindness>(mob, Utils.Random.Int(3, 6));
+            mob.Damage(Utils.Random.IntRange(1, mob.HT * 2 / 3), this);
+        }
+
+        Buff.Prolong<Blindness>(CurUser, Utils.Random.Int(3, 6));
+        Dungeon.Observe();
+
         SetKnown();
+
         ReadAnimation();
     }
 
