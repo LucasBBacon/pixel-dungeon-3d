@@ -1,4 +1,9 @@
+using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Items.Scrolls;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Sprites;
+using PixelDungeon.Core.Utils;
+using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Items.Weapon.Melee;
 
@@ -14,7 +19,9 @@ public class ShortSword : MeleeWeapon
 
     private const float TimeToReforge = 2f;
 
-    // TODO: the private equipped flag records whether the sword was wielded when a reforge began
+    private bool _equipped;
+
+    private readonly Action<Item> _itemSelector;
 
     public ShortSword() : base(1, 1f, 1f)
     {
@@ -22,16 +29,78 @@ public class ShortSword : MeleeWeapon
         ImageValue = ItemSpriteSheet.ShortSword;
 
         Str = 11;
+
+        _itemSelector = OnItemSelected;
     }
 
     protected override int Max0() => 12;
 
-    // TODO: actions() adds AC_REFORGE when level() > 0
+    public override List<string> Actions(Hero hero)
+    {
+        var actions = base.Actions(hero);
+        if (Level() > 0)
+        {
+            actions.Add(AcReforge);
+        }
 
-    // TODO: execute(AC_REFORGE) takes the sword out of hand or pack, sets curUser and calls GameScene.selectItem(itemSelector, WndBag.Mode.WEAPON, TXT_SELECT_WEAPON)
+        return actions;
+    }
+
+    public override void Execute(Hero hero, string action)
+    {
+        if (action == AcReforge)
+        {
+            if (hero.Belongings.Weapon == this)
+            {
+                _equipped = true;
+                hero.Belongings.Weapon = null;
+            }
+            else
+            {
+                _equipped = false;
+                Detach(hero.Belongings.Backpack);
+            }
+
+            CurUser = hero;
+
+            GameScene.SelectItem(_itemSelector, BagMode.Weapon, TxtSelectWeapon);
+        }
+        else
+        {
+            base.Execute(hero, action);
+        }
+    }
+
 
     public override string Desc() => "It is indeed quite short, just a few inches longer, than a dagger.";
 
-    // TODO: itemSelector plays SND_EVOKE, calls ScrollOfUpgrade.upgrade and evoke, logs TXT_REFORGED, safeUpgrade()s the chosen weapon and spends TIME_TO_REFORGE; a Boomerang logs TXT_NOT_BOOMERANG, and a cancel returns the sword to hand or pack
-    // TODO: the reforge's Badges.validateItemLevelAquired(item)
+    private void OnItemSelected(Item item)
+    {
+        if (item != null)
+        {
+            Sample.Play(Assets.SndEvoke);
+            ScrollOfUpgrade.Upgrade(CurUser);
+            Evoke(CurUser);
+
+            GLog.W(TxtReforged, item.Name());
+
+            ((MeleeWeapon)item).SafeUpgrade();
+            CurUser.SpendAndNext(TimeToReforge);
+
+            // TODO: Badges.validateItemLevelAcquired(item)
+        }
+        else
+        {
+            // TODO: a chosen Boomerang logs TxtNotBoomerang
+
+            if (_equipped)
+            {
+                CurUser.Belongings.Weapon = this;
+            }
+            else
+            {
+                Collect(CurUser.Belongings.Backpack);
+            }
+        }
+    }
 }

@@ -2,7 +2,10 @@ using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Sprites;
+using PixelDungeon.Core.Tests.Levels;
+using PixelDungeon.Core.Tests.View;
 using PixelDungeon.Core.Utils;
+using PixelDungeon.Core.View;
 using Xunit.Abstractions;
 
 namespace PixelDungeon.Core.Tests.Items;
@@ -184,7 +187,7 @@ public class MeleeWeaponTests : DungeonFixture
     }
 
     [Fact]
-    public void Actions_ShortSwordAboveLevelZero_OmitTheDeferredReforge()
+    public void Actions_ShortSword_OffersReforgeOnlyAboveLevelZero()
     {
         var sword = new ShortSword();
         sword.Upgrade(); // the Java adds AC_REFORGE once level() > 0
@@ -196,10 +199,103 @@ public class MeleeWeaponTests : DungeonFixture
             {
                 Item.AcDrop,
                 Item.AcThrow,
-                EquipableItem.AcEquip
+                EquipableItem.AcEquip,
+                ShortSword.AcReforge
             },
             sword.Actions(Dungeon.Hero));
         Assert.Equal("REFORGE", ShortSword.AcReforge);
+    }
+
+    // ---- Reforge ----
+
+    private SpyHero PlaceSmith()
+    {
+        LoadLevel(
+            "#####",
+            "#...#",
+            "#####"
+        );
+        Dungeon.Hero = new SpyHero();
+        var hero = (SpyHero)PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        return hero;
+    }
+
+    private static ShortSword UpgradedSword()
+    {
+        var sword = new ShortSword();
+        sword.Upgrade();
+        return sword;
+    }
+
+    [Fact]
+    public void Reforge_OfAWieldedSword_TakesItFromTheHand_AndAsksForAWeapon()
+    {
+        var hero = PlaceSmith();
+        var sword = UpgradedSword();
+        hero.Belongings.Weapon = sword;
+
+        sword.Execute(hero, ShortSword.AcReforge);
+
+        Assert.Null(hero.Belongings.Weapon);
+        var selection = Assert.Single(View.ItemSelections);
+        Assert.Equal(BagMode.Weapon, selection.Mode);
+        Assert.Equal("Select a weapon to upgrade", selection.Title);
+        Assert.Equal(0f, hero.TimeLeft);
+    }
+    
+    [Fact]
+    public void Reforge_ChoosingAWeapon_UpgradesItSafely_AndUsesUpTheSword()
+    {
+        var hero = PlaceSmith();
+        var view = (FakeCharView)hero.Sprite;
+        var sword = UpgradedSword();
+        sword.Collect();
+        var mace = new Mace();
+        mace.Collect();
+
+        sword.Execute(hero, ShortSword.AcReforge);
+        View.ChooseItem(mace);
+
+        Assert.Equal(1, mace.Level());
+        Assert.Equal(13, mace.Str); // SafeUpgrade lowers STR by one, as any melee upgrade does: 14 - 1
+        Assert.Null(hero.Belongings.GetItem(typeof(ShortSword)));
+        Assert.Null(hero.Belongings.Weapon);
+        Assert.Equal(2f, hero.TimeLeft); // ShortSword.TIME_TO_REFORGE
+        Assert.Contains(("you reforged the short sword to upgrade your mace", LogKind.Warning), View.Logs);
+        Assert.Contains(View.Sounds, s => s.Id == Assets.SndEvoke);
+        Assert.Contains((0xFFFFDD44u, 3), view.BurstLog); // ScrollOfUpgrade.upgrade(curUser)
+        Assert.Contains((0xFFFFFFu, 5), view.BurstLog);   // Item.evoke(curUser)
+    }
+
+    [Fact]
+    public void Reforge_Cancelled_PutsAWieldedSwordBackInTheHand()
+    {
+        var hero = PlaceSmith();
+        var sword = UpgradedSword();
+        hero.Belongings.Weapon = sword;
+        sword.Execute(hero, ShortSword.AcReforge);
+
+        View.ChooseItem(null);
+
+        Assert.Same(sword, hero.Belongings.Weapon);
+        Assert.Equal(0f, hero.TimeLeft);
+    }
+
+    [Fact]
+    public void Reforge_Cancelled_PutsAPackedSwordBackInThePack()
+    {
+        var hero = PlaceSmith();
+        var sword = UpgradedSword();
+        sword.Collect();
+        sword.Execute(hero, ShortSword.AcReforge);
+        Assert.Null(hero.Belongings.GetItem(typeof(ShortSword))); // out of the pack while the choice is open
+
+        View.ChooseItem(null);
+
+        Assert.Same(sword, hero.Belongings.GetItem(typeof(ShortSword)));
+        Assert.Null(hero.Belongings.Weapon);
+        Assert.Equal(0f, hero.TimeLeft);
     }
 
     [Fact]

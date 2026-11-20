@@ -11,6 +11,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2c7364cc_002D2aa7_002D4c40_002Dbbd0_002D4cc1560e968d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Items.MobScrollTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7F5C98AE-6E03-47AE-B983-45DFB4927679::net8.0::PixelDungeon.Core.Tests.Items.MeleeWeaponTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

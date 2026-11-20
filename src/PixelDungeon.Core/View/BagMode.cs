@@ -6,5 +6,6 @@ public enum BagMode
     Quickslot,
     Unidentified,
     Enchantable,
-    Upgradable
+    Upgradable,
+    Weapon
 }
