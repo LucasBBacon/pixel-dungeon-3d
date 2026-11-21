@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
@@ -101,9 +102,18 @@ public sealed class ExamineListener : ICellListener
             tile = Terrain.Chasm;
         }
 
-        var desc = Dungeon.Level.TileDesc(tile);
-        // TODO: each blob present on the cell appends its tileDesc()
-        return Info(Dungeon.Level.TileName(tile), desc.Length > 0 ? desc : TxtNothing);
+        var desc = new StringBuilder(Dungeon.Level.TileDesc(tile));
+        foreach (var blob in Dungeon.Level.Blobs.Values.Where(blob => blob.Cur[cell] > 0 && blob.TileDesc() != null))
+        {
+            if (desc.Length > 0)
+            {
+                desc.Append("\n\n");
+            }
+
+            desc.Append(blob.TileDesc());
+        }
+
+        return Info(Dungeon.Level.TileName(tile), desc.Length > 0 ? desc.ToString() : TxtNothing);
     }
 
     private WindowRequest InfoMob(Mob mob)

@@ -3,7 +3,9 @@ using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
@@ -195,8 +197,11 @@ public partial class WndBag : Window
             {
                 bg = new Color(bg.R + 0.2f, bg.G - 0.1f, bg.B); // bg.ra = +0.2f, bg.ga = -0.1f
             }
+            else if (!item.IsIdentified())
+            {
+                bg = new Color(bg.R + 0.1f, bg.G, bg.B + 0.1f);
+            }
 
-            // TODO: tint the slot background when !item.isIdentified()
             slot.SetBackground(bg);
         }
 
@@ -236,8 +241,19 @@ public partial class WndBag : Window
                 return true;
             case BagMode.Quickslot:
                 return item.DefaultAction != null;
+            case BagMode.Upgradable:
+                return item.IsUpgradable();
+            case BagMode.Unidentified:
+                return !item.IsIdentified();
+            case BagMode.Weapon:
+                // TODO: boomerang is a weapon too
+                return item is MeleeWeapon;
+            case BagMode.Armor:
+                return item is Armor;
+            case BagMode.Enchantable:
+                // TODO: boomerang is enchantable too
+                return item is MeleeWeapon or Armor;
             default:
-                // TODO: UPGRADEABLE, UNIDENTIFIED< WEAPON, ARMOR, and ENCHANTABLE
                 // TODO: WAND and SEED, FOR_SALE
                 return false;
         }

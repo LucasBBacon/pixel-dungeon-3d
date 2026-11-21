@@ -7,5 +7,6 @@ public enum BagMode
     Unidentified,
     Enchantable,
     Upgradable,
-    Weapon
+    Weapon,
+    Armor
 }
