@@ -37,8 +37,10 @@ Godot...console.exe --headless --path . --quit-after 3
 In the game: click a cell or use WASD / arrows / QEZC to move, Space to search, Period to rest a turn, Shift+Period to
 rest until healed, I to open the backpack, 1 and 2 for the quick slots (a press aims the nearest visible enemy, and a
 second press throws), G to pick up, Escape to cancel a target prompt, a click on the status panel for the hero window,
-and right-click where the original long-presses. The backtick opens the debug console (`depth N`, `reveal`, `seed N`,
-`where`, `stairs down`, `stairs up`, `spawn`, `kill`, `give`, `heap`, `lock`, `fill`, `hunger`, `str`). A headless run
+and right-click where the original long-presses (right-click the backpack button for the cataloge of potions and
+scrolls). The backtick opens the debug console (`depth N`, `reveal`, `seed N`,
+`where`, `stairs down`, `stairs up`, `spawn`, `kill`, `give`, `heap`, `lock`, `fill`, `hunger`, `str`, `know`). A
+headless run
 can queue commands
 with` --console="stairs down" console="where"`.
 
@@ -64,5 +66,8 @@ type registry, Rat, Albino, Gnoll, Crab and Swarm, six buffs, hero experience an
 cubes, an attack tween, alert and sleep glyphs, an XP readout and a game-over window. Sub-project 3b (equipment and
 hunger) is complete: melee weapons, missiles and armour with strength penalties, identification by use and curses, food,
 hunger, and starvation, Poison, Paralysis, Slow and Roots, use the Rogue's starting kit, and a Godot view with an armour
-tint, strength corners, a buff row, a target health bar, the hero window, and quick slot auto-targeting. Next is
-sub-project 3c: potions, scrolls and identification.
+tint, strength corners, a buff row, a target health bar, the hero window, and quick slot auto-targeting. Sub-project 3c
+(potions, scrolls and identification) is complete: potion colours and scroll runes learnt by use, ten registered potions
+and twelve scrolls, toxic and paralytic gas, Invisibility, Levitation, Mind Vision, Blindness, Rage, and gas immunity,
+Mirror Images, the Short Sword reforge, and Godot View with a catalogue, item selection for inventory scrolls, gas
+clouds, invisible and levitating cubes, and potion and scroll swatches. Next is sub-project 4: classes and magic.
