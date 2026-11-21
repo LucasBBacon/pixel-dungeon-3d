@@ -9,6 +9,8 @@ using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Ui;
 
@@ -230,7 +232,7 @@ public partial class DebugConsole : CanvasLayer
         });
 
         Register("give",
-            "give <item> [n] [cursed] [+n|-n]: add to the hero's belongings; <item> is gold, dewdrop, dewvial, ironkey, goldenkey, skeletonkey, keyring, or any registered item class such as dart, tomahawk, sword, platearmor, food or mysterymeat",
+            "give <item> [n] [cursed] [+n|-n]: add to the hero's belongings; <item> is gold, dewdrop, dewvial, ironkey, goldenkey, skeletonkey, keyring, or any registered item class such as dart, tomahawk, sword, platearmor, food, mysterymeat, potionofHealing or scrollofIdentify",
             args =>
             {
                 const string usage = "usage: give <item> [n] [cursed] [+n|-n]";
@@ -370,7 +372,7 @@ public partial class DebugConsole : CanvasLayer
             }
 
             Level.Set(best, Terrain.LockedDoor);
-            PixelDungeon.Core.Scenes.GameScene.UpdateMap(best);
+            Core.Scenes.GameScene.UpdateMap(best);
             Print($"locked the door at {best}");
         });
 
@@ -413,6 +415,41 @@ public partial class DebugConsole : CanvasLayer
             Dungeon.Hero.STR = str;
             QuickSlot.Refresh();
             Print($"strength now {Dungeon.Hero.STR}");
+        });
+
+        Register("know", "know [potions|scrolls]: make every potion and scroll class known, or one table's", args =>
+        {
+            var table = args.Length == 1 ? args[0].ToLowerInvariant() : null;
+            if (args.Length > 1 || (table != null && table != "potions" && table != "scrolls"))
+            {
+                Print("usage: know [potions|scrolls]");
+                return;
+            }
+
+            var learnt = new List<string>();
+            if (table != "scrolls")
+            {
+                var unknown = Potion.GetUnknown();
+                foreach (var type in unknown)
+                {
+                    ((Potion)Activator.CreateInstance(type)).SetKnown();
+                }
+
+                learnt.Add($"{unknown.Count} potions");
+            }
+
+            if (table != "potions")
+            {
+                var unknown = Scroll.GetUnknown();
+                foreach (var type in unknown)
+                {
+                    ((Scroll)Activator.CreateInstance(type)).SetKnown();
+                }
+
+                learnt.Add($"{unknown.Count} scrolls");
+            }
+
+            Print("learnt " + string.Join(" and ", learnt));
         });
     }
 
