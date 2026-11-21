@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using PixelDungeon.Core;
 using PixelDungeon.Core.Actors.Buffs;
@@ -11,6 +12,7 @@ public partial class WndHero : Window
 {
     private const string TxtStats = "Stats";
     private const string TxtBuffs = "Buffs";
+    private const string TxtCatalogus = "Catalogus";
 
     private const string TxtExp = "Experience";
     private const string TxtStr = "Strength";
@@ -26,7 +28,7 @@ public partial class WndHero : Window
 
     private static readonly Color TitleColor = new(1f, 1f, 0.27f);
 
-    public static WndHero Create()
+    public static WndHero Create(Action openCatalogus)
     {
         var wnd = new WndHero
         {
@@ -39,7 +41,7 @@ public partial class WndHero : Window
 
         var hero = Dungeon.Hero;
         var tabs = new TabContainer { CustomMinimumSize = new Vector2(Width, 0f) };
-        tabs.AddChild(StatsTab(hero));
+        tabs.AddChild(StatsTab(wnd, hero, openCatalogus));
         tabs.AddChild(BuffsTab(hero));
         tabs.CurrentTab = 0;
         wnd.AddChild(tabs);
@@ -47,7 +49,7 @@ public partial class WndHero : Window
         return wnd;
     }
 
-    private static Control StatsTab(Hero hero)
+    private static Control StatsTab(WndHero wnd, Hero hero, Action openCatalogus)
     {
         var tab = new VBoxContainer { Name = TxtStats };
 
@@ -58,7 +60,18 @@ public partial class WndHero : Window
         title.AddThemeColorOverride("font_color", TitleColor);
         tab.AddChild(title);
 
-        // TODO: Catalogus button under the title hides window and shows WndCatalogus
+        var catalogus = new Button
+        {
+            Text = TxtCatalogus,
+            SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin,
+            FocusMode = Control.FocusModeEnum.None,
+        };
+        catalogus.Pressed += () =>
+        {
+            wnd.Hide();
+            openCatalogus();
+        };
+        tab.AddChild(catalogus);
         // TODO: Journal button beside Catalogus hides this window and shows WndJournal
 
         tab.AddChild(Gap());

@@ -103,6 +103,7 @@ public partial class GameScene : Node3D, IGameView
         AddChild(_toolbar);
         _toolbar.OnExamine = Examine;
         _toolbar.OnBackpack = OpenBackpack;
+        _toolbar.OnCatalogus = OpenCatalogus;
         _toolbar.OnChooseQuickSlot = slot => SelectItem(slot.Assign, BagMode.Quickslot, slot.SelectPrompt);
         // QuickSlot's second press calls GameScene.handleCell(lastTarget.pos). Each slot's crosshair ring lives in
         // the 3D world, where the Java adds crossM to the target sprite's parent. It sits under the scene root,
@@ -596,6 +597,7 @@ public partial class GameScene : Node3D, IGameView
         {
             _heroView.UpdateArmor(image.Tier);
         }
+
         mob.UpdateSpriteState();
         if (mob.Flying)
         {
@@ -690,7 +692,21 @@ public partial class GameScene : Node3D, IGameView
         // GameScene.show: cancelCellSelector() runs before the window opens, as it does in OpenBag
         _selector.Cancel();
 
-        OpenWindow(WndHero.Create(), null);
+        OpenWindow(WndHero.Create(OpenCatalogus), null);
+    }
+
+    public void OpenCatalogus()
+    {
+        if (_switching || Dungeon.Hero == null)
+        {
+            return;
+        }
+
+        _selector.Cancel();
+
+        var wnd = WndCatalogus.Create();
+        wnd.InfoRequested += (owner, item) => OpenWindow(WndCatalogus.InfoWindow(item), owner);
+        OpenWindow(wnd, null);
     }
 
     public void Missile(int from, int to, Item item, Action onComplete) =>

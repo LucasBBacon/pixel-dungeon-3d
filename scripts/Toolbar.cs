@@ -20,6 +20,7 @@ public partial class Toolbar : CanvasLayer
 
     public Action OnExamine;
     public Action OnBackpack;
+    public Action OnCatalogus;
     public Action<QuickSlotView> OnChooseQuickSlot;
 
     public override void _Ready()
@@ -46,10 +47,7 @@ public partial class Toolbar : CanvasLayer
 
         _backpack = AddTool(bar, "Backpack");
         _backpack.Pressed += () => OnBackpack?.Invoke();
-        OnRightClick(_backpack, () =>
-        {
-            // TODO: long-clicking the backpack button shows WndCatalogus
-        });
+        OnRightClick(_backpack, () => OnCatalogus?.Invoke());
 
         Secondary = QuickSlotView.Create(primary: false);
         bar.AddChild(Secondary);
