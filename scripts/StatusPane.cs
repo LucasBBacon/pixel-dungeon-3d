@@ -141,8 +141,31 @@ public partial class StatusPane : CanvasLayer
 
     public void ShowWindow(WindowRequest request, Action onClosed)
     {
+        const string secondOption = "second_option";
+
         AcceptDialog dialog;
-        if (request.IsChoice)
+        var answered = false;
+        if (request.IsChoice && request.IgnoresBack)
+        {
+            var options = new AcceptDialog
+            {
+                OkButtonText = request.Options[0],
+                DialogHideOnOk = false,
+                DialogCloseOnEscape = false,
+            };
+            options.AddButton(request.Options[1], true, secondOption);
+            options.CustomAction += action =>
+            {
+                if (action.ToString() == secondOption)
+                {
+                    answered = true;
+                    options.Hide();
+                    request.Select(1);
+                }
+            };
+            dialog = options;
+        }
+        else if (request.IsChoice)
         {
             var confirm = new ConfirmationDialog
             {
@@ -160,17 +183,44 @@ public partial class StatusPane : CanvasLayer
         dialog.Title = request.Title ?? "";
         dialog.DialogText = request.Body;
         dialog.Exclusive = true;
-        dialog.Confirmed += () => request.Select(0);
+        dialog.Confirmed += () =>
+        {
+            answered = true;
+            if (!dialog.DialogHideOnOk)
+            {
+                dialog.Hide();
+            }
+
+            request.Select(0);
+        };
         dialog.VisibilityChanged += () =>
         {
-            if (!dialog.Visible)
+            if (dialog.Visible)
             {
-                onClosed();
-                dialog.QueueFree();
+                return;
             }
+
+            if (request.IgnoresBack && !answered)
+            {
+                Callable.From(() => dialog.PopupCentered()).CallDeferred();
+                return;
+            }
+
+            onClosed();
+            dialog.QueueFree();
         };
 
         AddChild(dialog);
         dialog.PopupCentered();
+    }
+
+    public void Flash(Color color)
+    {
+        var flash = new ColorRect { Color = color, MouseFilter = Control.MouseFilterEnum.Ignore };
+        flash.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+        AddChild(flash);
+        var tween = flash.CreateTween();
+        tween.TweenProperty(flash, "color:a", 0f, 1.0);
+        tween.TweenCallback(Callable.From(flash.QueueFree));
     }
 }

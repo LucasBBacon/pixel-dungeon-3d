@@ -14,10 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/BlobView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/StatusPane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/StatusPane.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -26,21 +26,10 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +68,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d2f8e0d1f8ea4cc696667f64359e4675c90750/64/29ee74db/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5e14a4e27990972fa4ae94975603bd298aaf328ee083c03b10569ee4724d57/TestInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad8b2779652854276d03ec153d51377686c7193799d1688e119272770d0cf/EqualityAsserts.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/scripts/BlobView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CameraRig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CellSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/scripts/CharView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -261,61 +251,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.686435233654977E-8" />
-      <entry key="MS500" value="0.040108112985430294" />
-      <entry key="S2" value="0.9578261208173928" />
-      <entry key="S5" value="2.315957487791008" />
-      <entry key="S10" value="4.079242317512064" />
-      <entry key="S30" value="7.652199601483292" />
-      <entry key="S60" value="9.901066799587365" />
-      <entry key="M2" value="13.893765505979598" />
-      <entry key="M5" value="43.55608709697409" />
-      <entry key="M10" value="100.59608814340474" />
-      <entry key="M15" value="139.4698331104768" />
-      <entry key="M30" value="197.07430385237956" />
-      <entry key="H1" value="235.7514941442051" />
-      <entry key="H2" value="261.5515260094644" />
-      <entry key="H4" value="356.78481126243656" />
-      <entry key="D1" value="3850.6461396087802" />
-      <entry key="W1" value="7913.3220931316355" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000013" />
+      <entry key="S2" value="1.0001928410457548" />
+      <entry key="S5" value="1.042123465861026" />
+      <entry key="S10" value="1.4565484467612198" />
+      <entry key="S30" value="7.312644755760642" />
+      <entry key="S60" value="20.759791019461105" />
+      <entry key="M2" value="49.28109878207475" />
+      <entry key="M5" value="116.43529738578368" />
+      <entry key="M10" value="185.47053533183507" />
+      <entry key="M15" value="234.85455566941823" />
+      <entry key="M30" value="342.23963707359763" />
+      <entry key="H1" value="476.9635999985196" />
+      <entry key="H2" value="621.2874967794768" />
+      <entry key="H4" value="790.9244971491858" />
+      <entry key="D1" value="4171.969949887448" />
+      <entry key="W1" value="8449.093792189438" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000358751934015" />
-      <entry key="S2" value="1.1002211052554367" />
-      <entry key="S5" value="1.7455501033274419" />
-      <entry key="S10" value="2.7647711026382913" />
-      <entry key="S30" value="4.453619916364953" />
-      <entry key="S60" value="5.189875788298412" />
-      <entry key="M2" value="6.175353358193888" />
-      <entry key="M5" value="12.607518260410435" />
-      <entry key="M10" value="24.974769571156642" />
-      <entry key="M15" value="33.545157015959695" />
-      <entry key="M30" value="46.43163807232573" />
-      <entry key="H1" value="55.19750967422001" />
-      <entry key="H2" value="61.654459958604896" />
-      <entry key="H4" value="94.85650505524181" />
-      <entry key="D1" value="1254.8601627393712" />
-      <entry key="W1" value="2588.2380947693878" />
+      <entry key="MS100" value="1.2908701147142616E-51" />
+      <entry key="MS500" value="7.338366682672501E-11" />
+      <entry key="S2" value="0.005435870041240967" />
+      <entry key="S5" value="0.3041519820223328" />
+      <entry key="S10" value="1.671517746222082" />
+      <entry key="S30" value="8.383476033862722" />
+      <entry key="S60" value="16.611935353958522" />
+      <entry key="M2" value="31.319570377459147" />
+      <entry key="M5" value="72.06631753276237" />
+      <entry key="M10" value="119.04690191674115" />
+      <entry key="M15" value="151.21808392988027" />
+      <entry key="M30" value="212.15930843753418" />
+      <entry key="H1" value="273.7513145796602" />
+      <entry key="H2" value="328.1530257948148" />
+      <entry key="H4" value="386.8074928306292" />
+      <entry key="D1" value="1508.7967610879477" />
+      <entry key="W1" value="2913.193065334543" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.934555663332949E-6" />
-      <entry key="MS500" value="0.11541557670780403" />
-      <entry key="S2" value="1.4515812142934825" />
-      <entry key="S5" value="3.5103703488654685" />
-      <entry key="S10" value="6.342480498150615" />
-      <entry key="S30" value="11.807838305341654" />
-      <entry key="S60" value="14.910479328066087" />
-      <entry key="M2" value="19.957383220469143" />
-      <entry key="M5" value="56.07761896312576" />
-      <entry key="M10" value="125.49344040941425" />
-      <entry key="M15" value="172.94808515544986" />
-      <entry key="M30" value="243.4611905233753" />
-      <entry key="H1" value="290.92282708136565" />
-      <entry key="H2" value="323.19151577316444" />
-      <entry key="H4" value="451.6308586464118" />
-      <entry key="D1" value="5105.487316162163" />
-      <entry key="W1" value="10501.55467845099" />
+      <entry key="MS100" value="0.005373210227108374" />
+      <entry key="MS500" value="0.3515982999978852" />
+      <entry key="S2" value="0.7738616215363413" />
+      <entry key="S5" value="1.1964642269847718" />
+      <entry key="S10" value="2.921274873211503" />
+      <entry key="S30" value="15.360916991261249" />
+      <entry key="S60" value="37.02307127521903" />
+      <entry key="M2" value="80.26702959327883" />
+      <entry key="M5" value="188.20205883904018" />
+      <entry key="M10" value="304.2725198494677" />
+      <entry key="M15" value="385.86470838917296" />
+      <entry key="M30" value="554.2509894041438" />
+      <entry key="H1" value="750.6174833845806" />
+      <entry key="H2" value="949.3809214060906" />
+      <entry key="H4" value="1177.6962742148428" />
+      <entry key="D1" value="5680.743960020651" />
+      <entry key="W1" value="11362.280655424853" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -399,7 +389,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -415,7 +405,7 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -468,14 +458,6 @@
       <workItem from="1794144587802" duration="9856000" />
       <workItem from="1795039995775" duration="72000" />
       <workItem from="1795040113399" duration="2775000" />
-    </task>
-    <task id="LOCAL-00038" summary="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO.">
-      <option name="closed" value="true" />
-      <created>1791497067273</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1791497067273</updated>
     </task>
     <task id="LOCAL-00039" summary="feat(items): item values, the sprite sheet ids, and the quick slot model&#10;Item gains its level, durability, curse and identification state, the four ToString formats, ConsiderState and bundling. Restoring replays the level through Upgrade, which sets cursedKnown exactly as the Java does.&#10;QuickSlot's logic half moves to Core: the slotted values, the per-item bundle flags, Compress, and the last throw target. ItemSpriteSheet's ids port as constants so item initialisers copy verbatim.">
       <option name="closed" value="true" />
@@ -861,7 +843,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795191011904</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="feat(core): potions and scrolls spawn, with the strength, upgrade and enchantment quotas&#10;Ten potions and all twelve scrolls join the Generator registry, so a random item can now be a potion or a scroll; Liquid Flame and Frost stay out. Level.create adds the Strength, Upgrade and Enchantment quota items it was already counting, and a Scroll of Upgrade never lands on a fire trap. GeneratorTests, LevelPipelineTests and ItemIntegrationTests follow the new item mix.&#10;RegularLevel_CreateItems_NeverDropsAScrollOfUpgradeOntoAnArmedFireTrap also sets Dungeon.Level before Create(), a plan correction: Level.Drop only presses a cell (springing an armed trap into INACTIVE_TRAP) when Dungeon.Level is set, so the invariant it checks was otherwise never exercised.">
+      <option name="closed" value="true" />
+      <created>1795263241618</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1795263241618</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -882,7 +872,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
     <MESSAGE value="feat(items): melee weapon info and price&#10;MeleeWeapon.info() ports the Java text:&#10;&#10;- the quality and tier&#10;- the average damage when the level is known, or the typical damage and strength with the too-heavy warning when it is not&#10;- the fast, slow, accurate and inaccurate sentence with its &quot;and&quot; or &quot;but&quot;&#10;- the balancing lines&#10;- the strength penalty and bonus for a known weapon in the pack&#10;- the held and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: enchanted text and price." />
     <MESSAGE value="Armor and the five armours port with their Java stats:&#10;STR is 7 + 2 * tier and DR is tier * (2 + level), with a broken&#10;&#10;- armour counting level 0, each upgrade lowers STR by 1&#10;- wearing armour spends 2 / speed, and replacing it spends that twice, because the old armour comes off with a Spend and no Next&#10;- equip and unequip tell the hero's view the new tier&#10;- cursed armour warns with the Java message and refuses to come off&#10;- the tenth hit taken while unknown identifies it&#10;- random() keeps the glyph roll, and Glyph.random()'s roll behind it&#10;&#10;Belongings.Armor is now an Armor, and Hero.Tier() reads it. TODO glyphs." />
     <MESSAGE value="feat(items): armour info and price&#10;Armor.info() ports the Java text:&#10;&#10;- the damage absorption when the level is known, or the typical absorption and strength with the too-heavy warning when it is not&#10;- the strength penalty, worded by whether the armour is worn&#10;- the worn and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: inscribed text and price." />
@@ -907,7 +896,8 @@
     <MESSAGE value="feat(core): potions - the colour table, drinking, throwing and shattering&#10;Potion assigns each class a random colour through ItemStatusHandler, hides unknown potions behind their colour, asks before drinking a known harmful potion or throwing a known beneficial one, and applies, drops or shatters by where it lands. Ten potions work in full, Liquid Flame and Frost keep their fire and freezing. Dungeon.Init and Reset build the table, landed potions shatter, and a dying Swarm can drop Healing." />
     <MESSAGE value="feat(core): challenge, terror, lullaby, psionic blast and mirror image&#10;Challenge beckons every mob and enrages the visible ones; Terror frightens and Lullaby lulls the mobs in view, each naming a lone target; Psionic Blast flashes, blinds and hurts the mobs in view and blinds the reader; Mirror Image summons up to three images beside the reader and is learnt only when one appears." />
     <MESSAGE value="feat(core): reforge a Short Sword into another melee weapon's upgrade&#10;A Short Sword above level 0 offers REFORGE: it leaves the hand or pack, the player picks a melee weapon, and that weapon takes a safe upgrade for two turns while the sword is used up. Cancelling returns the sword to where it was." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): reforge a Short Sword into another melee weapon's upgrade&#10;A Short Sword above level 0 offers REFORGE: it leaves the hand or pack, the player picks a melee weapon, and that weapon takes a safe upgrade for two turns while the sword is used up. Cancelling returns the sword to where it was." />
+    <MESSAGE value="feat(core): potions and scrolls spawn, with the strength, upgrade and enchantment quotas&#10;Ten potions and all twelve scrolls join the Generator registry, so a random item can now be a potion or a scroll; Liquid Flame and Frost stay out. Level.create adds the Strength, Upgrade and Enchantment quota items it was already counting, and a Scroll of Upgrade never lands on a fire trap. GeneratorTests, LevelPipelineTests and ItemIntegrationTests follow the new item mix.&#10;RegularLevel_CreateItems_NeverDropsAScrollOfUpgradeOntoAnArmedFireTrap also sets Dungeon.Level before Create(), a plan correction: Level.Drop only presses a cell (springing an armed trap into INACTIVE_TRAP) when Dungeon.Level is set, so the invariant it checks was otherwise never exercised." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): potions and scrolls spawn, with the strength, upgrade and enchantment quotas&#10;Ten potions and all twelve scrolls join the Generator registry, so a random item can now be a potion or a scroll; Liquid Flame and Frost stay out. Level.create adds the Strength, Upgrade and Enchantment quota items it was already counting, and a Scroll of Upgrade never lands on a fire trap. GeneratorTests, LevelPipelineTests and ItemIntegrationTests follow the new item mix.&#10;RegularLevel_CreateItems_NeverDropsAScrollOfUpgradeOntoAnArmedFireTrap also sets Dungeon.Level before Create(), a plan correction: Level.Drop only presses a cell (springing an armed trap into INACTIVE_TRAP) when Dungeon.Level is set, so the invariant it checks was otherwise never exercised." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

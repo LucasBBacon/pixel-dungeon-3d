@@ -7,6 +7,7 @@ using PixelDungeon.Core;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
+using PixelDungeon.Core.Actors.Mobs.Npcs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Levels;
@@ -42,6 +43,8 @@ public partial class GameScene : Node3D, IGameView
     private readonly Dictionary<Mob, CharView> _mobViews = new();
     private Node3D _heaps;
     private readonly Dictionary<Heap, HeapView> _heapViews = new();
+    private Node3D _gases;
+    private readonly Dictionary<Blob, BlobView> _blobViews = new();
     private GoldIndicator _goldIndicator;
 
     private static readonly Dictionary<Type, Color> MobColors = new()
@@ -51,6 +54,7 @@ public partial class GameScene : Node3D, IGameView
         [typeof(Gnoll)] = new Color(0.45f, 0.30f, 0.15f),
         [typeof(Crab)] = new Color(0.85f, 0.35f, 0.12f),
         [typeof(Rat)] = new Color(0.40f, 0.35f, 0.45f),
+        [typeof(MirrorImage)] = new Color(0.55f, 0.70f, 1.00f),
     };
 
     internal static Color ColorForMob(Mob mob) =>
@@ -70,6 +74,9 @@ public partial class GameScene : Node3D, IGameView
 
         _heaps = new Node3D { Name = "Heaps" };
         AddChild(_heaps);
+
+        _gases = new Node3D { Name = "Gases" };
+        AddChild(_gases);
 
         _camera = new CameraRig { Name = "CameraRig" };
         AddChild(_camera);
@@ -163,11 +170,17 @@ public partial class GameScene : Node3D, IGameView
             AddHeap(heap);
         }
 
+        foreach (var blob in Dungeon.Level.Blobs.Values)
+        {
+            AddBlob(blob);
+        }
+
         _heroView = CharView.For(Dungeon.Hero, new Color(0.2f, 0.4f, 1f));
         _heroView.UpdateArmor(Dungeon.Hero.Tier());
         _chars.AddChild(_heroView);
         Dungeon.Hero.Sprite = _heroView;
         _heroView.Place(Dungeon.Hero.Pos);
+        Dungeon.Hero.UpdateSpriteState();
 
         foreach (var mob in Dungeon.Level.Mobs)
         {
@@ -225,6 +238,13 @@ public partial class GameScene : Node3D, IGameView
             _heaps.RemoveChild(child);
             child.QueueFree(); // discarded heaps included
         }
+
+        foreach (var view in _blobViews.Values)
+        {
+            view.QueueFree();
+        }
+
+        _blobViews.Clear();
     }
 
     public override void _Process(double delta)
@@ -284,6 +304,15 @@ public partial class GameScene : Node3D, IGameView
                 var p = heap.Pos;
                 view.Visible = Dungeon.Visible[p] || Dungeon.Level.Visited[p] || Dungeon.Level.Mapped[p];
                 view.SetLit(Dungeon.Visible[p]);
+            }
+
+            foreach (var (blob, view) in _blobViews.ToArray())
+            {
+                if (!Dungeon.Level.Blobs.TryGetValue(blob.GetType(), out var current) || current != blob)
+                {
+                    _blobViews.Remove(blob);
+                    view.QueueFree();
+                }
             }
         }
 
@@ -397,10 +426,70 @@ public partial class GameScene : Node3D, IGameView
         {
             _renderer.Flash(cell);
         }
+        else if (kind == EffectKind.Discover)
+        {
+            var spark = new MeshInstance3D
+            {
+                Mesh = new BoxMesh { Size = new Vector3(0.3f, 0.3f, 0.3f) },
+                MaterialOverride = TerrainVisuals.Unshaded(Colors.White),
+                Position = LevelRenderer.CellToWorld(cell) + new Vector3(0f, 0.5f, 0f),
+                RotationDegrees = new Vector3(45f, 45f, 0f),
+            };
+            AddChild(spark);
+            var tween = spark.CreateTween().SetParallel();
+            tween.TweenProperty(spark, "scale", Vector3.One * 0.05f, 0.5);
+            tween.TweenProperty(spark, "rotation_degrees:y", 225f, 0.5);
+            tween.Chain().TweenCallback(Callable.From(spark.QueueFree));
+        }
+    }
+
+    public void AddBlob(Blob blob)
+    {
+        if (_gases == null || _blobViews.ContainsKey(blob))
+        {
+            return;
+        }
+
+        var view = BlobView.For(blob);
+        _gases.AddChild(view);
+        _blobViews[blob] = view;
+    }
+
+    public void Flash(uint color)
+    {
+        _pane.Flash(CharView.FromArgb(color));
+    }
+
+    public void Splash(int cell, uint color, int n)
+    {
+        var burst = new Node3D { Position = LevelRenderer.CellToWorld(cell) };
+        AddChild(burst);
+        var material = TerrainVisuals.Unshaded(CharView.FromArgb(color));
+        for (var i = 0; i < n; i++)
+        {
+            var bit = new MeshInstance3D
+            {
+                Mesh = new BoxMesh { Size = Vector3.One * 0.1f },
+                MaterialOverride = material,
+                Position = new Vector3(0f, 0.1f, 0f),
+            };
+            burst.AddChild(bit);
+            var target = new Vector3((GD.Randf() - 0.5f) * 1.2f, GD.Randf() * 0.5f, (GD.Randf() - 0.5f) * 1.2f);
+            bit.CreateTween().TweenProperty(bit, "position", target, 0.5);
+        }
+
+        GetTree().CreateTimer(0.5).Timeout += () =>
+        {
+            if (IsInstanceValid(burst))
+            {
+                burst.QueueFree();
+            }
+        };
     }
 
     public void ShowWindow(WindowRequest request)
     {
+        _selector.Cancel();
         _openWindows++;
         UpdateSelector();
         _pane.ShowWindow(request, () =>
@@ -503,6 +592,11 @@ public partial class GameScene : Node3D, IGameView
         _chars.AddChild(view);
         mob.Sprite = view;
         view.Place(mob.Pos);
+        if (mob is MirrorImage image)
+        {
+            _heroView.UpdateArmor(image.Tier);
+        }
+        mob.UpdateSpriteState();
         if (mob.Flying)
         {
             // applied after place.
@@ -630,21 +724,6 @@ public partial class GameScene : Node3D, IGameView
     public void SelectItem(Action<Item> listener, BagMode mode, string title)
     {
         OpenBag(WndBag.LastBag(listener, mode, title));
-    }
-
-    public void AddBlob(Blob blob)
-    {
-        // TODO: GameScene.addBlobSprite adds a BlobEmitter that draws the gas
-    }
-
-    public void Flash(uint color)
-    {
-        // TODO: GameScene.flash fades a full-screen block of the colour out over Fader.FADE_TIME
-    }
-
-    public void Splash(int cell, uint color, int n)
-    {
-        // TODO: Splash.at bursts n particles of the colour from the cell
     }
 
     private void OpenBag(WndBag wnd)

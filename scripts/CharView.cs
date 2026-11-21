@@ -23,10 +23,18 @@ public partial class CharView : Node3D, ICharView
 
     private const float StatusStackOffset = 0.25f;
 
+    private const float InvisibleAlpha = 0.4f;
+    private const double AlphaTime = 0.4;
+    private const float LevitateHeight = 0.25f;
+    private const float BodyY = 0.4f;
+
     private Char _ch;
     private Color _color;
     private StandardMaterial3D _material;
+    private Node3D _lift;
     private MeshInstance3D _body;
+    private Tween _alphaTween;
+    private Tween _hover;
     private readonly List<Label3D> _statusFloaters = [];
     private Label3D _emo;
     private Tween _motion;
@@ -43,14 +51,16 @@ public partial class CharView : Node3D, ICharView
     {
         _color = color;
         _material = TerrainVisuals.Unshaded(color);
+        _lift = new Node3D { Name = "Lift" };
+        AddChild(_lift);
 
         _body = new MeshInstance3D
         {
             Mesh = new BoxMesh { Size = new Vector3(0.6f, 0.8f, 0.6f) },
             MaterialOverride = _material,
-            Position = new Vector3(0f, 0.4f, 0f),
+            Position = new Vector3(0f, BodyY, 0f),
         };
-        AddChild(_body);
+        _lift.AddChild(_body);
 
         _emo = new Label3D
         {
@@ -302,33 +312,92 @@ public partial class CharView : Node3D, ICharView
         // cube takes a tint instead, tier 0 its own color
         if (tier <= 0)
         {
-            _material.AlbedoColor = _color;
+            _material.AlbedoColor = KeepAlpha(_color);
+            return;
         }
 
         // TODO: HeroSprite shows worn class armour, tier 6, as own sprite strip. until class armours exist a tier above 5 draws as plate
         var image = ArmorImages[Mathf.Min(tier, ArmorImages.Length) - 1];
-        _material.AlbedoColor = _color.Lerp(ItemVisuals.ColorOf(image), ArmorBlend);
+        _material.AlbedoColor = KeepAlpha(_color.Lerp(ItemVisuals.ColorOf(image), ArmorBlend));
     }
+
+    private Color KeepAlpha(Color c) => new(c.R, c.G, c.B, _material.AlbedoColor.A);
 
     public void Read()
     {
-        // TODO: HeroSprite.read() plays its ten-frame read animation before onOperateComplete
-        Operate(_ch.Pos);
+        var tween = CreateTween();
+        tween.TweenProperty(_body, "position:y", BodyY + 0.15f, 0.25);
+        tween.TweenProperty(_body, "position:y", BodyY, 0.25);
+        tween.Finished += () => _ch.OnOperateComplete();
     }
 
     public void Add(CharState state)
     {
-        // TODO: CharSprite.add(INVISIBLE) fades the sprite to 0.4 alpha and add(LEVITATING) pours jet puffs under it
+        switch (state)
+        {
+            case CharState.Invisible:
+                TweenAlpha(InvisibleAlpha);
+                break;
+            case CharState.Levitating:
+                StartHover();
+                break;
+        }
     }
 
     public void Remove(CharState state)
     {
-        // TODO: CharSprite.remove(INVISIBLE) fades the sprite back to opaque and remove(LEVITATING) stops the jet puffs
+        switch (state)
+        {
+            case CharState.Invisible:
+                TweenAlpha(1f);
+                break;
+            case CharState.Levitating:
+                StopHover();
+                break;
+        }
     }
 
     public void FadeIn()
     {
-        // TODO: WandOfBlink.appear sets alpha 0 and tweens it to 1 over 0.4 s
+        var c = _material.AlbedoColor;
+        _material.AlbedoColor = new Color(c.R, c.G, c.B, 0f);
+        TweenAlpha(1f);
+    }
+
+    private void TweenAlpha(float alpha)
+    {
+        _alphaTween?.Kill();
+        _material.Transparency = BaseMaterial3D.TransparencyEnum.Alpha;
+        _alphaTween = CreateTween();
+        _alphaTween.TweenProperty(_material, "albedo_color:a", alpha, AlphaTime);
+        _alphaTween.Finished += () =>
+        {
+            _alphaTween = null;
+            if (alpha >= 1f)
+            {
+                _material.Transparency = BaseMaterial3D.TransparencyEnum.Disabled;
+            }
+        };
+    }
+
+    private void StartHover()
+    {
+        _hover?.Kill();
+        _hover = CreateTween().SetLoops();
+        _hover
+            .TweenProperty(_lift, "position:y", LevitateHeight + 0.05f, 0.5)
+            .SetTrans(Tween.TransitionType.Sine);
+        _hover
+            .TweenProperty(_lift, "position:y", LevitateHeight - 0.05f, 0.5)
+            .SetTrans(Tween.TransitionType.Sine);
+    }
+
+    private void StopHover()
+    {
+        _hover?.Kill();
+        _hover = null;
+        var down = CreateTween();
+        down.TweenProperty(_lift, "position:y", 0f, 0.2);
     }
 
     public bool IsMoving { get; private set; }
