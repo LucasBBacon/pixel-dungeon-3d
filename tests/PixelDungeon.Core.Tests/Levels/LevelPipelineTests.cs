@@ -1,6 +1,8 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Food;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Utils;
 
@@ -58,11 +60,20 @@ public class LevelPipelineTests : DungeonFixture
     }
 
     [Fact]
-    public void Create_CountsTheStrengthPotionQuotaEventThoughItemsAreDeferred()
+    public void Create_AtDepthFour_AddsTheStrengthAndUpgradeQuotaItemsToSpawn()
     {
         Dungeon.Depth = 4;
-        TestLevel.Create("#");
+        var level = TestLevel.Create("#");
+
+        // posNeeded: 2 potions due by depth 4 and none yet, (2 - 0) / (4 - 4 + 1) = 2, above any Random.Float()
+        // souNeeded: 3 scrolls due by depth 5, (3 - 0) / (5 - 4 + 1) = 1.5, also certain
         Assert.Equal(1, Dungeon.PotionOfStrength);
+        Assert.Equal(1, Dungeon.ScrollsOfUpgrade);
+        Assert.Single(level.Spawns.OfType<PotionOfStrength>());
+        Assert.Single(level.Spawns.OfType<ScrollOfUpgrade>());
+        // soeNeeded rolls Random.Int(12) < 4
+        Assert.Equal(Dungeon.ScrollsOfEnchantment, level.Spawns.OfType<ScrollOfEnchantment>().Count());
+        Assert.Single(level.Spawns.OfType<Food>());
     }
 
     [Fact]
@@ -238,5 +249,54 @@ public class LevelPipelineTests : DungeonFixture
         Assert.Equal(level.RoomSet.Count(r => r.Type == RoomType.Standard),
             restored.RoomSet.Count(r => r.Type == RoomType.Standard));
         Assert.Equal(level.Map, restored.Map);
+    }
+
+    private sealed class TrappedRegularLevel : RegularLevel
+    {
+        protected override void Decorate()
+        {
+            for (var i = 0; i < Length; i++)
+            {
+                if (Map[i] == Terrain.Empty && i % 3 != 0)
+                {
+                    Map[i] = Terrain.SecretFireTrap;
+                }
+            }
+
+            AddItemToSpawn(new ScrollOfUpgrade());
+        }
+
+        protected override bool[] WaterMap() => new bool[Length];
+
+        protected override bool[] GrassMap() => new bool[Length];
+    }
+
+    [Fact]
+    public void RegularLevel_CreatesItems_NeverDropsAScrollOfUpgradeOntoAnArmedFireTrap()
+    {
+        Dungeon.Depth = 1;
+        var sprung = 0;
+        for (var seed = 1; seed <= 20; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            Dungeon.ScrollsOfUpgrade = 3;
+            var level = new TrappedRegularLevel();
+            Dungeon.Level = level;
+            level.Create();
+
+            // item dropped on armed hidden trap springs, Level.Press leaves INACTIVE_TRAP behind
+            // scroll drops last, if it had sprung trap under its heap, nothing else would be in that heap
+            var scrollHeap = level.Heaps.Values.Single(heap => heap.Items.Any(item => item is ScrollOfUpgrade));
+            if (level.Map[scrollHeap.Pos] == Terrain.InactiveTrap)
+            {
+                Assert.True(scrollHeap.Items.Count > 1,
+                    $"seed {seed}: the Scroll of Upgrade sprang the trap at {scrollHeap.Pos}");
+            }
+
+            sprung += level.Map.Count(terrain => terrain == Terrain.InactiveTrap);
+        }
+
+        Assert.True(sprung > 0, "no item ever landed on a trap, so the check above proved nothing");
     }
 }

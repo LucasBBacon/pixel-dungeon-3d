@@ -5,6 +5,8 @@ using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Items.Weapon.Missiles;
@@ -70,14 +72,47 @@ public class GeneratorTests : DungeonFixture
 
     private static readonly float[] ArmorChances = [1, 1, 1, 1, 1];
 
+    // the POTION table without Liquid Flame (15) and Frost (10), unregistered
+    private static readonly Type[] PotionClasses =
+    [
+        typeof(PotionOfHealing),
+        typeof(PotionOfExperience),
+        typeof(PotionOfToxicGas),
+        typeof(PotionOfParalyticGas),
+        typeof(PotionOfLevitation),
+        typeof(PotionOfStrength),
+        typeof(PotionOfMindVision),
+        typeof(PotionOfPurity),
+        typeof(PotionOfInvisibility),
+        typeof(PotionOfMight),
+    ];
+
+    private static readonly float[] PotionChances = [45, 4, 15, 10, 10, 0, 20, 12, 10, 0];
+
+    private static readonly Type[] ScrollClasses =
+    [
+        typeof(ScrollOfIdentify),
+        typeof(ScrollOfTeleportation),
+        typeof(ScrollOfRemoveCurse),
+        typeof(ScrollOfRecharging),
+        typeof(ScrollOfMagicMapping),
+        typeof(ScrollOfChallenge),
+        typeof(ScrollOfTerror),
+        typeof(ScrollOfLullaby),
+        typeof(ScrollOfPsionicBlast),
+        typeof(ScrollOfMirrorImage),
+        typeof(ScrollOfUpgrade),
+        typeof(ScrollOfEnchantment)
+    ];
+
+    private static readonly float[] ScrollChances = [30, 10, 15, 10, 15, 12, 8, 8, 4, 6, 0, 1];
+
     [Fact]
-    public void Random_OverManySeeds_ReturnsOnlyGoldWeaponsAndArmour()
+    public void Random_OverManySeeds_ReturnsGoldWeaponsArmourPotionsAndScrolls_NeverAnUnregisteredPotion()
     {
         Dungeon.Depth = 1;
-        var gold = 0;
-        var weapons = 0;
-        var armour = 0;
-        for (var seed = 1; seed <= 200; seed++)
+        var seen = new HashSet<Generator.Category>();
+        for (var seed = 1; seed <= 400; seed++)
         {
             Random.Seed(seed);
             Generator.Reset();
@@ -86,13 +121,21 @@ public class GeneratorTests : DungeonFixture
             switch (item)
             {
                 case Gold:
-                    gold++;
+                    seen.Add(Generator.Category.Gold);
                     break;
                 case Weapon:
-                    weapons++;
+                    seen.Add(Generator.Category.Weapon);
                     break;
                 case Armor:
-                    armour++;
+                    seen.Add(Generator.Category.Armor);
+                    break;
+                case Potion potion:
+                    Assert.False(potion is PotionOfLiquidFlame or PotionOfFrost,
+                        $"seed {seed}: {potion.GetType().Name}");
+                    seen.Add(Generator.Category.Potion);
+                    break;
+                case Scroll:
+                    seen.Add(Generator.Category.Scroll);
                     break;
                 default:
                     Assert.Fail($"seed {seed}: {item?.GetType().Name ?? "null"}");
@@ -100,9 +143,8 @@ public class GeneratorTests : DungeonFixture
             }
         }
 
-        // Each is at least a 10-in-75 draw, so 200 seeds miss one with a chance below 1e-12.
-        Assert.True(gold > 0 && weapons > 0 && armour > 0,
-            $"gold {gold}, weapons {weapons}, armour {armour}");
+        // Each category is at least a 10-in-165 draw, so 400 seeds miss one with a chance below 1e-10
+        Assert.Equal(5, seen.Count);
     }
 
     [Fact]
@@ -130,8 +172,6 @@ public class GeneratorTests : DungeonFixture
     [Fact]
     public void RandomCategory_WithRegisteredClass_ReturnsNull()
     {
-        Assert.Null(Generator.Random(Generator.Category.Potion));
-        Assert.Null(Generator.Random(Generator.Category.Scroll));
         Assert.Null(Generator.Random(Generator.Category.Wand));
         Assert.Null(Generator.Random(Generator.Category.Ring));
         Assert.Null(Generator.Random(Generator.Category.Seed));
@@ -179,15 +219,16 @@ public class GeneratorTests : DungeonFixture
     }
 
     [Fact]
-    public void Registry_HoldsGold_AndEveryPortedWeaponsArmorAndFood()
+    public void Registry_HoldsGold_AndEveryPortedWeaponsArmorFoodPotionAndScroll()
     {
-        // 1 + 16 + 5 + 3 = 25. Short Sword, Dart and Mystery Meat weigh 0 but are registered for kits,
-        // loot and Random(Type)
-        // TODO: Incendiary dart
+        // 1 + 16 + 5 + 3 + 10 + 12 = 47
+        // TODO: Incendiary dart, boomerang, liquid flame and frost
         var expected = new[] { typeof(Gold) }
             .Concat(WeaponClasses)
             .Concat(ArmorClasses)
-            .Concat([typeof(Food), typeof(Pasty), typeof(MysteryMeat)]);
+            .Concat([typeof(Food), typeof(Pasty), typeof(MysteryMeat)])
+            .Concat(PotionClasses)
+            .Concat(ScrollClasses);
 
         Assert.Equal(expected.Select(t => t.FullName)
                 .OrderBy(n => n, StringComparer.Ordinal),
@@ -354,6 +395,54 @@ public class GeneratorTests : DungeonFixture
 
         Assert.Equal(200, rations + pasties);
         Assert.InRange(pasties, 1, 199);
+    }
+
+    [Fact]
+    public void RandomCategory_Potion_RollsOverTheRegisteredPotionsInTableOrder()
+    {
+        for (var seed = 1; seed <= 200; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            var result = Generator.Random(Generator.Category.Potion);
+            var nextAfterGenerator = Random.Float();
+
+            Random.Seed(seed);
+            var expected = PotionClasses[Random.Chances(PotionChances)];
+            var nextAfterReplay = Random.Float();
+
+            Assert.Equal(expected, result.GetType());
+            Assert.Equal(nextAfterReplay, nextAfterGenerator);
+        }
+    }
+
+    [Fact]
+    public void RandomCategory_Scroll_RollsOverAllTwelveScrollsInTableOrder()
+    {
+        for (var seed = 1; seed <= 200; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            var result = Generator.Random(Generator.Category.Scroll);
+            var nextAfterGenerator = Random.Float();
+
+            Random.Seed(seed);
+            var expected = ScrollClasses[Random.Chances(ScrollChances)];
+            var nextAfterReplay = Random.Float();
+
+            Assert.Equal(expected, result.GetType());
+            Assert.Equal(nextAfterReplay, nextAfterGenerator);
+        }
+    }
+
+    [Fact]
+    public void RandomType_BuildsTheZeroWeightQuotaClasses_ButNotTheUnregisteredPotions()
+    {
+        Assert.IsType<PotionOfStrength>(Generator.Random(typeof(PotionOfStrength)));
+        Assert.IsType<PotionOfMight>(Generator.Random(typeof(PotionOfMight)));
+        Assert.IsType<ScrollOfUpgrade>(Generator.Random(typeof(ScrollOfUpgrade)));
+        Assert.Null(Generator.Random(typeof(PotionOfLiquidFlame)));
+        Assert.Null(Generator.Random(typeof(PotionOfFrost)));
     }
 
     [Fact]

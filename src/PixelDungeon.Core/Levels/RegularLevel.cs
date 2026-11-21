@@ -1,6 +1,7 @@
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels.Painters;
 using PixelDungeon.Core.Utils;
 
@@ -617,10 +618,17 @@ public abstract class RegularLevel : Level
         foreach (var item in ItemsToSpawn)
         {
             var cell = RandomDropCell();
-            // TODO: ScrollOfUpgrade re-rolls the cell while its FireTrap or SecretFireTrap
+            if (item is ScrollOfUpgrade)
+            {
+                while (Map[cell] == Terrain.FireTrap || Map[cell] == Terrain.SecretFireTrap)
+                {
+                    cell = RandomDropCell();
+                }
+            }
+
             Drop(item, cell).Type = HeapType.Heap;
         }
-        
+
         // TODO: Bones.get() drops previous hero item as Skeleton heap
     }
 

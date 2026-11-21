@@ -2,6 +2,8 @@ using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Armor;
 using PixelDungeon.Core.Items.Food;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Tests.Levels;
@@ -16,6 +18,8 @@ public class ItemIntegrationTests : DungeonFixture
     {
         var sawWeapon = false;
         var sawArmor = false;
+        var sawPotion = false;
+        var sawScroll = false;
         for (var seed = 1; seed <= 100; seed++)
         {
             Random.Seed(seed);
@@ -36,10 +40,12 @@ public class ItemIntegrationTests : DungeonFixture
                         $"seed {seed}: {item}"));
                 sawWeapon |= heap.Items.Any(item => item is Weapon);
                 sawArmor |= heap.Items.Any(item => item is Armor);
+                sawPotion |= heap.Items.Any(item => item is Potion);
+                sawScroll |= heap.Items.Any(item => item is Scroll);
             }
         }
 
-        Assert.True(sawWeapon && sawArmor);
+        Assert.True(sawWeapon && sawArmor && sawPotion && sawScroll);
     }
 
     [Fact]

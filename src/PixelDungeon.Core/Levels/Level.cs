@@ -4,6 +4,8 @@ using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Levels.Painters;
 using PixelDungeon.Core.Mechanics;
@@ -168,19 +170,19 @@ public abstract class Level : IBundlable
             AddItemToSpawn(Generator.Random(Generator.Category.Food));
             if (Dungeon.PosNeeded())
             {
-                // TODO: addItemToSpawn(new PotionOfStrength())
+                AddItemToSpawn(new PotionOfStrength());
                 Dungeon.PotionOfStrength++;
             }
 
             if (Dungeon.SouNeeded())
             {
-                // TODO: addItemToSpawn(new ScrollOfUpgrade())
+                AddItemToSpawn(new ScrollOfUpgrade());
                 Dungeon.ScrollsOfUpgrade++;
             }
 
             if (Dungeon.SoeNeeded())
             {
-                // TODO: addItemToSpawn(new ScrollOfEnchantment())
+                AddItemToSpawn(new ScrollOfEnchantment());
                 Dungeon.ScrollsOfEnchantment++;
             }
 

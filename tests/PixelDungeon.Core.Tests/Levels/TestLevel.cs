@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 
 namespace PixelDungeon.Core.Tests.Levels;
@@ -34,6 +35,8 @@ public sealed class TestLevel : Level
     }
 
     public int SpawnCount => ItemsToSpawn.Count;
+    
+    public List<Item> Spawns => ItemsToSpawn;
 
     public Func<int> RespawnCells;
 

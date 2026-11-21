@@ -213,6 +213,30 @@ public static class Generator
         [typeof(Food.Food)] = () => new Food.Food(),
         [typeof(Food.Pasty)] = () => new Food.Pasty(),
         [typeof(Food.MysteryMeat)] = () => new Food.MysteryMeat(),
+
+        [typeof(Potions.PotionOfHealing)] = () => new Potions.PotionOfHealing(),
+        [typeof(Potions.PotionOfExperience)] = () => new Potions.PotionOfExperience(),
+        [typeof(Potions.PotionOfToxicGas)] = () => new Potions.PotionOfToxicGas(),
+        [typeof(Potions.PotionOfParalyticGas)] = () => new Potions.PotionOfParalyticGas(),
+        [typeof(Potions.PotionOfLevitation)] = () => new Potions.PotionOfLevitation(),
+        [typeof(Potions.PotionOfStrength)] = () => new Potions.PotionOfStrength(), // weight 0: the quota's
+        [typeof(Potions.PotionOfMindVision)] = () => new Potions.PotionOfMindVision(),
+        [typeof(Potions.PotionOfPurity)] = () => new Potions.PotionOfPurity(),
+        [typeof(Potions.PotionOfInvisibility)] = () => new Potions.PotionOfInvisibility(),
+        [typeof(Potions.PotionOfMight)] = () => new Potions.PotionOfMight(), // weight 0
+
+        [typeof(Scrolls.ScrollOfIdentify)] = () => new Scrolls.ScrollOfIdentify(),
+        [typeof(Scrolls.ScrollOfTeleportation)] = () => new Scrolls.ScrollOfTeleportation(),
+        [typeof(Scrolls.ScrollOfRemoveCurse)] = () => new Scrolls.ScrollOfRemoveCurse(),
+        [typeof(Scrolls.ScrollOfRecharging)] = () => new Scrolls.ScrollOfRecharging(),
+        [typeof(Scrolls.ScrollOfMagicMapping)] = () => new Scrolls.ScrollOfMagicMapping(),
+        [typeof(Scrolls.ScrollOfChallenge)] = () => new Scrolls.ScrollOfChallenge(),
+        [typeof(Scrolls.ScrollOfTerror)] = () => new Scrolls.ScrollOfTerror(),
+        [typeof(Scrolls.ScrollOfLullaby)] = () => new Scrolls.ScrollOfLullaby(),
+        [typeof(Scrolls.ScrollOfPsionicBlast)] = () => new Scrolls.ScrollOfPsionicBlast(),
+        [typeof(Scrolls.ScrollOfMirrorImage)] = () => new Scrolls.ScrollOfMirrorImage(),
+        [typeof(Scrolls.ScrollOfUpgrade)] = () => new Scrolls.ScrollOfUpgrade(), // weight 0: the quota's
+        [typeof(Scrolls.ScrollOfEnchantment)] = () => new Scrolls.ScrollOfEnchantment(),
     };
 
     public static IEnumerable<Type> RegisteredTypes => Registry.Keys;

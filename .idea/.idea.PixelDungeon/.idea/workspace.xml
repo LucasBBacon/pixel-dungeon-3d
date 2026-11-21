@@ -15,8 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/ShortSword.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Weapon/Melee/ShortSword.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/BagMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/BagMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/RegularLevel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -25,7 +26,10 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/MeleeWeaponTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/ItemIntegrationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/LevelPipelineTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -257,61 +261,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.8129005789283958E-27" />
-      <entry key="MS500" value="4.8958890494407235E-6" />
-      <entry key="S2" value="0.04871494033001772" />
-      <entry key="S5" value="0.3800030913575127" />
-      <entry key="S10" value="0.9374964981119458" />
-      <entry key="S30" value="3.932431161819267" />
-      <entry key="S60" value="11.058806615604222" />
-      <entry key="M2" value="25.60791493446091" />
-      <entry key="M5" value="60.632338111829704" />
-      <entry key="M10" value="121.036796959445" />
-      <entry key="M15" value="180.8508767689747" />
-      <entry key="M30" value="347.7082003804771" />
-      <entry key="H1" value="642.4828690019802" />
-      <entry key="H2" value="1148.786731567902" />
-      <entry key="H4" value="2100.030883510167" />
-      <entry key="D1" value="6122.152386523188" />
-      <entry key="W1" value="8083.967783764443" />
+      <entry key="MS100" value="2.686435233654977E-8" />
+      <entry key="MS500" value="0.040108112985430294" />
+      <entry key="S2" value="0.9578261208173928" />
+      <entry key="S5" value="2.315957487791008" />
+      <entry key="S10" value="4.079242317512064" />
+      <entry key="S30" value="7.652199601483292" />
+      <entry key="S60" value="9.901066799587365" />
+      <entry key="M2" value="13.893765505979598" />
+      <entry key="M5" value="43.55608709697409" />
+      <entry key="M10" value="100.59608814340474" />
+      <entry key="M15" value="139.4698331104768" />
+      <entry key="M30" value="197.07430385237956" />
+      <entry key="H1" value="235.7514941442051" />
+      <entry key="H2" value="261.5515260094644" />
+      <entry key="H4" value="356.78481126243656" />
+      <entry key="D1" value="3850.6461396087802" />
+      <entry key="W1" value="7913.3220931316355" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0001379072446788" />
-      <entry key="MS500" value="1.2296125845165764" />
-      <entry key="S2" value="2.439329888574357" />
-      <entry key="S5" value="3.9474878315717565" />
-      <entry key="S10" value="5.643564663117039" />
-      <entry key="S30" value="11.007105061287271" />
-      <entry key="S60" value="17.344922628959427" />
-      <entry key="M2" value="26.11443184058005" />
-      <entry key="M5" value="44.30913573408748" />
-      <entry key="M10" value="71.88506694609197" />
-      <entry key="M15" value="97.25739725606941" />
-      <entry key="M30" value="162.45100326349137" />
-      <entry key="H1" value="267.9451387027049" />
-      <entry key="H2" value="437.2833196009967" />
-      <entry key="H4" value="741.5878798690969" />
-      <entry key="D1" value="2020.1242513253665" />
-      <entry key="W1" value="2655.125556777402" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000358751934015" />
+      <entry key="S2" value="1.1002211052554367" />
+      <entry key="S5" value="1.7455501033274419" />
+      <entry key="S10" value="2.7647711026382913" />
+      <entry key="S30" value="4.453619916364953" />
+      <entry key="S60" value="5.189875788298412" />
+      <entry key="M2" value="6.175353358193888" />
+      <entry key="M5" value="12.607518260410435" />
+      <entry key="M10" value="24.974769571156642" />
+      <entry key="M15" value="33.545157015959695" />
+      <entry key="M30" value="46.43163807232573" />
+      <entry key="H1" value="55.19750967422001" />
+      <entry key="H2" value="61.654459958604896" />
+      <entry key="H4" value="94.85650505524181" />
+      <entry key="D1" value="1254.8601627393712" />
+      <entry key="W1" value="2588.2380947693878" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0010403205903613277" />
-      <entry key="MS500" value="0.33013385802768114" />
-      <entry key="S2" value="1.8176895353435585" />
-      <entry key="S5" value="3.8517737532380742" />
-      <entry key="S10" value="6.2281228569717895" />
-      <entry key="S30" value="14.666955525735158" />
-      <entry key="S60" value="28.160382648850536" />
-      <entry key="M2" value="51.52015455895457" />
-      <entry key="M5" value="104.77040909833183" />
-      <entry key="M10" value="192.74934944693007" />
-      <entry key="M15" value="277.9424245908797" />
-      <entry key="M30" value="510.0183472022619" />
-      <entry key="H1" value="910.3159314799194" />
-      <entry key="H2" value="1585.983772832019" />
-      <entry key="H4" value="2841.5499316396954" />
-      <entry key="D1" value="8142.246834644609" />
-      <entry key="W1" value="10739.087768611804" />
+      <entry key="MS100" value="4.934555663332949E-6" />
+      <entry key="MS500" value="0.11541557670780403" />
+      <entry key="S2" value="1.4515812142934825" />
+      <entry key="S5" value="3.5103703488654685" />
+      <entry key="S10" value="6.342480498150615" />
+      <entry key="S30" value="11.807838305341654" />
+      <entry key="S60" value="14.910479328066087" />
+      <entry key="M2" value="19.957383220469143" />
+      <entry key="M5" value="56.07761896312576" />
+      <entry key="M10" value="125.49344040941425" />
+      <entry key="M15" value="172.94808515544986" />
+      <entry key="M30" value="243.4611905233753" />
+      <entry key="H1" value="290.92282708136565" />
+      <entry key="H2" value="323.19151577316444" />
+      <entry key="H4" value="451.6308586464118" />
+      <entry key="D1" value="5105.487316162163" />
+      <entry key="W1" value="10501.55467845099" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -464,14 +468,6 @@
       <workItem from="1794144587802" duration="9856000" />
       <workItem from="1795039995775" duration="72000" />
       <workItem from="1795040113399" duration="2775000" />
-    </task>
-    <task id="LOCAL-00037" summary="fix: game-over cause, mob visibility buffer, and death-window input lock&#10;Every death path (melee, chasm fall, bleeding) called GameScene.GameOver() from Hero.ReallyDie() before Dungeon.Fail() had a chance to run and set Dungeon.ResultDescription, so the &quot;You died&quot; window's first line was always blank. The Java gets away with the identical call order because its gameOver() only shows a banner and the rankings scene reads the cause much later; porting the call site verbatim without porting that laziness broke it here. GameOver() now defers building the window body by one frame (Callable.From(ShowDeathWindow).CallDeferred(), a method reference rather than an expression lambda per this project's earlier lambda-to-Task lesson), so the cause is always populated by the time the window reads it. Verified live in a headless run against both the fixed and reverted code: the reverted version prints ResultDescription='' at GameOver() time, the fix prints the real cause. That same GameOver() call bypassed the counted ShowWindow(request) path, so the death window never disabled CellSelector's input. Hero.Die clears CurAction but not Ready, so WASD behind the window still reached Handle() and could make a corpse walk and fight. GameOver() now routes through ShowWindow(request), and CellSelector's process and select paths also require Dungeon.Hero.IsAlive() as belt-and-braces. Restart's interaction with the open-window counter was traced end to end: the dialog's Confirmed handler runs Restart() synchronously before the dialog hides, so the counter always lands back on zero.&#10;GameScene's per-frame mob-visibility reconcile and AddMob both read Level.FieldOfView, a scratch buffer every Char.Act() overwrites with its own viewshed, mobs included. Reading it after a mob's turn shows the mob's view, not the hero's, so visible mobs could vanish and hidden ones pop into view for the length of an attack tween, and wrongly-hidden mobs would teleport instead of sliding. Both sites now read Dungeon.Visible.&#10;Finally, the death integration test asserted only end-of-test state, so it could not detect the ordering defect above: Dungeon.Fail() does run eventually, just after GameOver() rather than before. RecordingGameView now captures ResultDescription at the moment GameOver() is called, and the test asserts that capture is null, the honest, by-design contract on the Core side, which is exactly what the Godot-side deferral works around.">
-      <option name="closed" value="true" />
-      <created>1791390925477</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1791390925477</updated>
     </task>
     <task id="LOCAL-00038" summary="feat(seam): heap views, cell listeners, missiles, and zap&#10;Heap.Sprite becomes an IHeapView assigned by the view, as Mob.Sprite is, so every level.drop(...).sprite.drop() call site ports verbatim. IGameView gains PickUp, SelectCell, Missile and RefreshQuickSlots; ICharView gains Zap. NullGameView completes a missile at once, so Core throws resolve synchronously without a view.&#10;The Godot view stubs the new members, TODO.">
       <option name="closed" value="true" />
@@ -857,7 +853,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795189303179</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="feat(core): reforge a Short Sword into another melee weapon's upgrade&#10;A Short Sword above level 0 offers REFORGE: it leaves the hand or pack, the player picks a melee weapon, and that weapon takes a safe upgrade for two turns while the sword is used up. Cancelling returns the sword to where it was.">
+      <option name="closed" value="true" />
+      <created>1795191011904</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1795191011904</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -878,7 +882,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(items): weapon strength penalties, identification and rolls&#10;Weapon ports whole, apart from enchantments:&#10;&#10;- accuracy divides by 1.5 and delay multiplies by 1.2 per point of encumbrance, in float, with the Imbue multipliers&#10;- excess strength adds IntRange(0, exStr) damage outside a Huntress's melee&#10;- the twentieth hit while unknown identifies the weapon with the Java message&#10;- &quot;unfamiliarity&quot; and &quot;imbue&quot; round-trip, a zero unfamiliarity restores twenty, and durability is 5 * (16 - level)&#10;- random() rolls upgrade or curse in the Java order&#10;&#10;Enchantments TODO, but Enchant() still draws Enchantment.random()'s&#10;roll." />
     <MESSAGE value="feat(items): melee weapons&#10;MeleeWeapon and its eleven weapons port with their Java stats:&#10;- STR is 8 + 2 * tier, min is tier, and max is (tier^2 - tier + 10) / ACU * DLY in float, so the War Hammer's is 24&#10;- each upgrade lowers STR by 1 and adds 1 to min and tier to max, and a degrade does the reverse&#10;- a broken weapon falls back to its base range&#10;- random() keeps the enchant roll, and Enchantment.random()'s roll behind it, so seeded streams match the Java&#10;&#10;The Short Sword starts at STR 11 with a max of 12. TODO: reforge." />
     <MESSAGE value="feat(items): melee weapon info and price&#10;MeleeWeapon.info() ports the Java text:&#10;&#10;- the quality and tier&#10;- the average damage when the level is known, or the typical damage and strength with the too-heavy warning when it is not&#10;- the fast, slow, accurate and inaccurate sentence with its &quot;and&quot; or &quot;but&quot;&#10;- the balancing lines&#10;- the strength penalty and bonus for a known weapon in the pack&#10;- the held and cursed lines, and the malevolent magic line&#10;&#10;The price doubles per tier through considerState. TODO: enchanted text and price." />
     <MESSAGE value="Armor and the five armours port with their Java stats:&#10;STR is 7 + 2 * tier and DR is tier * (2 + level), with a broken&#10;&#10;- armour counting level 0, each upgrade lowers STR by 1&#10;- wearing armour spends 2 / speed, and replacing it spends that twice, because the old armour comes off with a Spend and no Next&#10;- equip and unequip tell the hero's view the new tier&#10;- cursed armour warns with the Java message and refuses to come off&#10;- the tenth hit taken while unknown identifies it&#10;- random() keeps the glyph roll, and Glyph.random()'s roll behind it&#10;&#10;Belongings.Armor is now an Armor, and Hero.Tier() reads it. TODO glyphs." />
@@ -903,7 +906,8 @@
     <MESSAGE value="feat(core): invisibility, levitation, mind vision, gas immunity, rage, blindness&#10;Invisibility counts on Char.Invisible, which mobs already check, and an attack dispels it while enemies are in view. Levitation flies, frees a rooted char and presses its cell when it ends. Mind Vision and Blindness reshape the field of view, Rage paths through cells to avoid, and gas immunity shields the hero from paralysis and toxic gas. Char shows the new texts and sprite states, and the hero warns when blinded." />
     <MESSAGE value="feat(core): potions - the colour table, drinking, throwing and shattering&#10;Potion assigns each class a random colour through ItemStatusHandler, hides unknown potions behind their colour, asks before drinking a known harmful potion or throwing a known beneficial one, and applies, drops or shatters by where it lands. Ten potions work in full, Liquid Flame and Frost keep their fire and freezing. Dungeon.Init and Reset build the table, landed potions shatter, and a dying Swarm can drop Healing." />
     <MESSAGE value="feat(core): challenge, terror, lullaby, psionic blast and mirror image&#10;Challenge beckons every mob and enrages the visible ones; Terror frightens and Lullaby lulls the mobs in view, each naming a lone target; Psionic Blast flashes, blinds and hurts the mobs in view and blinds the reader; Mirror Image summons up to three images beside the reader and is learnt only when one appears." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): challenge, terror, lullaby, psionic blast and mirror image&#10;Challenge beckons every mob and enrages the visible ones; Terror frightens and Lullaby lulls the mobs in view, each naming a lone target; Psionic Blast flashes, blinds and hurts the mobs in view and blinds the reader; Mirror Image summons up to three images beside the reader and is learnt only when one appears." />
+    <MESSAGE value="feat(core): reforge a Short Sword into another melee weapon's upgrade&#10;A Short Sword above level 0 offers REFORGE: it leaves the hand or pack, the player picks a melee weapon, and that weapon takes a safe upgrade for two turns while the sword is used up. Cancelling returns the sword to where it was." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): reforge a Short Sword into another melee weapon's upgrade&#10;A Short Sword above level 0 offers REFORGE: it leaves the hand or pack, the player picks a melee weapon, and that weapon takes a safe upgrade for two turns while the sword is used up. Cancelling returns the sword to where it was." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
