@@ -364,6 +364,10 @@ public partial class CharView : Node3D, ICharView
         TweenAlpha(1f);
     }
 
+    public void Fall()
+    {
+    }
+
     private void TweenAlpha(float alpha)
     {
         _alphaTween?.Kill();

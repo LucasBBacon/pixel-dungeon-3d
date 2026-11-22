@@ -2,6 +2,7 @@ using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Plants;
 
 namespace PixelDungeon.Core.View;
 
@@ -103,4 +104,10 @@ public sealed class NullGameView : IGameView
     public void Splash(int cell, uint color, int n)
     {
     }
+
+    public void AddPlant(Plant plant)
+    {
+    }
+
+    public void Lightning(int[] cells, int length, Action onComplete) => onComplete?.Invoke();
 }

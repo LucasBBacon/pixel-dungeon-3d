@@ -12,6 +12,7 @@ using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 using CoreScene = PixelDungeon.Core.Scenes.GameScene;
@@ -486,6 +487,17 @@ public partial class GameScene : Node3D, IGameView
                 burst.QueueFree();
             }
         };
+    }
+
+    public void AddPlant(Plant plant)
+    {
+        // TODO: build plant view
+    }
+
+    public void Lightning(int[] cells, int length, Action onComplete)
+    {
+        // TODO: draw arcs
+        onComplete?.Invoke();
     }
 
     public void ShowWindow(WindowRequest request)

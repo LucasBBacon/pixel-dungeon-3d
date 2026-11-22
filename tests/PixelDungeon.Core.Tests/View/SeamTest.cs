@@ -2,6 +2,7 @@ using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Utils;
@@ -316,5 +317,32 @@ public class SeamTest : DungeonFixture
     private sealed class TestMob : Mob
     {
         protected override bool Act() => false;
+    }
+
+    [Fact]
+    public void Lightning_PlaysTheSoundThenForwardsACopyOfTheCells()
+    {
+        int[] cells = [10, 20];
+        var done = false;
+        GameScene.Lightning(cells, 2, () => done = true);
+        cells[0] = 99;
+        Assert.Equal(new[] {10, 20}, View.Lightnings[0].Cells);
+        Assert.Equal(Assets.SndLightning, View.Sounds[^1].Id);
+        Assert.True(done);
+    }
+
+    [Fact]
+    public void AddPlant_IsRecorded()
+    {
+        var p = new Plant();
+        GameScene.Add(p);
+        Assert.Same(p, View.AddedPlants[0]);
+    }
+
+    [Fact]
+    public void NullPlantView_IgnoresEveryCall()
+    {
+        NullPlantView.Instance.Reset(new Plant());
+        NullPlantView.Instance.Kill();
     }
 }

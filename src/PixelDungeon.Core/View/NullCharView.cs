@@ -84,6 +84,10 @@ public sealed class NullCharView : ICharView
     {
     }
 
+    public void Fall()
+    {
+    }
+
     public bool Visible { get; set; } = true;
     public bool IsMoving => false;
 }

@@ -4,6 +4,8 @@ using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
 using PixelDungeon.Core.Items.Potions;
+using PixelDungeon.Core.Plants;
+using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Scenes;
@@ -68,6 +70,14 @@ public static class GameScene
     public static void Flash(uint color) => Instance.Flash(color);
 
     public static void Splash(int cell, uint color, int n) => Instance.Splash(cell, color, n);
+
+    public static void Add(Plant plant) => Instance.AddPlant(plant);
+
+    public static void Lightning(int[] cells, int length, Action onComplete)
+    {
+        Sample.Play(Assets.SndLightning);
+        Instance.Lightning(cells, length, onComplete);
+    }
 
     // The droppedItems loop from GameScene.create in the Java: items that fell down a chasm land on random respawn cells of the level below
     // Core owns it so it can be tested, the view calls it

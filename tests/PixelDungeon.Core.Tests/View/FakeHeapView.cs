@@ -12,7 +12,9 @@ public class FakeHeapView : IHeapView
     public readonly List<int> DropsFrom = [];
     public readonly List<(int Image, Glowing Glowing)> Views = [];
     public bool Killed;
-
+    public int DropsAtKill;
+    public int LinksAtKill;
+    
     public void Link(Heap heap) => Links.Add(heap);
 
     public void Link() => Relinks++;
@@ -25,5 +27,10 @@ public class FakeHeapView : IHeapView
 
     public void View(int image, Glowing glowing) => Views.Add((image, glowing));
 
-    public void Kill() => Killed = true;
+    public void Kill()
+    {
+        Killed = true;
+        DropsAtKill = Drops;
+        LinksAtKill = Links.Count;
+    }
 }

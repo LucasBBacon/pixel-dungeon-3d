@@ -2,6 +2,7 @@ using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Items.Bags;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Tests.View;
@@ -127,6 +128,27 @@ public class RecordingGameView : IGameView
     public void Flash(uint color) => Flashes.Add(color);
 
     public void Splash(int cell, uint color, int n) => Splashes.Add((cell, color, n));
+
+    public readonly List<Plant> AddedPlants = [];
+
+    public readonly List<FakePlantView> PlantViews = [];
+
+    public readonly List<(int[] Cells, int Length)> Lightnings = [];
+
+    public void AddPlant(Plant plant)
+    {
+        AddedPlants.Add(plant);
+        var view = new FakePlantView();
+        plant.Sprite = view;
+        PlantViews.Add(view);
+        view.Reset(plant);
+    }
+
+    public void Lightning(int[] cells, int length, Action onComplete)
+    {
+        Lightnings.Add(((int[])cells.Clone(), length));
+        onComplete?.Invoke();
+    }
 
     public void ChooseItem(Item item) => ItemSelections[^1].Listener(item);
 

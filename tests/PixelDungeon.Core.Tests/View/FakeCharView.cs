@@ -18,6 +18,7 @@ public class FakeCharView : ICharView
     public readonly List<int> ArmorTiers = [];
     public int Reads;
     public int FadeIns;
+    public int Falls;
     public readonly List<(CharState State, bool Added)> States = [];
     public readonly List<(uint Color, int N)> BurstLog = [];
 
@@ -69,15 +70,11 @@ public class FakeCharView : ICharView
     }
 
     public void UpdateArmor(int tier) => ArmorTiers.Add(tier);
-
     public void Read() => Reads++;
-
     public void Add(CharState state) => States.Add((state, true));
-
     public void Remove(CharState state) => States.Add((state, false));
-
     public void FadeIn() => FadeIns++;
-
+    public void Fall() => Falls++;
     public bool Visible { get; set; } = true;
     public bool IsMoving => IsMovingFlag;
 }

@@ -1,11 +1,16 @@
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Utils;
+using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Plants;
 
 public class Plant : IBundlable
 {
     public int Pos;
+    public IPlantView Sprite = NullPlantView.Instance;
+    
+    // TODO: plantName, image, desc()
+    // TODO: warden branches in activate() and wither()
 
     public virtual void Activate(Char ch)
     {

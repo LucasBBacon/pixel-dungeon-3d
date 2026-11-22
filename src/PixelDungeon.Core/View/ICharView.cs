@@ -22,6 +22,7 @@ public interface ICharView
     void Add(CharState state); // CharSprite.add(State)
     void Remove(CharState state); // CharSprite.remove(State)
     void FadeIn(); // WandOfBlink.appear: alpha from 0 to 1 over 0.4 s
+    void Fall(); // MobSprite.fall(): shrink and fade the cube over FALL_TIME
     bool Visible { get; set; }
     bool IsMoving { get; }
 }
