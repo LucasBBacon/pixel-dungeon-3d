@@ -14,69 +14,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Utils/ColorMath.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IPlantView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullPlantView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Utils/ColorMathTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakePlantView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Fire.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Blobs/Freezing.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Burning.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Frost.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/ChargrilledMeat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/FrozenCarpaccio.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/FireTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/FireAndIceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PixelDungeon.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/CharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/CharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Plant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Plant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/CharState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/CharState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/EffectKind.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/EffectKind.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/ICharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/IGameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullCharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/View/NullGameView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Paralysis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Buffs/Paralysis.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Char.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/MirrorImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Npcs/MirrorImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Mobs/Swarm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/MysteryMeat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Food/MysteryMeat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Heap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/PixelDungeon.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeCharView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeHeapView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/FakeHeapView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/RecordingGameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/View/SeamTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_PixelDungeon.Core.Tests" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_PixelDungeon.Core.Tests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/CoverletSourceRootsMapping_PixelDungeon.Core.Tests" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/CoverletSourceRootsMapping_PixelDungeon.Core.Tests" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/FoodTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/FoodTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/PixelDungeon.Core.Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/PixelDungeon.Core.Tests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/PixelDungeon.Core.Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/PixelDungeon.Core.Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,11 +188,13 @@
     <setting file="file://$PROJECT_DIR$/src/PixelDungeon.Core/View/WindowRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/ActorTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/BlobTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/FireTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Blobs/GasTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/BuffTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/AfflictionTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffIconTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/BuffsTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/FireAndIceTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/HungerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/Buffs/SightAndStealthTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Actors/CharTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -295,61 +272,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000002308535212" />
-      <entry key="MS500" value="1.273293997507113" />
-      <entry key="S2" value="4.527444438934001" />
-      <entry key="S5" value="8.900749108468492" />
-      <entry key="S10" value="14.337910488014801" />
-      <entry key="S30" value="24.416618410189102" />
-      <entry key="S60" value="32.65837966494351" />
-      <entry key="M2" value="49.4574012723856" />
-      <entry key="M5" value="103.90685427116428" />
-      <entry key="M10" value="191.0466217578195" />
-      <entry key="M15" value="271.14916072559816" />
-      <entry key="M30" value="454.39644682095303" />
-      <entry key="H1" value="650.8409728863218" />
-      <entry key="H2" value="834.5954791432251" />
-      <entry key="H4" value="1084.631627496414" />
-      <entry key="D1" value="4257.191947654303" />
-      <entry key="W1" value="9245.39191447169" />
+      <entry key="MS100" value="1.000000000000011" />
+      <entry key="MS500" value="1.0016197647379188" />
+      <entry key="S2" value="1.2006148073353062" />
+      <entry key="S5" value="1.525950889601936" />
+      <entry key="S10" value="1.725224724812441" />
+      <entry key="S30" value="1.91200639367572" />
+      <entry key="S60" value="2.8207530451548424" />
+      <entry key="M2" value="12.293551370457768" />
+      <entry key="M5" value="72.2283834908636" />
+      <entry key="M10" value="171.22404392402842" />
+      <entry key="M15" value="245.47770501636603" />
+      <entry key="M30" value="374.0362849982027" />
+      <entry key="H1" value="476.94219650490425" />
+      <entry key="H2" value="558.7145551645286" />
+      <entry key="H4" value="696.1451839511292" />
+      <entry key="D1" value="4098.013096420607" />
+      <entry key="W1" value="11688.44094399563" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.980827551562973E-64" />
-      <entry key="MS500" value="2.337660195407957E-13" />
-      <entry key="S2" value="6.953370095688823E-4" />
-      <entry key="S5" value="0.05456047446421054" />
-      <entry key="S10" value="0.2335861205494933" />
-      <entry key="S30" value="0.6331744031425821" />
-      <entry key="S60" value="1.0049643523384373" />
-      <entry key="M2" value="2.455473262722337" />
-      <entry key="M5" value="11.416136274955829" />
-      <entry key="M10" value="31.289635132558903" />
-      <entry key="M15" value="52.5121010894425" />
-      <entry key="M30" value="107.93865088186975" />
-      <entry key="H1" value="173.26152149801666" />
-      <entry key="H2" value="242.84775071109127" />
-      <entry key="H4" value="353.5943347004425" />
-      <entry key="D1" value="1495.7864309615109" />
-      <entry key="W1" value="3167.2434389854666" />
+      <entry key="MS100" value="1.889759539157207E-25" />
+      <entry key="MS500" value="1.188071061145967E-5" />
+      <entry key="S2" value="0.08494775852434955" />
+      <entry key="S5" value="0.5557136366464187" />
+      <entry key="S10" value="1.0511484137565312" />
+      <entry key="S30" value="1.641139351346523" />
+      <entry key="S60" value="2.6068973107844333" />
+      <entry key="M2" value="7.882406355698542" />
+      <entry key="M5" value="30.643344198236033" />
+      <entry key="M10" value="61.1244020840342" />
+      <entry key="M15" value="82.0573224155568" />
+      <entry key="M30" value="116.50629267115232" />
+      <entry key="H1" value="143.1370119756665" />
+      <entry key="H2" value="164.0913779640331" />
+      <entry key="H4" value="200.70456463725372" />
+      <entry key="D1" value="1267.143558586508" />
+      <entry key="W1" value="3757.9141720822618" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0018757150764421849" />
-      <entry key="MS500" value="0.5421755564938456" />
-      <entry key="S2" value="4.104075907326274" />
-      <entry key="S5" value="8.617928593591817" />
-      <entry key="S10" value="14.292951663499643" />
-      <entry key="S30" value="24.89759857945763" />
-      <entry key="S60" value="33.56762401811716" />
-      <entry key="M2" value="51.83761278585816" />
-      <entry key="M5" value="115.24431611102935" />
-      <entry key="M10" value="222.2498529340681" />
-      <entry key="M15" value="323.57140045762804" />
-      <entry key="M30" value="562.2490214429787" />
-      <entry key="H1" value="824.0354981140531" />
-      <entry key="H2" value="1077.3970990676678" />
-      <entry key="H4" value="1438.1928131116124" />
-      <entry key="D1" value="5752.955692890176" />
-      <entry key="W1" value="12412.62858434132" />
+      <entry key="MS100" value="4.162218936056748E-9" />
+      <entry key="MS500" value="0.021113160127973426" />
+      <entry key="S2" value="0.5067045705071105" />
+      <entry key="S5" value="1.493048409977546" />
+      <entry key="S10" value="2.377349749104859" />
+      <entry key="S30" value="3.3842246395890636" />
+      <entry key="S60" value="5.325045507996869" />
+      <entry key="M2" value="20.078881683167136" />
+      <entry key="M5" value="102.74519895955362" />
+      <entry key="M10" value="232.2192737171224" />
+      <entry key="M15" value="327.41703891039765" />
+      <entry key="M30" value="490.4565252993033" />
+      <entry key="H1" value="620.025449646508" />
+      <entry key="H2" value="722.7745368549963" />
+      <entry key="H4" value="896.8302219600655" />
+      <entry key="D1" value="5365.137318839061" />
+      <entry key="W1" value="15446.347063749288" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -522,14 +499,6 @@
       <workItem from="1794144587802" duration="9856000" />
       <workItem from="1795039995775" duration="72000" />
       <workItem from="1795040113399" duration="2775000" />
-    </task>
-    <task id="LOCAL-00042" summary="feat(items): the generator tables behind a registry, and gold&#10;Generator ports all ten category tables verbatim and filters every roll through a type registry, as the Bestiary does. Only Gold is registered, so every random item is gold until 3b and 3c register theirs, a test records the deviation. Weights halve per roll and reset on every level transition, as InterlevelScene resets them. &#10;Gold ports whole, and Gnolls drop it.&#10;Updated two older tests whose expectations assumed Generator was still a skeleton (LevelPipelineTests.RegularLevel_CreateItems_..., renamed to ...DropsGoldHeaps..., SewerLevelTests.Border_IsImpassable_AndHasNoHeapsYet, renamed to Border_IsImpassable) now that level generation drops real gold heaps.">
-      <option name="closed" value="true" />
-      <created>1791757064270</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1791757064271</updated>
     </task>
     <task id="LOCAL-00043" summary="feat(items): drop, throw, and opening a bag&#10;Item gains Actions, Execute, DoDrop, DoThrow, OnThrow and Cast. A throw asks the view for a cell through the thrower listener, traces a Ballistica bolt that stops on the first char, and hands the view a missile whose completion detaches one item, lands it, and spends the turn, so the hero stays Actor._current while it flies, exactly as in the Java. A test holds the missile and proves the scheduler waits. A bag's default action shows it through the new IGameView.ShowBag.">
       <option name="closed" value="true" />
@@ -915,7 +884,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795304790131</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="feat(seam): plants, lightning, falls, burning and frozen states, wounds, midpoint colors">
+      <option name="closed" value="true" />
+      <created>1795351563798</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1795351563798</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -936,7 +913,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(hero): weapons and armour change the hero's combat numbers&#10;The hero's stat hooks read its equipment, as Hero.java's do:&#10;&#10;- accuracy and attack delay take the weapon's factors, and damage rolls the weapon instead of bare hands&#10;- armour heavier than STR divides defence by 1.5 and multiplies speed by 1.3^-1 per point lighter armour adds to a Rogue's defence&#10;- damage reduction is the armour's DR, floored at 0&#10;- attacks proc the weapon and hits taken proc the armour, which identifies armour on the tenth hit&#10;&#10;A swap to heavier armour spends the new armour's time at its own speed. Ranged weapons stay marked for the missile task; Barkskin, Fury, the sprint, TODO: the rings and the subclass procs stay." />
     <MESSAGE value="feat(items): missile weapons, and Hero.Shoot&#10;MissileWeapon and the Dart, Curare Dart, Shuriken, Javelin and Tamahawk port from the Java:&#10;&#10;- a missile is a thrown, identified stack whose random() rolls only its quantity; its stats, prices, descriptions and info are verbatim&#10;- only a Rogue or a Huntress sees EQUIP, which asks &quot;Do you really want to equip it as a melee weapon?&quot; before it wields the stack&#10;- a throw at a character calls Hero.Shoot: a hit uses the missile up, a miss lands it on the cell&#10;- the Curare Dart paralyses for 3 turns, the Javelin cripples and the Tamahawk bleeds by its damage&#10;- a melee hit with equipped missiles uses one up&#10;&#10;Hero gains RangedWeapon and Shoot. The ranged branches of the hero's and the weapon's stat hooks follow in the next commit." />
     <MESSAGE value="feat(hero): a thrown missile drives the hero's accuracy, damage and delay While Hero.Shoot holds a RangedWeapon, the hero's stat hooks use it, as Hero.java's do:&#10;&#10;- attackSkill, damageRoll, attackDelay and attackProc take the ranged weapon over the wielded one, and accuracy halves at distance 1&#10;- a Warrior's missile counts 3 more points of encumbrance for accuracy, and a Huntress's 2 fewer for accuracy and speed&#10;- the excess-strength damage bonus applies when (ranged) == (Huntress), so a Rogue gets it in melee but not when throwing&#10;- Item.Cast scales a missile's throw delay by its speed factor&#10;&#10;TODO: The Sniper's Mark half of the throw delay." />
     <MESSAGE value="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge." />
@@ -961,7 +937,8 @@
     <MESSAGE value="feat(view): sprite states, reading, fading in, flash, splash, sparkle and gases&#10;CharView fades an invisible char to 0.4 alpha, floats a levitating one, lifts and settles while reading, and fades a teleported char in. GameScene draws each gas as translucent per-cell boxes, flashes the screen, splashes shattered potions, sparkles revealed cells, colours and armours mirror images, re-adds sprite states when a view is linked, and cancels a pending cell selection before any window. Dialogs that ignore Back stay up until one of their options is chosen." />
     <MESSAGE value="feat(view): potion and scroll swatches, selection modes, gas descriptions&#10;Potions draw as flasks in their splash colours and scrolls as parchment tinted by rune. The bag window enables slots for the upgradeable, unidentified, weapon, armour and enchantable selections, and tints unidentified items. Examining a cell adds the description of each gas on it." />
     <MESSAGE value="feat(view): the catalogue of potions and scrolls&#10;WndCatalogus lists each table's known classes, then the unknown ones in grey under their true names, and opens a known item's info as its own child window. It remembers the tab chosen last. The hero window's Catalogus button and a right-click on the backpack button open it." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(view): the catalogue of potions and scrolls&#10;WndCatalogus lists each table's known classes, then the unknown ones in grey under their true names, and opens a known item's info as its own child window. It remembers the tab chosen last. The hero window's Catalogus button and a right-click on the backpack button open it." />
+    <MESSAGE value="feat(seam): plants, lightning, falls, burning and frozen states, wounds, midpoint colors" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(seam): plants, lightning, falls, burning and frozen states, wounds, midpoint colors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

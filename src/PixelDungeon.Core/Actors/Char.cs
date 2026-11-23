@@ -60,10 +60,7 @@ public abstract class Char : Actor
 
         foreach (var b in bundle.GetCollection(TagBuffs))
         {
-            if (b != null)
-            {
-                ((Buff)b).AttachTo(this);
-            }
+            ((Buff)b)?.AttachTo(this);
         }
     }
 
@@ -190,6 +187,8 @@ public abstract class Char : Actor
         {
             return;
         }
+        
+        Buff.Detach<Frost>(this);
 
         var srcClass = src.GetType();
         if (Immunities().Contains(srcClass))
@@ -333,9 +332,17 @@ public abstract class Char : Actor
         {
             Sprite.Idle();
         }
+        else if (buff is Burning)
+        {
+            Sprite.Add(CharState.Burning);
+        }
         else if (buff is Levitation)
         {
             Sprite.Add(CharState.Levitating);
+        }
+        else if (buff is Frost)
+        {
+            Sprite.Add(CharState.Frozen);
         }
         else if (buff is Invisibility)
         {
@@ -344,7 +351,7 @@ public abstract class Char : Actor
             Sprite.Add(CharState.Invisible);
         }
 
-        // TODO: MindVision, Vertigo, Burning, Levitation, Frost
+        // TODO: Vertigo
     }
 
     public virtual void Remove(Buff buff)
@@ -352,17 +359,27 @@ public abstract class Char : Actor
         _buffs.Remove(buff);
         Actor.Remove(buff);
 
-        // TODO: sprite state removal for Burning, Frost (Char.java remove)
-        if (buff is Levitation)
+        if (buff is Burning)
+        {
+            Sprite.Remove(CharState.Burning);
+        }
+        
+        else if (buff is Levitation)
         {
             Sprite.Remove(CharState.Levitating);
         }
+        
 
         else if (buff is Invisibility && Invisible <= 0)
         {
             Sprite.Remove(CharState.Invisible);
         }
         // Paralysis removes CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
+        
+        else if (buff is Frost)
+        {
+            Sprite.Remove(CharState.Frozen);
+        }
     }
 
     public void Remove<T>() where T : Buff
@@ -383,16 +400,24 @@ public abstract class Char : Actor
 
     public void UpdateSpriteState()
     {
-        // TODO: re-add sprite states for Burning, Frost, Light
+        // TODO: Light
         foreach (var buff in _buffs)
         {
-            if (buff is Levitation)
+            if (buff is Burning)
+            {
+                Sprite.Add(CharState.Burning);
+            }
+            else if (buff is Levitation)
             {
                 Sprite.Add(CharState.Levitating);
             }
             else if (buff is Invisibility)
             {
                 Sprite.Add(CharState.Invisible);
+            }
+            else if (buff is Frost)
+            {
+                Sprite.Add(CharState.Frozen);
             }
         }
         // Paralysis re-adds CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).

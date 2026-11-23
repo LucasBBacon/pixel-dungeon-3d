@@ -92,6 +92,10 @@ public class Swarm : Mob
     private Swarm Split()
     {
         var clone = new Swarm { _generation = _generation + 1 };
+        if (GetBuff<Burning>() != null)
+        {
+            Buff.Affect<Burning>(clone).Reignite(clone);
+        }
         if (GetBuff<Poison>() != null)
         {
             Buff.Affect<Poison>(clone).Set(2);

@@ -8,15 +8,10 @@ public class Paralysis : FlavorBuff
 
     public override bool AttachTo(Char target)
     {
-        if (base.AttachTo(target))
-        {
-            target.Paralysed = true;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (!base.AttachTo(target)) return false;
+        
+        target.Paralysed = true;
+        return true;
     }
 
     public override void Detach()
@@ -37,8 +32,7 @@ public class Paralysis : FlavorBuff
 
     public static void Unfreeze(Char ch)
     {
-        // TODO: java also requires ch.buff(Frost.class) == null before clearing paralysed
-        if (ch.GetBuff<Paralysis>() == null)
+        if (ch.GetBuff<Paralysis>() == null && ch.GetBuff<Frost>() == null)
         {
             ch.Paralysed = false;
         }

@@ -92,7 +92,7 @@ public class MirrorImage : Npc
     private static readonly HashSet<Type> ImmunitiesSet =
     [
         typeof(ToxicGas),
-        // TODO: Burning.class
+        typeof(Buffs.Burning),
     ];
 
     public override HashSet<Type> Immunities() => ImmunitiesSet;

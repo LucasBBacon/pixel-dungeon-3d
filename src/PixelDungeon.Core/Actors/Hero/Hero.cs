@@ -933,7 +933,12 @@ public class Hero : Char
     {
         base.Add(buff);
 
-        if (buff is Paralysis)
+        if (buff is Burning)
+        {
+            GLog.W("You catch fire!");
+            Interrupt();
+        }
+        else if (buff is Paralysis)
         {
             GLog.W("You are paralysed!");
             Interrupt();
@@ -960,7 +965,7 @@ public class Hero : Char
             GLog.W("You are bleeding!");
         }
 
-        // TODO: Burning, Ooze, Weakness, Fury, Charm, Vertigo warnings and interrupts
+        // TODO: Ooze, Weakness, Fury, Charm, Vertigo warnings and interrupts
         // TODO: BuffIndicator.RefreshHero()
     }
 

@@ -69,6 +69,10 @@ public class FoodTests : DungeonFixture
     [InlineData(typeof(Pasty), "This is authentic Cornish pasty with traditional filling of beef and potato.",
         "That food tasted delicious!")]
     [InlineData(typeof(MysteryMeat), "Eat at your own risk!", "That food tasted... strange.")]
+    [InlineData(typeof(ChargrilledMeat), "It looks like a decent steak.", "That food tasted delicious!")]
+    [InlineData(typeof(FrozenCarpaccio),
+        "It's a piece of frozen raw meat. The only way to eat it is by cutting thin slices of it. And this way it's surprisingly good.",
+        "That food tasted delicious!")]
     public void InfoAndMessage_AreTheJavas(Type type, string info, string message)
     {
         var food = (Food)Activator.CreateInstance(type);
@@ -203,15 +207,29 @@ public class FoodTests : DungeonFixture
         Assert.Equal(2, Statistics.FoodEaten);
     }
 
-    [Theory]
-    [InlineData(0)] // TODO burning, the roll still draws
-    [InlineData(4)] // the Java's switch has no case 4
-    public void EatMysteryMeat_RollOfZeroOrFour_DrawsTheRollAndInflictsNothing(int roll)
+    [Fact]
+    public void EatMysteryMeat_RollZero_SetsTheHeroBurning()
     {
         var hero = PlaceEater();
         var meat = new MysteryMeat();
         meat.Collect();
-        var seed = SeedRolling(roll);
+        
+        Random.Seed(SeedRolling(0));
+        meat.Execute(hero, Food.AcEat);
+
+        Assert.NotNull(hero.GetBuff<Burning>());
+        Assert.True(View.Logged("Oh it's hot!"));
+        Assert.Contains(("Oh it's hot!", LogKind.Warning), View.Logs);
+        Assert.Contains(("You catch fire!", LogKind.Warning), View.Logs);
+    }
+    
+    [Fact]
+    public void EatMysteryMeat_RollFour_InflictsNothing()
+    {
+        var hero = PlaceEater();
+        var meat = new MysteryMeat();
+        meat.Collect();
+        var seed = SeedRolling(4);
 
         Random.Seed(seed);
         meat.Execute(hero, Food.AcEat);
@@ -222,6 +240,108 @@ public class FoodTests : DungeonFixture
         Random.Seed(seed);
         Random.Int(5);
         Assert.Equal(Random.Int(1000), next); // eating drew exactly one number
+    }
+
+    [Theory]
+    [InlineData(0, "You see your hands turn invisible!")]
+    [InlineData(1, "You feel your skin hardens!")]
+    [InlineData(2, "Refreshing!")]
+    [InlineData(3, "You feel better!")]
+    public void EatFrozenCarpaccio_EachRoll_LogsItsMessageAsInfo(int roll, string message)
+    {
+        var hero = PlaceEater();
+        var food = new FrozenCarpaccio();
+        food.Collect();
+        
+        Random.Seed(SeedRolling(roll));
+        food.Execute(hero, Food.AcEat);
+
+        Assert.Contains((message, LogKind.Info), View.Logs);
+    }
+
+    [Fact]
+    public void EatFrozenCarpaccio_RollZero_TurnsTheHeroInvisible()
+    {
+        var hero = PlaceEater();
+        var food = new FrozenCarpaccio();
+        food.Collect();
+        
+        Random.Seed(SeedRolling(0));
+        food.Execute(hero, Food.AcEat);
+        
+        Assert.Equal(Invisibility.Duration, CooldownOf(hero.GetBuff<Invisibility>()));
+    }
+
+    [Fact]
+    public void EatFrozenCarpaccio_RollTwo_CuresPoisonCrippleAndBleeding()
+    {
+        var hero = PlaceEater();
+        Buff.Affect<Poison>(hero).Set(5);
+        Buff.Prolong<Cripple>(hero, 5f);
+        Buff.Affect<Bleeding>(hero).Set(3);
+        Buff.Prolong<Slow>(hero, 5f);
+        var food = new FrozenCarpaccio();
+        food.Collect();
+
+        Random.Seed(SeedRolling(2));
+        food.Execute(hero, Food.AcEat);
+        
+        Assert.Null(hero.GetBuff<Poison>());
+        Assert.Null(hero.GetBuff<Cripple>());
+        Assert.Null(hero.GetBuff<Bleeding>());
+        Assert.NotNull(hero.GetBuff<Slow>());
+    }
+
+    [Fact]
+    public void EatFrozenCarpaccio_RollThree_HealsAQuarterOfHt_AndBurstsOnlyWhenHurt()
+    {
+        var hero = PlaceEater();
+        hero.HT = 20;
+        hero.HP = 10;
+        var food = new FrozenCarpaccio();
+        food.Quantity(2);
+        food.Collect();
+        var view = (FakeCharView)hero.Sprite;
+        var bursts = view.BurstLog.Count;
+        
+        Random.Seed(SeedRolling(3));
+        food.Execute(hero, Food.AcEat);
+        
+        Assert.Equal(15, hero.HP);
+        Assert.Contains((0xFF33FF33u, 1), view.BurstLog.Skip(bursts));
+
+        hero.HP = 20;
+        bursts = view.BurstLog.Count;
+        Random.Seed(SeedRolling(3));
+        food.Execute(hero, Food.AcEat);
+        
+        Assert.Equal(20, hero.HP);
+        Assert.DoesNotContain((0xFF33FF33u, 1), view.BurstLog.Skip(bursts));
+    }
+
+    [Fact]
+    public void EatFrozenCarpaccio_RollFour_InflictsNothing()
+    {
+        var hero = PlaceEater();
+        var food = new FrozenCarpaccio();
+        food.Collect();
+        
+        Random.Seed(SeedRolling(4));
+        food.Execute(hero, Food.AcEat);
+
+        Assert.IsType<Hunger>(Assert.Single(hero.Buffs()));
+    }
+
+    [Fact]
+    public void CookedMeats_KeepTheMeatsQuantity()
+    {
+        var meat = new MysteryMeat();
+        meat.Quantity(3);
+        
+        Assert.Equal(3, ChargrilledMeat.Cook(meat).Quantity());
+        Assert.Equal(3, FrozenCarpaccio.Cook(meat).Quantity());
+        Assert.IsType<ChargrilledMeat>(ChargrilledMeat.Cook(meat));
+        Assert.IsType<FrozenCarpaccio>(FrozenCarpaccio.Cook(meat));
     }
 
     [Fact]

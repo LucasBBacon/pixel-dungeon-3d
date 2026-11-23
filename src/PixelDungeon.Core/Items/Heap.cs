@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
@@ -165,10 +166,30 @@ public class Heap : IBundlable
         }
     }
 
-    // TODO: burn(), freeze(), transmute(), burnFX(), evaporateFX()
+    public void Burn()
+    {
+        // TODO: port the body
+    }
 
+    public void Freeze()
+    {
+        // TODO: port the body
+    }
+
+    public static void BurnFx(int pos)
+    {
+        GameScene.Splash(pos, 0xFF22EE66, 6);
+        Sample.Play(Assets.SndBurning);
+    }
+
+    public static void EvaporateFx(int pos)
+    {
+        GameScene.Splash(pos, 0xFFE8E8E8, 5);
+    }
+
+    // TODO: transmute()
+    
     public bool IsEmpty() => Items == null || Items.Count == 0;
-
 
     public void Destroy()
     {
@@ -179,7 +200,9 @@ public class Heap : IBundlable
     }
 
     private const string PosConst = "pos";
+
     private const string TypeConst = "type";
+
     private const string ItemsConst = "items";
 
     public void RestoreFromBundle(Bundle bundle)
