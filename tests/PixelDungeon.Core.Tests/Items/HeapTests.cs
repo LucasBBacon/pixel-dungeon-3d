@@ -1,7 +1,12 @@
+using PixelDungeon.Core.Actors;
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Items;
+using PixelDungeon.Core.Items.Food;
 using PixelDungeon.Core.Items.Keys;
+using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Tests.View;
@@ -249,4 +254,146 @@ public class HeapTests : DungeonFixture
         Assert.Single(View.DiscardedHeaps);
         Assert.Same(item, Assert.Single(Dungeon.DroppedItems[3]));
     }
+
+    // ---- Burning and Freezing ----
+
+    [Fact]
+    public void Burn_RemovesWholeScrollStacksAndDew_AndChargrillsMeat()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new Dewdrop());
+        var keep = new TestItem();
+        DropAt(Here, keep);
+        DropAt(Here, new ScrollOfIdentify { QuantityValue = 3 });
+        DropAt(Here, new MysteryMeat { QuantityValue = 2 });
+
+        heap.Burn();
+
+        Assert.Same(heap, Dungeon.Level.Heaps[Here]);
+        Assert.Equal(2, heap.Items.Count);
+        Assert.NotNull(heap.Items.Last);
+        Assert.Same(keep, heap.Items.Last.Value);
+        Assert.NotNull(heap.Items.First);
+        var steak = Assert.IsType<ChargrilledMeat>(heap.Items.First.Value);
+        Assert.Equal(2, steak.Quantity());
+        Assert.False(ViewOf(heap).Killed);
+        Assert.Equal((Here, 0xFF22EE66u, 6), Assert.Single(View.Splashes));
+    }
+
+    [Fact]
+    public void Burn_BurntAndEvaporated_ShowsTheBurnEffectOnly()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new Dewdrop());
+        DropAt(Here, new ScrollOfIdentify());
+
+        heap.Burn();
+
+        Assert.Equal((Here, 0xFF22EE66u, 6), Assert.Single(View.Splashes));
+        Assert.DoesNotContain(View.Splashes, s => s.Color == 0xFFE8E8E8u);
+        Assert.Contains(View.Sounds, s => s.Id == Assets.SndBurning);
+        Assert.False(Dungeon.Level.Heaps.ContainsKey(Here)); // nothing is left, so the heap goes
+        Assert.True(ViewOf(heap).Killed);
+    }
+
+    [Fact]
+    public void Burn_OnlyDew_ShowsSteam()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new Dewdrop());
+
+        heap.Burn();
+
+        Assert.Equal((Here, 0xFFE8E8E8u, 5), Assert.Single(View.Splashes));
+        Assert.False(Dungeon.Level.Heaps.ContainsKey(Here));
+    }
+
+    [Fact]
+    public void Burn_ChestHeap_DoesNothing()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new ScrollOfIdentify(), HeapType.Chest);
+
+        heap.Burn();
+
+        Assert.IsType<ScrollOfIdentify>(Assert.Single(heap.Items));
+        Assert.Same(heap, Dungeon.Level.Heaps[Here]);
+        Assert.Empty(View.Splashes);
+    }
+
+    [Fact]
+    public void Burn_OutOfSight_ChangesTheItemsWithoutAnyEffect()
+    {
+        LoadLevel(
+            "#######",
+            "#.#...#",
+            "#######");
+        PlaceHero(TestLevel.At(1, 1));
+        var far = TestLevel.At(4, 1);
+        var heap = DropAt(far, new ScrollOfIdentify());
+
+        heap.Burn();
+
+        Assert.False(Dungeon.Level.Heaps.ContainsKey(far));
+        Assert.Empty(View.Splashes);
+    }
+
+    [Fact]
+    public void Freeze_MakesCarpaccio_WithNoEffect()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new MysteryMeat { QuantityValue = 3 });
+        var keep = new TestItem();
+        DropAt(Here, keep);
+
+        heap.Freeze();
+
+        Assert.Same(heap, Dungeon.Level.Heaps[Here]);
+        Assert.NotNull(heap.Items.First);
+        Assert.Same(keep, heap.Items.First.Value);
+        Assert.NotNull(heap.Items.Last);
+        var carpaccio = Assert.IsType<FrozenCarpaccio>(heap.Items.Last.Value);
+        Assert.Equal(3, carpaccio.Quantity());
+        Assert.Empty(View.Splashes);
+        Assert.Empty(View.Sounds);
+    }
+
+    [Fact]
+    public void Freeze_OnlyMeat_LeavesTheHeapWithTheCarpaccio_AndAChestIsUntouched()
+    {
+        LoadRoom();
+        var heap = DropAt(Here, new MysteryMeat());
+        heap.Freeze();
+        Assert.IsType<FrozenCarpaccio>(Assert.Single(heap.Items));
+
+        var chest = DropAt(TestLevel.At(3, 1), new MysteryMeat(), HeapType.Chest);
+        chest.Freeze();
+        Assert.IsType<MysteryMeat>(Assert.Single(chest.Items));
+    }
+    
+    [Fact]
+    public void Fire_ScrollHeapOnFloor_DestroysTheHeapAndLeavesTheFloor()
+    {
+        LoadRoom();
+        var cell = TestLevel.At(3, 1);
+        var heap = DropAt(cell, new ScrollOfIdentify());
+        var fire = Blob.Seed<Fire>(cell, 2);
+        GameScene.Add(fire);
+
+        Tick(fire);
+
+        Assert.False(Dungeon.Level.Heaps.ContainsKey(cell));
+        var view = ViewOf(heap);
+        Assert.True(view.Killed);
+        Assert.Equal(view.DropsAtKill, view.Drops); // nothing touched the view after Kill
+        Assert.Equal(view.LinksAtKill, view.Links.Count);
+        Tick(fire);
+        Assert.Equal(0, fire.Cur[cell]);
+        Assert.Equal(Terrain.Empty, Dungeon.Level.Map[cell]);
+    }
+    
+    private static void Tick(Actor actor) =>
+        typeof(Actor)
+            .GetMethod("Act", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            .Invoke(actor, null);
 }

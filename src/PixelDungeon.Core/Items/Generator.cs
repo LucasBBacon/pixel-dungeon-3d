@@ -200,6 +200,7 @@ public static class Generator
         [typeof(Weapon.Melee.ShortSword)] = () => new Weapon.Melee.ShortSword(), // weight 0: a class kit's
         [typeof(Weapon.Missiles.Dart)] = () => new Weapon.Missiles.Dart(), // weight 0: a class kit's
         [typeof(Weapon.Missiles.Javelin)] = () => new Weapon.Missiles.Javelin(),
+        [typeof(Weapon.Missiles.IncendiaryDart)] = () => new Weapon.Missiles.IncendiaryDart(),
         [typeof(Weapon.Missiles.CurareDart)] = () => new Weapon.Missiles.CurareDart(),
         [typeof(Weapon.Missiles.Shuriken)] = () => new Weapon.Missiles.Shuriken(),
         [typeof(Weapon.Missiles.Tamahawk)] = () => new Weapon.Missiles.Tamahawk(),
@@ -213,17 +214,21 @@ public static class Generator
         [typeof(Food.Food)] = () => new Food.Food(),
         [typeof(Food.Pasty)] = () => new Food.Pasty(),
         [typeof(Food.MysteryMeat)] = () => new Food.MysteryMeat(),
+        [typeof(Food.ChargrilledMeat)] = () => new Food.ChargrilledMeat(),
+        [typeof(Food.FrozenCarpaccio)] = () => new Food.FrozenCarpaccio(),
 
         [typeof(Potions.PotionOfHealing)] = () => new Potions.PotionOfHealing(),
         [typeof(Potions.PotionOfExperience)] = () => new Potions.PotionOfExperience(),
         [typeof(Potions.PotionOfToxicGas)] = () => new Potions.PotionOfToxicGas(),
         [typeof(Potions.PotionOfParalyticGas)] = () => new Potions.PotionOfParalyticGas(),
+        [typeof(Potions.PotionOfLiquidFlame)] = () => new Potions.PotionOfLiquidFlame(),
         [typeof(Potions.PotionOfLevitation)] = () => new Potions.PotionOfLevitation(),
         [typeof(Potions.PotionOfStrength)] = () => new Potions.PotionOfStrength(), // weight 0: the quota's
         [typeof(Potions.PotionOfMindVision)] = () => new Potions.PotionOfMindVision(),
         [typeof(Potions.PotionOfPurity)] = () => new Potions.PotionOfPurity(),
         [typeof(Potions.PotionOfInvisibility)] = () => new Potions.PotionOfInvisibility(),
         [typeof(Potions.PotionOfMight)] = () => new Potions.PotionOfMight(), // weight 0
+        [typeof(Potions.PotionOfFrost)] = () => new Potions.PotionOfFrost(),
 
         [typeof(Scrolls.ScrollOfIdentify)] = () => new Scrolls.ScrollOfIdentify(),
         [typeof(Scrolls.ScrollOfTeleportation)] = () => new Scrolls.ScrollOfTeleportation(),
@@ -237,6 +242,8 @@ public static class Generator
         [typeof(Scrolls.ScrollOfMirrorImage)] = () => new Scrolls.ScrollOfMirrorImage(),
         [typeof(Scrolls.ScrollOfUpgrade)] = () => new Scrolls.ScrollOfUpgrade(), // weight 0: the quota's
         [typeof(Scrolls.ScrollOfEnchantment)] = () => new Scrolls.ScrollOfEnchantment(),
+        
+        [typeof(Bomb)] =() => new Bomb(),
     };
 
     public static IEnumerable<Type> RegisteredTypes => Registry.Keys;

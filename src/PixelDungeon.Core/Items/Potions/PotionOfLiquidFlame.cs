@@ -1,3 +1,5 @@
+using PixelDungeon.Core.Actors.Blobs;
+using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Items.Potions;
@@ -14,12 +16,12 @@ public class PotionOfLiquidFlame : Potion
         if (Dungeon.Visible[cell])
         {
             SetKnown();
-            
+
             Splash(cell);
             Sample.Play(Assets.SndShatter);
         }
-        
-        // TODO: GameScene.add(Blob.seed(cell, 2, Fire.class))
+
+        GameScene.Add(Blob.Seed<Fire>(cell, 2));
     }
 
     public override string Desc() =>

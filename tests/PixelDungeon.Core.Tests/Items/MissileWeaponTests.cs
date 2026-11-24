@@ -1,3 +1,4 @@
+using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Actors.Hero;
 using PixelDungeon.Core.Actors.Mobs;
@@ -648,5 +649,124 @@ public class MissileWeaponTests : DungeonFixture
         View.Answer(TestLevel.At(4, 1)); // an empty cell: the shuriken lands, and the callback spends the delay
 
         Assert.Equal(expected, hero.TimeLeft, 4);
+    }
+
+    // ---- Incendiary Dart ----
+
+    [Fact]
+    public void IncendiaryDart_Stats_MatchJava()
+    {
+        var single = new IncendiaryDart();
+        var stack = new IncendiaryDart(3);
+
+        Assert.Equal("incendiary dart", single.Name());
+        Assert.Equal(ItemSpriteSheet.IncendiaryDart, single.Image());
+        Assert.Equal(12, single.Str);
+        Assert.Equal(1, single.Min());
+        Assert.Equal(2, single.Max());
+        Assert.Equal(10, single.Price());
+        Assert.Equal(30, stack.Price());
+        Assert.Equal(
+            "The spike on each of these darts is designed to pin it to its target while the unstable compounds strapped to its length burst into brilliant flames.",
+            single.Desc());
+
+        for (var seed = 1; seed <= 20; seed++)
+        {
+            Random.Seed(seed);
+            var darts = new IncendiaryDart();
+            darts.Random();
+            Random.Seed(seed);
+            Assert.Equal(Random.Int(3, 6), darts.Quantity());
+        }
+    }
+
+    [Fact]
+    public void IncendiaryDart_Hit_IgnitesBeforeTheHit()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var rat = PlaceRat(4);
+        var darts = new IncendiaryDart(3);
+        darts.Collect();
+
+        darts.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(5, 1));
+
+        Assert.Equal(2, darts.Quantity());
+        var burning = rat.GetBuff<Burning>();
+        Assert.NotNull(burning);
+        Assert.Equal(Burning.Duration(rat), BurningLeft(burning));
+        Assert.Empty(Dungeon.Level.Heaps);
+    }
+
+    private static float BurningLeft(Burning burning)
+    {
+        var bundle = new Bundle();
+        burning.StoreInBundle(bundle);
+        return bundle.GetFloat("left");
+    }
+
+    [Fact]
+    public void IncendiaryDart_MissOntoGrass_StartsFireFourAndLeavesNoHeap()
+    {
+        LoadLevel(
+            "#######",
+            "#..,..#",
+            "#######"
+        );
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var darts = new IncendiaryDart(3);
+        darts.Collect();
+
+        darts.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(3, 1));
+
+        Assert.Equal(2, darts.Quantity());
+        Assert.Equal(4, Dungeon.Level.Blobs[typeof(Fire)].Cur[TestLevel.At(3, 1)]);
+        Assert.Empty(Dungeon.Level.Heaps);
+    }
+
+    [Fact]
+    public void IncendiaryDart_MissOntoFloor_DropsTheDart()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var darts = new IncendiaryDart(3);
+        darts.Collect();
+
+        darts.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(4, 1));
+
+        Assert.IsType<IncendiaryDart>(Dungeon.Level.Heaps[TestLevel.At(4, 1)].Peek());
+        Assert.Empty(Dungeon.Level.Blobs);
+    }
+
+    [Fact]
+    public void IncendiaryDart_DodgedByAMob_LandsOnItsCell()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(TestLevel.At(1, 1));
+        hero.Sprite = new FakeCharView();
+        var dodger = new Dodger { Pos = TestLevel.At(4, 1), Sprite = new FakeCharView() };
+        GameScene.Add(dodger);
+        var darts = new IncendiaryDart(3);
+        darts.Collect();
+        Random.Seed(1);
+        var attackCeiling = Random.Float(10);
+        var defence = Random.Float(1000000);
+        Assert.True(defence > attackCeiling);
+        Random.Seed(1);
+
+        darts.Execute(hero, Item.AcThrow);
+        View.Answer(TestLevel.At(5, 1));
+
+        Assert.Equal(2, darts.Quantity());
+        var heap = Dungeon.Level.Heaps[TestLevel.At(4, 1)];
+        Assert.IsType<IncendiaryDart>(heap.Peek());
+        Assert.Equal(1, ((FakeHeapView)heap.Sprite).Drops);
+        Assert.Null(dodger.GetBuff<Burning>());
     }
 }

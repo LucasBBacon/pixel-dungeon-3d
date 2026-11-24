@@ -92,7 +92,7 @@ public class GasPotionTests : DungeonFixture
     }
 
     [Fact]
-    public void LiquidFlame_ShatterInSight_LearnsItAndSplashes_ButStartsNoFireYet()
+    public void LiquidFlame_ShatterInSight_LearnsItSplashesAndSeedsFireTwo()
     {
         PlaceHeroInCorridor(1);
         var potion = new PotionOfLiquidFlame();
@@ -100,21 +100,113 @@ public class GasPotionTests : DungeonFixture
         potion.Shatter(C(4));
 
         Assert.True(potion.IsKnown());
-        Assert.Single(View.Splashes);
-        Assert.Empty(Dungeon.Level.Blobs);
+        Assert.Equal((C(4), Potion.SplashColor(potion.Image()), 5), Assert.Single(View.Splashes));
+        Assert.Contains(View.Sounds, s => s.Id == Assets.SndShatter);
+        var fire = Assert.IsType<Fire>(Dungeon.Level.Blobs[typeof(Fire)]);
+        Assert.Equal(2, fire.Cur[C(4)]);
+        Assert.Same(fire, Assert.Single(View.AddedBlobs));
+    }
+
+    private sealed class Dummy : Char
+    {
+        public Dummy(int ht)
+        {
+            HP = HT = ht;
+        }
+
+        protected override bool Act() => false;
+    }
+
+    private static Dummy PlaceDummy(int cell)
+    {
+        var dummy = new Dummy(50) { Pos = cell };
+        Actor.OccupyCell(dummy);
+        return dummy;
     }
 
     [Fact]
-    public void Frost_Shatter_DoesNothingUntilFreezingExists()
+    public void LiquidFlame_ShatterOutOfSight_StillSeedsFireTwo()
     {
-        PlaceHeroInCorridor(1);
-        var potion = new PotionOfFrost();
+        LoadLevel(
+            "#########",
+            "#.#.....#",
+            "#########");
+        PlaceHero(C(1));
+        var potion = new PotionOfLiquidFlame();
 
-        potion.Shatter(C(4));
+        potion.Shatter(C(5));
 
         Assert.False(potion.IsKnown());
         Assert.Empty(View.Splashes);
-        Assert.Empty(View.Logs);
+        Assert.Equal(2, Dungeon.Level.Blobs[typeof(Fire)].Cur[C(5)]);
+    }
+
+    [Fact]
+    public void Frost_Shatter_FreezesWithinTwoThroughOpenCells_AndNotBehindWalls()
+    {
+        LoadLevel(
+            "#########",
+            "#.....#.#",
+            "#########");
+        PlaceHero(C(1));
+        var near = PlaceDummy(C(4));
+        var edge = PlaceDummy(C(3));
+        var far = PlaceDummy(C(2));
+        var behindWall = PlaceDummy(C(7));
+        var potion = new PotionOfFrost();
+
+        potion.Shatter(C(5));
+
+        Assert.NotNull(near.GetBuff<Frost>());
+        Assert.NotNull(edge.GetBuff<Frost>());
+        Assert.Null(far.GetBuff<Frost>()); // three cells away
+        Assert.Null(behindWall.GetBuff<Frost>()); // two cells away, but through wall
+        Assert.True(potion.IsKnown());
+        Assert.Contains(View.Sounds, s => s.Id == Assets.SndShatter);
+        Assert.Contains((C(5), Potion.SplashColor(potion.Image()), 5), View.Splashes);
+    }
+
+    [Fact]
+    public void Frost_ShatterOutOfSightButAnAffectedCellVisible_LearnsIt()
+    {
+        PlaceHeroInCorridor(1);
+        Dungeon.Visible[C(5)] = false;
+        Dungeon.Visible[C(4)] = true;
+        var potion = new PotionOfFrost();
+
+        potion.Shatter(C(5));
+
+        Assert.True(potion.IsKnown());
+        Assert.Contains((C(5), Potion.SplashColor(potion.Image()), 5),
+            View.Splashes); // the flask splashes where it broke
+        Assert.Contains(View.Sounds, s => s.Id == Assets.SndShatter);
+    }
+
+    [Fact]
+    public void Frost_ShatterWhereNothingIsVisible_StaysUnknown()
+    {
+        PlaceHeroInCorridor(1);
+        Array.Fill(Dungeon.Visible, false);
+        var potion = new PotionOfFrost();
+
+        potion.Shatter(C(5));
+
+        Assert.False(potion.IsKnown());
+        Assert.Empty(View.Splashes);
+    }
+
+    [Fact]
+    public void Frost_Shatter_PutsOutFireOnTheCellsItFreezes()
+    {
+        PlaceHeroInCorridor(1);
+        var fire = Blob.Seed<Fire>(C(4), 4);
+        fire.Seed(C(2), 4);
+        var potion = new PotionOfFrost();
+
+        potion.Shatter(C(5));
+
+        Assert.Equal(0, fire.Cur[C(4)]);
+        Assert.Equal(4, fire.Cur[C(2)]);
     }
 
     // ---- purification ----

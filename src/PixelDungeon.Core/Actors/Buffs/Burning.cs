@@ -90,7 +90,7 @@ public class Burning : Buff, Hero.Hero.IDoom
 
     public override string ToString() => "Burning";
 
-    private static float Duration(Char ch)
+    public static float Duration(Char ch)
     {
         // TODO: RingOfElements.Resistance buff
         return DurationConst;

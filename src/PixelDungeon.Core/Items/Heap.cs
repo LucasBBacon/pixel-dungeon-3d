@@ -168,12 +168,88 @@ public class Heap : IBundlable
 
     public void Burn()
     {
-        // TODO: port the body
+        // TODO: MIMIC heap spawns mimic, sets it burning, bursts five flames and is destroyed
+        if (Type != HeapType.Heap)
+        {
+            return;
+        }
+
+        var burnt = false;
+        var evaporated = false;
+
+        foreach (var item in Items.ToArray())
+        {
+            if (item is Scrolls.Scroll)
+            {
+                Items.Remove(item);
+                burnt = true;
+            }
+            else if (item is Dewdrop)
+            {
+                Items.Remove(item);
+                evaporated = true;
+            }
+            else if (item is Food.MysteryMeat meat)
+            {
+                Replace(item, Food.ChargrilledMeat.Cook(meat));
+                burnt = true;
+            }
+        }
+
+        if (burnt || evaporated)
+        {
+            if (Dungeon.Visible[Pos])
+            {
+                if (burnt)
+                {
+                    BurnFx(Pos);
+                }
+                else
+                {
+                    EvaporateFx(Pos);
+                }
+            }
+
+            if (IsEmpty())
+            {
+                Destroy();
+            }
+            else
+            {
+                Sprite.View(Image(), Glowing());
+            }
+        }
     }
 
     public void Freeze()
     {
-        // TODO: port the body
+        // TODO: MIMIC heap spawns frozen mimic for Frost.Duration(m) * Random.Float(1.0f, 1.5f), destroyed
+        if (Type != HeapType.Heap)
+        {
+            return;
+        }
+
+        var frozen = false;
+        foreach (var item in Items.ToArray())
+        {
+            if (item is Food.MysteryMeat meat)
+            {
+                Replace(item, Food.FrozenCarpaccio.Cook(meat));
+                frozen = true;
+            }
+        }
+
+        if (frozen)
+        {
+            if (IsEmpty())
+            {
+                Destroy();
+            }
+            else
+            {
+                Sprite.View(Image(), Glowing());
+            }
+        }
     }
 
     public static void BurnFx(int pos)
@@ -188,7 +264,7 @@ public class Heap : IBundlable
     }
 
     // TODO: transmute()
-    
+
     public bool IsEmpty() => Items == null || Items.Count == 0;
 
     public void Destroy()

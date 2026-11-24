@@ -40,7 +40,7 @@ public class Item : IBundlable
     protected internal int ImageValue = 0;
 
     public bool Stackable = false;
-    protected internal int QuantityValue = 1;
+    public int QuantityValue = 1;
 
     private int _level = 0;
     private int _durability;

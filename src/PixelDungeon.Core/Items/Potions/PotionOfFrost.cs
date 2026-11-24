@@ -1,8 +1,11 @@
+using PixelDungeon.Core.Actors.Blobs;
+using PixelDungeon.Core.Utils;
+
 namespace PixelDungeon.Core.Items.Potions;
 
 public class PotionOfFrost : Potion
 {
-    // TODO: DISTANCE = 2, reach of the freezing cloud
+    private const int Distance = 2;
 
     public PotionOfFrost()
     {
@@ -11,7 +14,26 @@ public class PotionOfFrost : Potion
 
     public override void Shatter(int cell)
     {
-        // TODO: Freezing.affect(i, fire)
+        PathFinder.BuildDistanceMap(cell, BArray.Not(Levels.Level.LosBlocking, null), Distance);
+
+        var fire = Dungeon.Level.Blobs.GetValueOrDefault(typeof(Fire)) as Fire;
+        
+        var visible = false;
+        for (var i = 0; i < Levels.Level.Length; i++)
+        {
+            if (PathFinder.Distance[i] < int.MaxValue)
+            {
+                visible = Freezing.Affect(i, fire) || visible;
+            }
+        }
+        
+        if (visible)
+        {
+            Splash(cell);
+            Sample.Play(Assets.SndShatter);
+
+            SetKnown();
+        }
     }
 
     public override string Desc() =>

@@ -35,6 +35,7 @@ public class GeneratorTests : DungeonFixture
         typeof(ShortSword),
         typeof(Dart),
         typeof(Javelin),
+        typeof(IncendiaryDart),
         typeof(CurareDart),
         typeof(Shuriken),
         typeof(Tamahawk)
@@ -54,6 +55,7 @@ public class GeneratorTests : DungeonFixture
         1,
         0,
         0,
+        1,
         1,
         1,
         1,
@@ -79,15 +81,31 @@ public class GeneratorTests : DungeonFixture
         typeof(PotionOfExperience),
         typeof(PotionOfToxicGas),
         typeof(PotionOfParalyticGas),
+        typeof(PotionOfLiquidFlame),
         typeof(PotionOfLevitation),
         typeof(PotionOfStrength),
         typeof(PotionOfMindVision),
         typeof(PotionOfPurity),
         typeof(PotionOfInvisibility),
         typeof(PotionOfMight),
+        typeof(PotionOfFrost),
     ];
 
-    private static readonly float[] PotionChances = [45, 4, 15, 10, 10, 0, 20, 12, 10, 0];
+    private static readonly float[] PotionChances =
+    [
+        45,
+        4,
+        15,
+        10,
+        15,
+        10,
+        0,
+        20,
+        12,
+        10,
+        0,
+        10
+    ];
 
     private static readonly Type[] ScrollClasses =
     [
@@ -129,13 +147,14 @@ public class GeneratorTests : DungeonFixture
                 case Armor:
                     seen.Add(Generator.Category.Armor);
                     break;
-                case Potion potion:
-                    Assert.False(potion is PotionOfLiquidFlame or PotionOfFrost,
-                        $"seed {seed}: {potion.GetType().Name}");
+                case Potion:
                     seen.Add(Generator.Category.Potion);
                     break;
                 case Scroll:
                     seen.Add(Generator.Category.Scroll);
+                    break;
+                case Bomb:
+                    seen.Add(Generator.Category.Misc);
                     break;
                 default:
                     Assert.Fail($"seed {seed}: {item?.GetType().Name ?? "null"}");
@@ -144,7 +163,7 @@ public class GeneratorTests : DungeonFixture
         }
 
         // Each category is at least a 10-in-165 draw, so 400 seeds miss one with a chance below 1e-10
-        Assert.Equal(5, seen.Count);
+        Assert.Equal(6, seen.Count);
     }
 
     [Fact]
@@ -175,7 +194,6 @@ public class GeneratorTests : DungeonFixture
         Assert.Null(Generator.Random(Generator.Category.Wand));
         Assert.Null(Generator.Random(Generator.Category.Ring));
         Assert.Null(Generator.Random(Generator.Category.Seed));
-        Assert.Null(Generator.Random(Generator.Category.Misc));
     }
 
     [Fact]
@@ -221,14 +239,21 @@ public class GeneratorTests : DungeonFixture
     [Fact]
     public void Registry_HoldsGold_AndEveryPortedWeaponsArmorFoodPotionAndScroll()
     {
-        // 1 + 16 + 5 + 3 + 10 + 12 = 47
+        // 1 + 17 + 5 + 3 + 2 + 12 + 12 + 1 = 53
         // TODO: Incendiary dart, boomerang, liquid flame and frost
         var expected = new[] { typeof(Gold) }
             .Concat(WeaponClasses)
             .Concat(ArmorClasses)
-            .Concat([typeof(Food), typeof(Pasty), typeof(MysteryMeat)])
+            .Concat([
+                typeof(Food),
+                typeof(Pasty),
+                typeof(MysteryMeat),
+                typeof(ChargrilledMeat),
+                typeof(FrozenCarpaccio)
+            ])
             .Concat(PotionClasses)
-            .Concat(ScrollClasses);
+            .Concat(ScrollClasses)
+            .Concat([typeof(Bomb)]);
 
         Assert.Equal(expected.Select(t => t.FullName)
                 .OrderBy(n => n, StringComparer.Ordinal),
@@ -441,8 +466,57 @@ public class GeneratorTests : DungeonFixture
         Assert.IsType<PotionOfStrength>(Generator.Random(typeof(PotionOfStrength)));
         Assert.IsType<PotionOfMight>(Generator.Random(typeof(PotionOfMight)));
         Assert.IsType<ScrollOfUpgrade>(Generator.Random(typeof(ScrollOfUpgrade)));
-        Assert.Null(Generator.Random(typeof(PotionOfLiquidFlame)));
-        Assert.Null(Generator.Random(typeof(PotionOfFrost)));
+        Assert.IsType<PotionOfLiquidFlame>(Generator.Random(typeof(PotionOfLiquidFlame)));
+        Assert.IsType<PotionOfFrost>(Generator.Random(typeof(PotionOfFrost)));
+    }
+
+    [Fact]
+    public void Random_Potion_NowRollsAllTwelveClasses()
+    {
+        Assert.Equal(12, PotionClasses.Length);
+        Assert.Equal(151f, PotionChances.Sum());
+        var seen = new HashSet<Type>();
+        for (var seed = 1; seed <= 400; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            seen.Add(Generator.Random(Generator.Category.Potion).GetType());
+        }
+
+        Assert.Contains(typeof(PotionOfLiquidFlame), seen);
+        Assert.Contains(typeof(PotionOfFrost), seen);
+        Assert.DoesNotContain(typeof(PotionOfStrength), seen); // weight 0
+        Assert.DoesNotContain(typeof(PotionOfMight), seen);
+    }
+
+    [Fact]
+    public void Random_Misc_IsAlwaysABomb()
+    {
+        for (var seed = 1; seed <= 50; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            var bomb = Assert.IsType<Bomb>(Generator.Random(Generator.Category.Misc));
+            Assert.InRange(bomb.Quantity(), 1, 3);
+        }
+    }
+
+    [Fact]
+    public void Registry_GivesTheMeats_ButNoTableRollsThem()
+    {
+        Assert.IsType<ChargrilledMeat>(Generator.Random(typeof(ChargrilledMeat)));
+        Assert.IsType<FrozenCarpaccio>(Generator.Random(typeof(FrozenCarpaccio)));
+        Assert.Contains(typeof(ChargrilledMeat), Generator.RegisteredTypes);
+        Assert.Contains(typeof(FrozenCarpaccio), Generator.RegisteredTypes);
+        for (var seed = 1; seed <= 300; seed++)
+        {
+            Random.Seed(seed);
+            Generator.Reset();
+            var food = Generator.Random(Generator.Category.Food);
+            Assert.False(food is ChargrilledMeat or FrozenCarpaccio, $"seed {seed}");
+            var any = Generator.Random();
+            Assert.False(any is ChargrilledMeat or FrozenCarpaccio, $"seed {seed}");
+        }
     }
 
     [Fact]
