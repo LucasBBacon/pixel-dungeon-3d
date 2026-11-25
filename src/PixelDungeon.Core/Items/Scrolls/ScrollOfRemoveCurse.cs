@@ -8,7 +8,7 @@ public class ScrollOfRemoveCurse : Scroll
 {
     private const string TxtProceed = "Your pack glows with a cleasning light, and a malevolent light disperses.";
     private const string TxtNotProceed = "Your pack glows with a cleansing light, but nothing happens.";
-    
+
     public ScrollOfRemoveCurse()
     {
         NameValue = "Scroll of Remove Curse";
@@ -26,8 +26,8 @@ public class ScrollOfRemoveCurse : Scroll
             CurUser.Belongings.Armor,
             CurUser.Belongings.Ring1,
             CurUser.Belongings.Ring2) || proceed;
-        
-        // TODO: Weakness.detach(curUser, weakness.class)
+
+        Buff.Detach<Weakness>(CurUser);
 
         if (proceed)
         {
@@ -37,9 +37,9 @@ public class ScrollOfRemoveCurse : Scroll
         {
             GLog.I(TxtNotProceed);
         }
-        
+
         SetKnown();
-        
+
         ReadAnimation();
     }
 
@@ -54,7 +54,7 @@ public class ScrollOfRemoveCurse : Scroll
         foreach (var item in items)
         {
             if (item is not { Cursed: true }) continue;
-            
+
             item.Cursed = false;
             proceed = true;
         }
@@ -66,6 +66,6 @@ public class ScrollOfRemoveCurse : Scroll
 
         return proceed;
     }
-    
+
     public override int Price() => IsKnown() ? 30 * QuantityValue : base.Price();
 }

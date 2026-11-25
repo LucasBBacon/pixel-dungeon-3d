@@ -15,6 +15,6 @@ public class GasesImmunity : FlavorBuff
     [
         typeof(Paralysis),
         typeof(ToxicGas),
-        // TODO: Vertigo.class
+        typeof(Vertigo),
     ];
 }

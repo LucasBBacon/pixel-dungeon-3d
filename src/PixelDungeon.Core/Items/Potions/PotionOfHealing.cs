@@ -23,7 +23,7 @@ public class PotionOfHealing : Potion
         hero.HP = hero.HT;
         Buff.Detach<Poison>(hero);
         Buff.Detach<Cripple>(hero);
-        // TODO: Buff.detach(hero, Weakness.class)
+        Buff.Detach<Weakness>(hero);
         Buff.Detach<Bleeding>(hero);
 
         hero.Sprite.Burst(0xFF33FF33u, 4);

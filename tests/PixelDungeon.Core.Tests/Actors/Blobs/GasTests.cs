@@ -1,8 +1,11 @@
+using System.Reflection;
 using PixelDungeon.Core.Actors;
 using PixelDungeon.Core.Actors.Blobs;
 using PixelDungeon.Core.Actors.Buffs;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Tests.Levels;
+using PixelDungeon.Core.Tests.View;
+using PixelDungeon.Core.Utils;
 using PixelDungeon.Core.View;
 
 namespace PixelDungeon.Core.Tests.Actors.Blobs;
@@ -18,7 +21,7 @@ public class GasTests : DungeonFixture
 
     private sealed class Dummy : Char
     {
-        public readonly HashSet<Type> Immune = new();
+        public readonly HashSet<Type> Immune = [];
 
         public Dummy(int ht)
         {
@@ -125,7 +128,7 @@ public class GasTests : DungeonFixture
 
         // (1,1) sees 30 on two open cells, 30 / 2 - 1 = 14 -> (2,1), (3,1), (5,1), (6,1)
         // see 30 among three, 9 -> (7,1) sees 30 among two, 14 -> (4,1) sees nothing -> Volume 64.
-        Assert.Equal(new[] { 14, 9, 9, 0, 9, 9, 14 }, Enumerable.Range(1, 7).Select(x => toxic.Cur[C(x)]));
+        Assert.Equal([14, 9, 9, 0, 9, 9, 14], Enumerable.Range(1, 7).Select(x => toxic.Cur[C(x)]));
         // against cells from before spread
         // At (2,1) paralytic 50 >= toxic 30, so 30 comes off the toxic Volume
         // but only the old array is zeroed and the new cloud keeps its 9
@@ -160,5 +163,91 @@ public class GasTests : DungeonFixture
     {
         Assert.Equal("A greenish cloud of toxic gas is swirling here.", new ToxicGas().TileDesc());
         Assert.Equal("A cloud of paralytic gas is swirling here.", new ParalyticGas().TileDesc());
+    }
+
+    private static void Tick(Actor actor) =>
+        typeof(Actor)
+            .GetMethod("Act", BindingFlags.NonPublic | BindingFlags.Instance)
+            .Invoke(actor, null);
+
+    [Fact]
+    public void ConfusionGas_CharOnGas_GetsVertigoForTen()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(C(1));
+        hero.Spend(0.5f);
+        var dummy = PlaceDummy(C(5), 20);
+        GameScene.Add(Blob.Seed<ConfusionGas>(C(5), 50));
+
+        Actor.Process();
+
+        var vertigo = dummy.GetBuff<Vertigo>();
+        Assert.NotNull(vertigo);
+        Assert.Equal(9.5f, CooldownOf(vertigo));
+    }
+
+    [Fact]
+    public void ConfusionGas_GasSpreadsOntoAChar_NoVertigoUntilTheNextAct()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(C(1));
+        var dummy = PlaceDummy(C(5), 20);
+        var gas = Blob.Seed<ConfusionGas>(C(4), 50);
+        GameScene.Add(gas);
+
+        Tick(gas);
+
+        Assert.True(gas.Cur[C(5)] > 0);
+        Assert.Null(dummy.GetBuff<Vertigo>());
+
+        Tick(gas);
+
+        Assert.NotNull(dummy.GetBuff<Vertigo>());
+    }
+
+    [Fact]
+    public void ConfusionGas_HeroWithGasesImmunity_NoVertigo()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(C(4));
+        hero.Spend(0.5f);
+        Buff.Affect<GasesImmunity>(hero, GasesImmunity.Duration);
+        GameScene.Add(Blob.Seed<ConfusionGas>(C(4), 50));
+
+        Actor.Process();
+
+        Assert.Null(hero.GetBuff<Vertigo>());
+        Assert.Contains(typeof(Vertigo), GasesImmunity.Immunities);
+    }
+    
+    [Fact]
+    public void Purity_LeavesConfusionGasAlone()
+    {
+        LoadLevel(Corridor);
+        var hero = PlaceHero(C(2));
+        hero.Sprite = new FakeCharView();
+        var gas = Blob.Seed<ConfusionGas>(C(3), 40);
+
+        new PixelDungeon.Core.Items.Potions.PotionOfPurity().Shatter(C(3));
+
+        Assert.Equal(40, gas.Cur[C(3)]);
+        Assert.Equal(40, gas.Volume);
+    }
+    
+    [Fact]
+    public void ConfusionGas_TileDescAndBundle()
+    {
+        Assert.Equal("A cloud of confusion gas is swirling here.", new ConfusionGas().TileDesc());
+
+        LoadLevel(Corridor);
+        var gas = new ConfusionGas();
+        gas.Seed(C(3), 7);
+        var bundle = new Bundle();
+
+        bundle.Put("gas", gas);
+        var restored = (ConfusionGas)bundle.Get("gas");
+
+        Assert.Equal(7, restored.Cur[C(3)]);
+        Assert.Equal(7, restored.Volume);
     }
 }

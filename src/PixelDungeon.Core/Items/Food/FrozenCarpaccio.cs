@@ -13,7 +13,7 @@ public class FrozenCarpaccio : Food
         ImageValue = ItemSpriteSheet.Carpaccio;
         Energy = Hunger.Starving - Hunger.Hungry;
     }
-    
+
     public override void Execute(Hero hero, string action)
     {
         base.Execute(hero, action);
@@ -34,7 +34,7 @@ public class FrozenCarpaccio : Food
                     GLog.I("Refreshing!");
                     Buff.Detach<Poison>(hero);
                     Buff.Detach<Cripple>(hero);
-                    // TODO: detach weakness
+                    Buff.Detach<Weakness>(hero);
                     Buff.Detach<Bleeding>(hero);
                     break;
                 case 3:
@@ -44,6 +44,7 @@ public class FrozenCarpaccio : Food
                         hero.HP = Math.Min(hero.HP + hero.HT / 4, hero.HT);
                         hero.Sprite.Burst(0xFF33FF33, 1);
                     }
+
                     break;
             }
         }

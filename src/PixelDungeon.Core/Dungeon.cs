@@ -316,8 +316,7 @@ public static class Dungeon
     }
 
     private static readonly bool[] _passable = new bool[Level.Length];
-
-
+    
     public static int FindPath(Char ch, int from, int to, bool[] pass, bool[] visible)
     {
         if (Level.Adjacent(from, to))
@@ -325,8 +324,7 @@ public static class Dungeon
             return Actor.FindChar(to) == null && (pass[to] || Level.Avoid[to]) ? to : -1;
         }
 
-        // TODO: amok alos lets the char pass through avoid cells
-        if (ch.Flying || ch.GetBuff<Rage>() != null)
+        if (ch.Flying || ch.GetBuff<Amok>() != null || ch.GetBuff<Rage>() != null)
         {
             BArray.Or(pass, Level.Avoid, _passable);
         }

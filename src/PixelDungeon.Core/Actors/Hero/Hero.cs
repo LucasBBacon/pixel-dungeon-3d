@@ -952,6 +952,10 @@ public class Hero : Char
         {
             GLog.W("You can't move!");
         }
+        else if (buff is Weakness)
+        {
+            GLog.W("You feel weakened!");
+        }
         else if (buff is Blindness)
         {
             GLog.W("You are blinded!");
@@ -964,8 +968,13 @@ public class Hero : Char
         {
             GLog.W("You are bleeding!");
         }
+        else if (buff is Vertigo)
+        {
+            GLog.W("Everything is spinning around you!");
+            Interrupt();
+        }
 
-        // TODO: Ooze, Weakness, Fury, Charm, Vertigo warnings and interrupts
+        // TODO: Ooze, Weakness, Fury, Charm warnings and interrupts
         // TODO: BuffIndicator.RefreshHero()
     }
 

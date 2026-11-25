@@ -187,7 +187,7 @@ public abstract class Char : Actor
         {
             return;
         }
-        
+
         Buff.Detach<Frost>(this);
 
         var srcClass = src.GetType();
@@ -324,6 +324,10 @@ public abstract class Char : Actor
         {
             Sprite.ShowStatus(StatusColor.Negative, "bleeding");
         }
+        else if (buff is Vertigo)
+        {
+            Sprite.ShowStatus(StatusColor.Negative, "dizzy");
+        }
         else if (buff is Cripple)
         {
             Sprite.ShowStatus(StatusColor.Negative, "crippled");
@@ -363,19 +367,15 @@ public abstract class Char : Actor
         {
             Sprite.Remove(CharState.Burning);
         }
-        
         else if (buff is Levitation)
         {
             Sprite.Remove(CharState.Levitating);
         }
-        
-
         else if (buff is Invisibility && Invisible <= 0)
         {
             Sprite.Remove(CharState.Invisible);
         }
         // Paralysis removes CharSprite.State.PARALYSED in the Java; the port draws no paralysed state (see Add).
-        
         else if (buff is Frost)
         {
             Sprite.Remove(CharState.Frozen);
@@ -427,6 +427,15 @@ public abstract class Char : Actor
 
     public virtual void Move(int step)
     {
+        if (Level.Adjacent(step, Pos) && GetBuff<Vertigo>() != null)
+        {
+            step = Pos + Level.Neighbours8[Random.Int(8)];
+            if (!(Level.Passable[step] || Level.Avoid[step]) || FindChar(step) != null)
+            {
+                return;
+            }
+        }
+
         if (Dungeon.Level.Map[Pos] == Terrain.OpenDoor)
         {
             Door.Leave(Pos);
