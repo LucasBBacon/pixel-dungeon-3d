@@ -10,6 +10,7 @@ using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon;
 using PixelDungeon.Core.Items.Weapon.Melee;
 using PixelDungeon.Core.Items.Weapon.Missiles;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Tests.View;
@@ -126,7 +127,7 @@ public class GeneratorTests : DungeonFixture
     private static readonly float[] ScrollChances = [30, 10, 15, 10, 15, 12, 8, 8, 4, 6, 0, 1];
 
     [Fact]
-    public void Random_OverManySeeds_ReturnsGoldWeaponsArmourPotionsAndScrolls_NeverAnUnregisteredPotion()
+    public void Random_OverManySeeds_ReturnsGoldWeaponsArmourPotionsScrollsBombsAndSeeds()
     {
         Dungeon.Depth = 1;
         var seen = new HashSet<Generator.Category>();
@@ -156,14 +157,17 @@ public class GeneratorTests : DungeonFixture
                 case Bomb:
                     seen.Add(Generator.Category.Misc);
                     break;
+                case Plant.Seed:
+                    seen.Add(Generator.Category.Seed);
+                    break;
                 default:
                     Assert.Fail($"seed {seed}: {item?.GetType().Name ?? "null"}");
                     break;
             }
         }
 
-        // Each category is at least a 10-in-165 draw, so 400 seeds miss one with a chance below 1e-10
-        Assert.Equal(6, seen.Count);
+        // Each category is at least a 10-in-175 draw, so 400 seeds miss one with a chance below 1e-10
+        Assert.Equal(7, seen.Count);
     }
 
     [Fact]
@@ -193,7 +197,6 @@ public class GeneratorTests : DungeonFixture
     {
         Assert.Null(Generator.Random(Generator.Category.Wand));
         Assert.Null(Generator.Random(Generator.Category.Ring));
-        Assert.Null(Generator.Random(Generator.Category.Seed));
     }
 
     [Fact]
@@ -240,7 +243,7 @@ public class GeneratorTests : DungeonFixture
     public void Registry_HoldsGold_AndEveryPortedWeaponsArmorFoodPotionAndScroll()
     {
         // 1 + 17 + 5 + 3 + 2 + 12 + 12 + 1 = 53
-        // TODO: Incendiary dart, boomerang, liquid flame and frost
+        // TODO: boomerang
         var expected = new[] { typeof(Gold) }
             .Concat(WeaponClasses)
             .Concat(ArmorClasses)
@@ -253,7 +256,17 @@ public class GeneratorTests : DungeonFixture
             ])
             .Concat(PotionClasses)
             .Concat(ScrollClasses)
-            .Concat([typeof(Bomb)]);
+            .Concat([typeof(Bomb)])
+            .Concat([
+                typeof(Firebloom.Seed),
+                typeof(Icecap.Seed),
+                typeof(Sorrowmoss.Seed),
+                typeof(Dreamweed.Seed),
+                typeof(Sungrass.Seed),
+                typeof(Earthroot.Seed),
+                typeof(Fadeleaf.Seed),
+                typeof(Rotberry.Seed),
+            ]);
 
         Assert.Equal(expected.Select(t => t.FullName)
                 .OrderBy(n => n, StringComparer.Ordinal),

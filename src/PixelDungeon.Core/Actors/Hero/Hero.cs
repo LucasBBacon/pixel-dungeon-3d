@@ -8,6 +8,7 @@ using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Items.Weapon.Missiles;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Ui;
 using PixelDungeon.Core.Utils;
@@ -716,7 +717,13 @@ public class Hero : Char
 
     public override int DefenseProc(Char enemy, int damage)
     {
-        // TODO: ring of thorns, earthroot armour
+        // TODO: ring of thorns
+        var armor = GetBuff<Earthroot.Armor>();
+        if (armor != null)
+        {
+            damage = armor.Absorb(damage);
+        }
+        
         if (Belongings.Armor != null)
         {
             damage = Belongings.Armor.Proc(enemy, this, damage);

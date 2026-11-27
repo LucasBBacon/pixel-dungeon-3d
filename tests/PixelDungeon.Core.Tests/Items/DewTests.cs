@@ -3,6 +3,7 @@ using PixelDungeon.Core.Actors.Mobs;
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Levels;
 using PixelDungeon.Core.Levels.Features;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Tests.Levels;
 using PixelDungeon.Core.Tests.View;
 using PixelDungeon.Core.Utils;
@@ -123,9 +124,9 @@ public class DewTests : DungeonFixture
         Dungeon.Hero = new SpyHero();
         var hero = (SpyHero)PlaceHurtHero(5);
         var vial = VialWith(5);
-        
+
         vial.Execute(hero);
-        
+
         Assert.Equal(1f, hero.TimeLeft);
     }
 
@@ -222,9 +223,11 @@ public class DewTests : DungeonFixture
 
             if (Dungeon.Level.Heaps.TryGetValue(cell, out var heap))
             {
-                Assert.IsType<Dewdrop>(heap.Peek());
-                Assert.Equal(1, ((FakeHeapView)heap.Sprite).Drops);
-                drops++;
+                Assert.All(heap.Items, item => Assert.True(item is Dewdrop or Plant.Seed));
+                if (heap.Items.Any(item => item is Dewdrop))
+                {
+                    drops++;
+                }
             }
         }
 

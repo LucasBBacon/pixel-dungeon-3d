@@ -1,5 +1,6 @@
 using PixelDungeon.Core.Items;
 using PixelDungeon.Core.Scenes;
+using PixelDungeon.Core.Utils;
 
 namespace PixelDungeon.Core.Levels.Features;
 
@@ -14,19 +15,11 @@ public static class HighGrass
         {
             var herbalismLevel = 0;
             // TODO: ring of herbalism level
-            // TODO: seed drop when Random.Int(18) <= Random.Int(level + 1)
-            // TODO: Dewdrop when Random.Int(6) <= Random.Int(level + 1)
 
             // Seed
             if (herbalismLevel >= 0 && Random.Int(18) <= Random.Int(herbalismLevel + 1))
             {
-                // not in java: no seed drops is registered until later
-                // roll above still runs and nothing drops rather than an empty heap
-                var seed = Generator.Random(Generator.Category.Seed);
-                if (seed != null)
-                {
-                    level.Drop(seed, pos).Sprite.Drop();
-                }
+                level.Drop(Generator.Random(Generator.Category.Seed), pos).Sprite.Drop();
             }
 
             // Dew
@@ -37,7 +30,9 @@ public static class HighGrass
         }
 
         // TODO: warden gains barkskin and doubles leaf burst 4 -> 8
-        // TODO: CellEmitter.Get(Pos).Burst(LeafParticle.LevelSpecific, leaves)
+
+        var leaves = 4;
+        GameScene.Splash(pos, ColorMath.Midpoint(Dungeon.Level.Color1, Dungeon.Level.Color2), leaves);
 
         Dungeon.Observe();
     }

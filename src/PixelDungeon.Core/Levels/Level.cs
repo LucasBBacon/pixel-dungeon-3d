@@ -484,7 +484,7 @@ public abstract class Level : IBundlable
         plant = seed.Couch(pos);
         Plants[pos] = plant;
 
-        // TODO: GameScene.Add(plant)
+        GameScene.Add(plant);
 
         return plant;
     }

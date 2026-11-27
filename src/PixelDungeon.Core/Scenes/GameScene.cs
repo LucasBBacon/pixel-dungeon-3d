@@ -84,24 +84,26 @@ public static class GameScene
     public static void LandDroppedItems()
     {
         var dropped = Dungeon.DroppedItems.GetValueOrDefault(Dungeon.Depth);
-        if (dropped != null)
+        if (dropped == null) return;
+        
+        foreach (var item in dropped)
         {
-            foreach (var item in dropped)
+            var pos = Dungeon.Level.RandomRespawnCell();
+
+            switch (item)
             {
-                var pos = Dungeon.Level.RandomRespawnCell();
-
-                if (item is Potion potion)
-                {
+                case Potion potion:
                     potion.Shatter(pos);
-                }
-                else
-                {
-                    // TODO: Plant.Seed is planted instead of dropping
+                    break;
+                case Plant.Seed seed:
+                    Dungeon.Level.PlantSeed(seed, pos);
+                    break;
+                default:
                     Dungeon.Level.Drop(item, pos);
-                }
+                    break;
             }
-
-            Dungeon.DroppedItems.Remove(Dungeon.Depth);
         }
+
+        Dungeon.DroppedItems.Remove(Dungeon.Depth);
     }
 }

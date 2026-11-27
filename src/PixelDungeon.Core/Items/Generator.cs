@@ -242,8 +242,17 @@ public static class Generator
         [typeof(Scrolls.ScrollOfMirrorImage)] = () => new Scrolls.ScrollOfMirrorImage(),
         [typeof(Scrolls.ScrollOfUpgrade)] = () => new Scrolls.ScrollOfUpgrade(), // weight 0: the quota's
         [typeof(Scrolls.ScrollOfEnchantment)] = () => new Scrolls.ScrollOfEnchantment(),
-        
-        [typeof(Bomb)] =() => new Bomb(),
+
+        [typeof(Bomb)] = () => new Bomb(),
+
+        [typeof(Plants.Firebloom.Seed)] = () => new Plants.Firebloom.Seed(),
+        [typeof(Plants.Icecap.Seed)] = () => new Plants.Icecap.Seed(),
+        [typeof(Plants.Sorrowmoss.Seed)] = () => new Plants.Sorrowmoss.Seed(),
+        [typeof(Plants.Dreamweed.Seed)] = () => new Plants.Dreamweed.Seed(),
+        [typeof(Plants.Sungrass.Seed)] = () => new Plants.Sungrass.Seed(),
+        [typeof(Plants.Earthroot.Seed)] = () => new Plants.Earthroot.Seed(),
+        [typeof(Plants.Fadeleaf.Seed)] = () => new Plants.Fadeleaf.Seed(),
+        [typeof(Plants.Rotberry.Seed)] = () => new Plants.Rotberry.Seed(), // weight 0: only a Rotberry plant drops it
     };
 
     public static IEnumerable<Type> RegisteredTypes => Registry.Keys;
