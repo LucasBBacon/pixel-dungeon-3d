@@ -8,5 +8,6 @@ public enum BagMode
     Enchantable,
     Upgradable,
     Weapon,
-    Armor
+    Armor,
+    Seed
 }

@@ -579,7 +579,7 @@ public abstract class Level : IBundlable
             case Terrain.Alchemy:
                 if (ch == null)
                 {
-                    // TODO: Alchemy.Transmute(cell)
+                    Alchemy.Transmute(cell);
                 }
 
                 break;

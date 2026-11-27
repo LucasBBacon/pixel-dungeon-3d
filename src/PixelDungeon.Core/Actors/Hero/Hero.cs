@@ -436,9 +436,22 @@ public class Hero : Char
 
     private bool ActCook(HeroAction.Cook action)
     {
-        // TODO: AlchemyPot.Operate(this, dst)
-        MakeReady();
-        return false;
+        var dst = action.Dst;
+        if (Dungeon.Visible[dst])
+        {
+            MakeReady();
+            AlchemyPot.Operate(this, dst);
+            return false;
+        }
+        else if (GetCloser(dst))
+        {
+            return true;
+        }
+        else
+        {
+            MakeReady();
+            return false;
+        }
     }
 
     private bool ActPickUp(HeroAction.PickUp action)
@@ -458,7 +471,7 @@ public class Hero : Char
                     }
                     else
                     {
-                        var important = (item is ScrollOfUpgrade or ScrollOfEnchantment && ((Scroll)item).IsKnown()) 
+                        var important = (item is ScrollOfUpgrade or ScrollOfEnchantment && ((Scroll)item).IsKnown())
                                         || (item is PotionOfStrength or PotionOfMight && ((Potion)item).IsKnown());
                         if (important)
                         {
@@ -723,7 +736,7 @@ public class Hero : Char
         {
             damage = armor.Absorb(damage);
         }
-        
+
         if (Belongings.Armor != null)
         {
             damage = Belongings.Armor.Proc(enemy, this, damage);

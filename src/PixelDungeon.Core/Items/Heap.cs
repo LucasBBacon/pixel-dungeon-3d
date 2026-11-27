@@ -1,4 +1,5 @@
 using PixelDungeon.Core.Actors.Hero;
+using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Scenes;
 using PixelDungeon.Core.Sprites;
 using PixelDungeon.Core.Utils;
@@ -22,7 +23,7 @@ public enum HeapType
 public class Heap : IBundlable
 {
     // TODO: TXT_MIMIC = "This is a mimic!" (logged when Mimic.spawnAt succeeds)
-    // TODO: SEEDS_TO_POTION = 3 (transmute)
+    private const int SeedsToPotion = 3;
     // FADE_TIME belongs to the view's hidden-heap fade.
 
     public HeapType Type = HeapType.Heap;
@@ -263,7 +264,68 @@ public class Heap : IBundlable
         GameScene.Splash(pos, 0xFFE8E8E8, 5);
     }
 
-    // TODO: transmute()
+    public Item Transmute()
+    {
+        GameScene.Splash(Pos, 0xFFAADDFF, 3);
+        GameScene.Splash(Pos, 0xFFFFFFFF, 3);
+
+        var chances = new float[Items.Count];
+        var count = 0;
+
+        var index = 0;
+        foreach (var item in Items)
+        {
+            if (item is Plant.Seed)
+            {
+                count += item.Quantity();
+                chances[index++] = item.Quantity();
+            }
+            else
+            {
+                count = 0;
+                break;
+            }
+        }
+
+        if (count >= SeedsToPotion)
+        {
+            GameScene.Splash(Pos, 0xFFEEEEEE, 6);
+            Sample.Play(Assets.SndPuff);
+
+            if (Random.Int(count) == 0)
+            {
+                GameScene.Splash(Pos, 0xFFFFFFFF, 3);
+
+                Destroy();
+
+                Statistics.PotionsCooked++;
+                // TODO: Badges.validatePotionsCooked()
+
+                return Generator.Random(Generator.Category.Potion);
+            }
+            else
+            {
+                var proto = (Plant.Seed)Items.ElementAt(Random.Chances(chances));
+                var itemClass = proto.AlchemyClass;
+
+                Destroy();
+
+                Statistics.PotionsCooked++;
+                // TODO: Badges.validatePotionsCooked()
+
+                if (itemClass == null)
+                {
+                    return Generator.Random(Generator.Category.Potion);
+                }
+
+                return (Item)Activator.CreateInstance(itemClass);
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     public bool IsEmpty() => Items == null || Items.Count == 0;
 
