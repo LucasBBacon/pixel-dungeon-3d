@@ -34,8 +34,10 @@ public sealed class TestLevel : Level
         CleanWalls();
     }
 
+    public void Reflag() => BuildFlagMaps();
+
     public int SpawnCount => ItemsToSpawn.Count;
-    
+
     public List<Item> Spawns => ItemsToSpawn;
 
     public Func<int> RespawnCells;
@@ -84,6 +86,15 @@ public sealed class TestLevel : Level
             'A' => Terrain.Alchemy,
             'W' => Terrain.Well,
             'P' => Terrain.EmptySp,
+            'F' => Terrain.FireTrap,
+            'Y' => Terrain.ParalyticTrap,
+            'O' => Terrain.PoisonTrap,
+            'R' => Terrain.AlarmTrap,
+            'a' => Terrain.SecretAlarmTrap,
+            'Z' => Terrain.LightningTrap,
+            'G' => Terrain.GrippingTrap,
+            'M' => Terrain.SummoningTrap,
+            '_' => Terrain.InactiveTrap,
             _ => throw new ArgumentException($"No terrain for '{c}'")
         };
 

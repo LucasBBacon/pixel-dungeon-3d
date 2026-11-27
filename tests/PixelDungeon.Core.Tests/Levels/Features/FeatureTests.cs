@@ -58,6 +58,7 @@ public class FeatureTests : DungeonFixture
         Assert.Equal(Terrain.InactiveTrap, level.Map[TestLevel.At(2, 1)]);
         Assert.Contains(View.Sounds, s => s.Id == Assets.SndTrap);
         Assert.Null(hero.CurAction);
+        Assert.Single(level.Blobs);
     }
 
     [Fact]
@@ -89,6 +90,7 @@ public class FeatureTests : DungeonFixture
         Actor.Add(rat);
         level.MobPress(rat);
         Assert.Equal(Terrain.InactiveTrap, level.Map[TestLevel.At(2, 1)]);
+        Assert.Single(level.Blobs);
 
         rat.Pos = TestLevel.At(3, 1);
         level.MobPress(rat);

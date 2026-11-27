@@ -8,6 +8,7 @@ using PixelDungeon.Core.Items.Potions;
 using PixelDungeon.Core.Items.Scrolls;
 using PixelDungeon.Core.Levels.Features;
 using PixelDungeon.Core.Levels.Painters;
+using PixelDungeon.Core.Levels.Traps;
 using PixelDungeon.Core.Mechanics;
 using PixelDungeon.Core.Plants;
 using PixelDungeon.Core.Scenes;
@@ -508,7 +509,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.ToxicTrap;
             case Terrain.ToxicTrap:
                 trap = true;
-                // TODO: ToxicTrap.Trigger(cell, ch)
+                ToxicTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretFireTrap:
@@ -516,7 +517,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.FireTrap;
             case Terrain.FireTrap:
                 trap = true;
-                // TODO: FireTrap.Trigger(cell, ch)
+                FireTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretParalyticTrap:
@@ -524,7 +525,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.ParalyticTrap;
             case Terrain.ParalyticTrap:
                 trap = true;
-                // TODO: ParalyticTrap.Trigger(cell, ch)
+                ParalyticTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretPoisonTrap:
@@ -532,7 +533,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.PoisonTrap;
             case Terrain.PoisonTrap:
                 trap = true;
-                // TODO: PoisonTrap.Trigger(cell, ch)
+                PoisonTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretAlarmTrap:
@@ -540,7 +541,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.AlarmTrap;
             case Terrain.AlarmTrap:
                 trap = true;
-                // TODO: AlarmTrap.Trigger(cell, ch)
+                AlarmTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretLightningTrap:
@@ -548,7 +549,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.LightningTrap;
             case Terrain.LightningTrap:
                 trap = true;
-                // TODO: LightningTrap.Trigger(cell, ch)
+                LightningTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretGrippingTrap:
@@ -556,7 +557,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.GrippingTrap;
             case Terrain.GrippingTrap:
                 trap = true;
-                // TODO: GrippingTrap.Trigger(cell, ch)
+                GrippingTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.SecretSummoningTrap:
@@ -564,7 +565,7 @@ public abstract class Level : IBundlable
                 goto case Terrain.SummoningTrap;
             case Terrain.SummoningTrap:
                 trap = true;
-                // TODO: SummoningTrap.Trigger(cell, ch)
+                SummoningTrap.Trigger(cell, ch);
                 break;
 
             case Terrain.HighGrass:
@@ -618,28 +619,28 @@ public abstract class Level : IBundlable
         switch (Map[cell])
         {
             case Terrain.ToxicTrap:
-                // TODO: trigger trap
+                ToxicTrap.Trigger(cell, mob);
                 break;
             case Terrain.FireTrap:
-                // TODO: trigger trap
+                FireTrap.Trigger(cell, mob);
                 break;
             case Terrain.ParalyticTrap:
-                // TODO: trigger trap
+                ParalyticTrap.Trigger(cell, mob);
                 break;
             case Terrain.PoisonTrap:
-                // TODO: trigger trap
+                PoisonTrap.Trigger(cell, mob);
                 break;
             case Terrain.AlarmTrap:
-                // TODO: trigger trap
+                AlarmTrap.Trigger(cell, mob);
                 break;
             case Terrain.LightningTrap:
-                // TODO: trigger trap
+                LightningTrap.Trigger(cell, mob);
                 break;
             case Terrain.GrippingTrap:
-                // TODO: trigger trap
+                GrippingTrap.Trigger(cell, mob);
                 break;
             case Terrain.SummoningTrap:
-                // TODO: trigger trap
+                SummoningTrap.Trigger(cell, mob);
                 break;
             case Terrain.Door:
                 Door.Enter(cell);

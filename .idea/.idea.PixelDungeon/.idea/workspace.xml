@@ -14,24 +14,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="612435e0-6997-40ad-a5c7-10f01a6e1401" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Bags/SeedPouch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Dreamweed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Earthroot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Fadeleaf.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Firebloom.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Icecap.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Rotberry.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Sorrowmoss.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Sungrass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Plants/PlantTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Plants/SeedTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/AlarmTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/FireTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/GrippingTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/LightningTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/ParalyticTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/PoisonTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/SummoningTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Traps/ToxicTrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/Traps/TrapTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PixelDungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Actors/Hero/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Items/Generator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Features/HighGrass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Levels/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Plant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Plants/Plant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/Scenes/GameScene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/bin/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.AssemblyInfo.cs" afterDir="false" />
@@ -41,8 +34,9 @@
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/PixelDungeon.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/ref/PixelDungeon.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/Debug/net8.0/refint/PixelDungeon.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/DewTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Items/GeneratorTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/src/PixelDungeon.Core/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/Features/FeatureTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/Features/FeatureTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/bin/Debug/net8.0/PixelDungeon.Core.dll" afterDir="false" />
@@ -51,10 +45,12 @@
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/PixelDungeon.Core.Tests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/ref/PixelDungeon.Core.Tests.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/Debug/net8.0/refint/PixelDungeon.Core.Tests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,12 +78,12 @@
     &quot;assignee&quot;: &quot;LucasBBacon&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/LucasBBacon/pixel-dungeon-3d.git&quot;,
-    &quot;accountId&quot;: &quot;8db20902-2e69-4a26-86f3-c220d9ed2555&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/LucasBBacon/pixel-dungeon-3d.git",
+    "accountId": "378b6179-0833-4a68-9fde-fcf102d9dfdc"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Temp/SourceGeneratedDocuments/27037ABE9AD0EAA7E682BF6E/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/PixelDungeon.Client.GameScene_ScriptMethods.generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d2f8e0d1f8ea4cc696667f64359e4675c90750/64/29ee74db/Object.cs" root0="FORCE_HIGHLIGHTING" />
@@ -251,6 +247,7 @@
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/SewerLevelTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TerrainTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/TestLevel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Levels/Traps/TrapTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Mechanics/BallisticaTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Mechanics/ShadowCasterTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/PixelDungeon.Core.Tests/Plants/PlantTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -283,61 +280,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.204874239864808E-155" />
-      <entry key="MS500" value="1.1568705636049271E-31" />
-      <entry key="S2" value="3.1031269294383956E-8" />
-      <entry key="S5" value="0.0018107250430221442" />
-      <entry key="S10" value="0.07413573158031661" />
-      <entry key="S30" value="1.2017727993078804" />
-      <entry key="S60" value="3.9315706500253156" />
-      <entry key="M2" value="9.625305628792518" />
-      <entry key="M5" value="21.621629326900365" />
-      <entry key="M10" value="41.981912444579585" />
-      <entry key="M15" value="61.35594330194829" />
-      <entry key="M30" value="100.55868935021107" />
-      <entry key="H1" value="134.74542611149698" />
-      <entry key="H2" value="158.16377620179284" />
-      <entry key="H4" value="181.73592281687988" />
-      <entry key="D1" value="1022.6369273993864" />
-      <entry key="W1" value="9867.691947041134" />
+      <entry key="MS100" value="4.0198227475658897E-109" />
+      <entry key="MS500" value="2.8115005037644924E-22" />
+      <entry key="S2" value="6.722780228805893E-6" />
+      <entry key="S5" value="0.013604608423978348" />
+      <entry key="S10" value="0.19697019094642496" />
+      <entry key="S30" value="1.455589204829177" />
+      <entry key="S60" value="2.8094201700595054" />
+      <entry key="M2" value="5.509816099418931" />
+      <entry key="M5" value="22.21324608583154" />
+      <entry key="M10" value="61.526977683886095" />
+      <entry key="M15" value="104.34162258649225" />
+      <entry key="M30" value="231.2952991668188" />
+      <entry key="H1" value="411.4887543074613" />
+      <entry key="H2" value="596.5508530991481" />
+      <entry key="H4" value="757.146207938792" />
+      <entry key="D1" value="1680.0660476202538" />
+      <entry key="W1" value="10481.589918714775" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000079313616574" />
-      <entry key="S2" value="1.0530685448704087" />
-      <entry key="S5" value="1.311013310708916" />
-      <entry key="S10" value="1.6754693736977557" />
-      <entry key="S30" value="4.9407715371617105" />
-      <entry key="S60" value="10.851539079940386" />
-      <entry key="M2" value="18.75724029758997" />
-      <entry key="M5" value="30.491896436755123" />
-      <entry key="M10" value="43.65125247764125" />
-      <entry key="M15" value="53.561922684070815" />
-      <entry key="M30" value="70.96018571180029" />
-      <entry key="H1" value="84.71588897324986" />
-      <entry key="H2" value="93.72759853187934" />
-      <entry key="H4" value="103.62430528587305" />
-      <entry key="D1" value="434.97236848395653" />
-      <entry key="W1" value="3456.788829315615" />
+      <entry key="MS500" value="1.0000238119931153" />
+      <entry key="S2" value="1.0761714538156109" />
+      <entry key="S5" value="1.542719935341914" />
+      <entry key="S10" value="2.3648638953134733" />
+      <entry key="S30" value="4.863473841238926" />
+      <entry key="S60" value="7.404846639925635" />
+      <entry key="M2" value="11.008375827914874" />
+      <entry key="M5" value="22.19792698731794" />
+      <entry key="M10" value="42.931677139401835" />
+      <entry key="M15" value="63.71295562583028" />
+      <entry key="M30" value="117.9022452482294" />
+      <entry key="H1" value="186.82837581889825" />
+      <entry key="H2" value="257.6178772259009" />
+      <entry key="H4" value="323.00885886076924" />
+      <entry key="D1" value="694.4976182327878" />
+      <entry key="W1" value="3711.2509210244284" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.8374594084607745E-4" />
-      <entry key="MS500" value="0.1789973081658779" />
-      <entry key="S2" value="0.683649486636927" />
-      <entry key="S5" value="1.1014291169069488" />
-      <entry key="S10" value="1.6028912595659652" />
-      <entry key="S30" value="5.963452358518615" />
-      <entry key="S60" value="14.565991877113586" />
-      <entry key="M2" value="28.18174000731384" />
-      <entry key="M5" value="51.977972604767686" />
-      <entry key="M10" value="85.53437079654115" />
-      <entry key="M15" value="114.8355370958836" />
-      <entry key="M30" value="171.46247092389916" />
-      <entry key="H1" value="219.42682925331798" />
-      <entry key="H2" value="251.87203062008004" />
-      <entry key="H4" value="285.3494302333958" />
-      <entry key="D1" value="1457.6020102217963" />
-      <entry key="W1" value="13324.473181867248" />
+      <entry key="MS100" value="0.0012106520507216658" />
+      <entry key="MS500" value="0.2609787251691303" />
+      <entry key="S2" value="0.7485330451196638" />
+      <entry key="S5" value="1.2952009688824164" />
+      <entry key="S10" value="2.314153598755174" />
+      <entry key="S30" value="6.107289749344036" />
+      <entry key="S60" value="10.048639262164313" />
+      <entry key="M2" value="16.395705288618817" />
+      <entry key="M5" value="44.306330710097555" />
+      <entry key="M10" value="104.35536832340948" />
+      <entry key="M15" value="167.95495593375233" />
+      <entry key="M30" value="349.110473535188" />
+      <entry key="H1" value="598.2502907823068" />
+      <entry key="H2" value="854.1228860297125" />
+      <entry key="H4" value="1080.126077423925" />
+      <entry key="D1" value="2374.5527404837" />
+      <entry key="W1" value="14192.832725992983" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -416,6 +413,10 @@
       <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Attach&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
       <method v="2" />
     </configuration>
+    <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
+      <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Launch&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
+      <method v="2" />
+    </configuration>
     <configuration name="Player (Current Scene, GDScript)" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
       <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Launch&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;current&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
       <method v="2" />
@@ -441,9 +442,9 @@
       </method>
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="E:\lucas\CodeStuff\Godot\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
-      <option name="WORKING_DIRECTORY" value="E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
@@ -457,9 +458,9 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="E:\lucas\CodeStuff\Godot\Godot_v4.7.2-stable_mono_win64\Godot_v4.7.2-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="C:\Users\Lucas\Documents\Godot\Godot_v4.7.2-stable_mono_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="E:\lucas\CodeStuff\Godot\projects\pixel-dungeon-3d" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Lucas\Documents\Godot\projects\pixel-dungeon-3d" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
@@ -510,14 +511,7 @@
       <workItem from="1794144587802" duration="9856000" />
       <workItem from="1795039995775" duration="72000" />
       <workItem from="1795040113399" duration="2775000" />
-    </task>
-    <task id="LOCAL-00045" summary="feat(items): heaps open, merge, pick up, and destroy&#10;Heap ports whole apart from burning, freezing and alchemy. Stacks merge and move to the front, a dewdrop goes to the back, and an emptied heap removes itself and kills its view. Opening takes the Java's own no-mimic and no-wraith branches: a mimic opens as a plain chest and a cursed skeleton costs half the hero's HP for now.">
-      <option name="closed" value="true" />
-      <created>1791913911061</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1791913911061</updated>
+      <workItem from="1795802272948" duration="2147000" />
     </task>
     <task id="LOCAL-00046" summary="feat(hero): pick up, open chests, unlock doors, and scatter on death&#10;The hero's PickUp, OpenChest and Unlock actions port verbatim, with the key consumed when the operate animation ends. Death scatters the backpack over free neighbouring cells. AttackIndicator's logic half moves to Core, since its choice among adjacent enemies consumes the game's RNG.&#10;Items that fell down a chasm land through GameScene.LandDroppedItems, so the loop from GameScene.create is testable in Core.&#10;Wiring AttackIndicator.UpdateState() into Hero.Act() makes it spend one Random draw per turn once a mob is visible and adjacent (matching the Java's Random.element(candidates), which draws even for a one-candidate list). That shifts the RNG stream one position earlier than before, which flipped a pre-existing seeded assertion in HeroCombatTests (OnAttackComplete_AfterASwing_DamagesTheRatAndFreesTheScheduler): its 1-damage swing against a Rat's Dr()==1 is a coin flip on the very next draw. Reseeded immediately before that swing, with a comment, following the same mid-test reseed convention already used elsewhere (MobAiTests, PatchTests, DewTests) to pin a specific roll.">
       <option name="closed" value="true" />
@@ -903,7 +897,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795624507443</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="feat(plants): the eight plants, their seeds and buffs, and the seed pouch">
+      <option name="closed" value="true" />
+      <created>1795784873057</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1795784873057</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -924,7 +926,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(items): food rations and pasties&#10;Food and Pasty port from the Java:&#10;&#10;- eating detaches one from the stack, satisfies Hunger by the food's energy (260 for a ration, 360 for a pasty) and logs its message&#10;- a hurt Warrior heals 5, capped at HT&#10;- the hero operates, busies itself, plays the eat sound and spends 3 turns, and the turn ends when the operate animation completes&#10;- Statistics.FoodEaten counts every meal&#10;- info, prices and identification are verbatim&#10;&#10;TODO: The Mage's wand recharge, ScrollOfRecharging's burst and the food badge." />
     <MESSAGE value="feat(items): mystery meat, and the sewer crab drops it&#10;Mystery Meat is food worth 100 that tastes strange, then rolls Random.Int(5) as MysteryMeat.java does:&#10;&#10;- 1 roots the hero for Paralysis.duration: &quot;You can't feel your legs!&quot;&#10;- 2 poisons it for HT / 5: &quot;You are not feeling well.&quot;&#10;- 3 slows it for Slow.duration: &quot;You are stuffed.&quot;&#10;- 4 does nothing.&#10;&#10;A roll of 0 would ignite Burning, which is sp4: the roll still draws so the random stream matches the Java, but nothing happens yet.&#10;A sewer crab now carries Mystery Meat and drops it on a 0.167 loot roll, through the existing Mob.DropLoot." />
     <MESSAGE value="feat(items): the generator spawns weapons, armour and food Registers the eleven melee weapons, five missiles, five armours and three foods. TODO: Incendiary Dart and Boomerang. &#10;RandomWeapon and RandomArmor roll two classes, then both items, and keep the one whose strength is strictly closer to STARTING_STR plus the potions of strength found, as the Java does. A random item is now gold, a weapon or armour, and every level carries one ration or pasty. The tests that assumed gold-only heaps now assert registered classes; a replay pins the roll order." />
     <MESSAGE value="feat(dungeon): the hero starts with the common and Rogue kits&#10;Dungeon.Init puts on identified cloth armour, packs a ration, wields an identified dagger, packs eight identified darts and slots the Dart class, in HeroClass.initHero's order. The slots are assigned directly, as the Java does, so no equip time is spent. The Ring of Shadows, the known Scroll of Magic Mapping and the Tome of Mastery stay deferred. A kitted Rogue attacks at 12, defends at 6, blocks 2 and hits for 1-8." />
@@ -949,7 +950,8 @@
     <MESSAGE value="feat(seam): plants, lightning, falls, burning and frozen states, wounds, midpoint colors" />
     <MESSAGE value="feat(items): burning and freezing heaps, Liquid Flame and Frost, the bomb and the incendiary dart" />
     <MESSAGE value="feat(buffs): confusion gas, vertigo and weakness" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(buffs): confusion gas, vertigo and weakness" />
+    <MESSAGE value="feat(plants): the eight plants, their seeds and buffs, and the seed pouch" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(plants): the eight plants, their seeds and buffs, and the seed pouch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
